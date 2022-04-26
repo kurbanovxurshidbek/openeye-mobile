@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="44%"
+    android:keyHeight="80dp"
+    >
+
+       <Row>
+           <Key
+               android:codes="49"
+               android:keyLabel="1"
+               />
+           <Key
+               android:horizontalGap="12%"
+               android:keyEdgeFlags="right"
+               android:codes="52"
+               android:keyLabel="4"
+               />
+       </Row>
+
+
+    <Row>
+        <Key
+            android:codes="50"
+            android:keyLabel="2"
+            />
+        <Key
+            android:horizontalGap="12%"
+            android:keyEdgeFlags="right"
+            android:codes="53"
+
+            android:keyLabel="5"
+            />
+    </Row>
+
+    <Row>
+        <Key
+
+            android:codes="51"
+            android:keyLabel="3"
+            />
+        <Key
+
+            android:horizontalGap="12%"
+            android:keyEdgeFlags="right"
+            android:codes="54"
+            android:keyLabel="6"
+            />
+    </Row>
+
+    <Row>
+    <Key
+        android:codes="-5"
+        android:keyLabel="⬅"
+        android:keyEdgeFlags="left"
+        android:keyHeight="70dp"
+        android:isRepeatable="true"
+        android:keyWidth="23%"
+        />
+    <Key
+        android:codes="98"
+        android:keyLabel="⬆"
+        android:keyHeight="70dp"
+        android:keyWidth="18%"
+        />
+     <Key
+         android:codes="99"
+         android:keyLabel="⬇"
+         android:keyHeight="70dp"
+         android:keyWidth="18%"
+         />
+        <Key
+            android:codes="100"
+            android:keyLabel="012.."
+            android:keyHeight="70dp"
+            android:keyWidth="18%"
+            />
+
+    <Key
+        android:codes="10"
+        android:keyHeight="70dp"
+        android:keyLabel="⬈"
+        android:isRepeatable="true"
+        android:keyEdgeFlags="right"
+        android:keyWidth="23%"
+        />
+</Row>
+
+</Keyboard>
