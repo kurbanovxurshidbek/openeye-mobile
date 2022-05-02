@@ -94,13 +94,17 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
                 coca= Cases.Number;
                 setListener(MediaPlayer.create(this, R.raw.number));
                 break;
-             case 99:
-                 coca= Cases.Latter;
-                 setListener(MediaPlayer.create(this, R.raw.latter));
-                break;
+
              case 98:
-                 coca= Cases.Upper;
-                 setListener(MediaPlayer.create(this, R.raw.upper));
+                 if( coca == Cases.Latter){
+                     coca = Cases.Upper;
+                     setListener(MediaPlayer.create(this, R.raw.upper));
+                 }else{
+                     coca = Cases.Latter;
+                     setListener(MediaPlayer.create(this, R.raw.latter))   ;
+                 }
+
+
                 break;
             case -5:
                 CharSequence selectedText = ic.getSelectedText(0);
@@ -112,12 +116,12 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
                     ic.commitText("", 1);
                 }
                 setListener(MediaPlayer.create(this, R.raw.delete));
+                makeZero();
                 break;
             case 10:
                 if(Arrays.toString(index).equals("[1, 0, 3, 0, 0, 6]")){
                     if (coca== Cases.Upper){
                         ic.commitText("U", 1);
-
                     }
                     else{
                         ic.commitText("u", 1);

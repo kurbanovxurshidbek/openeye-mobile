@@ -1,87 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:keyWidth="44%"
+    android:keyWidth="50%"
     android:keyHeight="80dp"
     >
 
        <Row>
            <Key
-               android:codes="49"
-               android:keyLabel="1"
+               android:codes="52"
+               android:keyEdgeFlags="left"
+               android:keyLabel="4"
                />
            <Key
-               android:horizontalGap="12%"
+
                android:keyEdgeFlags="right"
-               android:codes="52"
-               android:keyLabel="4"
+               android:codes="49"
+               android:keyLabel="1"
                />
        </Row>
 
 
     <Row>
         <Key
-            android:codes="50"
-            android:keyLabel="2"
+            android:keyEdgeFlags="left"
+            android:codes="53"
+            android:keyLabel="5"
             />
         <Key
-            android:horizontalGap="12%"
             android:keyEdgeFlags="right"
-            android:codes="53"
+            android:codes="50"
 
-            android:keyLabel="5"
+            android:keyLabel="2"
             />
     </Row>
 
     <Row>
         <Key
-
-            android:codes="51"
-            android:keyLabel="3"
+            android:keyEdgeFlags="left"
+            android:codes="54"
+            android:keyLabel="6"
             />
         <Key
 
-            android:horizontalGap="12%"
             android:keyEdgeFlags="right"
-            android:codes="54"
-            android:keyLabel="6"
+            android:codes="51"
+            android:keyLabel="3"
             />
     </Row>
 
     <Row>
     <Key
         android:codes="-5"
-        android:keyLabel="⬅"
+        android:keyLabel="Delete"
         android:keyEdgeFlags="left"
         android:keyHeight="70dp"
         android:isRepeatable="true"
-        android:keyWidth="23%"
+        android:keyWidth="25%"
         />
     <Key
         android:codes="98"
-        android:keyLabel="⬆"
+        android:keyLabel="Let-Up"
         android:keyHeight="70dp"
-        android:keyWidth="18%"
+        android:keyWidth="25%"
         />
-     <Key
-         android:codes="99"
-         android:keyLabel="⬇"
-         android:keyHeight="70dp"
-         android:keyWidth="18%"
-         />
+
         <Key
             android:codes="100"
             android:keyLabel="012.."
             android:keyHeight="70dp"
-            android:keyWidth="18%"
+            android:keyWidth="25%"
             />
 
     <Key
         android:codes="10"
         android:keyHeight="70dp"
-        android:keyLabel="⬈"
+        android:keyLabel="Space"
         android:isRepeatable="true"
         android:keyEdgeFlags="right"
-        android:keyWidth="23%"
+        android:keyWidth="25%"
         />
 </Row>
 
