@@ -14,7 +14,46 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		FA9CFBDB28201C210071FD14 /* BrailKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FA9CFBD428201C210071FD14 /* BrailKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FA9CFBE228201C8A0071FD14 /* Cases.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFBE128201C8A0071FD14 /* Cases.swift */; };
+		FA9CFBE628201CF70071FD14 /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBE528201CF70071FD14 /* KeyboardView.xib */; };
+		FA9CFBE828201D170071FD14 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFBE728201D170071FD14 /* KeyboardViewController.swift */; };
+		FA9CFBEB28201D4E0071FD14 /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBE528201CF70071FD14 /* KeyboardView.xib */; };
+		FA9CFBFB28201DD20071FD14 /* number.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBEF28201DD10071FD14 /* number.mp3 */; };
+		FA9CFBFC28201DD20071FD14 /* space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF028201DD10071FD14 /* space.mp3 */; };
+		FA9CFBFD28201DD20071FD14 /* five.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF128201DD10071FD14 /* five.mp3 */; };
+		FA9CFBFE28201DD20071FD14 /* latter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF228201DD10071FD14 /* latter.mp3 */; };
+		FA9CFBFF28201DD20071FD14 /* a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF328201DD10071FD14 /* a.mp3 */; };
+		FA9CFC0028201DD20071FD14 /* fo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF428201DD10071FD14 /* fo.mp3 */; };
+		FA9CFC0128201DD20071FD14 /* delete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF528201DD10071FD14 /* delete.mp3 */; };
+		FA9CFC0228201DD20071FD14 /* six.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF628201DD10071FD14 /* six.mp3 */; };
+		FA9CFC0328201DD20071FD14 /* tree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF728201DD10071FD14 /* tree.mp3 */; };
+		FA9CFC0428201DD20071FD14 /* upper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF828201DD10071FD14 /* upper.mp3 */; };
+		FA9CFC0528201DD20071FD14 /* one.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF928201DD20071FD14 /* one.mp3 */; };
+		FA9CFC0628201DD20071FD14 /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBFA28201DD20071FD14 /* 2.mp3 */; };
+		FA9CFC0728201DD80071FD14 /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBFA28201DD20071FD14 /* 2.mp3 */; };
+		FA9CFC0828201DDD0071FD14 /* delete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF528201DD10071FD14 /* delete.mp3 */; };
+		FA9CFC0928201DE20071FD14 /* a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF328201DD10071FD14 /* a.mp3 */; };
+		FA9CFC0A28201DE60071FD14 /* fo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF428201DD10071FD14 /* fo.mp3 */; };
+		FA9CFC0B28201DEA0071FD14 /* five.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF128201DD10071FD14 /* five.mp3 */; };
+		FA9CFC0C28201DED0071FD14 /* space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF028201DD10071FD14 /* space.mp3 */; };
+		FA9CFC0D28201DF00071FD14 /* tree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF728201DD10071FD14 /* tree.mp3 */; };
+		FA9CFC0E28201DF30071FD14 /* six.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF628201DD10071FD14 /* six.mp3 */; };
+		FA9CFC0F28201DF70071FD14 /* one.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF928201DD20071FD14 /* one.mp3 */; };
+		FA9CFC1028201DFB0071FD14 /* latter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF228201DD10071FD14 /* latter.mp3 */; };
+		FA9CFC1128201E000071FD14 /* upper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF828201DD10071FD14 /* upper.mp3 */; };
+		FA9CFC1228201E030071FD14 /* number.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBEF28201DD10071FD14 /* number.mp3 */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA9CFBD928201C210071FD14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA9CFBD328201C210071FD14;
+			remoteInfo = BrailKeyboard;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
@@ -25,6 +64,17 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA9CFBDC28201C210071FD14 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FA9CFBDB28201C210071FD14 /* BrailKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -44,10 +94,34 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA9CFBD428201C210071FD14 /* BrailKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BrailKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9CFBD828201C210071FD14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA9CFBE128201C8A0071FD14 /* Cases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cases.swift; sourceTree = "<group>"; };
+		FA9CFBE528201CF70071FD14 /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KeyboardView.xib; path = ../../../../Desktop/KeyBooo/BrailKeyboard/KeyboardView.xib; sourceTree = "<group>"; };
+		FA9CFBE728201D170071FD14 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardViewController.swift; path = ../../../../Desktop/KeyBooo/BrailKeyboard/KeyboardViewController.swift; sourceTree = "<group>"; };
+		FA9CFBEF28201DD10071FD14 /* number.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = number.mp3; sourceTree = "<group>"; };
+		FA9CFBF028201DD10071FD14 /* space.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = space.mp3; sourceTree = "<group>"; };
+		FA9CFBF128201DD10071FD14 /* five.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = five.mp3; sourceTree = "<group>"; };
+		FA9CFBF228201DD10071FD14 /* latter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = latter.mp3; sourceTree = "<group>"; };
+		FA9CFBF328201DD10071FD14 /* a.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = a.mp3; sourceTree = "<group>"; };
+		FA9CFBF428201DD10071FD14 /* fo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fo.mp3; sourceTree = "<group>"; };
+		FA9CFBF528201DD10071FD14 /* delete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = delete.mp3; sourceTree = "<group>"; };
+		FA9CFBF628201DD10071FD14 /* six.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = six.mp3; sourceTree = "<group>"; };
+		FA9CFBF728201DD10071FD14 /* tree.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tree.mp3; sourceTree = "<group>"; };
+		FA9CFBF828201DD10071FD14 /* upper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = upper.mp3; sourceTree = "<group>"; };
+		FA9CFBF928201DD20071FD14 /* one.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = one.mp3; sourceTree = "<group>"; };
+		FA9CFBFA28201DD20071FD14 /* 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		97C146EB1CF9000F007C117D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA9CFBD128201C210071FD14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -73,6 +147,7 @@
 			children = (
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
+				FA9CFBD528201C210071FD14 /* BrailKeyboard */,
 				97C146EF1CF9000F007C117D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
+				FA9CFBD428201C210071FD14 /* BrailKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +185,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FA9CFBD528201C210071FD14 /* BrailKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA9CFBEE28201DC30071FD14 /* Sounds */,
+				FA9CFBE728201D170071FD14 /* KeyboardViewController.swift */,
+				FA9CFBE528201CF70071FD14 /* KeyboardView.xib */,
+				FA9CFBE128201C8A0071FD14 /* Cases.swift */,
+				FA9CFBD828201C210071FD14 /* Info.plist */,
+			);
+			path = BrailKeyboard;
+			sourceTree = "<group>";
+		};
+		FA9CFBEE28201DC30071FD14 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				FA9CFBFA28201DD20071FD14 /* 2.mp3 */,
+				FA9CFBF328201DD10071FD14 /* a.mp3 */,
+				FA9CFBF528201DD10071FD14 /* delete.mp3 */,
+				FA9CFBF128201DD10071FD14 /* five.mp3 */,
+				FA9CFBF428201DD10071FD14 /* fo.mp3 */,
+				FA9CFBF228201DD10071FD14 /* latter.mp3 */,
+				FA9CFBEF28201DD10071FD14 /* number.mp3 */,
+				FA9CFBF928201DD20071FD14 /* one.mp3 */,
+				FA9CFBF628201DD10071FD14 /* six.mp3 */,
+				FA9CFBF028201DD10071FD14 /* space.mp3 */,
+				FA9CFBF728201DD10071FD14 /* tree.mp3 */,
+				FA9CFBF828201DD10071FD14 /* upper.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,15 +229,34 @@
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
+				FA9CFBDC28201C210071FD14 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FA9CFBDA28201C210071FD14 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FA9CFBD328201C210071FD14 /* BrailKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA9CFBE028201C210071FD14 /* Build configuration list for PBXNativeTarget "BrailKeyboard" */;
+			buildPhases = (
+				FA9CFBD028201C210071FD14 /* Sources */,
+				FA9CFBD128201C210071FD14 /* Frameworks */,
+				FA9CFBD228201C210071FD14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrailKeyboard;
+			productName = BrailKeyboard;
+			productReference = FA9CFBD428201C210071FD14 /* BrailKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -138,11 +264,15 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
+					};
+					FA9CFBD328201C210071FD14 = {
+						CreatedOnToolsVersion = 13.3.1;
 					};
 				};
 			};
@@ -160,6 +290,7 @@
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
+				FA9CFBD328201C210071FD14 /* BrailKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -169,10 +300,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9CFC1228201E030071FD14 /* number.mp3 in Resources */,
+				FA9CFC1128201E000071FD14 /* upper.mp3 in Resources */,
+				FA9CFC1028201DFB0071FD14 /* latter.mp3 in Resources */,
+				FA9CFC0F28201DF70071FD14 /* one.mp3 in Resources */,
+				FA9CFC0E28201DF30071FD14 /* six.mp3 in Resources */,
+				FA9CFC0D28201DF00071FD14 /* tree.mp3 in Resources */,
+				FA9CFC0C28201DED0071FD14 /* space.mp3 in Resources */,
+				FA9CFC0B28201DEA0071FD14 /* five.mp3 in Resources */,
+				FA9CFC0A28201DE60071FD14 /* fo.mp3 in Resources */,
+				FA9CFC0928201DE20071FD14 /* a.mp3 in Resources */,
+				FA9CFC0828201DDD0071FD14 /* delete.mp3 in Resources */,
+				FA9CFC0728201DD80071FD14 /* 2.mp3 in Resources */,
+				FA9CFBEB28201D4E0071FD14 /* KeyboardView.xib in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA9CFBD228201C210071FD14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9CFC0228201DD20071FD14 /* six.mp3 in Resources */,
+				FA9CFC0428201DD20071FD14 /* upper.mp3 in Resources */,
+				FA9CFBFF28201DD20071FD14 /* a.mp3 in Resources */,
+				FA9CFC0628201DD20071FD14 /* 2.mp3 in Resources */,
+				FA9CFC0528201DD20071FD14 /* one.mp3 in Resources */,
+				FA9CFC0028201DD20071FD14 /* fo.mp3 in Resources */,
+				FA9CFBFD28201DD20071FD14 /* five.mp3 in Resources */,
+				FA9CFC0128201DD20071FD14 /* delete.mp3 in Resources */,
+				FA9CFBFE28201DD20071FD14 /* latter.mp3 in Resources */,
+				FA9CFC0328201DD20071FD14 /* tree.mp3 in Resources */,
+				FA9CFBE628201CF70071FD14 /* KeyboardView.xib in Resources */,
+				FA9CFBFC28201DD20071FD14 /* space.mp3 in Resources */,
+				FA9CFBFB28201DD20071FD14 /* number.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +384,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA9CFBD028201C210071FD14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9CFBE228201C8A0071FD14 /* Cases.swift in Sources */,
+				FA9CFBE828201D170071FD14 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA9CFBDA28201C210071FD14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA9CFBD328201C210071FD14 /* BrailKeyboard */;
+			targetProxy = FA9CFBD928201C210071FD14 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97C146FA1CF9000F007C117D /* Main.storyboard */ = {
@@ -296,6 +477,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				ENABLE_BITCODE = NO;
@@ -419,6 +601,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				ENABLE_BITCODE = NO;
@@ -437,6 +620,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				ENABLE_BITCODE = NO;
@@ -450,6 +634,112 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
+		};
+		FA9CFBDD28201C210071FD14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BrailKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BrailKeyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp.BrailKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA9CFBDE28201C210071FD14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BrailKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BrailKeyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp.BrailKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FA9CFBDF28201C210071FD14 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BrailKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BrailKeyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp.BrailKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Profile;
 		};
 /* End XCBuildConfiguration section */
 
@@ -470,6 +760,16 @@
 				97C147061CF9000F007C117D /* Debug */,
 				97C147071CF9000F007C117D /* Release */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA9CFBE028201C210071FD14 /* Build configuration list for PBXNativeTarget "BrailKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9CFBDD28201C210071FD14 /* Debug */,
+				FA9CFBDE28201C210071FD14 /* Release */,
+				FA9CFBDF28201C210071FD14 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
