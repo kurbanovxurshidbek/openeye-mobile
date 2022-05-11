@@ -21,8 +21,6 @@ import java.util.Arrays;
 public class KeyBoard extends InputMethodService implements KeyboardView.OnKeyboardActionListener{
     KeyboardView keyboardView;
     Cases coca = Cases.Latter;
-
-
     MediaPlayer mediaPlayer;
 
   int[] index = {0,0,0,0,0,0};
@@ -36,7 +34,6 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
         keyboardView.setOnKeyboardActionListener(this);
         return keyboardView;
     }
-
 
 
 
@@ -55,6 +52,7 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
     @SuppressLint("MissingPermission")
     @Override
     public void onKey(int i, int[] ints) {
+
         Vibrator vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE);
         InputConnection ic = getCurrentInputConnection();
         if (ic == null) return;
@@ -119,7 +117,22 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
                 makeZero();
                 break;
             case 10:
-                if(Arrays.toString(index).equals("[1, 0, 3, 0, 0, 6]")){
+
+
+
+                if(Arrays.toString(index).equals("[0, 2, 0, 4, 5, 6]")){
+                    if (coca== Cases.Upper){
+                        ic.commitText("W", 1);
+
+
+                    }else{
+                        ic.commitText("w", 1);
+
+                    }
+                    setListener(MediaPlayer.create(this, R.raw.w));
+
+
+                } else  if(Arrays.toString(index).equals("[1, 0, 3, 0, 0, 6]")){
                     if (coca== Cases.Upper){
                         ic.commitText("U", 1);
                     }
