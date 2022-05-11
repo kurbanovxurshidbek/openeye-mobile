@@ -1,10 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -13,12 +9,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> origin/main
   @override
   Widget build(BuildContext context) {
     return Scaffold(
