@@ -26,7 +26,7 @@ dependencies:
   easy_localization: ^3.0.0
   # to work with rest api
   http: ^0.13.4
-  # for user is selected language or no
+  # for user
   hive: ^2.1.0
 
 
