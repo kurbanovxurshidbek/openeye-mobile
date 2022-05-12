@@ -11,7 +11,6 @@ class ThemeOf {
             fontWeight: FontWeight.bold,
             color: Color.fromARGB(255, 49, 49, 49),
             fontStyle: FontStyle.normal),
-
         // ...add your text style
       ),
     );
