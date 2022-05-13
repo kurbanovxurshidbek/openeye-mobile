@@ -16,14 +16,188 @@ import android.view.inputmethod.InputConnection;
 import androidx.annotation.RequiresApi;
 
 import java.util.Arrays;
-
+import java.util.HashMap;
 
 public class KeyBoard extends InputMethodService implements KeyboardView.OnKeyboardActionListener{
     KeyboardView keyboardView;
     Cases coca = Cases.Latter;
+
+
     MediaPlayer mediaPlayer;
 
   int[] index = {0,0,0,0,0,0};
+    HashMap<String, String> numberToWord = new HashMap<String, String>() {{
+        put("000000", " ");
+        put("000001", ""); /// command to Upper Letters
+        put("000010", "");
+        put("000011", ""); /// command to Lower Letters
+        put("000100", ""); /// qandaydr belgi qoyb urg'u berish uchun
+        put("000101", "");
+        put("000110", "");
+        put("000111", "");
+        put("001000", "");
+        put("001001", "");
+        put("001010", "");
+        put("001011", "");
+        put("001100", "");
+        put("001101", "");
+        put("001110", "");
+        put("001111", ""); /// write by numbers
+        put("010000", "");
+        put("010001", "");
+        put("010010", "");
+        put("010011", "");
+        put("010100", "i");
+        put("010101", "");
+        put("010110", "j");
+        put("010111", "w");
+        put("011000", "");
+        put("011001", "");
+        put("011010", "");
+        put("011011", "");
+        put("011100", "s");
+        put("011101", "");
+        put("011110", "t");
+        put("011111", "");
+        put("100000", "a");
+        put("100001", "");
+        put("100010", "e");
+        put("100011", "");
+        put("100100", "c");
+        put("100101", "");
+        put("100110", "d");
+        put("100111", "");
+        put("101000", "k");
+        put("101001", "u");
+        put("101010", "o");
+        put("101011", "z");
+        put("101100", "m");
+        put("101101", "x");
+        put("101110", "n");
+        put("101111", "y");
+        put("110000", "b");
+        put("110001", "");
+        put("110010", "h");
+        put("110011", "");
+        put("110100", "f");
+        put("110101", "");
+        put("110110", "g");
+        put("110111", "");
+        put("111000", "l");
+        put("111001", "v");
+        put("111010", "r");
+        put("111011", "");
+        put("111100", "p");
+        put("111101", "");
+        put("111110", "q");
+        put("111111", "");
+    }};
+    HashMap<String, String> numberToNumber= new HashMap<String, String>() {{
+        put("000000", " ");
+        put("000001", ""); /// command to Upper Letters
+        put("000010", "");
+        put("000011", ""); /// command to Lower Letters
+        put("000100", ""); /// qandaydr belgi qoyb urg'u berish uchun
+        put("000101", "");
+        put("000110", "");
+        put("000111", "");
+        put("001000", "");
+        put("001001", "");
+        put("001010", "");
+        put("001011", "");
+        put("001100", "");
+        put("001101", "");
+        put("001110", "");
+        put("001111", ""); /// write by numbers
+        put("010000", "");
+        put("010001", "");
+        put("010010", "");
+        put("010011", "");
+        put("010100", "9");
+        put("010101", "");
+        put("010110", "0");
+        put("010111", "");
+        put("011000", "");
+        put("011001", "");
+        put("011010", "");
+        put("011011", "");
+        put("011100", "");
+        put("011101", "");
+        put("011110", "");
+        put("011111", "");
+        put("100000", "1");
+        put("100001", "");
+        put("100010", "5");
+        put("100011", "");
+        put("100100", "3");
+        put("100101", "");
+        put("100110", "4");
+        put("100111", "");
+        put("101000", "");
+        put("101001", "");
+        put("101010", "");
+        put("101011", "");
+        put("101100", "");
+        put("101101", "");
+        put("101110", "");
+        put("101111", "");
+        put("110000", "2");
+        put("110001", "");
+        put("110010", "8");
+        put("110011", "");
+        put("110100", "6");
+        put("110101", "");
+        put("110110", "7");
+        put("110111", "");
+        put("111000", "");
+        put("111001", "");
+        put("111010", "");
+        put("111011", "");
+        put("111100", "");
+        put("111101", "");
+        put("111110", "");
+        put("111111", "");
+    }};
+    HashMap<String, Integer> wordSound = new HashMap<String, Integer>() {{
+        put("a", R.raw.a);
+        put("b", R.raw.b);
+        put("c", R.raw.c);
+        put("d", R.raw.d);
+        put("e", R.raw.e);
+        put("f", R.raw.f);
+        put("g", R.raw.g);
+        put("h", R.raw.h);
+        put("i", R.raw.i);
+        put("j", R.raw.j);
+        put("k", R.raw.k);
+        put("l", R.raw.l);
+        put("m", R.raw.m);
+        put("n", R.raw.n);
+        put("o", R.raw.o);
+        put("p", R.raw.p);
+        put("q", R.raw.q);
+        put("r", R.raw.r);
+        put("s", R.raw.s);
+        put("t", R.raw.t);
+        put("u", R.raw.u);
+        put("v", R.raw.v);
+        put("w", R.raw.w);
+        put("x", R.raw.x);
+        put("y", R.raw.y);
+        put("z", R.raw.z);
+        put("1", R.raw.n1);
+        put("2", R.raw.n2);
+        put("3", R.raw.n3);
+        put("4", R.raw.n4);
+        put("5", R.raw.n5);
+        put("6", R.raw.n6);
+        put("7", R.raw.n7);
+        put("8", R.raw.n8);
+        put("9", R.raw.n9);
+        put("0", R.raw.n0);
+        put(" ", R.raw.space);
+    }};
+
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
@@ -34,6 +208,7 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
         keyboardView.setOnKeyboardActionListener(this);
         return keyboardView;
     }
+
 
 
 
@@ -52,7 +227,6 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
     @SuppressLint("MissingPermission")
     @Override
     public void onKey(int i, int[] ints) {
-
         Vibrator vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE);
         InputConnection ic = getCurrentInputConnection();
         if (ic == null) return;
@@ -61,32 +235,32 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
         switch (i){
             case 49:
                 index[0]=1;
-                setListener(MediaPlayer.create(this, R.raw.one));
+                setListener(MediaPlayer.create(this, R.raw.n1));
                 break;
             case 50:
                 index[1]=2;
 
-                setListener(MediaPlayer.create(this, R.raw.two));
+                setListener(MediaPlayer.create(this, R.raw.n2));
 
                 break;
             case 51:
                 index[2]=3;
-                setListener(MediaPlayer.create(this, R.raw.tree));
+                setListener(MediaPlayer.create(this, R.raw.n3));
 
                 break;
             case 52:
                 index[3]=4;
 
-                setListener(MediaPlayer.create(this, R.raw.fo));
+                setListener(MediaPlayer.create(this, R.raw.n4));
 
                 break;
             case 53:
                 index[4]=5;
-                setListener(MediaPlayer.create(this, R.raw.five));
+                setListener(MediaPlayer.create(this, R.raw.n5));
                 break;
             case 54:
                 index[5]=6;
-                setListener(MediaPlayer.create(this, R.raw.six));
+                setListener(MediaPlayer.create(this, R.raw.n6));
                 break;
             case 100:
                 coca= Cases.Number;
@@ -117,99 +291,48 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
                 makeZero();
                 break;
             case 10:
-
-
-
-                if(Arrays.toString(index).equals("[0, 2, 0, 4, 5, 6]")){
-                    if (coca== Cases.Upper){
-                        ic.commitText("W", 1);
-
-
-                    }else{
-                        ic.commitText("w", 1);
-
-                    }
-                    setListener(MediaPlayer.create(this, R.raw.w));
-
-
-                } else  if(Arrays.toString(index).equals("[1, 0, 3, 0, 0, 6]")){
-                    if (coca== Cases.Upper){
-                        ic.commitText("U", 1);
-                    }
-                    else{
-                        ic.commitText("u", 1);
-                    }
-                    setListener(MediaPlayer.create(this, R.raw.u));
-
-                } else   if(Arrays.toString(index).equals("[1, 2, 0, 0, 0, 0]")){
-                    if (coca== Cases.Upper){
-                        ic.commitText("B", 1);
-                        setListener(MediaPlayer.create(this, R.raw.r));
-
-                    } else if(coca== Cases.Number){
-                        ic.commitText("2", 1);
-                        setListener(MediaPlayer.create(this, R.raw.two));
-                    }
-                    else{
-                        ic.commitText("b", 1);
-
-                    }
-                } else   if(Arrays.toString(index).equals("[1, 2, 3, 0, 5, 0]")){
-                    setListener(MediaPlayer.create(this, R.raw.r));
-                    if (coca== Cases.Upper){
-                        ic.commitText("R", 1);
-                    }else{
-                        ic.commitText("r", 1);
-                    }
-                } else if(Arrays.toString(index).equals("[1, 0, 0, 0, 5, 0]")){
-                    setListener(MediaPlayer.create(this, R.raw.e));
-                    if (coca== Cases.Upper){
-                        ic.commitText("E", 1);
-                    }else{
-                        ic.commitText("e", 1);
-                    }
-                } else  if(Arrays.toString(index).equals("[0, 2, 3, 4, 5, 0]")){
-                    setListener(MediaPlayer.create(this, R.raw.t));
-                    if (coca== Cases.Upper){
-                        ic.commitText("T", 1);
-                    }else{
-                        ic.commitText("t", 1);
-                    }
-                } else  if(Arrays.toString(index).equals("[1, 2, 3, 0, 0, 0]")){
-                    setListener(MediaPlayer.create(this, R.raw.l));
-                    if (coca== Cases.Upper){
-                        ic.commitText("L", 1);
-                    }else{
-                        ic.commitText("l", 1);
-                    }
-                } else  if(Arrays.toString(index).equals("[0, 0, 0, 0, 0, 0]")){
-                    setListener(MediaPlayer.create(this, R.raw.space));
-                    ic.commitText(" ", 1);
-                } else if(Arrays.toString(index).equals("[1, 0, 0, 0, 0, 0]")){
-                    if (coca== Cases.Upper){
-                        ic.commitText("A", 1);
-                    }else if(coca== Cases.Number){
-                        setListener(MediaPlayer.create(this, R.raw.one));
-                        ic.commitText("1", 1);
-                    } else{
-                        ic.commitText("a", 1);
-                    }
-                } else if(Arrays.toString(index).equals("[1, 2, 0, 4, 0, 0]")){
-                    setListener(MediaPlayer.create(this, R.raw.f));
-                    if (coca== Cases.Upper){
-                        ic.commitText("F", 1);
-                    }else{
-                        ic.commitText("f", 1);
+                String numbers = "";
+                System.out.println();
+                for(int num = 0 ; num < 6; num++) {
+                    if(index[num] == num+1) {
+                        numbers += "1";
+                    } else {
+                        numbers += "0";
                     }
 
                 }
-                else{
-                    ic.commitText(Arrays.toString(index), 1);
+                System.out.println(numbers);
+                if(coca == Cases.Upper) {
+                    ic.commitText(numberToWord.get(numbers).toUpperCase(), 1);
+                    if(numberToWord.get(numbers) != "") {
+                        setListener(MediaPlayer.create(this, wordSound.get(numberToWord.get(numbers))));
+                    } else {
+                        setListener(MediaPlayer.create(this, R.raw.letter_no_sign));
+                    }
+                } else if(coca == Cases.Latter) {
+                    ic.commitText(numberToWord.get(numbers), 1);
+                    if(numberToWord.get(numbers) != "") {
+                        setListener(MediaPlayer.create(this, wordSound.get(numberToWord.get(numbers))));
+                    } else {
+                        setListener(MediaPlayer.create(this, R.raw.letter_no_sign));
+                    }
+                } else if(coca == Cases.Number && numberToNumber.get(numbers) != null) {
+                    ic.commitText(numberToNumber.get(numbers), 1);
+                    System.out.println(numberToNumber.get(numbers) != null);
+                    if(numberToNumber.get(numbers) != "") {
+                        setListener(MediaPlayer.create(this, wordSound.get(numberToNumber.get(numbers))));
+                    }
+                    else if(numberToWord.get(numbers) != "") {
+                        setListener(MediaPlayer.create(this, R.raw.cannot_use_letters));
+                    }
+                    else {
+                        setListener(MediaPlayer.create(this, R.raw.number_no_sign));
+                    }
                 }
                 makeZero();
                 break;
             default:
-                setListener(MediaPlayer.create(this, R.raw.latter));;
+                setListener(MediaPlayer.create(this, R.raw.latter));
         }
 
 
