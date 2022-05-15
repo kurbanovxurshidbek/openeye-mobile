@@ -1,11 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:key_board_app/pages/home_page.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:key_board_app/cubits/mainaligment_cubit.dart';
+import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
+import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
+import 'pages/change_lang_page.dart';
 import 'themes/theme_of_app.dart';
 
 void main(List<String> args) async {
   // flutter Binding Initialized
   WidgetsFlutterBinding.ensureInitialized();
+
+  // fixed portrait mode
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp],
+  );
 
   // easy localization Initialized
   await EasyLocalization.ensureInitialized();
@@ -13,7 +23,7 @@ void main(List<String> args) async {
   runApp(
     // easy localization
     EasyLocalization(
-        supportedLocales: [
+        supportedLocales: const [
           Locale('en', 'US'),
           Locale('ru', 'RU'),
           Locale('uz', 'UZ'),
@@ -29,13 +39,26 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: ThemeOf.ligth(),
-      home: HomePage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: ((context) {
+          return MainaligmentCubit();
+        })),
+        BlocProvider(create: ((context) {
+          return MediaplayerCubit();
+        })),
+        BlocProvider(create: ((context) {
+          return SpeechToTextCubit(context: context);
+        })),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: ThemeOf.ligth(),
+        home: LangChangePage(),
+      ),
     );
   }
 }

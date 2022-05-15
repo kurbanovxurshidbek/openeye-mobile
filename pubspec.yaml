@@ -30,6 +30,14 @@ dependencies:
   hive: ^2.1.0
   # for hive installation
   hive_flutter: ^1.1.0
+  # speech to text maker
+  speech_to_text: ^5.4.3
+  # to extract sound in the program
+  audioplayers: ^0.20.1
+  # lottie animation icons
+  lottie: ^1.3.0
+  # animations
+  simple_animations: ^4.0.1
 
 
 dev_dependencies:
@@ -48,6 +56,9 @@ flutter:
   assets:
     - assets/lang/
     - assets/fonts/
+    - assets/images/
+    - assets/lottie/
+    - assets/sounds/
 
 
 
