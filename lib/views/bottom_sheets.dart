@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/mainaligment_state.dart';
+import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
 
 import '../animations/fade_animatoin.dart';
@@ -83,20 +84,24 @@ showBottomS(BuildContext context) {
                               BlocProvider.of<MainaligmentCubit>(context)
                                   .makeStartPosition(true, chackingItem: index);
 
+                              BlocProvider.of<MediaplayerCubit>(context)
+                                  .stopAudio();
+
                               await Future.delayed(
                                   Duration(milliseconds: 3000));
-                              GOTO.push(context, HomePage());
+
+                              GOTO.pushRpUntil(context, HomePage());
                             },
                             child: BlocListener<SpeechToTextCubit,
                                 SpeechToTextState>(
                               listener: (context, state) {
                                 if (state.langCode != null) {
                                   if (state.langCode == "uz") {
-                                    GOTO.push(context, HomePage());
+                                    GOTO.pushRpUntil(context, HomePage());
                                   } else if (state.langCode == "en") {
-                                    GOTO.push(context, HomePage());
+                                    GOTO.pushRpUntil(context, HomePage());
                                   } else if (state.langCode == "ru") {
-                                    GOTO.push(context, HomePage());
+                                    GOTO.pushRpUntil(context, HomePage());
                                   }
                                 }
                               },
