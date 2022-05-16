@@ -14,7 +14,7 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
   onComplatedAudioAndStart(BuildContext context) {
     int count = 1;
 
-    playAudio(count);
+    startAudio(count);
 
     state.audioPlayer.onPlayerCompletion.listen((event) {
       count++;
@@ -33,11 +33,19 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
         return;
       }
 
-      playAudio(count);
+      startAudio(count);
     });
   }
 
-  playAudio(int count) async {
+  pauseAudio() {
+    state.audioPlayer.pause();
+  }
+
+  playAudio() {
+    state.audioPlayer.resume();
+  }
+
+  startAudio(int count) async {
     String audioassetUZ = "assets/sounds/welcome_uz.mp3";
     String audioassetEN = "assets/sounds/welcome_en.mp3";
     String audioassetRU = "assets/sounds/welcome_ru.mp3";
