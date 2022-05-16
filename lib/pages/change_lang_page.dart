@@ -35,11 +35,13 @@ class _LangChangePageState extends State<LangChangePage>
       case AppLifecycleState.resumed:
         print("app in resumed---------------");
         BlocProvider.of<MediaplayerCubit>(context).playAudio();
+        BlocProvider.of<SpeechToTextCubit>(context).startListening();
 
         break;
       case AppLifecycleState.inactive:
         print("app in inactive------------------------");
         BlocProvider.of<MediaplayerCubit>(context).playAudio();
+
         break;
       case AppLifecycleState.paused:
         print("app in paused--------------");
@@ -70,12 +72,12 @@ class _LangChangePageState extends State<LangChangePage>
       body: SafeArea(
         child: Container(
           alignment: Alignment.center,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
                   end: Alignment.topCenter,
                   begin: Alignment.bottomCenter,
                   colors: [
-                Color(0xFF443efc),
+                const Color(0xFF443efc),
                 Color(0xFF52e5de),
               ])),
           child: BlocBuilder<MainaligmentCubit, MainAligmentState>(
@@ -104,11 +106,11 @@ class _LangChangePageState extends State<LangChangePage>
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4000),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage("assets/images/blind1.jpg")),
                           ),
-                          margin: EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(10),
                           child: Container(
                             width: MediaQuery.of(context).size.width / 2,
                             height: MediaQuery.of(context).size.width / 2,
@@ -126,7 +128,7 @@ class _LangChangePageState extends State<LangChangePage>
                   Container(
                       height: MediaQuery.of(context).size.width / 2,
                       width: MediaQuery.of(context).size.width / 2,
-                      margin: EdgeInsets.only(bottom: 40),
+                      margin: const EdgeInsets.only(bottom: 40),
                       child: state.isSpeaking
                           ? Container(
                               height: MediaQuery.of(context).size.width / 2,

@@ -1,3 +1,7 @@
 {
-    "hello" : "Hello, World"
+    "hello" : "Hello, World",
+    "keyboard" : "Keyboard",
+    "text_in_image" : "Reading the text in the picture",
+    "book" : "Listen audiobook",
+    "settings" : "Settings"
 }

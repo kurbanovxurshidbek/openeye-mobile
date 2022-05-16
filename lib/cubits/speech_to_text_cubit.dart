@@ -28,6 +28,7 @@ class SpeechToTextCubit extends Cubit<SpeechToTextState> {
   }
 
   startListening() async {
+    if (timer != null && timer!.isActive) return;
     timer = Timer.periodic(Duration(milliseconds: 1000), (t) async {
       await state.speechToText.listen(onResult: onSpeechResult);
     });
@@ -44,21 +45,19 @@ class SpeechToTextCubit extends Cubit<SpeechToTextState> {
       BlocProvider.of<MainaligmentCubit>(context)
           .makeStartPosition(true, chackingItem: 0);
 
-      await Future.delayed(Duration(seconds: 3));
 
       await stopListening("uz");
     } else if (_lastWords.toLowerCase().contains("english") ||
         _lastWords.toLowerCase().contains("ingliz")) {
       BlocProvider.of<MainaligmentCubit>(context)
           .makeStartPosition(true, chackingItem: 1);
-      await Future.delayed(Duration(seconds: 3));
 
       await stopListening("en");
     } else if (_lastWords.toLowerCase().contains("russian") ||
-        _lastWords.toLowerCase().contains("ruskiy")) {
+        _lastWords.toLowerCase().contains("ruskiy") ||
+        _lastWords.toLowerCase().contains("ruski")) {
       BlocProvider.of<MainaligmentCubit>(context)
           .makeStartPosition(true, chackingItem: 2);
-      await Future.delayed(Duration(seconds: 3));
 
       await stopListening("ru");
     }

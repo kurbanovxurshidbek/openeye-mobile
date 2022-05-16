@@ -5,14 +5,14 @@ class LangUI extends StatelessWidget {
   String lang;
   String hello;
   bool isChackLang;
-  final textStyle1 = TextStyle(
+  final textStyle1 = const TextStyle(
       fontSize: 20,
       fontFamily: "Serif",
       fontWeight: FontWeight.bold,
-      color: Color.fromARGB(255, 12, 12, 12),
+      color: const Color.fromARGB(255, 12, 12, 12),
       fontStyle: FontStyle.normal);
 
-  final textStyle2 = TextStyle(
+  final textStyle2 = const TextStyle(
       fontSize: 14,
       fontFamily: "Serif",
       fontWeight: FontWeight.bold,
@@ -31,7 +31,7 @@ class LangUI extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width / 3.5,
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: isChackLang
           ? Lottie.asset('assets/lottie/check.json',
               reverse: false, repeat: false, fit: BoxFit.cover)
@@ -51,7 +51,7 @@ class LangUI extends StatelessWidget {
               ],
             ),
       decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
+        const BoxShadow(
             blurRadius: 5,
             color: Color.fromARGB(124, 151, 151, 151),
             offset: Offset(3, 0))

@@ -4,11 +4,37 @@ import 'package:key_board_app/cubits/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/mainaligment_state.dart';
 import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
-
+import 'package:key_board_app/services/hive_service.dart';
 import '../animations/fade_animatoin.dart';
 import '../navigators/goto.dart';
 import '../pages/home_page.dart';
 import 'lang_view.dart';
+
+
+savedLanguage(context,index)async{
+  BlocProvider.of<SpeechToTextCubit>(context)
+      .stopListening("stop");
+  BlocProvider.of<MainaligmentCubit>(context)
+      .makeStartPosition(true, chackingItem: index);
+
+  BlocProvider.of<MediaplayerCubit>(context)
+      .stopAudio();
+
+  ///store in HiveDB
+  switch (index){
+    case 0:
+      await HiveDB.storeLang("uz");
+      break;
+    case 1:
+      await HiveDB.storeLang("en");
+      break;
+    case 2:
+      await HiveDB.storeLang("ru");
+      break;
+  }
+  GOTO.pushRpUntil(context, const HomePage());
+}
+
 
 showBottomS(BuildContext context) {
   List<String> listLang = [
@@ -35,10 +61,10 @@ showBottomS(BuildContext context) {
       context: context,
       builder: (context) {
         return Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           height: MediaQuery.of(context).size.height * 0.4,
-          margin: EdgeInsets.only(top: 10),
-          decoration: BoxDecoration(
+          margin: const EdgeInsets.only(top: 10),
+          decoration: const BoxDecoration(
               boxShadow: [
                 BoxShadow(
                     blurRadius: 5,
@@ -74,30 +100,21 @@ showBottomS(BuildContext context) {
                       BlocBuilder<MainaligmentCubit, MainAligmentState>(
                         builder: (context, state) {
                           return GestureDetector(
-                            onTap: () async {
-                              BlocProvider.of<SpeechToTextCubit>(context)
-                                  .stopListening("stop");
-                              BlocProvider.of<MainaligmentCubit>(context)
-                                  .makeStartPosition(true, chackingItem: index);
-
-                              BlocProvider.of<MediaplayerCubit>(context)
-                                  .stopAudio();
-
-                              await Future.delayed(
-                                  Duration(milliseconds: 3000));
-
-                              GOTO.pushRpUntil(context, HomePage());
-                            },
+                            onTap: savedLanguage(context,index),
                             child: BlocListener<SpeechToTextCubit,
                                 SpeechToTextState>(
-                              listener: (context, state) {
+                              listener: (context, state)async {
                                 if (state.langCode != null) {
                                   if (state.langCode == "uz") {
-                                    GOTO.pushRpUntil(context, HomePage());
+                                    await HiveDB.storeLang("uz");
+                                    GOTO.pushRpUntil(context, const HomePage());
                                   } else if (state.langCode == "en") {
-                                    GOTO.pushRpUntil(context, HomePage());
+                                    await  HiveDB.storeLang("en");
+                                    GOTO.pushRpUntil(context, const HomePage());
+
                                   } else if (state.langCode == "ru") {
-                                    GOTO.pushRpUntil(context, HomePage());
+                                     await HiveDB.storeLang("ru");
+                                    GOTO.pushRpUntil(context, const HomePage());
                                   }
                                 }
                               },
