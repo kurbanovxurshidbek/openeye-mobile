@@ -17,6 +17,13 @@ class GOTO {
         context, MaterialPageRoute(builder: (context) => route));
   }
 
+  // navigator push replacement and until
+  static void pushRpUntil(BuildContext context, Widget route) {
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
+      return route;
+    }), (route) => false);
+  }
+
   //  ... add your navigator
 
 }

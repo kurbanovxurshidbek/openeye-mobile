@@ -89,18 +89,19 @@ showBottomS(BuildContext context) {
 
                               await Future.delayed(
                                   Duration(milliseconds: 3000));
-                              GOTO.push(context, HomePage());
+
+                              GOTO.pushRpUntil(context, HomePage());
                             },
                             child: BlocListener<SpeechToTextCubit,
                                 SpeechToTextState>(
                               listener: (context, state) {
                                 if (state.langCode != null) {
                                   if (state.langCode == "uz") {
-                                    GOTO.push(context, HomePage());
+                                    GOTO.pushRpUntil(context, HomePage());
                                   } else if (state.langCode == "en") {
-                                    GOTO.push(context, HomePage());
+                                    GOTO.pushRpUntil(context, HomePage());
                                   } else if (state.langCode == "ru") {
-                                    GOTO.push(context, HomePage());
+                                    GOTO.pushRpUntil(context, HomePage());
                                   }
                                 }
                               },
