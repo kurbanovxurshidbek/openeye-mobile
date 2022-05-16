@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/mainaligment_state.dart';
+import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
 
 import '../animations/fade_animatoin.dart';
@@ -82,6 +83,9 @@ showBottomS(BuildContext context) {
                                   .stopListening("stop");
                               BlocProvider.of<MainaligmentCubit>(context)
                                   .makeStartPosition(true, chackingItem: index);
+
+                              BlocProvider.of<MediaplayerCubit>(context)
+                                  .stopAudio();
 
                               await Future.delayed(
                                   Duration(milliseconds: 3000));
