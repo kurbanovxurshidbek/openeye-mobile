@@ -13,15 +13,55 @@ class LangChangePage extends StatefulWidget {
   State<LangChangePage> createState() => _LangChangePageState();
 }
 
-class _LangChangePageState extends State<LangChangePage> {
+class _LangChangePageState extends State<LangChangePage>
+    with WidgetsBindingObserver {
+  AppLifecycleState? _notification;
+
   @override
   void initState() {
     super.initState();
+
+    WidgetsBinding.instance!.addObserver(this);
 
     BlocProvider.of<SpeechToTextCubit>(context).initSpeech();
 
     BlocProvider.of<MediaplayerCubit>(context)
         .onComplatedAudioAndStart(context);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        print("app in resumed---------------");
+        BlocProvider.of<MediaplayerCubit>(context).playAudio();
+
+        break;
+      case AppLifecycleState.inactive:
+        print("app in inactive------------------------");
+        BlocProvider.of<MediaplayerCubit>(context).playAudio();
+        break;
+      case AppLifecycleState.paused:
+        print("app in paused--------------");
+        BlocProvider.of<SpeechToTextCubit>(context).stopListening("stop");
+
+        BlocProvider.of<MediaplayerCubit>(context).pauseAudio();
+        break;
+      case AppLifecycleState.detached:
+        print("app in detached----------------------");
+        break;
+    }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    WidgetsBinding.instance!.removeObserver(this);
+
+    BlocProvider.of<SpeechToTextCubit>(context).stopListening("stop");
+
+    BlocProvider.of<MediaplayerCubit>(context).stopAudio();
   }
 
   @override
@@ -47,8 +87,8 @@ class _LangChangePageState extends State<LangChangePage> {
                     children: [
                       Image.asset(
                         "assets/images/logo1.jpg",
-                        width: 100,
-                        height: 100,
+                        width: MediaQuery.of(context).size.width / 4,
+                        height: MediaQuery.of(context).size.width / 4,
                       ),
                       Text(
                         "OpenEye",
@@ -59,8 +99,8 @@ class _LangChangePageState extends State<LangChangePage> {
                   state.bottomUp
                       ? Container()
                       : Container(
-                          width: 200,
-                          height: 200,
+                          width: MediaQuery.of(context).size.width / 2,
+                          height: MediaQuery.of(context).size.width / 2,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4000),
@@ -70,8 +110,8 @@ class _LangChangePageState extends State<LangChangePage> {
                           ),
                           margin: EdgeInsets.all(10),
                           child: Container(
-                            width: 200,
-                            height: 200,
+                            width: MediaQuery.of(context).size.width / 2,
+                            height: MediaQuery.of(context).size.width / 2,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4000),
                                 color: Colors.white,
@@ -84,13 +124,13 @@ class _LangChangePageState extends State<LangChangePage> {
                                     ])),
                           )),
                   Container(
-                      height: 200,
-                      width: 200,
+                      height: MediaQuery.of(context).size.width / 2,
+                      width: MediaQuery.of(context).size.width / 2,
                       margin: EdgeInsets.only(bottom: 40),
                       child: state.isSpeaking
                           ? Container(
-                              height: 300,
-                              width: 300,
+                              height: MediaQuery.of(context).size.width / 2,
+                              width: MediaQuery.of(context).size.width / 2,
                               child: Lottie.asset('assets/lottie/speaking.json',
                                   repeat: true, fit: BoxFit.cover),
                             )

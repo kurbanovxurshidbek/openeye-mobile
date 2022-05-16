@@ -19,10 +19,12 @@ class SpeechToTextCubit extends Cubit<SpeechToTextState> {
   }
 
   stopListening(String code) async {
-    await state.speechToText.stop();
-    timer!.cancel();
-    print("stopet spetch");
-    emit(SpeechToTextState(speechToText: SpeechToText(), langCode: code));
+    if (timer != null && timer!.isActive) {
+      await state.speechToText.stop();
+      timer!.cancel();
+      print("stopet spetch");
+      emit(SpeechToTextState(speechToText: SpeechToText(), langCode: code));
+    }
   }
 
   startListening() async {

@@ -70,11 +70,7 @@ showBottomS(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(3, (index) {
                     return FadeAnimation(
-                      index == 0
-                          ? 1
-                          : index == 1
-                              ? 8.1
-                              : 14.1,
+                      1,
                       BlocBuilder<MainaligmentCubit, MainAligmentState>(
                         builder: (context, state) {
                           return GestureDetector(
