@@ -28,6 +28,7 @@ class SpeechToTextCubit extends Cubit<SpeechToTextState> {
   }
 
   startListening() async {
+    if (timer != null && timer!.isActive) return;
     timer = Timer.periodic(Duration(milliseconds: 1000), (t) async {
       await state.speechToText.listen(onResult: onSpeechResult);
     });
