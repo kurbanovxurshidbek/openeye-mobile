@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GOTO {
   // navigator push
   static void push(BuildContext context, Widget route) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => route));
+    Navigator.push(context, MaterialPageRoute(builder: (context1) => route));
   }
 
   // navigator pop
