@@ -10,33 +10,7 @@ import '../navigators/goto.dart';
 import '../pages/home_page.dart';
 import 'lang_view.dart';
 
-
-savedLanguage(context,index)async{
-  BlocProvider.of<SpeechToTextCubit>(context)
-      .stopListening("stop");
-  BlocProvider.of<MainaligmentCubit>(context)
-      .makeStartPosition(true, chackingItem: index);
-
-  BlocProvider.of<MediaplayerCubit>(context)
-      .stopAudio();
-
-  ///store in HiveDB
-  switch (index){
-    case 0:
-      await HiveDB.storeLang("uz");
-      break;
-    case 1:
-      await HiveDB.storeLang("en");
-      break;
-    case 2:
-      await HiveDB.storeLang("ru");
-      break;
-  }
-  GOTO.pushRpUntil(context, const HomePage());
-}
-
-
-showBottomS(BuildContext context) {
+showBottomS(BuildContext context1) {
   List<String> listLang = [
     "O`zbek",
     "English",
@@ -58,17 +32,17 @@ showBottomS(BuildContext context) {
       barrierColor: Colors.white.withOpacity(0),
       enableDrag: false,
       useRootNavigator: false,
-      context: context,
-      builder: (context) {
+      context: context1,
+      builder: (context1) {
         return Container(
           padding: const EdgeInsets.all(10),
-          height: MediaQuery.of(context).size.height * 0.4,
+          height: MediaQuery.of(context1).size.height * 0.4,
           margin: const EdgeInsets.only(top: 10),
           decoration: const BoxDecoration(
               boxShadow: [
                 BoxShadow(
                     blurRadius: 5,
-                    color: Color.fromARGB(255, 119, 119, 119),
+                    color: Color.fromARGB(123, 202, 201, 201),
                     offset: Offset(0, -0))
               ],
               color: Colors.white,
@@ -84,11 +58,11 @@ showBottomS(BuildContext context) {
               RichText(
                   text: TextSpan(
                       text: "Choose\n",
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context1).textTheme.headline6,
                       children: [
                     TextSpan(
                         text: "your language",
-                        style: Theme.of(context).textTheme.bodyText1)
+                        style: Theme.of(context1).textTheme.bodyText1)
                   ])),
               Container(
                 height: 120,
@@ -96,24 +70,50 @@ showBottomS(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(3, (index) {
                     return FadeAnimation(
-                      1,
+                      index == 0
+                          ? 1
+                          : index == 1
+                              ? 8.1
+                              : 14.1,
                       BlocBuilder<MainaligmentCubit, MainAligmentState>(
                         builder: (context, state) {
                           return GestureDetector(
-                            onTap: savedLanguage(context,index),
+                            onTap: () async {
+                              BlocProvider.of<SpeechToTextCubit>(context)
+                                  .stopListening("stop");
+                              BlocProvider.of<MainaligmentCubit>(context)
+                                  .makeStartPosition(true, chackingItem: index);
+
+                              BlocProvider.of<MediaplayerCubit>(context)
+                                  .stopAudio();
+
+                              ///store in HiveDB
+                              switch (index) {
+                                case 0:
+                                  await HiveDB.storeLang("uz");
+                                  break;
+                                case 1:
+                                  await HiveDB.storeLang("en");
+                                  break;
+                                case 2:
+                                  await HiveDB.storeLang("ru");
+                                  break;
+                              }
+
+                              GOTO.pushRpUntil(context, const HomePage());
+                            },
                             child: BlocListener<SpeechToTextCubit,
                                 SpeechToTextState>(
-                              listener: (context, state)async {
+                              listener: (context, state) async {
                                 if (state.langCode != null) {
                                   if (state.langCode == "uz") {
                                     await HiveDB.storeLang("uz");
                                     GOTO.pushRpUntil(context, const HomePage());
                                   } else if (state.langCode == "en") {
-                                    await  HiveDB.storeLang("en");
+                                    await HiveDB.storeLang("en");
                                     GOTO.pushRpUntil(context, const HomePage());
-
                                   } else if (state.langCode == "ru") {
-                                     await HiveDB.storeLang("ru");
+                                    await HiveDB.storeLang("ru");
                                     GOTO.pushRpUntil(context, const HomePage());
                                   }
                                 }

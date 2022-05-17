@@ -52,9 +52,9 @@ class LangUI extends StatelessWidget {
             ),
       decoration: BoxDecoration(boxShadow: [
         const BoxShadow(
-            blurRadius: 5,
-            color: Color.fromARGB(124, 151, 151, 151),
-            offset: Offset(3, 0))
+            blurRadius: 2,
+            color: Color.fromARGB(123, 202, 201, 201),
+            offset: Offset(2, 0))
       ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
     );
   }

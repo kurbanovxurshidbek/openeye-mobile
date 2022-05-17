@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:key_board_app/services/hive_service.dart';
 import 'package:key_board_app/views/home_grid_view.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,11 +10,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   @override
-  void initState()async{
-    await context.setLocale(Locale(HiveDB.loadLang()));
+  void initState() {
+    // await context.setLocale(Locale(HiveDB.loadLang()));
     super.initState();
   }
 
@@ -50,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   children: [
                     itemGrid(
-                        "Keyboard". tr(),
+                        "Keyboard".tr(),
                         const Icon(Icons.keyboard,
                             size: 30, color: Colors.white)),
                     itemGrid(
