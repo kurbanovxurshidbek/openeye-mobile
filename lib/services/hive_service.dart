@@ -5,16 +5,24 @@ class HiveDB{
 static String DB_NAME ='openeye';
 static Box box  =Hive.box(DB_NAME);
 
-static Future<void> storeLang ( String lang ) async {
- await box.put("language",lang);
+static Future<void> storeLang (String langCode,String countryCode ) async {
+ await box.put("langCode",langCode);
+ await box.put("countryCode",countryCode);
 }
 
 
-static String  loadLang(){
-  var language =  box.get('language');
-  return language;
+static String?  loadLangCode(){
+  var langCode =  box.get("langCode");
+  return langCode;
 }
-static void removeUser() async {
-  box.delete('language');
+
+
+static String  loadCountryCode(){
+  var countryCode =  box.get("countryCode");
+  return countryCode;
+}
+
+static void removeLang() async {
+  box.delete('langCode');
 }
 }
