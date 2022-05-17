@@ -11,6 +11,8 @@ import '../pages/home_page.dart';
 import 'lang_view.dart';
 
 showBottomS(BuildContext context1) {
+  bool phoneIsLock = false;
+
   List<String> listLang = [
     "O`zbek",
     "English",
@@ -44,6 +46,21 @@ showBottomS(BuildContext context1) {
     }
 
     GOTO.pushRpUntil(context, const HomePage());
+  }
+
+  listenerBloc(context, state) async {
+    if (state.langCode != null) {
+      if (state.langCode == "uz") {
+        await HiveDB.storeLang("uz");
+        GOTO.pushRpUntil(context, const HomePage());
+      } else if (state.langCode == "en") {
+        await HiveDB.storeLang("en");
+        GOTO.pushRpUntil(context, const HomePage());
+      } else if (state.langCode == "ru") {
+        await HiveDB.storeLang("ru");
+        GOTO.pushRpUntil(context, const HomePage());
+      }
+    }
   }
 
   showModalBottomSheet(
@@ -106,20 +123,8 @@ showBottomS(BuildContext context1) {
                             },
                             child: BlocListener<SpeechToTextCubit,
                                 SpeechToTextState>(
-                              listener: (context, state) async {
-                                if (state.langCode != null) {
-                                  if (state.langCode == "uz") {
-                                    await HiveDB.storeLang("uz");
-                                    GOTO.pushRpUntil(context, const HomePage());
-                                  } else if (state.langCode == "en") {
-                                    await HiveDB.storeLang("en");
-                                    GOTO.pushRpUntil(context, const HomePage());
-                                  } else if (state.langCode == "ru") {
-                                    await HiveDB.storeLang("ru");
-                                    GOTO.pushRpUntil(context, const HomePage());
-                                  }
-                                }
-                              },
+                              listener: ((context, state) =>
+                                  listenerBloc(context, state)),
                               child: LangUI(
                                   hello: listHello[index],
                                   lang: listLang[index],

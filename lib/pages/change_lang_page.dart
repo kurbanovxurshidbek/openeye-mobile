@@ -36,17 +36,14 @@ class _LangChangePageState extends State<LangChangePage>
         print("app in resumed---------------");
         BlocProvider.of<MediaplayerCubit>(context).playAudio();
         BlocProvider.of<SpeechToTextCubit>(context).startListening();
-
         break;
       case AppLifecycleState.inactive:
         print("app in inactive------------------------");
-        BlocProvider.of<MediaplayerCubit>(context).playAudio();
-
+        // BlocProvider.of<MediaplayerCubit>(context).playAudio();
         break;
       case AppLifecycleState.paused:
         print("app in paused--------------");
         BlocProvider.of<SpeechToTextCubit>(context).stopListening("stop");
-
         BlocProvider.of<MediaplayerCubit>(context).pauseAudio();
         break;
       case AppLifecycleState.detached:

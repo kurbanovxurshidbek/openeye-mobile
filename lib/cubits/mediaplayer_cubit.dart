@@ -27,9 +27,12 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
 
       if (count == 7) {
         stopAudio();
+
         BlocProvider.of<MainaligmentCubit>(context).makeStartPosition(true);
 
-        BlocProvider.of<SpeechToTextCubit>(context).startListening();
+        BlocProvider.of<SpeechToTextCubit>(context)
+            .startListening(firstStart: true);
+
         return;
       }
 
@@ -37,12 +40,12 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
     });
   }
 
-  pauseAudio() {
-    state.audioPlayer.pause();
+  pauseAudio() async {
+    await state.audioPlayer.pause();
   }
 
-  playAudio() {
-    state.audioPlayer.resume();
+  playAudio() async {
+    await state.audioPlayer.resume();
   }
 
   startAudio(int count) async {
@@ -87,6 +90,5 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
 
   stopAudio() {
     state.audioPlayer.stop();
-    state.audioPlayer.dispose();
   }
 }
