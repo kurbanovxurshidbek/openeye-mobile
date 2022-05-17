@@ -33,13 +33,13 @@ showBottomS(BuildContext context1) {
     ///store in HiveDB
     switch (index) {
       case 0:
-        await HiveDB.storeLang("uz","UZ");
+        await HiveDB.storeLang("uz");
         break;
       case 1:
-        await HiveDB.storeLang("en","US");
+        await HiveDB.storeLang("en");
         break;
       case 2:
-        await HiveDB.storeLang("ru","RU");
+        await HiveDB.storeLang("ru");
         break;
     }
 
@@ -109,13 +109,13 @@ showBottomS(BuildContext context1) {
                               listener: (context, state) async {
                                 if (state.langCode != null) {
                                   if (state.langCode == "uz") {
-                                    await HiveDB.storeLang("uz","UZ");
+                                    await HiveDB.storeLang("uz");
                                     GOTO.pushRpUntil(context, const HomePage());
                                   } else if (state.langCode == "en") {
-                                    await HiveDB.storeLang("en","US");
+                                    await HiveDB.storeLang("en");
                                     GOTO.pushRpUntil(context, const HomePage());
                                   } else if (state.langCode == "ru") {
-                                    await HiveDB.storeLang("ru","RU");
+                                    await HiveDB.storeLang("ru");
                                     GOTO.pushRpUntil(context, const HomePage());
                                   }
                                 }
