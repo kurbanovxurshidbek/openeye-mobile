@@ -11,8 +11,6 @@ import '../pages/home_page.dart';
 import 'lang_view.dart';
 
 showBottomS(BuildContext context1) {
-  bool phoneIsLock = false;
-
   List<String> listLang = [
     "O`zbek",
     "English",
