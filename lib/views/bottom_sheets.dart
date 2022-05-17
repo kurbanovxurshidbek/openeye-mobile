@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:is_lock_screen/is_lock_screen.dart';
 import 'package:key_board_app/cubits/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/mainaligment_state.dart';
 import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
@@ -11,6 +12,8 @@ import '../pages/home_page.dart';
 import 'lang_view.dart';
 
 showBottomS(BuildContext context1) {
+  bool phoneIsLock = false;
+
   List<String> listLang = [
     "O`zbek",
     "English",
@@ -45,6 +48,33 @@ showBottomS(BuildContext context1) {
     }
 
     GOTO.pushRpUntil(context, const HomePage());
+  }
+
+  listenerBloc(context, state) async {
+    bool? result = await isLockScreen();
+    if (result != null && result) {
+      BlocProvider.of<SpeechToTextCubit>(context).stopListening("stop");
+
+      BlocProvider.of<MediaplayerCubit>(context).pauseAudio();
+
+      phoneIsLock = true;
+    } else if (phoneIsLock) {
+      BlocProvider.of<MediaplayerCubit>(context).playAudio();
+      BlocProvider.of<SpeechToTextCubit>(context).startListening();
+      phoneIsLock = false;
+    }
+    if (state.langCode != null) {
+      if (state.langCode == "uz") {
+        await HiveDB.storeLang("uz");
+        GOTO.pushRpUntil(context, const HomePage());
+      } else if (state.langCode == "en") {
+        await HiveDB.storeLang("en");
+        GOTO.pushRpUntil(context, const HomePage());
+      } else if (state.langCode == "ru") {
+        await HiveDB.storeLang("ru");
+        GOTO.pushRpUntil(context, const HomePage());
+      }
+    }
   }
 
   showModalBottomSheet(
@@ -107,20 +137,7 @@ showBottomS(BuildContext context1) {
                             },
                             child: BlocListener<SpeechToTextCubit,
                                 SpeechToTextState>(
-                              listener: (context, state) async {
-                                if (state.langCode != null) {
-                                  if (state.langCode == "uz") {
-                                    await HiveDB.storeLang("uz");
-                                    GOTO.pushRpUntil(context, const HomePage());
-                                  } else if (state.langCode == "en") {
-                                    await HiveDB.storeLang("en");
-                                    GOTO.pushRpUntil(context, const HomePage());
-                                  } else if (state.langCode == "ru") {
-                                    await HiveDB.storeLang("ru");
-                                    GOTO.pushRpUntil(context, const HomePage());
-                                  }
-                                }
-                              },
+                              listener: listenerBloc,
                               child: LangUI(
                                   hello: listHello[index],
                                   lang: listLang[index],
