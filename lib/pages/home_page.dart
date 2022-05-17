@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/load_lang_cubit.dart';
+import 'package:key_board_app/cubits/load_lang_state.dart';
 import 'package:key_board_app/views/home_grid_view.dart';
-import '../cubits/load_lang_state.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _HomePageState extends State<HomePage> {
 
 
   @override
-  void initState(){
+  void initState()async{
     BlocProvider.of<LoadLangCubit>(context).loadedLang();
     super.initState();
   }
@@ -27,13 +28,16 @@ class _HomePageState extends State<HomePage> {
   builder: (context, state) {
     return Scaffold(
       body: SafeArea(
-        child: state.isLoading? Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+        child: state.isLoading ? Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircularProgressIndicator.adaptive(),
-              Text("loading").tr(),
-            ],),): Container(
+              Text("loading").tr()
+            ],
+          ),
+        ): Container(
           padding: const EdgeInsets.all(20),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -60,24 +64,26 @@ class _HomePageState extends State<HomePage> {
                   ),
                   children: [
                     itemGrid(
-                        "keyboard". tr(),
+                        "Keyboard". tr(),
                         const Icon(Icons.keyboard,
-                            size: 30, color: Colors.white)),
+                            size: 30, color: Colors.white),
+                    ItemOfGridHome.KeybordItem
+                    ),
                     itemGrid(
                         "text_in_image".tr(),
                         const Icon(Icons.camera_alt,
-                            size: 30, color: Colors.white)),
+                            size: 30, color: Colors.white),ItemOfGridHome.TextInImageItem),
                     itemGrid(
                         "book".tr(),
                         const Icon(Icons.multitrack_audio,
-                            size: 30, color: Colors.white)),
+                            size: 30, color: Colors.white),ItemOfGridHome.BookRecordingItem),
                     itemGrid(
                         "settings".tr(),
                         const Icon(
                           Icons.settings,
                           size: 30,
                           color: Colors.white,
-                        )),
+                        ),ItemOfGridHome.SettingItem),
                   ],
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
