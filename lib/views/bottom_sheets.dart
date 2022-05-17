@@ -34,6 +34,7 @@ showBottomS(BuildContext context1) {
     switch (index) {
       case 0:
         await HiveDB.storeLang("uz");
+
         break;
       case 1:
         await HiveDB.storeLang("en");
