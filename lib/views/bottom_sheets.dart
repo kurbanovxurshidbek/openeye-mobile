@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:is_lock_screen/is_lock_screen.dart';
 import 'package:key_board_app/cubits/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/mainaligment_state.dart';
 import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
@@ -51,18 +50,6 @@ showBottomS(BuildContext context1) {
   }
 
   listenerBloc(context, state) async {
-    bool? result = await isLockScreen();
-    if (result != null && result) {
-      BlocProvider.of<SpeechToTextCubit>(context).stopListening("stop");
-
-      BlocProvider.of<MediaplayerCubit>(context).pauseAudio();
-
-      phoneIsLock = true;
-    } else if (phoneIsLock) {
-      BlocProvider.of<MediaplayerCubit>(context).playAudio();
-      BlocProvider.of<SpeechToTextCubit>(context).startListening();
-      phoneIsLock = false;
-    }
     if (state.langCode != null) {
       if (state.langCode == "uz") {
         await HiveDB.storeLang("uz");
@@ -137,7 +124,8 @@ showBottomS(BuildContext context1) {
                             },
                             child: BlocListener<SpeechToTextCubit,
                                 SpeechToTextState>(
-                              listener: listenerBloc,
+                              listener: ((context, state) =>
+                                  listenerBloc(context, state)),
                               child: LangUI(
                                   hello: listHello[index],
                                   lang: listLang[index],

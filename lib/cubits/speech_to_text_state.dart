@@ -4,5 +4,8 @@ class SpeechToTextState {
   SpeechToText speechToText;
   String? langCode;
 
-  SpeechToTextState({required this.speechToText, this.langCode});
+  SpeechToTextState({
+    required this.speechToText,
+    this.langCode,
+  });
 }
