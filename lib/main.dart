@@ -8,6 +8,7 @@ import 'package:key_board_app/cubits/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
 import 'package:key_board_app/services/hive_service.dart';
+import 'cubits/load_lang_cubit.dart';
 import 'pages/change_lang_page.dart';
 import 'themes/theme_of_app.dart';
 
@@ -58,6 +59,9 @@ class App extends StatelessWidget {
         })),
         BlocProvider(create: ((context) {
           return SpeechToTextCubit(context: context);
+        })),
+        BlocProvider(create: ((context) {
+          return LoadLangCubit(context: context);
         })),
       ],
       child: MaterialApp(

@@ -3,5 +3,6 @@
     "keyboard" : "Klaviatura",
     "text_in_image" : "Rasmdagi matnni o'qish",
     "book" : "Audio kitob tinglash",
-    "settings" : "Sozlamalar"
+    "settings" : "Sozlamalar",
+    "loading": "Kuting..."
 }

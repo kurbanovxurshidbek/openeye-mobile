@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:key_board_app/services/hive_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:key_board_app/cubits/load_lang_cubit.dart';
 import 'package:key_board_app/views/home_grid_view.dart';
+import '../cubits/load_lang_state.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,16 +16,24 @@ class _HomePageState extends State<HomePage> {
 
 
   @override
-  void initState()async{
-    await context.setLocale(Locale(HiveDB.loadLang()));
+  void initState(){
+    BlocProvider.of<LoadLangCubit>(context).loadedLang();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<LoadLangCubit, LoadLangState>(
+  builder: (context, state) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: state.isLoading? Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircularProgressIndicator.adaptive(),
+              Text("loading").tr(),
+            ],),): Container(
           padding: const EdgeInsets.all(20),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -50,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   children: [
                     itemGrid(
-                        "Keyboard". tr(),
+                        "keyboard". tr(),
                         const Icon(Icons.keyboard,
                             size: 30, color: Colors.white)),
                     itemGrid(
@@ -78,5 +88,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  },
+);
   }
 }
