@@ -1,4 +1,4 @@
-// for hone page item pressed
+// for home page item pressed
 enum ItemOfGridHome {
   KeybordItem,
   TextInImageItem,

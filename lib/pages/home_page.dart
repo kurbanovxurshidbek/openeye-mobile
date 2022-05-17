@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:key_board_app/services/hive_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:key_board_app/constants/enums.dart';
+import 'package:key_board_app/cubits/load_lang_cubit.dart';
+import 'package:key_board_app/cubits/load_lang_state.dart';
 import 'package:key_board_app/views/home_grid_view.dart';
-
-import '../constants/enums.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,17 +14,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
   @override
-  void initState() {
-    // await context.setLocale(Locale(HiveDB.loadLang()));
+  void initState()async{
+    BlocProvider.of<LoadLangCubit>(context).loadedLang();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<LoadLangCubit, LoadLangState>(
+  builder: (context, state) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: state.isLoading ? Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircularProgressIndicator.adaptive(),
+              Text("loading").tr()
+            ],
+          ),
+        ): Container(
           padding: const EdgeInsets.all(20),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -50,28 +64,26 @@ class _HomePageState extends State<HomePage> {
                   ),
                   children: [
                     itemGrid(
-                        "Keyboard".tr(),
+                        "Keyboard". tr(),
                         const Icon(Icons.keyboard,
                             size: 30, color: Colors.white),
-                        ItemOfGridHome.KeybordItem),
+                    ItemOfGridHome.KeybordItem
+                    ),
                     itemGrid(
                         "text_in_image".tr(),
                         const Icon(Icons.camera_alt,
-                            size: 30, color: Colors.white),
-                        ItemOfGridHome.TextInImageItem),
+                            size: 30, color: Colors.white),ItemOfGridHome.TextInImageItem),
                     itemGrid(
                         "book".tr(),
                         const Icon(Icons.multitrack_audio,
-                            size: 30, color: Colors.white),
-                        ItemOfGridHome.BookRecordingItem),
+                            size: 30, color: Colors.white),ItemOfGridHome.BookRecordingItem),
                     itemGrid(
                         "settings".tr(),
                         const Icon(
                           Icons.settings,
                           size: 30,
                           color: Colors.white,
-                        ),
-                        ItemOfGridHome.SettingItem),
+                        ),ItemOfGridHome.SettingItem),
                   ],
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -82,5 +94,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  },
+);
   }
 }
