@@ -7,10 +7,13 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:key_board_app/cubits/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
+import 'package:key_board_app/pages/home_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'cubits/load_lang_cubit.dart';
 import 'pages/change_lang_page.dart';
 import 'themes/theme_of_app.dart';
+
+bool haveUser=false;
 
 void main(List<String> args) async {
   // flutter Binding Initialized
@@ -29,6 +32,9 @@ void main(List<String> args) async {
   await Hive.initFlutter();
   await Hive.openBox(HiveDB.DB_NAME);
 
+  //have user
+  await starterPage();
+
 
   runApp(
     // easy localization
@@ -39,11 +45,18 @@ void main(List<String> args) async {
           Locale('uz', 'UZ'),
         ],
         path: 'assets/lang', // <-- change the path of the translation files
-        fallbackLocale: Locale('en', 'US'),
+        fallbackLocale: const Locale('en', 'US'),
         child: const App()),
   );
 }
 
+Future<void> starterPage()async {
+ var result =   await HiveDB.loadLangCode();
+ if(result !=null){
+    haveUser =true;
+ }
+
+}
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
@@ -70,7 +83,7 @@ class App extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         theme: ThemeOf.ligth(),
-        home: LangChangePage(),
+        home: haveUser?HomePage():LangChangePage(),
       ),
     );
   }
