@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:key_board_app/services/hive_service.dart';
 import 'package:key_board_app/views/home_grid_view.dart';
+
+import '../constants/enums.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,22 +52,26 @@ class _HomePageState extends State<HomePage> {
                     itemGrid(
                         "Keyboard".tr(),
                         const Icon(Icons.keyboard,
-                            size: 30, color: Colors.white)),
+                            size: 30, color: Colors.white),
+                        ItemOfGridHome.KeybordItem),
                     itemGrid(
                         "text_in_image".tr(),
                         const Icon(Icons.camera_alt,
-                            size: 30, color: Colors.white)),
+                            size: 30, color: Colors.white),
+                        ItemOfGridHome.TextInImageItem),
                     itemGrid(
                         "book".tr(),
                         const Icon(Icons.multitrack_audio,
-                            size: 30, color: Colors.white)),
+                            size: 30, color: Colors.white),
+                        ItemOfGridHome.BookRecordingItem),
                     itemGrid(
                         "settings".tr(),
                         const Icon(
                           Icons.settings,
                           size: 30,
                           color: Colors.white,
-                        )),
+                        ),
+                        ItemOfGridHome.SettingItem),
                   ],
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),

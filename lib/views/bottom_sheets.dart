@@ -23,6 +23,29 @@ showBottomS(BuildContext context1) {
     "Привет!",
   ];
 
+  savedLanguage(BuildContext context, int index) async {
+    BlocProvider.of<SpeechToTextCubit>(context).stopListening("stop");
+    BlocProvider.of<MainaligmentCubit>(context)
+        .makeStartPosition(true, chackingItem: index);
+
+    BlocProvider.of<MediaplayerCubit>(context).stopAudio();
+
+    ///store in HiveDB
+    switch (index) {
+      case 0:
+        await HiveDB.storeLang("uz");
+        break;
+      case 1:
+        await HiveDB.storeLang("en");
+        break;
+      case 2:
+        await HiveDB.storeLang("ru");
+        break;
+    }
+
+    GOTO.pushRpUntil(context, const HomePage());
+  }
+
   showModalBottomSheet(
       isDismissible: false,
       isScrollControlled: false,
@@ -78,29 +101,8 @@ showBottomS(BuildContext context1) {
                       BlocBuilder<MainaligmentCubit, MainAligmentState>(
                         builder: (context, state) {
                           return GestureDetector(
-                            onTap: () async {
-                              BlocProvider.of<SpeechToTextCubit>(context)
-                                  .stopListening("stop");
-                              BlocProvider.of<MainaligmentCubit>(context)
-                                  .makeStartPosition(true, chackingItem: index);
-
-                              BlocProvider.of<MediaplayerCubit>(context)
-                                  .stopAudio();
-
-                              ///store in HiveDB
-                              switch (index) {
-                                case 0:
-                                  await HiveDB.storeLang("uz");
-                                  break;
-                                case 1:
-                                  await HiveDB.storeLang("en");
-                                  break;
-                                case 2:
-                                  await HiveDB.storeLang("ru");
-                                  break;
-                              }
-
-                              GOTO.pushRpUntil(context, const HomePage());
+                            onTap: () {
+                              savedLanguage(context, index);
                             },
                             child: BlocListener<SpeechToTextCubit,
                                 SpeechToTextState>(
