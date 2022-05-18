@@ -50,7 +50,7 @@
     <Row>
     <Key
         android:codes="-5"
-        android:keyLabel="DEL"
+        android:keyLabel="‹"
         android:keyEdgeFlags="left"
         android:keyHeight="70dp"
         android:isRepeatable="true"
@@ -58,14 +58,14 @@
         />
     <Key
         android:codes="98"
-        android:keyLabel="⇅-⅑"
+        android:keyLabel="a-z"
         android:keyHeight="70dp"
         android:keyWidth="25%"
         />
 
         <Key
             android:codes="100"
-            android:keyLabel="LANG"
+            android:keyLabel="UZB"
             android:keyHeight="70dp"
             android:keyWidth="25%"
             />
@@ -73,7 +73,7 @@
     <Key
         android:codes="10"
         android:keyHeight="70dp"
-        android:keyLabel="SPE"
+        android:keyLabel="›"
         android:isRepeatable="true"
         android:keyEdgeFlags="right"
         android:keyWidth="25%"

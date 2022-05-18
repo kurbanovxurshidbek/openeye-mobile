@@ -22,6 +22,7 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
     Cases coca = Cases.Letter;
     Lan lanType = Lan.Uz;
 
+
     MediaPlayer mediaPlayer;
 
   int[] index = {0,0,0,0,0,0};
@@ -308,16 +309,11 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
     }};
 
 
-
-
-
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public View onCreateInputView() {
         keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard_app, null);
         Keyboard keyboard = new Keyboard(this, R.xml.brail);
-
-
         keyboardView.setKeyboard(keyboard);
 
         keyboardView.setOnKeyboardActionListener(this);
@@ -346,15 +342,6 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
         InputConnection ic = getCurrentInputConnection();
         if (ic == null) return;
         vibrator.vibrate(200);
-
-
-
-        Keyboard keyboard = new Keyboard(this, R.xml.brail);
-        keyboard.getKeys().get(8).label = "UZB";
-        keyboardView.setKeyboard(keyboard);
-
-
-        System.out.println( keyboard.getKeys().get(8).label);
 
         switch (i){
             case 49:
@@ -397,9 +384,14 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
                      lanType = Lan.Uz;
                      setListener(MediaPlayer.create(this, R.raw.uz_lang));
                  }
-                break;
+                 Keyboard keyboard = new Keyboard(this, R.xml.brail);
+                 keyboard.getKeys().get(7).label = new ButtonLabels().wordType.get(coca);
+                 keyboard.getKeys().get(8).label = new ButtonLabels().language.get(lanType);
+                 keyboardView.setKeyboard(keyboard);
+                 break;
 
              case 98:
+                 keyboard = keyboardView.getKeyboard();
                  if( coca == Cases.Letter) {
                      coca = Cases.Upper;
                      setListener(MediaPlayer.create(this, settings.get(Set.Upper).get(lanType)));
@@ -407,11 +399,12 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
                      coca = Cases.Number;
                      setListener(MediaPlayer.create(this, settings.get(Set.Number).get(lanType)));
                  } else if (coca == Cases.Number) {
-                 coca = Cases.Letter;
-                 setListener(MediaPlayer.create(this, settings.get(Set.Letter).get(lanType)));
+                     coca = Cases.Letter;
+                     setListener(MediaPlayer.create(this, settings.get(Set.Letter).get(lanType)));
                  }
-
-
+                 keyboard.getKeys().get(7).label = new ButtonLabels().wordType.get(coca);
+                 keyboard.getKeys().get(8).label = new ButtonLabels().language.get(lanType);
+                 keyboardView.setKeyboard(keyboard);
                 break;
             case -5:
                 CharSequence selectedText = ic.getSelectedText(0);
