@@ -208,7 +208,7 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
             put("b", R.raw.uz_b);
             put("d", R.raw.uz_d);
             put("e", R.raw.uz_e);
-            put("f", R.raw.uz_b);
+            put("f", R.raw.uz_f);
             put("g", R.raw.uz_g);
             put("h", R.raw.uz_h);
             put("i", R.raw.uz_i);
