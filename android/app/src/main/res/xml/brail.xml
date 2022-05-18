@@ -65,7 +65,7 @@
 
         <Key
             android:codes="100"
-            android:keyLabel="UZ"
+            android:keyLabel="LANG"
             android:keyHeight="70dp"
             android:keyWidth="25%"
             />
