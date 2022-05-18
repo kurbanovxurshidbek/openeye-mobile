@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:key_board_app/cubits/mainaligment_cubit.dart';
-import 'package:key_board_app/cubits/mainaligment_state.dart';
-import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
-import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
+import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
+import 'package:key_board_app/cubits/for_lang_page/mainaligment_state.dart';
+import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_state.dart';
+import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
+import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import '../animations/fade_animatoin.dart';
 import '../navigators/goto.dart';

@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:key_board_app/cubits/mainaligment_cubit.dart';
+import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
+import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_state.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-part 'speech_to_text_state.dart';
 
 class SpeechToTextCubit extends Cubit<SpeechToTextState> {
   BuildContext context;
@@ -30,7 +30,7 @@ class SpeechToTextCubit extends Cubit<SpeechToTextState> {
   startListening({bool firstStart = false}) async {
     if (timer != null && timer!.isActive) return;
     if (!firstStart) return;
-    timer = Timer.periodic(Duration(milliseconds: 1000), (t) async {
+    timer = Timer.periodic(const Duration(milliseconds: 1000), (t) async {
       await state.speechToText.listen(onResult: onSpeechResult);
     });
   }
