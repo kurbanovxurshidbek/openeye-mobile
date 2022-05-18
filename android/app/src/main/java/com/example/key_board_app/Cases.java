@@ -15,12 +15,11 @@ enum Set {
 }
 
 class ButtonText {
-    HashMap<Lan, String> language = new HashMap<Lan, String>() {{
-        put(Lan.En, "ENG");
-        put(Lan.Uz, "UZB");
-        put(Lan.Ru, "RUS");
-    }};
-
+        HashMap<Lan, String> language = new HashMap<Lan, String>() {{
+            put(Lan.En, "ENG");
+            put(Lan.Uz, "UZB");
+            put(Lan.Ru, "RUS");
+        }};
 }
 
 

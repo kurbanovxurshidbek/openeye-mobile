@@ -26,7 +26,7 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
 
   int[] index = {0,0,0,0,0,0};
 
-  /// ko'p_tilli_map
+    // ko'p_tilli_map
     HashMap<String, HashMap<Lan, String>> multilingualMap = new HashMap<String, HashMap<Lan, String>>() {{
         put("000000", new HashMap<Lan, String>(){{ put(Lan.En, " "); put(Lan.Uz, " "); put(Lan.Ru, " "); }});
         put("000001", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, ""); }});
@@ -287,7 +287,7 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
         }});
     }};
 
-    //for click buttons sound / tugmalarni bosganda ovoz berish uchun
+    // for click buttons sound / tugmalarni bosganda ovoz berish uchun
     HashMap<Set, HashMap<Lan,Integer>> settings = new HashMap<Set, HashMap<Lan,Integer>>() {{
         // go to letter case / harfga otish
         put(Set.Letter, new HashMap<Lan, Integer>(){{ put(Lan.En, R.raw.en_letter); put(Lan.Uz, R.raw.uz_letter); put(Lan.Ru,R.raw.ru_letter); }});
@@ -350,7 +350,9 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
 
 
         Keyboard keyboard = new Keyboard(this, R.xml.brail);
-        keyboard.getKeys().get(8).label="ttttt";
+        keyboard.getKeys().get(8).label = "UZB";
+        keyboardView.setKeyboard(keyboard);
+
 
         System.out.println( keyboard.getKeys().get(8).label);
 
