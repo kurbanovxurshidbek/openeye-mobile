@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:key_board_app/cubits/mainaligment_cubit.dart';
-import 'package:key_board_app/cubits/mainaligment_state.dart';
-import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
-import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
+import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
+import 'package:key_board_app/cubits/for_lang_page/mainaligment_state.dart';
+import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_state.dart';
+import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
+import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import '../animations/fade_animatoin.dart';
 import '../navigators/goto.dart';
@@ -33,6 +34,7 @@ showBottomS(BuildContext context1) {
     ///store in HiveDB
     switch (index) {
       case 0:
+<<<<<<< HEAD
         await HiveDB.storeLang("uz", "UZ");
         break;
       case 1:
@@ -40,15 +42,24 @@ showBottomS(BuildContext context1) {
         break;
       case 2:
         await HiveDB.storeLang("ru", "RU");
+=======
+        await HiveDB.storeLang("uz","UZ");
+        break;
+      case 1:
+        await HiveDB.storeLang("en","US");
+        break;
+      case 2:
+        await HiveDB.storeLang("ru","RU");
+>>>>>>> e31039a386747992b33dc16106d83e1bb45ee389
         break;
     }
-
     GOTO.pushRpUntil(context, const HomePage());
   }
 
   listenerBloc(context, state) async {
     if (state.langCode != null) {
       if (state.langCode == "uz") {
+<<<<<<< HEAD
         await HiveDB.storeLang("uz", "UZ");
         GOTO.pushRpUntil(context, const HomePage());
       } else if (state.langCode == "en") {
@@ -56,6 +67,15 @@ showBottomS(BuildContext context1) {
         GOTO.pushRpUntil(context, const HomePage());
       } else if (state.langCode == "ru") {
         await HiveDB.storeLang("ru", "RU");
+=======
+        await HiveDB.storeLang("uz","UZ");
+        GOTO.pushRpUntil(context, const HomePage());
+      } else if (state.langCode == "en") {
+        await HiveDB.storeLang("en","US");
+        GOTO.pushRpUntil(context, const HomePage());
+      } else if (state.langCode == "ru") {
+        await HiveDB.storeLang("ru","RU");
+>>>>>>> e31039a386747992b33dc16106d83e1bb45ee389
         GOTO.pushRpUntil(context, const HomePage());
       }
     }

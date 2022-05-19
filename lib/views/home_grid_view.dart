@@ -1,16 +1,20 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/constants/enums.dart';
+import 'package:key_board_app/cubits/for_image_find_text/img_find_text_cubit.dart';
 
 //home page item on tap fucntions
-void itemGridOnPressed(ItemOfGridHome itemOfGridHome) {
+void itemGridOnPressed(ItemOfGridHome itemOfGridHome,BuildContext context) {
   switch (itemOfGridHome) {
     case ItemOfGridHome.KeybordItem:
       androidOrIos();
       break;
     case ItemOfGridHome.TextInImageItem:
-      {}
+      {
+        BlocProvider.of<ImgFindTextCubit>(context).getImage();
+      }
       break;
     case ItemOfGridHome.BookRecordingItem:
       {}
@@ -38,10 +42,10 @@ androidOrIos() async {
   } else if (Platform.isIOS) {}
 }
 
-Widget itemGrid(String title, Icon icon, ItemOfGridHome itemOfGridHome) {
+Widget itemGrid(String title, Icon icon, ItemOfGridHome itemOfGridHome,BuildContext context) {
   return GestureDetector(
     onTap: () {
-      itemGridOnPressed(itemOfGridHome);
+      itemGridOnPressed(itemOfGridHome,context);
     },
     child: Container(
       decoration: BoxDecoration(

@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:key_board_app/cubits/mainaligment_cubit.dart';
-import 'package:key_board_app/cubits/mediaplayer_cubit.dart';
-import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
+import 'package:key_board_app/cubits/for_image_find_text/img_find_text_cubit.dart';
+import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
+import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
+import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
+import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
 import 'package:key_board_app/pages/home_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
-import 'cubits/load_lang_cubit.dart';
 import 'pages/change_lang_page.dart';
 import 'themes/theme_of_app.dart';
 
@@ -75,6 +76,9 @@ class App extends StatelessWidget {
         BlocProvider(create: ((context) {
           return LoadLangCubit(context: context);
         })),
+        BlocProvider(create: ((context) {
+          return ImgFindTextCubit(context: context);
+        })),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -82,7 +86,7 @@ class App extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         theme: ThemeOf.ligth(),
-        home: haveUser?HomePage():LangChangePage(),
+        home: haveUser?const HomePage():const LangChangePage(),
       ),
     );
   }

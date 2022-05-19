@@ -3,9 +3,9 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:key_board_app/cubits/mainaligment_cubit.dart';
-import 'package:key_board_app/cubits/speech_to_text_cubit.dart';
-import '../views/bottom_sheets.dart';
+import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
+import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
+import '../../views/bottom_sheets.dart';
 import 'mediaplayer_state.dart';
 
 class MediaplayerCubit extends Cubit<MediaPlayerState> {

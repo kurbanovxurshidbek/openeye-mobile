@@ -1,4 +1,4 @@
-part of 'speech_to_text_cubit.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 class SpeechToTextState {
   SpeechToText speechToText;
