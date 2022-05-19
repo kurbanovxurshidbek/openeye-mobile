@@ -34,7 +34,6 @@ showBottomS(BuildContext context1) {
     ///store in HiveDB
     switch (index) {
       case 0:
-<<<<<<< HEAD
         await HiveDB.storeLang("uz", "UZ");
         break;
       case 1:
@@ -42,15 +41,6 @@ showBottomS(BuildContext context1) {
         break;
       case 2:
         await HiveDB.storeLang("ru", "RU");
-=======
-        await HiveDB.storeLang("uz","UZ");
-        break;
-      case 1:
-        await HiveDB.storeLang("en","US");
-        break;
-      case 2:
-        await HiveDB.storeLang("ru","RU");
->>>>>>> e31039a386747992b33dc16106d83e1bb45ee389
         break;
     }
     GOTO.pushRpUntil(context, const HomePage());
@@ -59,7 +49,6 @@ showBottomS(BuildContext context1) {
   listenerBloc(context, state) async {
     if (state.langCode != null) {
       if (state.langCode == "uz") {
-<<<<<<< HEAD
         await HiveDB.storeLang("uz", "UZ");
         GOTO.pushRpUntil(context, const HomePage());
       } else if (state.langCode == "en") {
@@ -67,15 +56,12 @@ showBottomS(BuildContext context1) {
         GOTO.pushRpUntil(context, const HomePage());
       } else if (state.langCode == "ru") {
         await HiveDB.storeLang("ru", "RU");
-=======
-        await HiveDB.storeLang("uz","UZ");
         GOTO.pushRpUntil(context, const HomePage());
       } else if (state.langCode == "en") {
-        await HiveDB.storeLang("en","US");
+        await HiveDB.storeLang("en", "US");
         GOTO.pushRpUntil(context, const HomePage());
       } else if (state.langCode == "ru") {
-        await HiveDB.storeLang("ru","RU");
->>>>>>> e31039a386747992b33dc16106d83e1bb45ee389
+        await HiveDB.storeLang("ru", "RU");
         GOTO.pushRpUntil(context, const HomePage());
       }
     }

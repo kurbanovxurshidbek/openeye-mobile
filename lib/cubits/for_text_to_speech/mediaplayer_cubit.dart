@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,39 +7,54 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
+import 'package:key_board_app/services/hive_service.dart';
 import '../../views/bottom_sheets.dart';
 import 'mediaplayer_state.dart';
 
 class MediaplayerCubit extends Cubit<MediaPlayerState> {
   MediaplayerCubit() : super(MediaPlayerState(audioPlayer: AudioPlayer()));
 
-  onComplatedAudioAndStart(BuildContext context) {
-    int count = 1;
+  late StreamSubscription audioListening;
+
+  onComplatedAudioAndStart(BuildContext context, int _count) async {
+    int count = _count;
+
+    String done = await HiveDB.loadCountryCode(key: "in_home");
+    if (done == "done") {
+      return;
+    }
 
     startAudio(count);
 
-    state.audioPlayer.onPlayerCompletion.listen((event) {
-      count++;
+    audioListening = state.audioPlayer.onPlayerCompletion.listen(
+      (event) {
+        count++;
+        print(count);
 
-      if (count == 4) {
-        showBottomS(context);
-        BlocProvider.of<MainaligmentCubit>(context).makeStartPosition(false);
-        emit(state);
-      }
+        if (count == 4) {
+          showBottomS(context);
+          BlocProvider.of<MainaligmentCubit>(context).makeStartPosition(false);
+          emit(state);
+        }
 
-      if (count == 7) {
-        stopAudio();
+        if (count == 7) {
+          stopAudio();
 
-        BlocProvider.of<MainaligmentCubit>(context).makeStartPosition(true);
+          BlocProvider.of<MainaligmentCubit>(context).makeStartPosition(true);
 
-        BlocProvider.of<SpeechToTextCubit>(context)
-            .startListening(firstStart: true);
+          BlocProvider.of<SpeechToTextCubit>(context)
+              .startListening(firstStart: true);
 
-        return;
-      }
+          return;
+        }
 
-      startAudio(count);
-    });
+        if (count == 9) {
+          stopAudio();
+        }
+
+        startAudio(count);
+      },
+    );
   }
 
   pauseAudio() async {
@@ -48,6 +65,11 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
     await state.audioPlayer.resume();
   }
 
+  Future<int> playAudionFromUint8List(Uint8List list) async {
+    int result = await state.audioPlayer.playBytes(list);
+    return result;
+  }
+
   startAudio(int count) async {
     String audioassetUZ = "assets/sounds/welcome_uz.mp3";
     String audioassetEN = "assets/sounds/welcome_en.mp3";
@@ -55,6 +77,9 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
     String chooseUZ = "assets/sounds/choose_uz.mp3";
     String chooseEN = "assets/sounds/choose_en.mp3";
     String chooseRU = "assets/sounds/choose_ru.mp3";
+    String welcomeUz = "assets/sounds/welcome_home_uz.mp3";
+    String welcomeEn = "assets/sounds/welcome_home_en.mp3";
+    String welcomeRu = "assets/sounds/welcome_home_ru.mp3";
     late ByteData bytes;
 
     if (count == 1) {
@@ -74,7 +99,19 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
 
     } else if (count == 6) {
       bytes = await rootBundle.load(chooseRU); //load sound from assets
+    } else if (count == 8) {
+      String? langCode = await HiveDB.loadLangCode();
+      await HiveDB.saveData("in_home", "done");
+      langCode ??= "uz";
+      await Future.delayed(Duration(seconds: 3));
 
+      if (langCode == "uz") {
+        bytes = await rootBundle.load(welcomeUz);
+      } else if (langCode == "en") {
+        bytes = await rootBundle.load(welcomeEn);
+      } else if (langCode == "ru") {
+        bytes = await rootBundle.load(welcomeRu);
+      }
     }
 
     Uint8List soundbytes =
@@ -88,7 +125,8 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
     }
   }
 
-  stopAudio() {
-    state.audioPlayer.stop();
+  stopAudio() async {
+    await state.audioPlayer.stop();
+    await audioListening.cancel();
   }
 }

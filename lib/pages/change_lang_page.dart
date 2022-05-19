@@ -7,7 +7,8 @@ import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dar
 import 'package:lottie/lottie.dart';
 
 class LangChangePage extends StatefulWidget {
-  const LangChangePage({Key? key}) : super(key: key);
+  int count;
+  LangChangePage({Key? key, required this.count}) : super(key: key);
 
   @override
   State<LangChangePage> createState() => _LangChangePageState();
@@ -26,7 +27,7 @@ class _LangChangePageState extends State<LangChangePage>
     BlocProvider.of<SpeechToTextCubit>(context).initSpeech();
 
     BlocProvider.of<MediaplayerCubit>(context)
-        .onComplatedAudioAndStart(context);
+        .onComplatedAudioAndStart(context, widget.count);
   }
 
   @override

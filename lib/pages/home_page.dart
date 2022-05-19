@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_state.dart';
+import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
 import 'package:key_board_app/views/home_grid_view.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,6 +18,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     BlocProvider.of<LoadLangCubit>(context).loadedLang();
+
+    BlocProvider.of<MediaplayerCubit>(context)
+        .onComplatedAudioAndStart(context, 8);
     super.initState();
   }
 
@@ -68,17 +72,20 @@ class _HomePageState extends State<HomePage> {
                                   "keyboard".tr(),
                                   const Icon(Icons.keyboard,
                                       size: 30, color: Colors.white),
-                                  ItemOfGridHome.KeybordItem,context),
+                                  ItemOfGridHome.KeybordItem,
+                                  context),
                               itemGrid(
                                   "text_in_image".tr(),
                                   const Icon(Icons.camera_alt,
                                       size: 30, color: Colors.white),
-                                  ItemOfGridHome.TextInImageItem,context),
+                                  ItemOfGridHome.TextInImageItem,
+                                  context),
                               itemGrid(
                                   "book".tr(),
                                   const Icon(Icons.multitrack_audio,
                                       size: 30, color: Colors.white),
-                                  ItemOfGridHome.BookRecordingItem,context),
+                                  ItemOfGridHome.BookRecordingItem,
+                                  context),
                               itemGrid(
                                   "settings".tr(),
                                   const Icon(
@@ -86,7 +93,8 @@ class _HomePageState extends State<HomePage> {
                                     size: 30,
                                     color: Colors.white,
                                   ),
-                                  ItemOfGridHome.SettingItem,context),
+                                  ItemOfGridHome.SettingItem,
+                                  context),
                             ],
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),

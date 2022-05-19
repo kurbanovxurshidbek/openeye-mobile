@@ -13,7 +13,7 @@ import 'package:key_board_app/services/hive_service.dart';
 import 'pages/change_lang_page.dart';
 import 'themes/theme_of_app.dart';
 
-bool haveUser=false;
+bool haveUser = false;
 
 void main(List<String> args) async {
   // flutter Binding Initialized
@@ -24,7 +24,6 @@ void main(List<String> args) async {
     [DeviceOrientation.portraitUp],
   );
 
-
   // easy localization Initialized
   await EasyLocalization.ensureInitialized();
 
@@ -34,7 +33,6 @@ void main(List<String> args) async {
 
   //have user
   await starterPage();
-
 
   runApp(
     // easy localization
@@ -50,13 +48,13 @@ void main(List<String> args) async {
   );
 }
 
-Future<void> starterPage()async {
- var result =   await HiveDB.loadLangCode();
- if(result !=null){
-    haveUser =true;
- }
-
+Future<void> starterPage() async {
+  var result = await HiveDB.loadLangCode();
+  if (result != null) {
+    haveUser = true;
+  }
 }
+
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
@@ -86,7 +84,7 @@ class App extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         theme: ThemeOf.ligth(),
-        home: haveUser?const HomePage():const LangChangePage(),
+        home: haveUser ? const HomePage() : LangChangePage(count: 1),
       ),
     );
   }
