@@ -253,3 +253,55 @@ Eliser2(String currentWord) {
     return currentWord;
   }
 }
+
+// sonni textga o'girish
+numToText(String text) {
+  Map<String,Map<String,String>> map = {
+    "1":{
+      "0":"no'l",
+      "1":"bir",
+      "2":"ikki",
+      "3":"uch",
+      "4":"to'rt",
+      "5":"besh",
+      "6":"olti",
+      "7":"yetti",
+      "8":"sakkiz",
+      "9":"to'qqiz",
+    },
+    "2":{
+      "1":"o'n",
+      "2":"yigirma",
+      "3":"o'ttiz",
+      "4":"qirq",
+      "5":"ellik",
+      "6":"oltmish",
+      "7":"yetmish",
+      "8":"sakson",
+      "9":"to'qson",
+    },
+    "3":{
+      "1":"biryuz",
+      "2":"ikkiyuz",
+      "3":"uchyuz",
+      "4":"to'rtyuz",
+      "5":"beshyuz",
+      "6":"oltiyuz",
+      "7":"yettiyuz",
+      "8":"sakkizyuz",
+      "9":"to'qqizyuz",
+    },
+    "4":{},
+    "5":{},
+    "6":{},
+    "7":{},
+    "8":{},
+    "9":{},
+    "10":{},
+    "11":{},
+    "12":{},
+    "13":{},
+    "14":{},
+    "15":{},
+  };
+}
