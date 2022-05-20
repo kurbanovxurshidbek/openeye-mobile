@@ -54,7 +54,6 @@ String numToText(String text) {
   if(text.startsWith("0") || text == "0") {
     String son = int.parse(text).toString();
     String son2 = text.replaceFirst(int.parse(text).toString(),"");
-    print("son = ${son}\nson2 = ${son2}");
     if(son == "0") {
       result = "nu'l";
     } else {
