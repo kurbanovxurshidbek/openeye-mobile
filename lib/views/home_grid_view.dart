@@ -5,8 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/for_image_find_text/img_find_text_cubit.dart';
 
+import '../navigators/goto.dart';
+import '../pages/reading_audio_page.dart';
+
 //home page item on tap fucntions
-void itemGridOnPressed(ItemOfGridHome itemOfGridHome,BuildContext context) {
+void itemGridOnPressed(ItemOfGridHome itemOfGridHome, BuildContext context) {
   switch (itemOfGridHome) {
     case ItemOfGridHome.KeybordItem:
       androidOrIos();
@@ -17,7 +20,9 @@ void itemGridOnPressed(ItemOfGridHome itemOfGridHome,BuildContext context) {
       }
       break;
     case ItemOfGridHome.BookRecordingItem:
-      {}
+      {
+        GOTO.push(context, ReadingPage());
+      }
       break;
     case ItemOfGridHome.SettingItem:
       {}
@@ -42,10 +47,11 @@ androidOrIos() async {
   } else if (Platform.isIOS) {}
 }
 
-Widget itemGrid(String title, Icon icon, ItemOfGridHome itemOfGridHome,BuildContext context) {
+Widget itemGrid(String title, Icon icon, ItemOfGridHome itemOfGridHome,
+    BuildContext context) {
   return GestureDetector(
     onTap: () {
-      itemGridOnPressed(itemOfGridHome,context);
+      itemGridOnPressed(itemOfGridHome, context);
     },
     child: Container(
       decoration: BoxDecoration(

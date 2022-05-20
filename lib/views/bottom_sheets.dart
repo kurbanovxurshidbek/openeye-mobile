@@ -151,3 +151,27 @@ showBottomS(BuildContext context1) {
         );
       });
 }
+
+saveAudioDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (c) {
+        return AlertDialog(
+          backgroundColor: Colors.grey.shade300,
+          title: Text("Save date"),
+          content: Text("You are exiting save date?"),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  GOTO.pop(context);
+                },
+                child: Text("Save")),
+            TextButton(
+                onPressed: () {
+                  GOTO.pop(context);
+                },
+                child: Text("Exit")),
+          ],
+        );
+      });
+}

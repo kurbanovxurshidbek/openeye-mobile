@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,16 +9,19 @@ import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dar
 import 'package:key_board_app/services/hive_service.dart';
 import '../../views/bottom_sheets.dart';
 import 'mediaplayer_state.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 class MediaplayerCubit extends Cubit<MediaPlayerState> {
   MediaplayerCubit() : super(MediaPlayerState(audioPlayer: AudioPlayer()));
 
   late StreamSubscription audioListening;
+  late File file;
 
   onComplatedAudioAndStart(BuildContext context, int _count) async {
     int count = _count;
 
-    String done = await HiveDB.loadCountryCode(key: "in_home");
+    String? done = await HiveDB.loadCountryCode(key: "in_home");
     if (done == "done") {
       return;
     }
@@ -28,6 +30,7 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
 
     audioListening = state.audioPlayer.onPlayerCompletion.listen(
       (event) {
+        file.deleteSync();
         count++;
         print(count);
 
@@ -116,7 +119,15 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
 
     Uint8List soundbytes =
         bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
-    int result = await state.audioPlayer.playBytes(soundbytes);
+
+// store unit8List audio here ;
+    final tempDir = await getTemporaryDirectory();
+    file = await File('${tempDir.path}/image.mp3').create();
+    await file.writeAsBytes(soundbytes);
+    print(tempDir.path +
+        "000000000000000000000000000000000000000000000000000000000000000");
+
+    int result = await state.audioPlayer.play(file.path, isLocal: true);
     if (result == 1) {
       //play success
       print("Sound playing successful.");

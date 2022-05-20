@@ -6,7 +6,7 @@ import 'package:key_board_app/services/hive_service.dart';
 
 class LoadLangCubit extends Cubit<LoadLangState> {
   BuildContext context;
-  String countyCode = "";
+  String? countyCode = "";
   String langCode = "";
   LoadLangCubit({required this.context})
       : super(LoadLangState(isLoading: true));

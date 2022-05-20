@@ -19,7 +19,7 @@ class HiveDB {
     return langCode;
   }
 
-  static String loadCountryCode({String? key}) {
+  static String? loadCountryCode({String? key}) {
     if (key != null) {
       return box.get(key);
     }
