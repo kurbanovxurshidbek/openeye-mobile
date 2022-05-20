@@ -10,12 +10,19 @@ class HiveDB {
     await box.put("countryCode", countryCode);
   }
 
+  static Future<void> saveData(String key, String value) async {
+    await box.put(key, value);
+  }
+
   static String? loadLangCode() {
     var langCode = box.get("langCode");
     return langCode;
   }
 
-  static String loadCountryCode() {
+  static String loadCountryCode({String? key}) {
+    if (key != null) {
+      return box.get(key);
+    }
     var countryCode = box.get("countryCode");
     return countryCode;
   }
