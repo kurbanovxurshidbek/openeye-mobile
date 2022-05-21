@@ -80,7 +80,10 @@ showBottomS(BuildContext context1) {
       builder: (context1) {
         return Container(
           padding: const EdgeInsets.all(10),
-          height: MediaQuery.of(context1).size.height * 0.4,
+          height: MediaQuery
+              .of(context1)
+              .size
+              .height * 0.4,
           margin: const EdgeInsets.only(top: 10),
           decoration: const BoxDecoration(
               boxShadow: [
@@ -102,12 +105,25 @@ showBottomS(BuildContext context1) {
               RichText(
                   text: TextSpan(
                       text: "Choose\n",
-                      style: Theme.of(context1).textTheme.headline6,
+                      style: Theme
+                          .of(context1)
+                          .textTheme
+                          .headline6,
                       children: [
+<<<<<<< HEAD
                     TextSpan(
                         text: "your language",
                         style: Theme.of(context1).textTheme.bodyText1)
                   ])),
+=======
+                        TextSpan(
+                            text: "your language",
+                            style: Theme
+                                .of(context1)
+                                .textTheme
+                                .bodyText1)
+                      ])),
+>>>>>>> 1383b14bc70a1476aa2e4c0a8002b1442c831290
               Container(
                 height: 120,
                 child: Row(
@@ -150,28 +166,32 @@ showBottomS(BuildContext context1) {
           width: double.infinity,
         );
       });
+<<<<<<< HEAD
 }
+=======
+>>>>>>> 1383b14bc70a1476aa2e4c0a8002b1442c831290
 
-saveAudioDialog(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (c) {
-        return AlertDialog(
-          backgroundColor: Colors.grey.shade300,
-          title: Text("Save date"),
-          content: Text("You are exiting save date?"),
-          actions: [
-            TextButton(
-                onPressed: () {
-                  GOTO.pop(context);
-                },
-                child: Text("Save")),
-            TextButton(
-                onPressed: () {
-                  GOTO.pop(context);
-                },
-                child: Text("Exit")),
-          ],
-        );
-      });
+  saveAudioDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (c) {
+          return AlertDialog(
+            backgroundColor: Colors.grey.shade300,
+            title: const Text("Save date"),
+            content: const Text("You are exiting save date?"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    GOTO.pop(context);
+                  },
+                  child: const Text("Save")),
+              TextButton(
+                  onPressed: () {
+                    GOTO.pop(context);
+                  },
+                  child: const Text("Exit")),
+            ],
+          );
+        });
+  }
 }

@@ -1,3 +1,4 @@
+import 'dart:core';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -13,6 +14,16 @@ class HiveDB {
   static Future<void> saveData(String key, String value) async {
     await box.put(key, value);
   }
+
+  static Future <void>saveVoice(String voice,String gender)async{
+    await box.put(voice, gender);
+  }
+
+  static String? loadVoice(){
+    String now = box.get("voice");
+    return now;
+  }
+
 
   static String? loadLangCode() {
     var langCode = box.get("langCode");
