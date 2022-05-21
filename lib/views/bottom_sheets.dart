@@ -104,10 +104,10 @@ showBottomS(BuildContext context1) {
                       text: "Choose\n",
                       style: Theme.of(context1).textTheme.headline6,
                       children: [
-                        TextSpan(
-                            text: "your language",
-                            style: Theme.of(context1).textTheme.bodyText1)
-                      ])),
+                    TextSpan(
+                        text: "your language",
+                        style: Theme.of(context1).textTheme.bodyText1)
+                  ])),
               Container(
                 height: 120,
                 child: Row(
@@ -117,8 +117,8 @@ showBottomS(BuildContext context1) {
                       index == 0
                           ? 1
                           : index == 1
-                          ? 8.1
-                          : 14.1,
+                              ? 8.1
+                              : 14.1,
                       BlocBuilder<MainaligmentCubit, MainAligmentState>(
                         builder: (context, state) {
                           return GestureDetector(
@@ -150,7 +150,6 @@ showBottomS(BuildContext context1) {
           width: double.infinity,
         );
       });
-<<<<<<< HEAD
 }
 
 saveAudioDialog(BuildContext context) {
@@ -176,6 +175,3 @@ saveAudioDialog(BuildContext context) {
         );
       });
 }
-=======
-}
->>>>>>> 7b4495450006e8f6e5f0143de1a0ce698399f973
