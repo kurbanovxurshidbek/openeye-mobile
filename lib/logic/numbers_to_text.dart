@@ -1,4 +1,12 @@
-String numToText(String text) {
+String textEditing(String text) {
+  RegExp regex = RegExp("[0-9]+");
+  while(text.contains(regex)) {
+    text = text.replaceFirst(regex, numToText(regex.stringMatch(text)!,text[text.indexOf(regex)+((regex.stringMatch(text)!.length))] == "-"));
+  }
+  return text;
+}
+
+String numToText(String text,bool chi) {
   String result = "";
   Map<String,Map<String,String>> mapp = {
     "0" : {
@@ -49,7 +57,6 @@ String numToText(String text) {
     24 : " septillion",
   };
 
-
   // noto'gri sonlar uchun___________________________________
   if(text.startsWith("0") || text == "0") {
     String son = int.parse(text).toString();
@@ -63,7 +70,7 @@ String numToText(String text) {
       if(son.isEmpty) {
         result = result.substring(0,result.length-1);
       }
-      result += numToText(son);
+      result += numToText(son,false);
     }
   }
   //_________________________________________________________
@@ -89,6 +96,8 @@ String numToText(String text) {
     }
   }
   //_________________________________________________________
-
+  if(chi) {
+    result += " inchi";
+  }
   return result;
 }
