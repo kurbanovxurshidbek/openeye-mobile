@@ -1,3 +1,11 @@
+String textEditing(String text) {
+  RegExp regex = RegExp("[0-9]+");
+  while(text.contains(regex)) {
+    text = text.replaceFirst(regex, numToText(regex.stringMatch(text)!));
+  }
+  return text;
+}
+
 String numToText(String text) {
   String result = "";
   Map<String,Map<String,String>> mapp = {
@@ -49,7 +57,6 @@ String numToText(String text) {
     24 : " septillion",
   };
 
-
   // noto'gri sonlar uchun___________________________________
   if(text.startsWith("0") || text == "0") {
     String son = int.parse(text).toString();
@@ -89,6 +96,5 @@ String numToText(String text) {
     }
   }
   //_________________________________________________________
-
   return result;
 }
