@@ -1,36 +1,32 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_state.dart';
-import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
 import 'package:key_board_app/views/full_grid_view.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+import '../constants/enums.dart';
+
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    BlocProvider.of<LoadLangCubit>(context).loadedLang();
-
-    BlocProvider.of<MediaplayerCubit>(context)
-        .onComplatedAudioAndStart(context, 8);
-    super.initState();
-  }
-
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoadLangCubit, LoadLangState>(
-      builder: (context, state) {
-        return Scaffold(
-          body: SafeArea(
-            child: state.isLoading
+    return SafeArea(
+      child: BlocBuilder<LoadLangCubit, LoadLangState>(
+        builder: (context, state) {
+          return Scaffold(
+            extendBodyBehindAppBar: true,
+            appBar: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.white.withOpacity(0),
+            ),
+            body: state.isLoading
                 ? Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +50,6 @@ class _HomePageState extends State<HomePage> {
                           Color(0xFF52e5de),
                         ])),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.6,
@@ -69,40 +64,16 @@ class _HomePageState extends State<HomePage> {
                             ),
                             children: [
                               itemGrid(
-                                  "keyboard".tr(),
-                                  const Icon(Icons.keyboard,
+                                  "voice".tr(),
+                                  const Icon(Icons.record_voice_over,
                                       size: 30, color: Colors.white),
-                                  ItemOfFullGrid.KeybordItem,
+                                  ItemOfFullGrid.Voice,
                                   context),
                               itemGrid(
-                                  "text_in_image".tr(),
-                                  const Icon(Icons.camera_alt,
+                                  "lang".tr(),
+                                  const Icon(Icons.language,
                                       size: 30, color: Colors.white),
-                                  ItemOfFullGrid.TextInImageItem,
-                                  context),
-                              itemGrid(
-                                  "book".tr(),
-                                  const Icon(Icons.multitrack_audio,
-                                      size: 30, color: Colors.white),
-                                  ItemOfFullGrid.BookRecordingItem,
-                                  context),
-                              itemGrid(
-                                  "settings".tr(),
-                                  const Icon(
-                                    Icons.settings,
-                                    size: 30,
-                                    color: Colors.white,
-                                  ),
-                                  ItemOfFullGrid.SettingItem,
-                                  context),
-                              itemGrid(
-                                  "saved_books".tr(),
-                                  const Icon(
-                                    Icons.settings,
-                                    size: 30,
-                                    color: Colors.white,
-                                  ),
-                                  ItemOfFullGrid.ListOfSavedAudioBooks,
+                                  ItemOfFullGrid.Lang,
                                   context),
                             ],
                             shrinkWrap: true,
@@ -110,11 +81,10 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ],
-                    ),
-                  ),
-          ),
-        );
-      },
+                    )),
+          );
+        },
+      ),
     );
   }
 }

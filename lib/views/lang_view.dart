@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -5,6 +6,7 @@ class LangUI extends StatelessWidget {
   String lang;
   String hello;
   bool isChackLang;
+  Image? icon;
   final textStyle1 = const TextStyle(
       fontSize: 20,
       fontFamily: "Serif",
@@ -23,13 +25,16 @@ class LangUI extends StatelessWidget {
       {Key? key,
       required this.hello,
       required this.lang,
+      this.icon,
       this.isChackLang = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width / 3.5,
+      width: icon != null
+          ? MediaQuery.of(context).size.width / 2.2
+          : MediaQuery.of(context).size.width / 3.5,
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.all(10),
       child: isChackLang
@@ -40,14 +45,16 @@ class LangUI extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(),
-                Text(
-                  hello,
-                  style: textStyle1,
-                ),
+                icon != null
+                    ? icon!
+                    : Text(
+                        hello,
+                        style: textStyle1,
+                      ).tr(),
                 Text(
                   lang,
                   style: textStyle2,
-                )
+                ).tr()
               ],
             ),
       decoration: BoxDecoration(boxShadow: [

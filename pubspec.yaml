@@ -42,6 +42,10 @@ dependencies:
   audio_video_progress_bar: ^0.10.0
   # get path from storage
   path_provider: ^2.0.10
+  # work with pdf files
+  syncfusion_flutter_pdf: ^20.1.56-beta
+  read_pdf_text: ^0.2.1
+  
   
 
 

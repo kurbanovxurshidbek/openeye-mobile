@@ -1,10 +1,23 @@
- class ReadingAudioBookState {
+import 'dart:io';
+
+import 'package:audioplayers/audioplayers.dart';
+import 'package:key_board_app/models/audio_model.dart';
+
+class ReadingAudioBookState {
   bool isLoading;
-  double? currentPosition;
-  double? duration;
+  List<AudioModel> listOfAudio;
+  Duration? currentPosition;
+  Duration? duration;
   bool? isPlaying;
-  bool isFamale;
+  AudioPlayer? audioPlayer;
+  int index;
 
   ReadingAudioBookState(
-      {required this.isLoading, this.currentPosition, this.duration, this.isPlaying,required this.isFamale});
+      {required this.isLoading,
+      required this.index,
+      required this.currentPosition,
+      required this.duration,
+      required this.audioPlayer,
+      required this.listOfAudio,
+      required this.isPlaying});
 }

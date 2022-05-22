@@ -1,7 +1,12 @@
 // for home page item pressed
-enum ItemOfGridHome {
+enum ItemOfFullGrid {
   KeybordItem,
   TextInImageItem,
   BookRecordingItem,
-  SettingItem
+  SettingItem,
+  Voice,
+  Lang,
+  ListOfSavedAudioBooks
 }
+
+enum Voice { MALE, FAMALE }

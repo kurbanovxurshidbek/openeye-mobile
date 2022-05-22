@@ -6,8 +6,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:key_board_app/cubits/for_image_find_text/img_find_text_cubit.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
+import 'package:key_board_app/cubits/for_read_audio_book/reading_audio_book_cubit.dart';
 import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
+import 'package:key_board_app/cubits/saved_book/saved_books_cubit.dart';
 import 'package:key_board_app/pages/home_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'pages/change_lang_page.dart';
@@ -76,6 +78,12 @@ class App extends StatelessWidget {
         })),
         BlocProvider(create: ((context) {
           return ImgFindTextCubit(context: context);
+        })),
+        BlocProvider(create: ((context) {
+          return ReadingAudioBookCubit();
+        })),
+        BlocProvider(create: ((context) {
+          return SavedBooksCubit();
         })),
       ],
       child: MaterialApp(

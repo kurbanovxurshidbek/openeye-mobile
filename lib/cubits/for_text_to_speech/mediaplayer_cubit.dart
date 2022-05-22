@@ -124,10 +124,9 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
     final tempDir = await getTemporaryDirectory();
     file = await File('${tempDir.path}/image.mp3').create();
     await file.writeAsBytes(soundbytes);
-    print(tempDir.path +
-        "000000000000000000000000000000000000000000000000000000000000000");
 
     int result = await state.audioPlayer.play(file.path, isLocal: true);
+
     if (result == 1) {
       //play success
       print("Sound playing successful.");

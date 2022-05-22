@@ -1,20 +1,17 @@
-import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
-import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/services/hive_service.dart';
 
 class Network {
   static bool isTester = true;
 
-  static String SERVER_DEVELOPMENT = "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1";
+  static String SERVER_DEVELOPMENT =
+      "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1";
   static String SERVER_PRODUCTION = "eastus.tts.speech.microsoft.com";
 
   static Map<String, String> getHeaders() {
-    Map<String, String>
-    headers = {
+    Map<String, String> headers = {
       "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3",
       "Content-Type": "application/ssml+xml",
       "Ocp-Apim-Subscription-Key": "4bbf84b7e45d49e9a6b1af4d43efd368",
@@ -41,18 +38,61 @@ class Network {
 
   static Future<Uint8List?> POST(String body) async {
     var uri = Uri.parse(SERVER_DEVELOPMENT); // http or https
-    var response =
-    await post(uri, headers: getHeaders(), body: body);
+    var response = await post(uri, headers: getHeaders(), body: body);
+    print(response.statusCode);
     print(response.body);
 
-    if (response.statusCode == 200 || response.statusCode == 201)
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return response.bodyBytes;
-    return null;
+    } else {
+      return null;
+    }
   }
 
+  static Future<Uint8List?> getAudioFromApi(String content) async {
+    String? langCode = HiveDB.loadLangCode()!;
+    String? voice = HiveDB.loadCountryCode(key: "voice")!;
+    Uint8List? uint8list;
 
-  Future <String?> MULTIPART(String api, String filePath,
-      Map<String, String>params) async {
+    print(langCode + "--------------------");
+    print(voice.toString() + "+++++++++++++++++++++++");
+    print(content);
+
+    switch (langCode) {
+      case "uz":
+        {
+          uint8list = await POST(getBody(
+              langCode: lang_code_uz,
+              speeker:
+                  (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
+              content: content));
+        }
+        break;
+      case "en":
+        {
+          uint8list = await POST(getBody(
+              langCode: lang_code_en,
+              speeker:
+                  (voice == "famale") ? speeker_en_famale : speeker_en_male,
+              content: content));
+        }
+        break;
+      case "ru":
+        {
+          uint8list = await POST(getBody(
+              langCode: lang_code_ru,
+              speeker:
+                  (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
+              content: content));
+        }
+        break;
+    }
+
+    return uint8list;
+  }
+
+  Future<String?> MULTIPART(
+      String api, String filePath, Map<String, String> params) async {
     var uri = Uri.https(getServer(), api);
     var request = MultipartRequest("POST", uri);
 
@@ -65,7 +105,6 @@ class Network {
   }
 
   ///file bilan ishlash uchun serverga fayl yuklash uchun ishlatiladi
-
 
   static Future<String?> DEL(String api, Map<String, String> params) async {
     var uri = Uri.https(getServer(), api, params); // http or https
@@ -95,23 +134,12 @@ class Network {
   static String speeker_en_famale = 'en-US-SaraNeural';
   static String speeker_en_male = 'en-US-JacobNeural';
 
-
-  static getBody({required String langCode, required String speeker, required String content}) {
-    String body = "<speak version='1.0' xml:lang='$langCode'><voice xml:lang='$langCode' xml:gender='Famale' name='uz-UZ-SardorNeural'> $content</voice></speak>";
+  static getBody(
+      {required String langCode,
+      required String speeker,
+      required String content}) {
+    String body =
+        "<speak version='1.0' xml:lang='$langCode'><voice xml:lang='$langCode' xml:gender='Famale' name='$speeker'> $content</voice></speak>";
     return body;
   }
-
- static Future  apiGetVoice(String content,speeker,code)async{
-   Uint8List? list = await  POST(getBody(langCode: code, speeker: speeker, content: content));
-
-   if(list !=null){
-
-   }
-
-  }
-
-
-
-
-
 }
