@@ -1,17 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_state.dart';
+import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
 import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_state.dart';
 import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
+import 'package:key_board_app/models/audio_model.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import '../animations/fade_animatoin.dart';
 import '../navigators/goto.dart';
 import '../pages/home_page.dart';
 import 'lang_view.dart';
 
-showBottomS(BuildContext context1) {
+showBottomS(BuildContext context1, {bool inSettings = false}) {
   List<String> listLang = [
     "O`zbek",
     "English",
@@ -25,11 +29,13 @@ showBottomS(BuildContext context1) {
   ];
 
   savedLanguage(BuildContext context, int index) async {
-    BlocProvider.of<SpeechToTextCubit>(context).stopListening("stop");
-    BlocProvider.of<MainaligmentCubit>(context)
-        .makeStartPosition(true, chackingItem: index);
+    if (!inSettings) {
+      BlocProvider.of<SpeechToTextCubit>(context).stopListening("stop");
+      BlocProvider.of<MainaligmentCubit>(context)
+          .makeStartPosition(true, chackingItem: index);
 
-    BlocProvider.of<MediaplayerCubit>(context).stopAudio();
+      BlocProvider.of<MediaplayerCubit>(context).stopAudio();
+    }
 
     ///store in HiveDB
     switch (index) {
@@ -43,26 +49,47 @@ showBottomS(BuildContext context1) {
         await HiveDB.storeLang("ru", "RU");
         break;
     }
-    GOTO.pushRpUntil(context, const HomePage());
+    if (!inSettings) {
+      await HiveDB.saveData("voice", "famale");
+    }
+
+    if (inSettings) {
+      GOTO.pop(context);
+
+      await BlocProvider.of<LoadLangCubit>(context).loadedLang();
+      await BlocProvider.of<MainaligmentCubit>(context)
+          .makeStartPosition(true, chackingItem: 9999);
+    } else {
+      GOTO.pushRpUntil(context, const HomePage());
+    }
   }
 
   listenerBloc(context, state) async {
     if (state.langCode != null) {
       if (state.langCode == "uz") {
         await HiveDB.storeLang("uz", "UZ");
+        if (!inSettings) {
+          await HiveDB.saveData("voice", "famale");
+        }
+
         GOTO.pushRpUntil(context, const HomePage());
       } else if (state.langCode == "en") {
         await HiveDB.storeLang("en", "US");
+        if (!inSettings) {
+          await HiveDB.saveData("voice", "famale");
+        }
+
         GOTO.pushRpUntil(context, const HomePage());
       } else if (state.langCode == "ru") {
         await HiveDB.storeLang("ru", "RU");
-        GOTO.pushRpUntil(context, const HomePage());
-      } else if (state.langCode == "en") {
-        await HiveDB.storeLang("en", "US");
-        GOTO.pushRpUntil(context, const HomePage());
-      } else if (state.langCode == "ru") {
-        await HiveDB.storeLang("ru", "RU");
-        GOTO.pushRpUntil(context, const HomePage());
+        if (!inSettings) {
+          await HiveDB.saveData("voice", "famale");
+        }
+        if (inSettings) {
+          GOTO.pop(context);
+        } else {
+          GOTO.pushRpUntil(context, const HomePage());
+        }
       }
     }
   }
@@ -80,10 +107,7 @@ showBottomS(BuildContext context1) {
       builder: (context1) {
         return Container(
           padding: const EdgeInsets.all(10),
-          height: MediaQuery
-              .of(context1)
-              .size
-              .height * 0.4,
+          height: MediaQuery.of(context1).size.height * 0.4,
           margin: const EdgeInsets.only(top: 10),
           decoration: const BoxDecoration(
               boxShadow: [
@@ -104,26 +128,13 @@ showBottomS(BuildContext context1) {
             children: [
               RichText(
                   text: TextSpan(
-                      text: "Choose\n",
-                      style: Theme
-                          .of(context1)
-                          .textTheme
-                          .headline6,
+                      text: "Choose".tr(),
+                      style: Theme.of(context1).textTheme.headline6,
                       children: [
-<<<<<<< HEAD
                     TextSpan(
-                        text: "your language",
-                        style: Theme.of(context1).textTheme.bodyText1)
+                        text: "your language".tr(),
+                        style: Theme.of(context1).textTheme.bodyText1),
                   ])),
-=======
-                        TextSpan(
-                            text: "your language",
-                            style: Theme
-                                .of(context1)
-                                .textTheme
-                                .bodyText1)
-                      ])),
->>>>>>> 1383b14bc70a1476aa2e4c0a8002b1442c831290
               Container(
                 height: 120,
                 child: Row(
@@ -133,8 +144,12 @@ showBottomS(BuildContext context1) {
                       index == 0
                           ? 1
                           : index == 1
-                              ? 8.1
-                              : 14.1,
+                              ? inSettings
+                                  ? 1
+                                  : 8.1
+                              : inSettings
+                                  ? 1
+                                  : 14.1,
                       BlocBuilder<MainaligmentCubit, MainAligmentState>(
                         builder: (context, state) {
                           return GestureDetector(
@@ -166,32 +181,95 @@ showBottomS(BuildContext context1) {
           width: double.infinity,
         );
       });
-<<<<<<< HEAD
 }
-=======
->>>>>>> 1383b14bc70a1476aa2e4c0a8002b1442c831290
 
-  saveAudioDialog(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (c) {
-          return AlertDialog(
-            backgroundColor: Colors.grey.shade300,
-            title: const Text("Save date"),
-            content: const Text("You are exiting save date?"),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    GOTO.pop(context);
-                  },
-                  child: const Text("Save")),
-              TextButton(
-                  onPressed: () {
-                    GOTO.pop(context);
-                  },
-                  child: const Text("Exit")),
-            ],
-          );
-        });
+voiceChooseSheet(BuildContext context) async {
+  savedLanguage(context, index) async {
+    if (index == 0) {
+      await HiveDB.saveData("voice", "male");
+    } else {
+      await HiveDB.saveData("voice", "famale");
+    }
+    GOTO.pop(context);
   }
+
+  List<String> listVoice = ["voice_male", "voice_famale"];
+
+  showModalBottomSheet(
+      isDismissible: false,
+      isScrollControlled: false,
+      clipBehavior: Clip.hardEdge,
+      elevation: 5,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.white.withOpacity(0),
+      enableDrag: false,
+      useRootNavigator: false,
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(10),
+          height: MediaQuery.of(context).size.height * 0.4,
+          margin: const EdgeInsets.only(top: 10),
+          decoration: const BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 5,
+                    color: Color.fromARGB(123, 202, 201, 201),
+                    offset: Offset(0, -0))
+              ],
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              )),
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              RichText(
+                  text: TextSpan(
+                      text: "choose_voice".tr(),
+                      style: Theme.of(context).textTheme.headline6,
+                      children: [])),
+              Container(
+                height: 120,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(2, (index) {
+                    return FadeAnimation(
+                      1,
+                      BlocBuilder<MainaligmentCubit, MainAligmentState>(
+                        builder: (context, state) {
+                          return GestureDetector(
+                            onTap: () {
+                              savedLanguage(context, index);
+                            },
+                            child: LangUI(
+                                icon: Image.asset(
+                                  index == 0
+                                      ? "assets/images/male.png"
+                                      : "assets/images/female.png",
+                                  width: 50,
+                                  height: 50,
+                                  color: Colors.grey,
+                                ),
+                                hello: "",
+                                lang: listVoice[index],
+                                isChackLang:
+                                    index == state.chackedItem ? true : false),
+                          );
+                        },
+                      ),
+                    );
+                  }),
+                ),
+              ),
+              Container(),
+              Container(),
+            ],
+          ),
+          width: double.infinity,
+        );
+      });
 }

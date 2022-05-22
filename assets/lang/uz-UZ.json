@@ -4,5 +4,23 @@
     "text_in_image" : "Rasmdagi matnni o'qish",
     "book" : "Audio kitob tinglash",
     "settings" : "Sozlamalar",
-    "loading": "Kuting..."
+    "loading": "Kuting...",
+    "voice_male":"Ekak",
+    "voice_famale":"Ayol",
+    "voice":"Ovoz",
+    "lang":"Til",
+    "Choose":"Tilingizni\n",
+    "your language":"tanlang",
+    "choose_voice":"Ovoz tanlang",
+    "save_audio":"Audio kitobni saqlash",
+    "discreption":"Saqlangan kitobni qayta tinglashingiz mumkin",
+    "save":"Saqlash",
+    "no":"Yo`q",
+    "saved_books":"Saqlangan kitoblar"
+
+
+
+
+    
+
 }

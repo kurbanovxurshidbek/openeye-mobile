@@ -9,12 +9,16 @@ class LoadLangCubit extends Cubit<LoadLangState> {
   String? countyCode = "";
   String langCode = "";
   LoadLangCubit({required this.context})
-      : super(LoadLangState(isLoading: true));
+      : super(LoadLangState(isLoading: false));
 
   loadedLang() async {
+    emit(LoadLangState(isLoading: true));
     countyCode = await HiveDB.loadCountryCode();
     langCode = await HiveDB.loadLangCode()!;
+
     await context.setLocale(Locale(langCode, countyCode));
+    await Future.delayed(Duration(milliseconds: 900));
+
     emit(LoadLangState(isLoading: false));
   }
 }

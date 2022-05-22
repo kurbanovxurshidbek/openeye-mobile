@@ -11,26 +11,25 @@ class HiveDB {
     await box.put("countryCode", countryCode);
   }
 
-  static Future<void> saveData(String key, String value) async {
+  static Future<void> saveData(String key, dynamic value) async {
     await box.put(key, value);
   }
 
-  static Future <void>saveVoice(String voice,String gender)async{
+  static Future<void> saveVoice(String voice, String gender) async {
     await box.put(voice, gender);
   }
 
-  static String? loadVoice(){
+  static String? loadVoice() {
     String now = box.get("voice");
     return now;
   }
-
 
   static String? loadLangCode() {
     var langCode = box.get("langCode");
     return langCode;
   }
 
-  static String? loadCountryCode({String? key}) {
+  static loadCountryCode({String? key}) {
     if (key != null) {
       return box.get(key);
     }

@@ -4,5 +4,18 @@
     "text_in_image" : "Reading the text in the picture",
     "book" : "Listen audiobook",
     "settings" : "Settings",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "voice_male":"Male",
+    "voice_famale":"Famale",
+    "voice":"Voice",
+    "lang":"Language",
+    "Choose":"Choose\n",
+    "your language":"your language",
+    "choose_voice":"Choose voice",
+    "save_audio":"Save the audio book",
+    "discreption":"You can listen to the saved book again",
+    "save":"Save",
+    "no":"No",
+    "saved_books":"Saved books"
+    
 }
