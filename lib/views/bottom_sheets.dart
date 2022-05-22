@@ -67,131 +67,131 @@ showBottomS(BuildContext context1) {
     }
   }
 
-  showModalBottomSheet(
-      isDismissible: false,
-      isScrollControlled: false,
-      clipBehavior: Clip.hardEdge,
-      elevation: 5,
-      backgroundColor: Colors.transparent,
-      barrierColor: Colors.white.withOpacity(0),
-      enableDrag: false,
-      useRootNavigator: false,
-      context: context1,
-      builder: (context1) {
-        return Container(
-          padding: const EdgeInsets.all(10),
-          height: MediaQuery
-              .of(context1)
-              .size
-              .height * 0.4,
-          margin: const EdgeInsets.only(top: 10),
-          decoration: const BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 5,
-                    color: Color.fromARGB(123, 202, 201, 201),
-                    offset: Offset(0, -0))
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-              )),
-          alignment: Alignment.centerLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              RichText(
-                  text: TextSpan(
-                      text: "Choose\n",
-                      style: Theme
-                          .of(context1)
-                          .textTheme
-                          .headline6,
-                      children: [
-<<<<<<< HEAD
-                    TextSpan(
-                        text: "your language",
-                        style: Theme.of(context1).textTheme.bodyText1)
-                  ])),
-=======
-                        TextSpan(
-                            text: "your language",
-                            style: Theme
-                                .of(context1)
-                                .textTheme
-                                .bodyText1)
-                      ])),
->>>>>>> 1383b14bc70a1476aa2e4c0a8002b1442c831290
-              Container(
-                height: 120,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(3, (index) {
-                    return FadeAnimation(
-                      index == 0
-                          ? 1
-                          : index == 1
-                              ? 8.1
-                              : 14.1,
-                      BlocBuilder<MainaligmentCubit, MainAligmentState>(
-                        builder: (context, state) {
-                          return GestureDetector(
-                            onTap: () {
-                              savedLanguage(context, index);
-                            },
-                            child: BlocListener<SpeechToTextCubit,
-                                SpeechToTextState>(
-                              listener: ((context, state) =>
-                                  listenerBloc(context, state)),
-                              child: LangUI(
-                                  hello: listHello[index],
-                                  lang: listLang[index],
-                                  isChackLang: index == state.chackedItem
-                                      ? true
-                                      : false),
-                            ),
-                          );
-                        },
-                      ),
-                    );
-                  }),
-                ),
-              ),
-              Container(),
-              Container(),
-            ],
-          ),
-          width: double.infinity,
+  // showModalBottomSheet(
+  //     isDismissible: false,
+  //     isScrollControlled: false,
+  //     clipBehavior: Clip.hardEdge,
+  //     elevation: 5,
+  //     backgroundColor: Colors.transparent,
+  //     barrierColor: Colors.white.withOpacity(0),
+  //     enableDrag: false,
+  //     useRootNavigator: false,
+  //     context: context1,
+  //     builder: (context1) {
+  //       return Container(
+  //           padding: const EdgeInsets.all(10),
+  //           height: MediaQuery
+  //               .of(context1)
+  //               .size
+  //               .height * 0.4,
+  //           margin: const EdgeInsets.only(top: 10),
+  //           decoration: const BoxDecoration(
+  //               boxShadow: [
+  //                 BoxShadow(
+  //                     blurRadius: 5,
+  //                     color: Color.fromARGB(123, 202, 201, 201),
+  //                     offset: Offset(0, -0))
+  //               ],
+  //               color: Colors.white,
+  //               borderRadius: BorderRadius.only(
+  //                 topLeft: Radius.circular(10),
+  //                 topRight: Radius.circular(10),
+  //               )),
+  //           alignment: Alignment.centerLeft,
+  //           child: Column(
+  //               crossAxisAlignment: CrossAxisAlignment.start,
+  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //               children: [
+  //           RichText(
+  //           text: TextSpan(
+  //           text: "Choose\n",
+  //               style: Theme
+  //                   .of(context1)
+  //                   .textTheme
+  //                   .headline6,
+  //               children: [
+  //           // <<<<<<< HEAD
+  //           TextSpan(
+  //           text: "your language",
+  //               style: Theme.of(context1).textTheme.bodyText1)
+  //           ])),
+  //       // =======
+  //       TextSpan(
+  //       text: "your language",
+  //       style: Theme
+  //           .of(context1)
+  //           .textTheme
+  //           .bodyText1)
+  //       ])),
+  //       >>>>>>> 1383b14bc70a1476aa2e4c0a8002b1442c831290
+  //       Container(
+  //       height: 120,
+  //       child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //       children: List.generate(3, (index) {
+  //       return FadeAnimation(
+  //       index == 0
+  //       ? 1
+  //           : index == 1
+  //       ? 8.1
+  //           : 14.1,
+  //       BlocBuilder<MainaligmentCubit, MainAligmentState>(
+  //       builder: (context, state) {
+  //       return GestureDetector(
+  //       onTap: () {
+  //       savedLanguage(context, index);
+  //       },
+  //       child: BlocListener<SpeechToTextCubit,
+  //       SpeechToTextState>(
+  //       listener: ((context, state) =>
+  //       listenerBloc(context, state)),
+  //       child: LangUI(
+  //       hello: listHello[index],
+  //       lang: listLang[index],
+  //       isChackLang: index == state.chackedItem
+  //       ? true
+  //           : false),
+  //       ),
+  //       );
+  //       },
+  //       ),
+  //       );
+  //       }),
+  //       ),
+  //       ),
+  //       Container(),
+  //       Container(),
+  //       ],
+  //       ),
+//         width: double.infinity,
+//         );
+//       });
+//   <<<<<<< HEAD
+// }
+// =======
+// >>>>>>> 1383b14bc70a1476aa2e4c0a8002b1442c831290
+
+saveAudioDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (c) {
+        return AlertDialog(
+          backgroundColor: Colors.grey.shade300,
+          title: const Text("Save date"),
+          content: const Text("You are exiting save date?"),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  GOTO.pop(context);
+                },
+                child: const Text("Save")),
+            TextButton(
+                onPressed: () {
+                  GOTO.pop(context);
+                },
+                child: const Text("Exit")),
+          ],
         );
       });
-<<<<<<< HEAD
 }
-=======
->>>>>>> 1383b14bc70a1476aa2e4c0a8002b1442c831290
-
-  saveAudioDialog(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (c) {
-          return AlertDialog(
-            backgroundColor: Colors.grey.shade300,
-            title: const Text("Save date"),
-            content: const Text("You are exiting save date?"),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    GOTO.pop(context);
-                  },
-                  child: const Text("Save")),
-              TextButton(
-                  onPressed: () {
-                    GOTO.pop(context);
-                  },
-                  child: const Text("Exit")),
-            ],
-          );
-        });
-  }
 }
