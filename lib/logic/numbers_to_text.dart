@@ -6,7 +6,7 @@ String textEditing(String text) {
   return text;
 }
 
-String numToText(String text,bool chi) {
+String numToText(String text,bool inchi) {
   String result = "";
   Map<String,Map<String,String>> mapp = {
     "0" : {
@@ -96,7 +96,7 @@ String numToText(String text,bool chi) {
     }
   }
   //_________________________________________________________
-  if(chi) {
+  if(inchi) {
     result += " inchi";
   }
   return result;
