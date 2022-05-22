@@ -1,12 +1,16 @@
 String textEditing(String text) {
   RegExp regex = RegExp("[0-9]+");
+  RegExp regex2 = RegExp("[0-9]+([ ]+[-])");
   while(text.contains(regex)) {
-    text = text.replaceFirst(regex, numToText(regex.stringMatch(text)!,text[text.indexOf(regex)+((regex.stringMatch(text)!.length))] == "-"));
+    if(text.contains(regex2)) {
+      text = text.replaceFirst(regex2.firstMatch(text)!.group(1)!," inchi");
+    }
+    text = text.replaceFirst(regex, numToText(regex.stringMatch(text)!));
   }
   return text;
 }
 
-String numToText(String text,bool inchi) {
+String numToText(String text) {
   String result = "";
   Map<String,Map<String,String>> mapp = {
     "0" : {
@@ -70,7 +74,7 @@ String numToText(String text,bool inchi) {
       if(son.isEmpty) {
         result = result.substring(0,result.length-1);
       }
-      result += numToText(son,false);
+      result += numToText(son);
     }
   }
   //_________________________________________________________
@@ -96,8 +100,5 @@ String numToText(String text,bool inchi) {
     }
   }
   //_________________________________________________________
-  if(inchi) {
-    result += " inchi";
-  }
   return result;
 }
