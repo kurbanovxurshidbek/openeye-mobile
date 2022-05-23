@@ -25,10 +25,12 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white.withOpacity(0),
+        elevation: 2,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.blueGrey,
+        shadowColor: Colors.blueGrey,
       ),
       body: BlocBuilder<SavedBooksCubit, SavedBooksState>(
         builder: (context, state) {
@@ -36,17 +38,12 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    end: Alignment.topCenter,
-                    begin: Alignment.bottomCenter,
-                    colors: [
-                  Color(0xFF443efc),
-                  Color(0xFF52e5de),
-                ])),
+               color: Colors.white),
             child: ListView(
                 children: List.generate(
                     state.listOfAudioModels.length,
                     (index) => ListTile(
+
                           onTap: () {
                             GOTO.push(
                                 context,

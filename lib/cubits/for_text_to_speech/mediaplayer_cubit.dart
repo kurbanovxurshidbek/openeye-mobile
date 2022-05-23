@@ -62,6 +62,8 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
 
   pauseAudio() async {
     await state.audioPlayer.pause();
+
+    // List<Uint8List>
   }
 
   playAudio() async {

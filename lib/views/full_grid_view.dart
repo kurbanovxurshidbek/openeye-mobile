@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/for_image_find_text/img_find_text_cubit.dart';
 import 'package:key_board_app/cubits/for_read_audio_book/reading_audio_book_cubit.dart';
@@ -104,8 +105,27 @@ Widget itemGrid(String title, Icon icon, ItemOfFullGrid itemOfGridHome,
     },
     child: Container(
       decoration: BoxDecoration(
-        border: Border.all(width: 5, color: Colors.white24),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
+        // border: Border.all(color: Colors.black12,width: 1,
+        //
+        // ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blueGrey,
+            offset: const Offset(
+              0.0,
+              3.0,
+            ),
+            blurRadius: 3.0,
+            spreadRadius:0.1,
+          ), //BoxShadow
+          BoxShadow(
+            color: Colors.white,
+            offset: const Offset(0.0, 0.0),
+            // blurRadius: 1.0,
+            spreadRadius: 0.0,
+          ), //BoxShadow
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -119,8 +139,9 @@ Widget itemGrid(String title, Icon icon, ItemOfFullGrid itemOfGridHome,
             title,
             textAlign: TextAlign.center,
             style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
+              color: Colors.blueGrey
+                ,
+              fontSize: 20,fontWeight:FontWeight.bold
             ),
           ),
         ],

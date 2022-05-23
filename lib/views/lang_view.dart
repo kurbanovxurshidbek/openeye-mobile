@@ -11,17 +11,18 @@ class LangUI extends StatelessWidget {
       fontSize: 20,
       fontFamily: "Serif",
       fontWeight: FontWeight.bold,
-      color: const Color.fromARGB(255, 12, 12, 12),
+      color: Colors.blueGrey,
       fontStyle: FontStyle.normal);
 
   final textStyle2 = const TextStyle(
       fontSize: 14,
       fontFamily: "Serif",
       fontWeight: FontWeight.bold,
-      color: Color(0xFF204ff5),
+      color: Colors.blueGrey,
       fontStyle: FontStyle.normal);
 
   LangUI(
+
       {Key? key,
       required this.hello,
       required this.lang,
@@ -35,13 +36,13 @@ class LangUI extends StatelessWidget {
       width: icon != null
           ? MediaQuery.of(context).size.width / 2.2
           : MediaQuery.of(context).size.width / 3.5,
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.center,
       padding: const EdgeInsets.all(10),
       child: isChackLang
           ? Lottie.asset('assets/lottie/check.json',
               reverse: false, repeat: false, fit: BoxFit.cover)
           : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(),
@@ -60,7 +61,7 @@ class LangUI extends StatelessWidget {
       decoration: BoxDecoration(boxShadow: [
         const BoxShadow(
             blurRadius: 2,
-            color: Color.fromARGB(123, 202, 201, 201),
+            color: Colors.blueGrey,
             offset: Offset(2, 0))
       ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
     );
