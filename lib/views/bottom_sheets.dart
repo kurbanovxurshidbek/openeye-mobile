@@ -1,14 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_state.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
 import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_state.dart';
 import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
-import 'package:key_board_app/models/audio_model.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import '../animations/fade_animatoin.dart';
 import '../navigators/goto.dart';
