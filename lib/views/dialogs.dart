@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
 import '../models/audio_model.dart';
 import '../navigators/goto.dart';
 import '../pages/home_page.dart';
@@ -12,8 +14,24 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
       builder: (c) {
         return AlertDialog(
           backgroundColor: Colors.grey.shade300,
-          title: const Text("save_audio").tr(),
-          content: const Text("discreption").tr(),
+          title: const Text(
+            "save_audio",
+            style: TextStyle(
+                fontSize: 14,
+                fontFamily: "Serif",
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 49, 49, 49),
+                fontStyle: FontStyle.normal),
+          ).tr(),
+          content: const Text(
+            "discreption",
+            style: TextStyle(
+                fontSize: 14,
+                fontFamily: "Serif",
+                fontWeight: FontWeight.normal,
+                color: Color.fromARGB(255, 49, 49, 49),
+                fontStyle: FontStyle.normal),
+          ).tr(),
           actions: [
             TextButton(
                 onPressed: () async {
@@ -43,6 +61,46 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
                   }
                 },
                 child: const Text("no").tr()),
+          ],
+        );
+      });
+}
+
+errorDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (c) {
+        return AlertDialog(
+          title: const Text(
+            "error",
+            style: TextStyle(
+                fontSize: 14,
+                fontFamily: "Serif",
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 49, 49, 49),
+                fontStyle: FontStyle.normal),
+          ).tr(),
+          content: const Text(
+            "about_error",
+            style: TextStyle(
+                fontSize: 14,
+                fontFamily: "Serif",
+                fontWeight: FontWeight.normal,
+                color: Color.fromARGB(255, 49, 49, 49),
+                fontStyle: FontStyle.normal),
+          ).tr(),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  GOTO.pushRpUntil(context, HomePage());
+                },
+                child: Text("go_home").tr()),
+            TextButton(
+                onPressed: () {
+                  GOTO.popUT(context);
+                  BlocProvider.of<ConvertionCubit>(context).succesLoaded();
+                },
+                child: Text("try").tr()),
           ],
         );
       });
