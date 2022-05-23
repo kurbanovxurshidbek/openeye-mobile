@@ -16,6 +16,11 @@
     "discreption":"You can listen to the saved book again",
     "save":"Save",
     "no":"No",
-    "saved_books":"Saved books"
+    "saved_books":"Saved books",
+    "error":"An error occurred",
+    "about_error":"Please try again!",
+    "go_home":"Back to",
+    "try":"Try again"
+
     
 }

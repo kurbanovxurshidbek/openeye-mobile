@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.8,
+                      height: MediaQuery.of(context).size.height * 0.9,
                       width: MediaQuery.of(context).size.width,
                       child: GridView(
                         padding: EdgeInsets.all(15),
@@ -53,9 +53,8 @@ class _HomePageState extends State<HomePage> {
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           childAspectRatio: 1,
-                          mainAxisSpacing: 15,
-                          crossAxisSpacing: 15,
-
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
                         ),
                         children: [
                           itemGrid(
@@ -88,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                           itemGrid(
                               "saved_books".tr(),
                               const Icon(
-                                Icons.save_alt,
+                                Icons.settings,
                                 size: 30,
                                 color: Colors.blueGrey,
                               ),

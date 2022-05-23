@@ -1,14 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_state.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
 import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_state.dart';
 import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
-import 'package:key_board_app/models/audio_model.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import '../animations/fade_animatoin.dart';
 import '../navigators/goto.dart';
@@ -112,18 +110,20 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
           decoration: const BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    blurRadius: 2,
-                    color: Color.fromARGB(123, 202, 201, 201),
-                    offset: Offset(0, -0))
+                    blurRadius: 3.0,
+                    spreadRadius: 0,
+                    color: Colors.blueGrey,
+                    offset: Offset(2, -1)
+                )
               ],
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
               )),
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               RichText(
@@ -199,7 +199,7 @@ voiceChooseSheet(BuildContext context) async {
       isDismissible: false,
       isScrollControlled: false,
       clipBehavior: Clip.hardEdge,
-      elevation: 5,
+      elevation: 0,
       backgroundColor: Colors.transparent,
       barrierColor: Colors.white.withOpacity(0),
       enableDrag: false,
@@ -213,10 +213,10 @@ voiceChooseSheet(BuildContext context) async {
           decoration: const BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    blurRadius: 1,
-                    spreadRadius: 1,
+                    blurRadius: 3.0,
+                    spreadRadius: 0,
                     color: Colors.blueGrey,
-                     offset: Offset(4, 4)
+                     offset: Offset(2, -1)
                 )
               ],
               color: Colors.white,

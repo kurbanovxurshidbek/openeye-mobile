@@ -48,22 +48,14 @@ class _ReadingPageState extends State<ReadingPage> {
             appBar: AppBar(
               elevation: 0,
               backgroundColor: Colors.white,
-              leading: Center(
-                child: RaisedButton(
-                  onPressed: () async {
-                    saveAudioDialog(context, state.listOfAudio[state.index],
-                        isBack: true);
-                    BlocProvider.of<ReadingAudioBookCubit>(context).stop();
-                  },
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(10),
-                  child: Icon(
-                    Icons.arrow_back,
-                    size: 25,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+        leading: IconButton(
+        icon: Icon(Icons.arrow_back, color: Colors.blueGrey),
+        onPressed: () async {
+          saveAudioDialog(context, state.listOfAudio[state.index],
+              isBack: true);
+          BlocProvider.of<ReadingAudioBookCubit>(context).stop();
+        },)
+
             ),
             body: SafeArea(
               child: state.isLoading
@@ -78,16 +70,18 @@ class _ReadingPageState extends State<ReadingPage> {
                       ),
                     )
                   : Container(
+
                       alignment: Alignment.center,
                       padding: EdgeInsets.all(5),
                       color: Colors.white,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
                             height: 25,
                           ),
                           Container(
-                            height: MediaQuery.of(context).size.height * 0.5,
+                            height: MediaQuery.of(context).size.height * 0.35,
                             width: MediaQuery.of(context).size.width - 50,
                             child: Stack(
                               children: [
@@ -131,6 +125,9 @@ class _ReadingPageState extends State<ReadingPage> {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: Slider(
+                              inactiveColor: Colors.blueGrey.shade100,
+                              activeColor: Colors.blueGrey.shade600,
+                              thumbColor: Colors.blueGrey,
                                 min: 0,
                                 max: state.duration!.inSeconds.toDouble(),
                                 value:
@@ -142,7 +139,8 @@ class _ReadingPageState extends State<ReadingPage> {
                                 }),
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
+
+                            padding: EdgeInsets.symmetric(horizontal: 30),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -167,6 +165,7 @@ class _ReadingPageState extends State<ReadingPage> {
                             children: [
                               Expanded(
                                 child: RaisedButton(
+                                  color: Colors.white,
                                     onPressed: () {
                                       BlocProvider.of<ReadingAudioBookCubit>(
                                               context)
@@ -175,12 +174,13 @@ class _ReadingPageState extends State<ReadingPage> {
                                     shape: CircleBorder(),
                                     padding: EdgeInsets.all(8),
                                     child: Icon(
-                                      Icons.keyboard_double_arrow_left_sharp,
+                                      Icons.keyboard_double_arrow_left_sharp,color: Colors.blueGrey,
                                       size: 30,
                                     )),
                               ),
                               Expanded(
                                 child: RaisedButton(
+                                  color: Colors.white,
                                   shape: CircleBorder(),
                                   padding: EdgeInsets.all(20),
                                   onPressed: () {
@@ -192,12 +192,13 @@ class _ReadingPageState extends State<ReadingPage> {
                                     state.isPlaying!
                                         ? Icons.pause
                                         : Icons.play_arrow,
-                                    color: Colors.black,
+                                    color: Colors.blueGrey,
                                   ),
                                 ),
                               ),
                               Expanded(
                                 child: RaisedButton(
+                                  color: Colors.white,
                                   onPressed: () {
                                     BlocProvider.of<ReadingAudioBookCubit>(
                                             context)
@@ -207,25 +208,27 @@ class _ReadingPageState extends State<ReadingPage> {
                                   padding: EdgeInsets.all(8),
                                   child: Icon(
                                     Icons.keyboard_double_arrow_right,
-                                    size: 30,
+                                    size: 30,color: Colors.blueGrey,
                                   ),
                                 ),
                               ),
-                              Expanded(
-                                child: RaisedButton(
-                                    onPressed: () {
-                                      saveAudioDialog(context,
-                                          state.listOfAudio[state.index]);
-                                    },
-                                    shape: CircleBorder(),
-                                    padding: EdgeInsets.all(8),
-                                    child: Icon(
-                                      Icons.download,
-                                      size: 30,
-                                    )),
-                              ),
+
                             ],
                           ),
+SizedBox(height: 10,),
+                          RaisedButton(
+                              color: Colors.white,
+                              onPressed: () {
+                                saveAudioDialog(context,
+                                    state.listOfAudio[state.index]);
+                              },
+                              shape: CircleBorder(),
+                              padding: EdgeInsets.all(8),
+                              child: Icon(
+                                Icons.download,
+                                color: Colors.blueGrey,
+                                size: 30,
+                              )),
                         ],
                       )),
             ),

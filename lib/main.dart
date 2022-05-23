@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
 import 'package:key_board_app/cubits/for_image_find_text/img_find_text_cubit.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
@@ -84,6 +85,9 @@ class App extends StatelessWidget {
         })),
         BlocProvider(create: ((context) {
           return SavedBooksCubit();
+        })),
+        BlocProvider(create: ((context) {
+          return ConvertionCubit(context: context);
         })),
       ],
       child: MaterialApp(

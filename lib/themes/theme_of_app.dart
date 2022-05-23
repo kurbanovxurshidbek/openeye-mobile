@@ -29,7 +29,7 @@ class ThemeOf {
             fontSize: 45,
             fontFamily: "Serif",
             fontWeight: FontWeight.normal,
-            color: Color(0xFF0e3554),
+            color: Colors.blueGrey.shade600,
             fontStyle: FontStyle.normal),
         headline5: TextStyle(
             fontSize: 60,
@@ -55,7 +55,7 @@ class ThemeOf {
             fontSize: 20,
             fontFamily: "Serif",
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(129, 0, 0, 0),
+            color: Colors.blueGrey,
             fontStyle: FontStyle.normal),
         // ...add your text style
       ),
