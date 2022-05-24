@@ -1,5 +1,4 @@
 
-
 /// textni wu funksiyaga tashang
 String textEditing(String text) {
   RegExp regex = RegExp("[0-9]+");
