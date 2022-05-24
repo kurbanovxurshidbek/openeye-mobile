@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ThemeOf {
   static ThemeData ligth() {
     return ThemeData(
-      textTheme: const TextTheme(
+      textTheme:  TextTheme(
         // use    Text( "hello",  style: Theme.of(context).textTheme.headline1,),
         headline1: TextStyle(
             fontSize: 18,
@@ -48,7 +48,7 @@ class ThemeOf {
             fontSize: 35,
             fontFamily: "Serif",
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 0, 0, 0),
+            color: Colors.blueGrey.shade600,
             fontStyle: FontStyle.normal),
 
         bodyText1: TextStyle(

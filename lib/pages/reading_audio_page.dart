@@ -47,7 +47,7 @@ class _ReadingPageState extends State<ReadingPage> {
           child: Scaffold(
             appBar: AppBar(
               elevation: 0,
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.white.withOpacity(0),
               leading: Center(
                 child: RaisedButton(
                   onPressed: () async {

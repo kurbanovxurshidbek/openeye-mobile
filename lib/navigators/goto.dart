@@ -11,6 +11,14 @@ class GOTO {
     Navigator.pop(context);
   }
 
+  // navigator pop until
+  static void popUT(BuildContext context) {
+    Navigator.popUntil(
+      context,
+      (route) => route.isFirst,
+    );
+  }
+
   // navigator push replacement
   static void pushRP(BuildContext context, Widget route) {
     Navigator.pushReplacement(
