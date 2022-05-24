@@ -110,18 +110,20 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
           decoration: const BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    blurRadius: 2,
-                    color: Color.fromARGB(123, 202, 201, 201),
-                    offset: Offset(0, -0))
+                    blurRadius: 3.0,
+                    spreadRadius: 0,
+                    color: Colors.blueGrey,
+                    offset: Offset(2, -1)
+                )
               ],
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
               )),
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               RichText(
@@ -197,7 +199,7 @@ voiceChooseSheet(BuildContext context) async {
       isDismissible: false,
       isScrollControlled: false,
       clipBehavior: Clip.hardEdge,
-      elevation: 5,
+      elevation: 0,
       backgroundColor: Colors.transparent,
       barrierColor: Colors.white.withOpacity(0),
       enableDrag: false,
@@ -211,10 +213,10 @@ voiceChooseSheet(BuildContext context) async {
           decoration: const BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    blurRadius: 1,
-                    spreadRadius: 1,
+                    blurRadius: 3.0,
+                    spreadRadius: 0,
                     color: Colors.blueGrey,
-                     offset: Offset(4, 4)
+                     offset: Offset(2, -1)
                 )
               ],
               color: Colors.white,

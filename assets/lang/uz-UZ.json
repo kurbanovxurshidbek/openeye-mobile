@@ -1,7 +1,7 @@
 {
     "hello" : "Salom Dunyo",
     "keyboard" : "Klaviatura",
-    "text_in_image" : "Rasmdagi matnni o'qish",
+    "text_in_image" : "Rasmdagi\nmatnni o'qish",
     "book" : "Audio kitob tinglash",
     "settings" : "Sozlamalar",
     "loading": "Kuting...",

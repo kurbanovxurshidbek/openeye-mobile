@@ -1,8 +1,8 @@
 {
     "hello" : "Hello, World",
     "keyboard" : "Keyboard",
-    "text_in_image" : "Reading the text in the picture",
-    "book" : "Listen audiobook",
+    "text_in_image" : "Reading the text\nin the picture",
+    "book" : "Listen\naudiobook",
     "settings" : "Settings",
     "loading": "Loading...",
     "voice_male":"Male",
