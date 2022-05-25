@@ -25,10 +25,12 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white.withOpacity(0),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.blueGrey,
+        shadowColor: Colors.blueGrey,
       ),
       body: BlocBuilder<SavedBooksCubit, SavedBooksState>(
         builder: (context, state) {
@@ -36,51 +38,74 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    end: Alignment.topCenter,
-                    begin: Alignment.bottomCenter,
-                    colors: [
-                  Color(0xFF443efc),
-                  Color(0xFF52e5de),
-                ])),
+               color: Colors.white),
             child: ListView(
+
                 children: List.generate(
                     state.listOfAudioModels.length,
-                    (index) => ListTile(
-                          onTap: () {
-                            GOTO.push(
-                                context,
-                                ReadingPage(
-                                    listAudio: state.listOfAudioModels,
-                                    startOnIndex: index));
-                          },
-                          leading: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              "assets/images/audio_book.png",
-                              width: 60,
-                              height: 60,
-                              fit: BoxFit.cover,
-                            ),
+                    (index) => Column(
+                      children: [
+
+                        Container(
+                          height: 100,
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10,),color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.blueGrey,
+                                offset: const Offset(
+                                  0.0,
+                                  3.0,
+                                ),
+                                blurRadius: 3.0,
+                                spreadRadius:0.1,
+                              ), //BoxShadow
+                              //BoxShadow
+                            ],
                           ),
-                          title: Text(
-                            state.listOfAudioModels[index].name,
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: "Serif",
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 49, 49, 49),
-                                fontStyle: FontStyle.normal),
+                          child: Center(
+                            child: ListTile(
+
+                                  onTap: () {
+                                    GOTO.push(
+                                        context,
+                                        ReadingPage(
+                                            listAudio: state.listOfAudioModels,
+                                            startOnIndex: index));
+                                  },
+                                  leading: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset(
+                                      "assets/images/audio_book.png",
+                                      width: 60,
+                                      height: 60,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  title: Text(
+                                    state.listOfAudioModels[index].name,
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: "Serif",
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blueGrey.shade600,
+                                        fontStyle: FontStyle.normal),
+                                  ),
+                                  trailing: IconButton(
+                                      onPressed: () {
+                                        print("delete");
+                                      },
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.blueGrey,
+                                      )),
+                                ),
                           ),
-                          trailing: IconButton(
-                              onPressed: () {
-                                print("delete");
-                              },
-                              icon: Icon(
-                                Icons.delete,
-                                color: Colors.red,
-                              )),
-                        ))),
+                        ),
+
+                      ],
+                    ))),
           );
         },
       ),

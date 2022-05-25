@@ -71,13 +71,7 @@ class _LangChangePageState extends State<LangChangePage>
         child: Container(
           alignment: Alignment.center,
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  end: Alignment.topCenter,
-                  begin: Alignment.bottomCenter,
-                  colors: [
-                const Color(0xFF443efc),
-                Color(0xFF52e5de),
-              ])),
+              color: Colors.white),
           child: BlocBuilder<MainaligmentCubit, MainAligmentState>(
             builder: (context, state) {
               return Column(

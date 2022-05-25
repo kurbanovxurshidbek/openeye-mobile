@@ -1,7 +1,7 @@
 {
     "hello" : "Salom Dunyo",
     "keyboard" : "Klaviatura",
-    "text_in_image" : "Rasmdagi matnni o'qish",
+    "text_in_image" : "Rasmdagi\nmatnni o'qish",
     "book" : "Audio kitob tinglash",
     "settings" : "Sozlamalar",
     "loading": "Kuting...",
@@ -15,7 +15,7 @@
     "save_audio":"Audio kitobni saqlash",
     "discreption":"Saqlangan kitobni qayta tinglashingiz mumkin",
     "save":"Saqlash",
-    "no":"Yo`q",
+    "no":"Bekor qilish",
     "saved_books":"Saqlangan kitoblar",
     "error":"Xatolik yuz berdi",
     "about_error":"Qaytadan urinib ko`ring!",

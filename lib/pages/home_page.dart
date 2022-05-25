@@ -41,80 +41,65 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   )
-                : Container(
-                    padding: const EdgeInsets.all(20),
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                            end: Alignment.topCenter,
-                            begin: Alignment.bottomCenter,
-                            colors: [
-                          Color(0xFF443efc),
-                          Color(0xFF52e5de),
-                        ])),
-                    child: SingleChildScrollView(
-                      physics: NeverScrollableScrollPhysics(),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                : Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.9,
+                      width: MediaQuery.of(context).size.width,
+                      child: GridView(
+                        padding: EdgeInsets.all(15),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                        ),
                         children: [
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height,
-                            width: MediaQuery.of(context).size.width,
-                            child: GridView(
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 1,
-                                mainAxisSpacing: 10,
-                                crossAxisSpacing: 10,
+                          itemGrid(
+                              "keyboard".tr(),
+                              const Icon(Icons.keyboard,
+                                  size: 40, color: Colors.blueGrey),
+                              ItemOfFullGrid.KeybordItem,
+                              context),
+                          itemGrid(
+                              "text_in_image".tr(),
+                              const Icon(Icons.camera_alt,
+                                  size: 40, color: Colors.blueGrey),
+                              ItemOfFullGrid.TextInImageItem,
+                              context),
+                          itemGrid(
+                              "book".tr(),
+                              const Icon(Icons.multitrack_audio,
+                                  size: 40, color: Colors.blueGrey),
+                              ItemOfFullGrid.BookRecordingItem,
+                              context),
+                          itemGrid(
+                              "settings".tr(),
+                              const Icon(
+                                Icons.settings,
+                                size: 40,
+                                color: Colors.blueGrey,
                               ),
-                              children: [
-                                itemGrid(
-                                    "keyboard".tr(),
-                                    const Icon(Icons.keyboard,
-                                        size: 30, color: Colors.white),
-                                    ItemOfFullGrid.KeybordItem,
-                                    context),
-                                itemGrid(
-                                    "text_in_image".tr(),
-                                    const Icon(Icons.camera_alt,
-                                        size: 30, color: Colors.white),
-                                    ItemOfFullGrid.TextInImageItem,
-                                    context),
-                                itemGrid(
-                                    "book".tr(),
-                                    const Icon(Icons.multitrack_audio,
-                                        size: 30, color: Colors.white),
-                                    ItemOfFullGrid.BookRecordingItem,
-                                    context),
-                                itemGrid(
-                                    "settings".tr(),
-                                    const Icon(
-                                      Icons.settings,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    ItemOfFullGrid.SettingItem,
-                                    context),
-                                itemGrid(
-                                    "saved_books".tr(),
-                                    const Icon(
-                                      Icons.settings,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                    ItemOfFullGrid.ListOfSavedAudioBooks,
-                                    context),
-                              ],
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                            ),
-                          ),
+                              ItemOfFullGrid.SettingItem,
+                              context),
+                          itemGrid(
+                              "saved_books".tr(),
+                              const Icon(
+                                Icons.menu_book,
+                                size: 40,
+                                color: Colors.blueGrey,
+                              ),
+                              ItemOfFullGrid.ListOfSavedAudioBooks,
+                              context),
                         ],
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
                       ),
                     ),
-                  ),
+                  ],
+                ),
           ),
         );
       },
