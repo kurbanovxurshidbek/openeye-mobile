@@ -20,7 +20,8 @@
     "error":"An error occurred",
     "about_error":"Please try again!",
     "go_home":"Back to",
-    "try":"Try again"
+    "try":"Try again",
+    "delete":"Delete"
 
     
 }

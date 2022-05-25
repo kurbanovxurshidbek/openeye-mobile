@@ -6,14 +6,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/for_read_audio_book/reading_audio_book_cubit.dart';
 import 'package:key_board_app/cubits/for_read_audio_book/reading_audio_book_state.dart';
 import 'package:key_board_app/models/audio_model.dart';
+import 'package:key_board_app/services/hive_service.dart';
 
+import '../navigators/goto.dart';
 import '../views/dialogs.dart';
 
 class ReadingPage extends StatefulWidget {
   List<AudioModel> listAudio;
   int startOnIndex;
+  bool onListBooksPage;
 
-  ReadingPage({Key? key, required this.listAudio, required this.startOnIndex})
+  ReadingPage(
+      {Key? key,
+      required this.listAudio,
+      required this.startOnIndex,
+      this.onListBooksPage = false})
       : super(key: key);
 
   @override
@@ -32,12 +39,31 @@ class _ReadingPageState extends State<ReadingPage> {
         .loadAudioFiles(widget.startOnIndex, widget.listAudio);
   }
 
+  Future<bool> _readDate(AudioModel audioModel) async {
+    List<dynamic> listMap = await HiveDB.loadCountryCode(key: "listOfAudio");
+
+    List<AudioModel> listOfAudioModels = [];
+
+    listOfAudioModels = List.generate(
+        listMap.length, (index) => AudioModel.fromJson(listMap[index]));
+
+    return listOfAudioModels.contains(audioModel);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ReadingAudioBookCubit, ReadingAudioBookState>(
       builder: (context, state) {
         return WillPopScope(
           onWillPop: (() async {
+            bool isSaved = await _readDate(state.listOfAudio[state.index]);
+
+            if (isSaved) {
+              BlocProvider.of<ReadingAudioBookCubit>(context).stop();
+
+              return true;
+            }
+
             await saveAudioDialog(context, state.listOfAudio[state.index],
                 isBack: true);
             BlocProvider.of<ReadingAudioBookCubit>(context).stop();
@@ -46,17 +72,23 @@ class _ReadingPageState extends State<ReadingPage> {
           }),
           child: Scaffold(
             appBar: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.white,
-        leading: IconButton(
-        icon: Icon(Icons.arrow_back, color: Colors.blueGrey),
-        onPressed: () async {
-          saveAudioDialog(context, state.listOfAudio[state.index],
-              isBack: true);
-          BlocProvider.of<ReadingAudioBookCubit>(context).stop();
-        },)
+                elevation: 0,
+                backgroundColor: Colors.white,
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.blueGrey),
+                  onPressed: () async {
+                    bool isSaved =
+                        await _readDate(state.listOfAudio[state.index]);
 
-            ),
+                    if (!isSaved) {
+                      saveAudioDialog(context, state.listOfAudio[state.index],
+                          isBack: true);
+                    }
+
+                    BlocProvider.of<ReadingAudioBookCubit>(context).stop();
+                    GOTO.pop(context);
+                  },
+                )),
             body: SafeArea(
               child: state.isLoading
                   ? Center(
@@ -70,7 +102,6 @@ class _ReadingPageState extends State<ReadingPage> {
                       ),
                     )
                   : Container(
-
                       alignment: Alignment.center,
                       padding: EdgeInsets.all(5),
                       color: Colors.white,
@@ -125,9 +156,9 @@ class _ReadingPageState extends State<ReadingPage> {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: Slider(
-                              inactiveColor: Colors.blueGrey.shade100,
-                              activeColor: Colors.blueGrey.shade600,
-                              thumbColor: Colors.blueGrey,
+                                inactiveColor: Colors.blueGrey.shade100,
+                                activeColor: Colors.blueGrey.shade600,
+                                thumbColor: Colors.blueGrey,
                                 min: 0,
                                 max: state.duration!.inSeconds.toDouble(),
                                 value:
@@ -139,7 +170,6 @@ class _ReadingPageState extends State<ReadingPage> {
                                 }),
                           ),
                           Container(
-
                             padding: EdgeInsets.symmetric(horizontal: 30),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -165,7 +195,7 @@ class _ReadingPageState extends State<ReadingPage> {
                             children: [
                               Expanded(
                                 child: RaisedButton(
-                                  color: Colors.white,
+                                    color: Colors.white,
                                     onPressed: () {
                                       BlocProvider.of<ReadingAudioBookCubit>(
                                               context)
@@ -174,7 +204,8 @@ class _ReadingPageState extends State<ReadingPage> {
                                     shape: CircleBorder(),
                                     padding: EdgeInsets.all(8),
                                     child: Icon(
-                                      Icons.keyboard_double_arrow_left_sharp,color: Colors.blueGrey,
+                                      Icons.keyboard_double_arrow_left_sharp,
+                                      color: Colors.blueGrey,
                                       size: 30,
                                     )),
                               ),
@@ -208,27 +239,38 @@ class _ReadingPageState extends State<ReadingPage> {
                                   padding: EdgeInsets.all(8),
                                   child: Icon(
                                     Icons.keyboard_double_arrow_right,
-                                    size: 30,color: Colors.blueGrey,
+                                    size: 30,
+                                    color: Colors.blueGrey,
                                   ),
                                 ),
                               ),
-
                             ],
                           ),
-SizedBox(height: 10,),
-                          RaisedButton(
-                              color: Colors.white,
-                              onPressed: () {
-                                saveAudioDialog(context,
-                                    state.listOfAudio[state.index]);
-                              },
-                              shape: CircleBorder(),
-                              padding: EdgeInsets.all(8),
-                              child: Icon(
-                                Icons.download,
-                                color: Colors.blueGrey,
-                                size: 30,
-                              )),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          widget.onListBooksPage
+                              ? SizedBox.shrink()
+                              : RaisedButton(
+                                  color: Colors.white,
+                                  onPressed: () async {
+                                    bool isSaved = await _readDate(
+                                        state.listOfAudio[state.index]);
+
+                                    if (isSaved) {
+                                      return;
+                                    }
+
+                                    saveAudioDialog(context,
+                                        state.listOfAudio[state.index]);
+                                  },
+                                  shape: CircleBorder(),
+                                  padding: EdgeInsets.all(8),
+                                  child: Icon(
+                                    Icons.download,
+                                    color: Colors.blueGrey,
+                                    size: 30,
+                                  )),
                         ],
                       )),
             ),

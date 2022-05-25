@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
+import '../cubits/saved_book/saved_books_cubit.dart';
 import '../models/audio_model.dart';
 import '../navigators/goto.dart';
 import '../pages/home_page.dart';
@@ -35,17 +37,19 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
           actions: [
             TextButton(
                 onPressed: () async {
-                  List<Map<String, dynamic>>? listOfAudio =
+                  List<dynamic>? listOfAudio =
                       await HiveDB.loadCountryCode(key: "listOfAudio");
 
                   if (listOfAudio == null) {
-                    List<Map<String, dynamic>> list = [audioModel.toJson()];
+                    audioModel.isSaved = true;
+                    List<dynamic> list = [audioModel.toJson()];
+                    print(list);
                     await HiveDB.saveData("listOfAudio", list);
                   } else {
                     listOfAudio.add(audioModel.toJson());
                     await HiveDB.saveData("listOfAudio", listOfAudio);
                   }
-                  List<Map<String, dynamic>> list =
+                  List<dynamic> list =
                       HiveDB.loadCountryCode(key: "listOfAudio");
 
                   print(list);
@@ -101,6 +105,61 @@ errorDialog(BuildContext context) {
                   BlocProvider.of<ConvertionCubit>(context).succesLoaded();
                 },
                 child: Text("try").tr()),
+          ],
+        );
+      });
+}
+
+deleteItemDialog(BuildContext context, AudioModel audioModel) {
+  showDialog(
+      context: context,
+      builder: (c) {
+        return AlertDialog(
+          title: const Text(
+            "error",
+            style: TextStyle(
+                fontSize: 14,
+                fontFamily: "Serif",
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 49, 49, 49),
+                fontStyle: FontStyle.normal),
+          ).tr(),
+          content: const Text(
+            "about_error",
+            style: TextStyle(
+                fontSize: 14,
+                fontFamily: "Serif",
+                fontWeight: FontWeight.normal,
+                color: Color.fromARGB(255, 49, 49, 49),
+                fontStyle: FontStyle.normal),
+          ).tr(),
+          actions: [
+            TextButton(
+                onPressed: () async {
+                  File aufioFile = File(audioModel.path);
+                  await aufioFile.delete();
+
+                  List<dynamic> listMap =
+                      await HiveDB.loadCountryCode(key: "listOfAudio");
+
+                  List<AudioModel> listOfAudioModels = [];
+
+                  listOfAudioModels = List.generate(listMap.length,
+                      (index) => AudioModel.fromJson(listMap[index]));
+
+                  listOfAudioModels.remove(audioModel);
+
+                  await HiveDB.saveData("listOfAudio", listOfAudioModels);
+                  GOTO.pop(context);
+
+                  BlocProvider.of<SavedBooksCubit>(context).loadList();
+                },
+                child: const Text("delete").tr()),
+            TextButton(
+                onPressed: () {
+                  GOTO.pop(context);
+                },
+                child: const Text("no").tr()),
           ],
         );
       });

@@ -10,12 +10,16 @@ class AudioModel {
   });
 
   toJson() {
-    return {"name": name, "path": path, "isSaved": isSaved};
+    return {"name": name, "path": path, "isSaved": true};
   }
 
   AudioModel.fromJson(Map<dynamic, dynamic> map) {
     name = map["name"]!;
     path = map["path"]!;
     isSaved = map["isSaved"];
+  }
+
+  bool operator ==(Object object) {
+    return (object is AudioModel) && (object.name == name);
   }
 }
