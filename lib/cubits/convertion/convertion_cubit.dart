@@ -5,11 +5,11 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:key_board_app/cubits/convertion/convertion_state.dart';
+import 'package:key_board_app/services/hive_service.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:read_pdf_text/read_pdf_text.dart';
 import '../../logic/kril_to_latin.dart';
 import '../../models/audio_model.dart';
-import '../../services/file_picker_service.dart';
 import '../../services/http_service.dart';
 
 class ConvertionCubit extends Cubit<ConvertionState> {
@@ -57,15 +57,20 @@ class ConvertionCubit extends Cubit<ConvertionState> {
 
     if (list != null) {
       String text = await getPDFtext(list[0]);
-      if (text.contains("в") ||
-          text.contains("б") ||
-          text.contains("я") ||
-          text.contains("ю") ||
-          text.contains("ь") ||
-          text.contains("ж") ||
-          text.contains("э")) {
-        text = await toLatin(text);
+      String? countryCode = HiveDB.loadLangCode();
+
+      if (countryCode != null && countryCode == "uz") {
+        if (text.contains("в") ||
+            text.contains("б") ||
+            text.contains("я") ||
+            text.contains("ю") ||
+            text.contains("ь") ||
+            text.contains("ж") ||
+            text.contains("э")) {
+          text = await toLatin(text);
+        }
       }
+
       return [text, list[1]];
     }
 
