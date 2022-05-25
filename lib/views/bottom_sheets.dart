@@ -51,12 +51,13 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
       await HiveDB.saveData("voice", "famale");
     }
 
+    await BlocProvider.of<MainaligmentCubit>(context)
+        .makeStartPosition(true, chackingItem: 9999);
+
     if (inSettings) {
       GOTO.pop(context);
 
       await BlocProvider.of<LoadLangCubit>(context).loadedLang();
-      await BlocProvider.of<MainaligmentCubit>(context)
-          .makeStartPosition(true, chackingItem: 9999);
     } else {
       GOTO.pushRpUntil(context, const HomePage());
     }
@@ -113,8 +114,7 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
                     blurRadius: 3.0,
                     spreadRadius: 0,
                     color: Colors.blueGrey,
-                    offset: Offset(2, -1)
-                )
+                    offset: Offset(2, -1))
               ],
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -216,8 +216,7 @@ voiceChooseSheet(BuildContext context) async {
                     blurRadius: 3.0,
                     spreadRadius: 0,
                     color: Colors.blueGrey,
-                     offset: Offset(2, -1)
-                )
+                    offset: Offset(2, -1))
               ],
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -248,7 +247,6 @@ voiceChooseSheet(BuildContext context) async {
                               savedLanguage(context, index);
                             },
                             child: LangUI(
-
                                 icon: Image.asset(
                                   index == 0
                                       ? "assets/images/male.png"
