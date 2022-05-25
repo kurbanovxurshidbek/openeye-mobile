@@ -111,7 +111,7 @@ Widget itemGrid(String title, Icon icon, ItemOfFullGrid itemOfGridHome,
             style: const TextStyle(
               color: Colors.blueGrey
                 ,
-              fontSize: 20,fontWeight:FontWeight.bold
+              fontSize: 18,fontWeight:FontWeight.bold
             ),
           ),
         ],

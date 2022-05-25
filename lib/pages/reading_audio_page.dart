@@ -64,7 +64,7 @@ class _ReadingPageState extends State<ReadingPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const CircularProgressIndicator.adaptive(),
+                          const CircularProgressIndicator.adaptive( valueColor:AlwaysStoppedAnimation<Color>(Colors.blueGrey),),
                           const Text("loading").tr()
                         ],
                       ),
