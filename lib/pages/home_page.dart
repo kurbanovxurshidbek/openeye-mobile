@@ -36,8 +36,9 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const CircularProgressIndicator.adaptive(),
-                        const Text("loading").tr()
+                        const CircularProgressIndicator.adaptive( valueColor:AlwaysStoppedAnimation<Color>(Colors.blueGrey),),
+                        SizedBox(height: 10,),
+                        const Text("loading",style: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),).tr()
                       ],
                     ),
                   )
