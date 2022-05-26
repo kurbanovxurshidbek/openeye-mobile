@@ -57,18 +57,72 @@ class _SettingsPageState extends State<SettingsPage> {
                               crossAxisSpacing: 15,
                             ),
                             children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: const Offset(
+                                          0.0,
+                                          3.0,
+                                        ),
+                                        blurRadius: 3.0,
+                                        spreadRadius: 0.1,
+                                      ), //BoxShadow
+                                      BoxShadow(
+                                        color: Colors.white,
+                                        offset: const Offset(0.0, 0.0),
+                                        // blurRadius: 1.0,
+                                        spreadRadius: 0.0,
+                                      ), //BoxShadow
+                                    ],
+                                    borderRadius: BorderRadius.circular(15),
+
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        "assets/images/voice.png",
+                                      ),
+                                      fit: BoxFit.cover,
+                                    )),
+                                child:
                               itemGrid(
                                   "voice".tr(),
-                                  Icon(Icons.record_voice_over,
-                                      size: 30, color: Colors.blueGrey),
+
                                   ItemOfFullGrid.Voice,
-                                  context),
-                              itemGrid(
-                                  "lang".tr(),
-                                  const Icon(Icons.language,
-                                      size: 30, color: Colors.blueGrey),
-                                  ItemOfFullGrid.Lang,
-                                  context),
+                                  context),),
+                              Container(
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: const Offset(
+                                          0.0,
+                                          3.0,
+                                        ),
+                                        blurRadius: 3.0,
+                                        spreadRadius: 0.1,
+                                      ), //BoxShadow
+                                      BoxShadow(
+                                        color: Colors.white,
+                                        offset: const Offset(0.0, 0.0),
+                                        // blurRadius: 1.0,
+                                        spreadRadius: 0.0,
+                                      ), //BoxShadow
+                                    ],
+                                    borderRadius: BorderRadius.circular(15),
+
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        "assets/images/lang.png",
+                                      ),
+                                      fit: BoxFit.cover,
+                                    )),
+                                child: itemGrid(
+                                    "lang".tr(),
+
+                                    ItemOfFullGrid.Lang,
+                                    context),
+                              ),
                             ],
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),

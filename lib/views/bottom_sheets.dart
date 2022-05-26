@@ -137,6 +137,7 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
                   ])),
               Container(
                 height: 120,
+
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(3, (index) {

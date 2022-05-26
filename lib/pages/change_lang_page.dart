@@ -71,6 +71,9 @@ class _LangChangePageState extends State<LangChangePage>
         child: Container(
           alignment: Alignment.center,
           decoration: const BoxDecoration(
+            image: DecorationImage(image:
+            AssetImage("assets/images/img.png"),fit: BoxFit.cover,
+            ),
               color: Colors.white),
           child: BlocBuilder<MainaligmentCubit, MainAligmentState>(
             builder: (context, state) {
@@ -95,28 +98,8 @@ class _LangChangePageState extends State<LangChangePage>
                       : Container(
                           width: MediaQuery.of(context).size.width / 2,
                           height: MediaQuery.of(context).size.width / 2,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4000),
-                            image: const DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage("assets/images/blind1.jpg")),
-                          ),
-                          margin: const EdgeInsets.all(10),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width / 2,
-                            height: MediaQuery.of(context).size.width / 2,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4000),
-                                color: Colors.white,
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Colors.black.withOpacity(0.2),
-                                      Colors.black.withOpacity(0.4)
-                                    ])),
-                          )),
+
+                        ),
                   Container(
                       height: MediaQuery.of(context).size.width / 2,
                       width: MediaQuery.of(context).size.width / 2,
@@ -125,19 +108,19 @@ class _LangChangePageState extends State<LangChangePage>
                           ? Container(
                               height: MediaQuery.of(context).size.width / 2,
                               width: MediaQuery.of(context).size.width / 2,
-                              child: Lottie.asset('assets/lottie/speaking.json',
+                              child: Lottie.asset('assets/lottie/sspeaking.json',
                                   repeat: true, fit: BoxFit.cover),
                             )
                           : Stack(
                               alignment: Alignment.center,
                               children: [
-                                Lottie.asset('assets/lottie/audio.json',
+                                Lottie.asset('assets/lottie/audioss.json',
                                     repeat: true),
-                                Image.asset(
-                                  "assets/images/audio_icon.png",
-                                  width: 40,
-                                  height: 40,
-                                )
+                                // Image.asset(
+                                //   "assets/images/audio_icon.png",
+                                //   width: 40,
+                                //   height: 40,
+                                // )
                               ],
                             )),
                 ],
