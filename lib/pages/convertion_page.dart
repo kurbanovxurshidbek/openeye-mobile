@@ -4,7 +4,6 @@ import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
 import 'package:key_board_app/navigators/goto.dart';
 import 'package:key_board_app/pages/reading_audio_page.dart';
 import 'package:lottie/lottie.dart';
-
 import '../cubits/convertion/convertion_state.dart';
 import '../views/dialogs.dart';
 
@@ -46,10 +45,12 @@ class _ConvertionPageState extends State<ConvertionPage> {
                 alignment: Alignment.center,
                 child: state.isConverting
                     ? SizedBox(
-                        width: 150,
-                        height: 150,
-                        child: Lottie.asset('assets/lottie/convrting.json',
-                            fit: BoxFit.cover, repeat: true),
+                        width: 400,
+                        height: 400,
+                        child: Center(
+                          child: Lottie.asset('assets/lottie/convertgrey.json',
+                              fit: BoxFit.cover, repeat: true),
+                        ),
                       )
                     : const SizedBox.shrink(),
               );

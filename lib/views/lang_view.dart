@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -63,7 +64,7 @@ class LangUI extends StatelessWidget {
             blurRadius: 2,
             color: Colors.blueGrey,
             offset: Offset(2, 0))
-      ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+      ], color: Colors.tealAccent, borderRadius: BorderRadius.circular(10)),
     );
   }
 }

@@ -48,55 +48,201 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.9,
                       width: MediaQuery.of(context).size.width,
-                      child: GridView(
-                        padding: EdgeInsets.all(15),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 1,
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
-                        ),
+                      child: Column(
+
                         children: [
-                          itemGrid(
-                              "keyboard".tr(),
-                              const Icon(Icons.keyboard,
-                                  size: 40, color: Colors.blueGrey),
-                              ItemOfFullGrid.KeybordItem,
-                              context),
-                          itemGrid(
-                              "text_in_image".tr(),
-                              const Icon(Icons.camera_alt,
-                                  size: 40, color: Colors.blueGrey),
-                              ItemOfFullGrid.TextInImageItem,
-                              context),
-                          itemGrid(
-                              "book".tr(),
-                              const Icon(Icons.multitrack_audio,
-                                  size: 40, color: Colors.blueGrey),
-                              ItemOfFullGrid.BookRecordingItem,
-                              context),
-                          itemGrid(
-                              "settings".tr(),
-                              const Icon(
-                                Icons.settings,
-                                size: 40,
-                                color: Colors.blueGrey,
+                          Expanded(
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.only(top: 15,right: 15,left: 15),
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.pink,
+                                      offset: const Offset(
+                                        0.0,
+                                        3.0,
+                                      ),
+                                      blurRadius: 3.0,
+                                      spreadRadius: 0.1,
+                                    ), //BoxShadow
+                                    BoxShadow(
+                                      color: Colors.white,
+                                      offset: const Offset(0.0, 0.0),
+                                      // blurRadius: 1.0,
+                                      spreadRadius: 0.0,
+                                    ), //BoxShadow
+                                  ],
+                                  borderRadius: BorderRadius.circular(15),
+
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      "assets/images/keybrd.png",
+                                    ),
+                                    fit: BoxFit.cover,
+                                  )),
+                              child:itemGrid(
+                                  "keyboard".tr(),
+                                  ItemOfFullGrid.KeybordItem,
+                                  context),
+                            )
+                          ),
+                          Expanded(
+                            child: Container(
+
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.deepPurple,
+                                      offset: const Offset(
+                                        0.0,
+                                        3.0,
+                                      ),
+                                      blurRadius: 3.0,
+                                      spreadRadius: 0.1,
+                                    ), //BoxShadow
+                                    BoxShadow(
+                                      color: Colors.white,
+                                      offset: const Offset(0.0, 0.0),
+                                      // blurRadius: 1.0,
+                                      spreadRadius: 0.0,
+                                    ), //BoxShadow
+                                  ],
+                                  borderRadius: BorderRadius.circular(15),
+
+                                  image: DecorationImage(
+                              image: AssetImage(
+                                "assets/images/camera.png",
                               ),
-                              ItemOfFullGrid.SettingItem,
-                              context),
-                          itemGrid(
-                              "saved_books".tr(),
-                              const Icon(
-                                Icons.menu_book,
-                                size: 40,
-                                color: Colors.blueGrey,
+                              fit: BoxFit.cover,
+                            )), width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.only(top: 15,right: 15,left: 15),
+                              child: itemGrid(
+                                  "text_in_image".tr(),
+                                  ItemOfFullGrid.TextInImageItem,
+                                  context),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.greenAccent
+                                    ,
+                                    offset: const Offset(
+                                      0.0,
+                                      3.0,
+                                    ),
+                                    blurRadius: 3.0,
+                                    spreadRadius: 0.1,
+                                  ), //BoxShadow
+                                  BoxShadow(
+                                    color: Colors.white,
+                                    offset: const Offset(0.0, 0.0),
+                                    // blurRadius: 1.0,
+                                    spreadRadius: 0.0,
+                                  ), //BoxShadow
+                                ],
+                                borderRadius: BorderRadius.circular(15),
+
+                                image: DecorationImage(
+                              image: AssetImage(
+                                "assets/images/book.png",
                               ),
-                              ItemOfFullGrid.ListOfSavedAudioBooks,
-                              context),
+                              fit: BoxFit.cover,
+                            )),
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.only(top: 15,right: 15,left: 15),
+                              child: itemGrid(
+                                  "book".tr(),
+
+                                  ItemOfFullGrid.BookRecordingItem,
+                                  context),
+                            ),
+                          ),
+                          Expanded(
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+
+                                    decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.deepPurpleAccent,
+                                            offset: const Offset(
+                                              0.0,
+                                              3.0,
+                                            ),
+                                            blurRadius: 3.0,
+                                            spreadRadius: 0.1,
+                                          ), //BoxShadow
+                                          BoxShadow(
+                                            // color: Colors.white,
+                                            offset: const Offset(0.0, 0.0),
+                                            // blurRadius: 1.0,
+                                            spreadRadius: 0.0,
+                                          ), //BoxShadow
+                                        ],
+                                        borderRadius: BorderRadius.circular(15),
+
+                                        image: DecorationImage(
+                                    image: AssetImage(
+                                      "assets/images/setting.png",
+                                    ),
+                                    fit: BoxFit.cover,
+                                  )),
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: EdgeInsets.only(top: 15,right: 7,left: 15,bottom: 0),
+                                    child: itemGrid(
+                                        "settings".tr(),
+
+                                        ItemOfFullGrid.SettingItem,
+                                        context),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.blueGrey.shade700,
+                                          offset: const Offset(
+                                            0.0,
+                                            3.0,
+                                          ),
+                                          blurRadius: 3.0,
+                                          spreadRadius: 0.1,
+                                        ), //BoxShadow
+                                        BoxShadow(
+                                          // color: Colors.white,
+                                          offset: const Offset(0.0, 0.0),
+                                          // blurRadius: 1.0,
+                                          spreadRadius: 0.0,
+                                        ), //BoxShadow
+                                      ],
+                                      borderRadius: BorderRadius.circular(15),
+
+                                      image: DecorationImage(
+                                    image: AssetImage(
+                                      "assets/images/saved.png",
+                                    ),
+                                    fit: BoxFit.cover,
+                                  )),
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: EdgeInsets.only(top: 15,right: 15,left: 7,bottom: 0),
+                                    child: itemGrid(
+                                        "saved_books".tr(),
+
+                                        ItemOfFullGrid.ListOfSavedAudioBooks,
+                                        context),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
                         ],
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
+
                       ),
                     ),
                   ],

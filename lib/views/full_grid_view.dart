@@ -67,7 +67,7 @@ androidOrIos() async {
   } else if (Platform.isIOS) {}
 }
 
-Widget itemGrid(String title, Icon icon, ItemOfFullGrid itemOfGridHome,
+Widget itemGrid(String title, ItemOfFullGrid itemOfGridHome,
     BuildContext context) {
   return GestureDetector(
     onTap: () {
@@ -79,9 +79,10 @@ Widget itemGrid(String title, Icon icon, ItemOfFullGrid itemOfGridHome,
         // border: Border.all(color: Colors.black12,width: 1,
         //
         // ),
+color: Colors.transparent,
         boxShadow: [
           BoxShadow(
-            color: Colors.blueGrey,
+            color: Colors.transparent,
             offset: const Offset(
               0.0,
               3.0,
@@ -90,32 +91,23 @@ Widget itemGrid(String title, Icon icon, ItemOfFullGrid itemOfGridHome,
             spreadRadius:0.1,
           ), //BoxShadow
           BoxShadow(
-            color: Colors.white,
+            color: Colors.transparent,
             offset: const Offset(0.0, 0.0),
             // blurRadius: 1.0,
             spreadRadius: 0.0,
           ), //BoxShadow
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          icon,
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
+      child:Container(
+          padding: EdgeInsets.all(15),
+          alignment: Alignment.bottomLeft,
+          child: Text(
             title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Colors.blueGrey
-                ,
-              fontSize: 18,fontWeight:FontWeight.bold
-            ),
-          ),
-        ],
-      ),
+            style: TextStyle(
+                color: Colors.white,
+                // fontWeight: FontWeight.bold,
+                fontSize: 23),
+          )),
     ),
   );
 }
