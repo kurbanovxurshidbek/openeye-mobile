@@ -71,9 +71,7 @@ class _LangChangePageState extends State<LangChangePage>
         child: Container(
           alignment: Alignment.center,
           decoration: const BoxDecoration(
-            image: DecorationImage(image:
-            AssetImage("assets/images/img.png"),fit: BoxFit.cover,
-            ),
+
               color: Colors.white),
           child: BlocBuilder<MainaligmentCubit, MainAligmentState>(
             builder: (context, state) {
@@ -91,8 +89,18 @@ class _LangChangePageState extends State<LangChangePage>
                         "OpenEye",
                         style: Theme.of(context).textTheme.headline4,
                       ),
+
                     ],
                   ),
+                  state.bottomUp==false? Container(decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                      image: DecorationImage(
+                        
+                          image: AssetImage("assets/images/blind1.png"),fit: BoxFit.cover
+                      )
+                  ),
+                    height: 200,width: 200,
+                  ):
                   state.bottomUp
                       ? Container()
                       : Container(
