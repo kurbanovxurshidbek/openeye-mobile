@@ -27,6 +27,8 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Saved books"),
+        centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.blueGrey,
@@ -77,7 +79,7 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                                   leading: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.asset(
-                                      "assets/images/audio_book.png",
+                                      "assets/images/audbook.png",
                                       width: 60,
                                       height: 60,
                                       fit: BoxFit.cover,
@@ -99,7 +101,7 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                                       },
                                       icon: Icon(
                                         Icons.delete,
-                                        color: Colors.blueGrey,
+                                        color: Colors.red,
                                       )),
                                 ),
                               ),

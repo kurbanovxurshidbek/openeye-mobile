@@ -42,23 +42,96 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   )
-                : Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.9,
-                      width: MediaQuery.of(context).size.width,
-                      child: Column(
+                : Container(
+              color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.9,
+                        width: MediaQuery.of(context).size.width,
+                        child: Column(
 
-                        children: [
-                          Expanded(
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.only(top: 15,right: 15,left: 15),
-                              decoration: BoxDecoration(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                margin: EdgeInsets.only(top: 15,right: 15,left: 15),
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.pink,
+                                        offset: const Offset(
+                                          0.0,
+                                          3.0,
+                                        ),
+                                        blurRadius: 3.0,
+                                        spreadRadius: 0.1,
+                                      ), //BoxShadow
+                                      BoxShadow(
+                                        color: Colors.white,
+                                        offset: const Offset(0.0, 0.0),
+                                        // blurRadius: 1.0,
+                                        spreadRadius: 0.0,
+                                      ), //BoxShadow
+                                    ],
+                                    borderRadius: BorderRadius.circular(15),
+
+                                    image: DecorationImage(
+
+                                      image: AssetImage(
+                                        "assets/images/keybrd.png",
+                                      ),
+                                      fit: BoxFit.cover,
+                                    )),
+                                child:itemGrid(
+                                    "keyboard".tr(),
+                                    ItemOfFullGrid.KeybordItem,
+                                    context),
+                              )
+                            ),
+                            Expanded(
+                              child: Container(
+
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.deepPurple,
+                                        offset: const Offset(
+                                          0.0,
+                                          3.0,
+                                        ),
+                                        blurRadius: 3.0,
+                                        spreadRadius: 0.1,
+                                      ), //BoxShadow
+                                      BoxShadow(
+                                        // color: Colors.white,
+                                        offset: const Offset(0.0, 0.0),
+                                        // blurRadius: 1.0,
+                                        spreadRadius: 0.0,
+                                      ), //BoxShadow
+                                    ],
+                                    borderRadius: BorderRadius.circular(15),
+
+                                    image: DecorationImage(
+                                image: AssetImage(
+                                  "assets/images/camera.png",
+                                ),
+                                fit: BoxFit.cover,
+                              )), width: MediaQuery.of(context).size.width,
+                                margin: EdgeInsets.only(top: 15,right: 15,left: 15),
+                                child: itemGrid(
+                                    "text_in_image".tr(),
+                                    ItemOfFullGrid.TextInImageItem,
+                                    context),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.pink,
+                                      color: Colors.greenAccent
+                                      ,
                                       offset: const Offset(
                                         0.0,
                                         3.0,
@@ -67,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                                       spreadRadius: 0.1,
                                     ), //BoxShadow
                                     BoxShadow(
-                                      color: Colors.white,
+                                      // color: Colors.white,
                                       offset: const Offset(0.0, 0.0),
                                       // blurRadius: 1.0,
                                       spreadRadius: 0.0,
@@ -76,100 +149,66 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(15),
 
                                   image: DecorationImage(
-                                    image: AssetImage(
-                                      "assets/images/keybrd.png",
-                                    ),
-                                    fit: BoxFit.cover,
-                                  )),
-                              child:itemGrid(
-                                  "keyboard".tr(),
-                                  ItemOfFullGrid.KeybordItem,
-                                  context),
-                            )
-                          ),
-                          Expanded(
-                            child: Container(
+                                image: AssetImage(
+                                  "assets/images/book.png",
+                                ),
+                                fit: BoxFit.cover,
+                              )),
+                                width: MediaQuery.of(context).size.width,
+                                margin: EdgeInsets.only(top: 15,right: 15,left: 15),
+                                child: itemGrid(
+                                    "book".tr(),
 
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.deepPurple,
-                                      offset: const Offset(
-                                        0.0,
-                                        3.0,
+                                    ItemOfFullGrid.BookRecordingItem,
+                                    context),
+                              ),
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+
+                                      decoration: BoxDecoration(
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.deepPurpleAccent,
+                                              offset: const Offset(
+                                                0.0,
+                                                3.0,
+                                              ),
+                                              blurRadius: 3.0,
+                                              spreadRadius: 0.1,
+                                            ), //BoxShadow
+                                            BoxShadow(
+                                              // color: Colors.white,
+                                              offset: const Offset(0.0, 0.0),
+                                              // blurRadius: 1.0,
+                                              spreadRadius: 0.0,
+                                            ), //BoxShadow
+                                          ],
+                                          borderRadius: BorderRadius.circular(15),
+
+                                          image: DecorationImage(
+                                      image: AssetImage(
+                                        "assets/images/setting.png",
                                       ),
-                                      blurRadius: 3.0,
-                                      spreadRadius: 0.1,
-                                    ), //BoxShadow
-                                    BoxShadow(
-                                      color: Colors.white,
-                                      offset: const Offset(0.0, 0.0),
-                                      // blurRadius: 1.0,
-                                      spreadRadius: 0.0,
-                                    ), //BoxShadow
-                                  ],
-                                  borderRadius: BorderRadius.circular(15),
+                                      fit: BoxFit.cover,
+                                    )),
+                                      width: MediaQuery.of(context).size.width,
+                                      margin: EdgeInsets.only(top: 15,right: 7,left: 15,bottom: 0),
+                                      child: itemGrid(
+                                          "settings".tr(),
 
-                                  image: DecorationImage(
-                              image: AssetImage(
-                                "assets/images/camera.png",
-                              ),
-                              fit: BoxFit.cover,
-                            )), width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.only(top: 15,right: 15,left: 15),
-                              child: itemGrid(
-                                  "text_in_image".tr(),
-                                  ItemOfFullGrid.TextInImageItem,
-                                  context),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.greenAccent
-                                    ,
-                                    offset: const Offset(
-                                      0.0,
-                                      3.0,
+                                          ItemOfFullGrid.SettingItem,
+                                          context),
                                     ),
-                                    blurRadius: 3.0,
-                                    spreadRadius: 0.1,
-                                  ), //BoxShadow
-                                  BoxShadow(
-                                    color: Colors.white,
-                                    offset: const Offset(0.0, 0.0),
-                                    // blurRadius: 1.0,
-                                    spreadRadius: 0.0,
-                                  ), //BoxShadow
-                                ],
-                                borderRadius: BorderRadius.circular(15),
-
-                                image: DecorationImage(
-                              image: AssetImage(
-                                "assets/images/book.png",
-                              ),
-                              fit: BoxFit.cover,
-                            )),
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.only(top: 15,right: 15,left: 15),
-                              child: itemGrid(
-                                  "book".tr(),
-
-                                  ItemOfFullGrid.BookRecordingItem,
-                                  context),
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Container(
-
-                                    decoration: BoxDecoration(
+                                  ),
+                                  Expanded(
+                                    child: Container(decoration: BoxDecoration(
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Colors.deepPurpleAccent,
+                                            color: Colors.blueGrey.shade700,
                                             offset: const Offset(
                                               0.0,
                                               3.0,
@@ -187,65 +226,30 @@ class _HomePageState extends State<HomePage> {
                                         borderRadius: BorderRadius.circular(15),
 
                                         image: DecorationImage(
-                                    image: AssetImage(
-                                      "assets/images/setting.png",
+                                      image: AssetImage(
+                                        "assets/images/saved.png",
+                                      ),
+                                      fit: BoxFit.cover,
+                                    )),
+                                      width: MediaQuery.of(context).size.width,
+                                      margin: EdgeInsets.only(top: 15,right: 15,left: 7,bottom: 0),
+                                      child: itemGrid(
+                                          "saved_books".tr(),
+
+                                          ItemOfFullGrid.ListOfSavedAudioBooks,
+                                          context),
                                     ),
-                                    fit: BoxFit.cover,
-                                  )),
-                                    width: MediaQuery.of(context).size.width,
-                                    margin: EdgeInsets.only(top: 15,right: 7,left: 15,bottom: 0),
-                                    child: itemGrid(
-                                        "settings".tr(),
-
-                                        ItemOfFullGrid.SettingItem,
-                                        context),
                                   ),
-                                ),
-                                Expanded(
-                                  child: Container(decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.blueGrey.shade700,
-                                          offset: const Offset(
-                                            0.0,
-                                            3.0,
-                                          ),
-                                          blurRadius: 3.0,
-                                          spreadRadius: 0.1,
-                                        ), //BoxShadow
-                                        BoxShadow(
-                                          // color: Colors.white,
-                                          offset: const Offset(0.0, 0.0),
-                                          // blurRadius: 1.0,
-                                          spreadRadius: 0.0,
-                                        ), //BoxShadow
-                                      ],
-                                      borderRadius: BorderRadius.circular(15),
-
-                                      image: DecorationImage(
-                                    image: AssetImage(
-                                      "assets/images/saved.png",
-                                    ),
-                                    fit: BoxFit.cover,
-                                  )),
-                                    width: MediaQuery.of(context).size.width,
-                                    margin: EdgeInsets.only(top: 15,right: 15,left: 7,bottom: 0),
-                                    child: itemGrid(
-                                        "saved_books".tr(),
-
-                                        ItemOfFullGrid.ListOfSavedAudioBooks,
-                                        context),
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
 
-                        ],
+                          ],
 
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
           ),
         );

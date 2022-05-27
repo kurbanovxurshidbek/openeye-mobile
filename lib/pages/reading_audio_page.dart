@@ -118,12 +118,27 @@ class _ReadingPageState extends State<ReadingPage> {
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/images/audio_book.png",
-                                    height: MediaQuery.of(context).size.height *
-                                        0.5,
+                                  child: Container(height: MediaQuery.of(context).size.height *
+                                      0.5,
                                     width: MediaQuery.of(context).size.width,
-                                    fit: BoxFit.cover,
+                                    decoration: BoxDecoration(
+                                      gradient : LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Colors.white10,
+                                          Colors.black,
+                                        ],
+                                      ),
+                                    ),
+                                    child: Image.asset(
+                                      "assets/images/audbook.png",
+                                      height: MediaQuery.of(context).size.height *
+                                          0.5,
+                                      width: MediaQuery.of(context).size.width,
+                                      fit: BoxFit.cover,
+
+                                    ),
                                   ),
                                 ),
                                 Container(
@@ -134,13 +149,7 @@ class _ReadingPageState extends State<ReadingPage> {
                                   width: MediaQuery.of(context).size.width,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      gradient: LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Colors.black12,
-                                            Colors.black54,
-                                          ])),
+                                     ),
                                   child: Text(
                                     state.listOfAudio[state.index].name,
                                     style:

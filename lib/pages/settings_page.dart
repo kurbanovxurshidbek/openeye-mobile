@@ -26,6 +26,8 @@ class _SettingsPageState extends State<SettingsPage> {
               shadowColor: Colors.blueGrey,
               backgroundColor: Colors.white,
               foregroundColor: Colors.blueGrey,
+              title: Text("Settings"),
+              centerTitle: true,
             ),
             body: state.isLoading
                 ? Center(
@@ -70,7 +72,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey,
+                                        color: Colors.deepOrangeAccent,
                                         offset: const Offset(
                                           0.0,
                                           3.0,
@@ -78,12 +80,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                         blurRadius: 3.0,
                                         spreadRadius: 0.1,
                                       ), //BoxShadow
-                                      BoxShadow(
-                                        color: Colors.white,
-                                        offset: const Offset(0.0, 0.0),
-                                        // blurRadius: 1.0,
-                                        spreadRadius: 0.0,
-                                      ), //BoxShadow
+                                     //BoxShadow
                                     ],
                                     borderRadius: BorderRadius.circular(15),
 
@@ -103,7 +100,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey,
+                                        color: Colors.pinkAccent.shade100,
                                         offset: const Offset(
                                           0.0,
                                           3.0,

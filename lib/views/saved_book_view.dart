@@ -26,7 +26,7 @@ class SavedBookView extends StatelessWidget {
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Image.asset(
-            "assets/images/audio_book.png",
+            "assets/images/audbook.png",
             width: 60,
             height: 60,
             fit: BoxFit.cover,

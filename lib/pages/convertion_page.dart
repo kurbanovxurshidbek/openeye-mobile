@@ -45,10 +45,10 @@ class _ConvertionPageState extends State<ConvertionPage> {
                 alignment: Alignment.center,
                 child: state.isConverting
                     ? SizedBox(
-                        width: 400,
-                        height: 400,
+                        width: 150,
+                        height: 150,
                         child: Center(
-                          child: Lottie.asset('assets/lottie/convertgrey.json',
+                          child: Lottie.asset('assets/lottie/convrting.json',
                               fit: BoxFit.cover, repeat: true),
                         ),
                       )

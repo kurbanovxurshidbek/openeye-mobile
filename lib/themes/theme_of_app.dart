@@ -16,7 +16,7 @@ class ThemeOf {
             fontSize: 25,
             fontFamily: "Serif",
             fontWeight: FontWeight.normal,
-            color: Color.fromARGB(255, 219, 219, 219),
+            color: Colors.white,
             fontStyle: FontStyle.normal),
 
         headline3: const TextStyle(

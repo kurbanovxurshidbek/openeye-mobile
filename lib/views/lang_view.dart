@@ -56,7 +56,7 @@ class LangUI extends StatelessWidget {
                 Text(
                   lang,
                   style: textStyle2,
-                ).tr()
+                ).tr(),
               ],
             ),
       decoration: BoxDecoration(boxShadow: [
@@ -64,7 +64,7 @@ class LangUI extends StatelessWidget {
             blurRadius: 2,
             color: Colors.blueGrey,
             offset: Offset(2, 0))
-      ], color: Colors.tealAccent, borderRadius: BorderRadius.circular(10)),
+      ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
     );
   }
 }
