@@ -39,7 +39,7 @@ class Network {
   static Future<Uint8List?> POST(String body) async {
     var uri = Uri.parse(SERVER_DEVELOPMENT); // http or https
     var response = await post(uri, headers: getHeaders(), body: body);
-    print(response.statusCode);
+    print("Statuscode: ${response.statusCode}");
     print(response.body);
 
     if (response.statusCode == 200 || response.statusCode == 201) {

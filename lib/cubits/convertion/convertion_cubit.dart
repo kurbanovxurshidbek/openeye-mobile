@@ -14,8 +14,7 @@ import '../../services/http_service.dart';
 
 class ConvertionCubit extends Cubit<ConvertionState> {
   BuildContext context;
-  ConvertionCubit({required this.context})
-      : super(ConvertionState(isConverting: false));
+  ConvertionCubit({required this.context}) : super(ConvertionState(isConverting: false));
 
   succesLoaded() async {
     AudioModel? audioModel = await getPdfTextAndPushReadingBookPage();
@@ -73,8 +72,6 @@ class ConvertionCubit extends Cubit<ConvertionState> {
 
       return [text, list[1]];
     }
-
-//
 
     return null;
   }
