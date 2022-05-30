@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-import 'dart:io';
 import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:key_board_app/services/hive_service.dart';
@@ -7,13 +6,22 @@ import 'package:key_board_app/services/hive_service.dart';
 class Network {
   static bool isTester = true;
 
+
+  static String getServer() {
+    if (isTester) return SERVER_DEVELOPMENT;
+    return SERVER_PRODUCTION;
+  }
+
   static String SERVER_DEVELOPMENT =
       "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1";
   static String SERVER_PRODUCTION = "eastus.tts.speech.microsoft.com";
 
-  static String SERVER_PDF_TO_TEXT =
-      "https://v2.convertapi.com/convert/pdf/to/txt?Secret=y9tE6pCjXnXMtyby&StoreFile=true";
 
+  ///for pdf to text
+  static String SERVER_PDF_TO_TEXT =
+      "selectpdf.com";
+
+  ///for pdf to text
   static Map<String, String> pdfHeaders() {
     Map<String, String> header = {"Content-Type": "application/json"};
     return header;
@@ -36,10 +44,7 @@ class Network {
     return headers;
   }
 
-  static String getServer() {
-    if (isTester) return SERVER_DEVELOPMENT;
-    return SERVER_PRODUCTION;
-  }
+
 
   /* Http Requests */
 
@@ -109,8 +114,8 @@ class Network {
   }
 
   ///for pdt to text
-  static Future<String?> MULTIPART(String path, Map<String, dynamic> body) async {
-    var uri = Uri.https(getServer(), API_STRING);
+  static Future<String?> MULTIPART(String path) async {
+    var uri = Uri.https(SERVER_PDF_TO_TEXT, API_STRING);
     var request = MultipartRequest("POST", uri);
 
     request.headers.addAll(getHeaders());
@@ -170,24 +175,5 @@ class Network {
     String body =
         "<speak version='1.0' xml:lang='$langCode'><voice xml:lang='$langCode' xml:gender='Male' name='$speeker'> $content</voice></speak>";
     return body;
-  }
-
-  static Map<String, dynamic> bodyPdfToText(String userKey, File file) {
-    Map<String, dynamic> params = {};
-    params.addAll({
-      "key": userKey,
-      "uri": file,
-    });
-    return params;
-  }
-
-  static Future<String?> paramsLoad(String path) async {
-    Map<String, dynamic> map = {};
-    map.addAll({
-      "key": "b2815f0c-11e8-4b22-af6d-1114958b2e23",
-      "url": path,
-    });
-    String? result = await MULTIPART(path, map);
-    return result;
   }
 }
