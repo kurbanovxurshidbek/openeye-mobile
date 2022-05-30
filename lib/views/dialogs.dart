@@ -39,20 +39,21 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
                 onPressed: () async {
                   List<dynamic>? listOfAudio =
                       await HiveDB.loadCountryCode(key: "listOfAudio");
+                  print(audioModel);
+
+                  print(listOfAudio);
 
                   if (listOfAudio == null) {
                     audioModel.isSaved = true;
                     List<dynamic> list = [audioModel.toJson()];
-                    print(list);
                     await HiveDB.saveData("listOfAudio", list);
                   } else {
                     listOfAudio.add(audioModel.toJson());
                     await HiveDB.saveData("listOfAudio", listOfAudio);
                   }
-                  List<dynamic> list =
+                  List<dynamic>? list =
                       HiveDB.loadCountryCode(key: "listOfAudio");
 
-                  print(list);
                   GOTO.pop(context);
                 },
                 child: const Text("save").tr()),

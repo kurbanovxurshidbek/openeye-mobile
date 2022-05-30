@@ -14,7 +14,7 @@ class Network {
     Map<String, String> headers = {
       "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3",
       "Content-Type": "application/ssml+xml",
-      "Ocp-Apim-Subscription-Key": "4bbf84b7e45d49e9a6b1af4d43efd368",
+      "Ocp-Apim-Subscription-Key": "d2e4d2c1b35c420cb966994b329e55a6",
     };
     return headers;
   }

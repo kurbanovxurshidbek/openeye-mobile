@@ -9,7 +9,7 @@ class AudioModel {
     this.isSaved = false,
   });
 
-  toJson() {
+  Map toJson() {
     return {"name": name, "path": path, "isSaved": true};
   }
 

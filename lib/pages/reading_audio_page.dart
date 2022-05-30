@@ -84,13 +84,18 @@ class _ReadingPageState extends State<ReadingPage> {
                     bool isSaved =
                         await _readDate(state.listOfAudio[state.index]);
 
-                    if (!isSaved) {
-                      saveAudioDialog(context, state.listOfAudio[state.index],
-                          isBack: true);
+                    if (isSaved) {
+                      BlocProvider.of<ReadingAudioBookCubit>(context).stop();
+
+                      GOTO.pop(context);
                     }
 
+                    await saveAudioDialog(
+                        context, state.listOfAudio[state.index],
+                        isBack: true);
                     BlocProvider.of<ReadingAudioBookCubit>(context).stop();
-                    GOTO.pop(context);
+
+                    return;
                   },
                 )),
             body: SafeArea(
