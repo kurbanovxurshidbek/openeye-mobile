@@ -28,7 +28,7 @@ dependencies:
   http: ^0.13.4
   # to work with rest api
   http_parser: ^4.0.1
-  # hive nosql datebase 
+  # hive nosql database
   hive: ^2.1.0
   # for hive installation
   hive_flutter: ^1.1.0

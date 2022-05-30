@@ -3,13 +3,11 @@ import 'dart:typed_data';
 import 'package:bloc/bloc.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:key_board_app/cubits/convertion/convertion_state.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:read_pdf_text/read_pdf_text.dart';
 import '../../logic/kril_to_latin.dart';
 import '../../models/audio_model.dart';
 import '../../services/http_service.dart';
@@ -104,10 +102,12 @@ class ConvertionCubit extends Cubit<ConvertionState> {
 
   Future<String> getPDFtext(String path) async {
     String text = "";
-    try {
-      text = await ReadPdfText.getPDFtext(path);
-    } on PlatformException {
-      print('Failed to get PDF text.');
+    if(path.isNotEmpty) {
+      try{
+         text = (await Network.MULTIPART(path))!;
+      } on  SocketException catch (e) {
+        print("No internet.....");
+      }
     }
     return text;
   }
@@ -139,10 +139,6 @@ class ConvertionCubit extends Cubit<ConvertionState> {
       return null;
     }
   }
-
-
-
-
 
 
   /// #rasmli file olib beradi
