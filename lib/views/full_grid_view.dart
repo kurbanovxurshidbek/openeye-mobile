@@ -16,12 +16,20 @@ void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) {
       break;
     case ItemOfFullGrid.TextInImageItem:
       {
-        GOTO.push(context, ConvertionPage(isCamera: true,));
+        GOTO.push(
+            context,
+            ConvertionPage(
+              isCamera: true,
+            ));
       }
       break;
     case ItemOfFullGrid.BookRecordingItem:
       {
-        GOTO.push(context, ConvertionPage(isCamera: false,));
+        GOTO.push(
+            context,
+            ConvertionPage(
+              isCamera: false,
+            ));
       }
       break;
     case ItemOfFullGrid.SettingItem:
@@ -52,7 +60,7 @@ androidOrIos() async {
   if (Platform.isAndroid) {
     String _counter = "";
 
-    final plotform = MethodChannel("flutter.native/helper");
+    final plotform = const MethodChannel("flutter.native/helper");
 
     String result = "";
     try {
@@ -64,8 +72,8 @@ androidOrIos() async {
   } else if (Platform.isIOS) {}
 }
 
-Widget itemGrid(String title, ItemOfFullGrid itemOfGridHome,
-    BuildContext context) {
+Widget itemGrid(
+    String title, ItemOfFullGrid itemOfGridHome, BuildContext context) {
   return GestureDetector(
     onTap: () {
       itemGridOnPressed(itemOfGridHome, context);
@@ -73,34 +81,31 @@ Widget itemGrid(String title, ItemOfFullGrid itemOfGridHome,
     child: Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        // border: Border.all(color: Colors.black12,width: 1,
-        //
-        // ),
-color: Colors.transparent,
+        color: Colors.transparent,
         boxShadow: [
-          BoxShadow(
+          const BoxShadow(
             color: Colors.transparent,
-            offset: const Offset(
+            offset: Offset(
               0.0,
               3.0,
             ),
             blurRadius: 3.0,
-            spreadRadius:0.1,
+            spreadRadius: 0.1,
           ), //BoxShadow
-          BoxShadow(
+          const BoxShadow(
             color: Colors.transparent,
-            offset: const Offset(0.0, 0.0),
+            offset: Offset(0.0, 0.0),
             // blurRadius: 1.0,
             spreadRadius: 0.0,
           ), //BoxShadow
         ],
       ),
-      child:Container(
-          padding: EdgeInsets.all(15),
+      child: Container(
+          padding: const EdgeInsets.all(15),
           alignment: Alignment.bottomLeft,
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white,
                 // fontWeight: FontWeight.bold,
                 fontSize: 23),

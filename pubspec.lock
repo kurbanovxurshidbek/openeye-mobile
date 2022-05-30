@@ -302,12 +302,12 @@ packages:
     source: hosted
     version: "0.13.4"
   http_parser:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http_parser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0"
+    version: "4.0.1"
   image_picker:
     dependency: "direct main"
     description:
