@@ -39,20 +39,17 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
                 onPressed: () async {
                   List<dynamic>? listOfAudio =
                       await HiveDB.loadCountryCode(key: "listOfAudio");
-                  print(audioModel);
-
-                  print(listOfAudio);
 
                   if (listOfAudio == null) {
-                    audioModel.isSaved = true;
+
                     List<dynamic> list = [audioModel.toJson()];
                     await HiveDB.saveData("listOfAudio", list);
                   } else {
+                   print(audioModel.toJson());
                     listOfAudio.add(audioModel.toJson());
                     await HiveDB.saveData("listOfAudio", listOfAudio);
                   }
-                  List<dynamic>? list =
-                      HiveDB.loadCountryCode(key: "listOfAudio");
+
 
                   GOTO.pop(context);
                 },
@@ -144,13 +141,17 @@ deleteItemDialog(BuildContext context, AudioModel audioModel) {
                       await HiveDB.loadCountryCode(key: "listOfAudio");
 
                   List<AudioModel> listOfAudioModels = [];
+                  List<dynamic> listOfJson = [];
 
                   listOfAudioModels = List.generate(listMap.length,
                       (index) => AudioModel.fromJson(listMap[index]));
 
                   listOfAudioModels.remove(audioModel);
 
-                  await HiveDB.saveData("listOfAudio", listOfAudioModels);
+                  listOfJson = List.generate(listOfAudioModels.length,
+                          (index) => listOfAudioModels[index].toJson());
+
+                  await HiveDB.saveData("listOfAudio", listOfJson);
                   GOTO.pop(context);
 
                   BlocProvider.of<SavedBooksCubit>(context).loadList();

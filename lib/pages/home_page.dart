@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
     return BlocBuilder<LoadLangCubit, LoadLangState>(
       builder: (context, state) {
         return Scaffold(
+
           body: SafeArea(
             child: state.isLoading
                 ? Center(
@@ -168,7 +169,6 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Expanded(
                                     child: Container(
-
                                       decoration: BoxDecoration(
                                           boxShadow: [
                                             BoxShadow(

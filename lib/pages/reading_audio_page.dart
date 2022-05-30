@@ -40,12 +40,15 @@ class _ReadingPageState extends State<ReadingPage> {
   }
 
   Future<bool> _readDate(AudioModel audioModel) async {
-    List<dynamic> listMap = await HiveDB.loadCountryCode(key: "listOfAudio");
+    List<dynamic>? listMap = await HiveDB.loadCountryCode(key: "listOfAudio");
 
     List<AudioModel> listOfAudioModels = [];
+    if (listMap == null) {
+      listMap = [];
+    }
 
     listOfAudioModels = List.generate(
-        listMap.length, (index) => AudioModel.fromJson(listMap[index]));
+        listMap.length, (index) => AudioModel.fromJson(listMap![index]));
 
     return listOfAudioModels.contains(audioModel);
   }
@@ -84,6 +87,7 @@ class _ReadingPageState extends State<ReadingPage> {
                       BlocProvider.of<ReadingAudioBookCubit>(context).stop();
 
                       GOTO.pop(context);
+                      return;
                     }
 
                     await saveAudioDialog(
@@ -101,7 +105,10 @@ class _ReadingPageState extends State<ReadingPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const CircularProgressIndicator.adaptive( valueColor:AlwaysStoppedAnimation<Color>(Colors.blueGrey),),
+                          const CircularProgressIndicator.adaptive(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.blueGrey),
+                          ),
                           const Text("loading").tr()
                         ],
                       ),
@@ -124,7 +131,7 @@ class _ReadingPageState extends State<ReadingPage> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.asset(
-                                    "assets/images/audio_book.png",
+                                    "assets/images/audbook.png",
                                     height: MediaQuery.of(context).size.height *
                                         0.5,
                                     width: MediaQuery.of(context).size.width,
