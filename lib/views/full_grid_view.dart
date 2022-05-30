@@ -82,8 +82,8 @@ Widget itemGrid(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.transparent,
-        boxShadow: [
-          const BoxShadow(
+        boxShadow: const [
+          BoxShadow(
             color: Colors.transparent,
             offset: Offset(
               0.0,
@@ -92,7 +92,7 @@ Widget itemGrid(
             blurRadius: 3.0,
             spreadRadius: 0.1,
           ), //BoxShadow
-          const BoxShadow(
+          BoxShadow(
             color: Colors.transparent,
             offset: Offset(0.0, 0.0),
             // blurRadius: 1.0,

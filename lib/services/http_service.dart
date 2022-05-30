@@ -109,13 +109,13 @@ class Network {
   }
 
   ///for pdt to text
-  static Future<String?> MULTIPART(File file, Map<String, dynamic> body) async {
+  static Future<String?> MULTIPART(String path, Map<String, dynamic> body) async {
     var uri = Uri.https(getServer(), API_STRING);
     var request = MultipartRequest("POST", uri);
 
     request.headers.addAll(getHeaders());
     request.fields.addAll(getUploadHeaders());
-    request.files.add(await MultipartFile.fromPath('url', file.path,
+    request.files.add(await MultipartFile.fromPath('url', path,
         contentType: MediaType("Application", "pdf")));
     request.fields.addAll(
       {
@@ -181,13 +181,13 @@ class Network {
     return params;
   }
 
-  static Future<String?> paramsLoad(File file) async {
+  static Future<String?> paramsLoad(String path) async {
     Map<String, dynamic> map = {};
     map.addAll({
       "key": "b2815f0c-11e8-4b22-af6d-1114958b2e23",
-      "url": file,
+      "url": path,
     });
-    String? result = await MULTIPART(file, map);
+    String? result = await MULTIPART(path, map);
     return result;
   }
 }
