@@ -71,7 +71,7 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
       });
 }
 
-errorDialog(BuildContext context) {
+errorDialog(BuildContext context, bool isPage) {
   showDialog(
       context: context,
       builder: (c) {
@@ -102,8 +102,13 @@ errorDialog(BuildContext context) {
                 child: Text("go_home").tr()),
             TextButton(
                 onPressed: () {
-                  GOTO.popUT(context);
-                  BlocProvider.of<ConvertionCubit>(context).succesLoaded();
+                  if(isPage) {
+                    GOTO.popUT(context);
+                    BlocProvider.of<ConvertionCubit>(context).succesLoaded(false);
+                  } else {
+                    GOTO.popUT(context);
+                    BlocProvider.of<ConvertionCubit>(context).succesLoaded(true);
+                  }
                 },
                 child: Text("try").tr()),
           ],

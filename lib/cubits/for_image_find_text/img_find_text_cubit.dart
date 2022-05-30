@@ -54,7 +54,11 @@ class ImgFindTextCubit extends Cubit<ImgFindTextState> {
       await file.writeAsBytes(uint8list);
       state.audioModel = AudioModel(name: text.hashCode.toString(), path: file.path);
 
-     GOTO.pushRpUntil(context, ReadingPage(listAudio: [state.audioModel!], startOnIndex: 0));
+     if(state.audioModel != null) {
+       GOTO.push(context, ReadingPage(listAudio: [state.audioModel!], startOnIndex: 0));
+     }else {
+       print("null-------------");
+     }
     }
   }
 

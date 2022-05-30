@@ -8,7 +8,8 @@ import '../cubits/convertion/convertion_state.dart';
 import '../views/dialogs.dart';
 
 class ConvertionPage extends StatefulWidget {
-  const ConvertionPage({Key? key}) : super(key: key);
+   bool isCamera;
+   ConvertionPage({Key? key, required this.isCamera}) : super(key: key);
 
   @override
   State<ConvertionPage> createState() => _ConvertionPageState();
@@ -19,9 +20,12 @@ class _ConvertionPageState extends State<ConvertionPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
-    BlocProvider.of<ConvertionCubit>(context).succesLoaded();
-  }
+    if(widget.isCamera == true){
+      BlocProvider.of<ConvertionCubit>(context).succesLoaded(true);
+    }else{
+      BlocProvider.of<ConvertionCubit>(context).succesLoaded(false);
+    }
+      }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class _ConvertionPageState extends State<ConvertionPage> {
         child: BlocListener<ConvertionCubit, ConvertionState>(
           listener: (context, state) {
             if (state.error) {
-              errorDialog(context);
+              errorDialog(context,widget.isCamera);
             }
 
             if (state.audioModel != null) {
