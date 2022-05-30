@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/for_image_find_text/img_find_text_cubit.dart';
 import 'package:key_board_app/pages/convertion_page.dart';
@@ -19,7 +18,7 @@ void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) {
       break;
     case ItemOfFullGrid.TextInImageItem:
       {
-        BlocProvider.of<ImgFindTextCubit>(context).getImage();
+        BlocProvider.of<ImgFindTextCubit>(context).getImageTextAndPushReadingBookPage();
       }
       break;
     case ItemOfFullGrid.BookRecordingItem:

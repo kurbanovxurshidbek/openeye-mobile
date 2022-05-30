@@ -40,16 +40,12 @@ class _ReadingPageState extends State<ReadingPage> {
   }
 
   Future<bool> _readDate(AudioModel audioModel) async {
-    List<dynamic>? listMap = await HiveDB.loadCountryCode(key: "listOfAudio");
+    List<dynamic> listMap = await HiveDB.loadCountryCode(key: "listOfAudio");
 
     List<AudioModel> listOfAudioModels = [];
 
-    if (listMap == null) {
-      listMap = [];
-    }
-
     listOfAudioModels = List.generate(
-        listMap.length, (index) => AudioModel.fromJson(listMap![index]));
+        listMap.length, (index) => AudioModel.fromJson(listMap[index]));
 
     return listOfAudioModels.contains(audioModel);
   }
@@ -105,10 +101,7 @@ class _ReadingPageState extends State<ReadingPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const CircularProgressIndicator.adaptive(
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.blueGrey),
-                          ),
+                          const CircularProgressIndicator.adaptive( valueColor:AlwaysStoppedAnimation<Color>(Colors.blueGrey),),
                           const Text("loading").tr()
                         ],
                       ),
@@ -130,28 +123,12 @@ class _ReadingPageState extends State<ReadingPage> {
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
-                                  child: Container(
+                                  child: Image.asset(
+                                    "assets/images/audio_book.png",
                                     height: MediaQuery.of(context).size.height *
                                         0.5,
                                     width: MediaQuery.of(context).size.width,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Colors.white10,
-                                          Colors.black,
-                                        ],
-                                      ),
-                                    ),
-                                    child: Image.asset(
-                                      "assets/images/audbook.png",
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.5,
-                                      width: MediaQuery.of(context).size.width,
-                                      fit: BoxFit.cover,
-                                    ),
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Container(
@@ -161,8 +138,14 @@ class _ReadingPageState extends State<ReadingPage> {
                                       MediaQuery.of(context).size.height * 0.5,
                                   width: MediaQuery.of(context).size.width,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
+                                      borderRadius: BorderRadius.circular(10),
+                                      gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Colors.black12,
+                                            Colors.black54,
+                                          ])),
                                   child: Text(
                                     state.listOfAudio[state.index].name,
                                     style:

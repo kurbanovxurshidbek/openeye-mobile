@@ -35,8 +35,7 @@ class _ConvertionPageState extends State<ConvertionPage> {
             }
 
             if (state.audioModel != null) {
-              GOTO.pushRP(context,
-                  ReadingPage(listAudio: [state.audioModel!], startOnIndex: 0));
+              GOTO.pushRP(context, ReadingPage(listAudio: [state.audioModel!], startOnIndex: 0));
             }
           },
           child: BlocBuilder<ConvertionCubit, ConvertionState>(

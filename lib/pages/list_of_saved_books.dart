@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/saved_book/saved_books_cubit.dart';
@@ -27,12 +28,13 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Saved books"),
+
+        title: Text("saved_books",style: TextStyle(fontSize: 25),).tr(),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.blueGrey,
-        shadowColor: Colors.blueGrey,
+        // shadowColor: Colors.blueGrey ,
       ),
       body: BlocBuilder<SavedBooksCubit, SavedBooksState>(
         builder: (context, state) {
@@ -47,24 +49,9 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                           children: [
                             Container(
                               height: 100,
-                              margin: EdgeInsets.all(10),
+
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                ),
                                 color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.blueGrey,
-                                    offset: const Offset(
-                                      0.0,
-                                      3.0,
-                                    ),
-                                    blurRadius: 3.0,
-                                    spreadRadius: 0.1,
-                                  ), //BoxShadow
-                                  //BoxShadow
-                                ],
                               ),
                               child: Center(
                                 child: ListTile(
@@ -80,15 +67,15 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.asset(
                                       "assets/images/audbook.png",
-                                      width: 60,
-                                      height: 60,
+                                      width: 80,
+                                      height: 80,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
                                   title: Text(
                                     state.listOfAudioModels[index].name,
                                     style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 17,
                                         fontFamily: "Serif",
                                         fontWeight: FontWeight.bold,
                                         color: Colors.blueGrey.shade600,
@@ -106,8 +93,11 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                                 ),
                               ),
                             ),
+                            Container(height: 1,color: Colors.grey.shade300,)
                           ],
-                        ))),
+                        )
+                )
+            ),
           );
         },
       ),
