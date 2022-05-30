@@ -95,7 +95,9 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                             ),
                             Container(height: 1,color: Colors.grey.shade300,)
                           ],
-                        ))),
+                        )
+                )
+            ),
           );
         },
       ),
