@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
-import 'package:key_board_app/cubits/for_image_find_text/img_find_text_cubit.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
 import 'package:key_board_app/cubits/for_read_audio_book/reading_audio_book_cubit.dart';
@@ -76,9 +75,6 @@ class App extends StatelessWidget {
         })),
         BlocProvider(create: ((context) {
           return LoadLangCubit(context: context);
-        })),
-        BlocProvider(create: ((context) {
-          return ImgFindTextCubit(context: context);
         })),
         BlocProvider(create: ((context) {
           return ReadingAudioBookCubit();
