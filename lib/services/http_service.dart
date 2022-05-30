@@ -128,7 +128,7 @@ class Network {
 
   ///ru
   static String speeker_ru_famale = 'ru-RU-SvetlanaNeural';
-  static String speeker_ru_male = 'uz-UZ-DmitryNeural';
+  static String speeker_ru_male = 'ru-RU-DmitryNeural';
 
   ///en
   static String speeker_en_famale = 'en-US-SaraNeural';
@@ -139,7 +139,7 @@ class Network {
       required String speeker,
       required String content}) {
     String body =
-        "<speak version='1.0' xml:lang='$langCode'><voice xml:lang='$langCode' xml:gender='Famale' name='$speeker'> $content</voice></speak>";
+        "<speak version='1.0' xml:lang='$langCode'><voice xml:lang='$langCode' xml:gender='Male' name='$speeker'> $content</voice></speak>";
     return body;
   }
 }

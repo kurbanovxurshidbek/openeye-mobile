@@ -89,14 +89,12 @@ class _LangChangePageState extends State<LangChangePage>
                         "OpenEye",
                         style: Theme.of(context).textTheme.headline4,
                       ),
-
                     ],
                   ),
                   state.bottomUp==false? Container(decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                       image: DecorationImage(
-                        
-                          image: AssetImage("assets/images/blind1.png"),fit: BoxFit.cover
+                          image: AssetImage("assets/images/blind1.jpg"),fit: BoxFit.cover
                       )
                   ),
                     height: 200,width: 200,
@@ -130,7 +128,8 @@ class _LangChangePageState extends State<LangChangePage>
                                 //   height: 40,
                                 // )
                               ],
-                            )),
+                            )
+                  ),
                 ],
               );
             },
