@@ -124,8 +124,10 @@ class MediaplayerCubit extends Cubit<MediaPlayerState> {
 
 // store unit8List audio here ;
     final tempDir = await getTemporaryDirectory();
-    file = await File('${tempDir.path}/image.mp3').create();
+    file = await File('${tempDir.path}/$count.mp3').create();
     await file.writeAsBytes(soundbytes);
+
+    print(file);
 
     int result = await state.audioPlayer.play(file.path, isLocal: true);
 

@@ -3,55 +3,53 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
-		978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFD8EE1D35381100E5BB4D /* AppDelegate.m */; };
-		97C146F31CF9000F007C117D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C146F21CF9000F007C117D /* main.m */; };
+		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		FA9CFBDB28201C210071FD14 /* BrailKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FA9CFBD428201C210071FD14 /* BrailKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FA9CFBE228201C8A0071FD14 /* Cases.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFBE128201C8A0071FD14 /* Cases.swift */; };
-		FA9CFBE628201CF70071FD14 /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBE528201CF70071FD14 /* KeyboardView.xib */; };
-		FA9CFBE828201D170071FD14 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFBE728201D170071FD14 /* KeyboardViewController.swift */; };
-		FA9CFBEB28201D4E0071FD14 /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBE528201CF70071FD14 /* KeyboardView.xib */; };
-		FA9CFBFB28201DD20071FD14 /* number.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBEF28201DD10071FD14 /* number.mp3 */; };
-		FA9CFBFC28201DD20071FD14 /* space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF028201DD10071FD14 /* space.mp3 */; };
-		FA9CFBFD28201DD20071FD14 /* five.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF128201DD10071FD14 /* five.mp3 */; };
-		FA9CFBFE28201DD20071FD14 /* latter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF228201DD10071FD14 /* latter.mp3 */; };
-		FA9CFBFF28201DD20071FD14 /* a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF328201DD10071FD14 /* a.mp3 */; };
-		FA9CFC0028201DD20071FD14 /* fo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF428201DD10071FD14 /* fo.mp3 */; };
-		FA9CFC0128201DD20071FD14 /* delete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF528201DD10071FD14 /* delete.mp3 */; };
-		FA9CFC0228201DD20071FD14 /* six.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF628201DD10071FD14 /* six.mp3 */; };
-		FA9CFC0328201DD20071FD14 /* tree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF728201DD10071FD14 /* tree.mp3 */; };
-		FA9CFC0428201DD20071FD14 /* upper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF828201DD10071FD14 /* upper.mp3 */; };
-		FA9CFC0528201DD20071FD14 /* one.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF928201DD20071FD14 /* one.mp3 */; };
-		FA9CFC0628201DD20071FD14 /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBFA28201DD20071FD14 /* 2.mp3 */; };
-		FA9CFC0728201DD80071FD14 /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBFA28201DD20071FD14 /* 2.mp3 */; };
-		FA9CFC0828201DDD0071FD14 /* delete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF528201DD10071FD14 /* delete.mp3 */; };
-		FA9CFC0928201DE20071FD14 /* a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF328201DD10071FD14 /* a.mp3 */; };
-		FA9CFC0A28201DE60071FD14 /* fo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF428201DD10071FD14 /* fo.mp3 */; };
-		FA9CFC0B28201DEA0071FD14 /* five.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF128201DD10071FD14 /* five.mp3 */; };
-		FA9CFC0C28201DED0071FD14 /* space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF028201DD10071FD14 /* space.mp3 */; };
-		FA9CFC0D28201DF00071FD14 /* tree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF728201DD10071FD14 /* tree.mp3 */; };
-		FA9CFC0E28201DF30071FD14 /* six.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF628201DD10071FD14 /* six.mp3 */; };
-		FA9CFC0F28201DF70071FD14 /* one.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF928201DD20071FD14 /* one.mp3 */; };
-		FA9CFC1028201DFB0071FD14 /* latter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF228201DD10071FD14 /* latter.mp3 */; };
-		FA9CFC1128201E000071FD14 /* upper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBF828201DD10071FD14 /* upper.mp3 */; };
-		FA9CFC1228201E030071FD14 /* number.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA9CFBEF28201DD10071FD14 /* number.mp3 */; };
+		B3B4C200284727A400F936E2 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B4C1FF284727A400F936E2 /* KeyboardViewController.swift */; };
+		B3B4C204284727A400F936E2 /* BrailKeyBoard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B3B4C1FD284727A400F936E2 /* BrailKeyBoard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B3B4C20B2847294700F936E2 /* KeyBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C20A2847294700F936E2 /* KeyBoardView.xib */; };
+		B3B4C21A2847394A00F936E2 /* tree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C20E2847394A00F936E2 /* tree.mp3 */; };
+		B3B4C21B2847394A00F936E2 /* a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C20F2847394A00F936E2 /* a.mp3 */; };
+		B3B4C21C2847394A00F936E2 /* upper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2102847394A00F936E2 /* upper.mp3 */; };
+		B3B4C21D2847394A00F936E2 /* five.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2112847394A00F936E2 /* five.mp3 */; };
+		B3B4C21E2847394A00F936E2 /* space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2122847394A00F936E2 /* space.mp3 */; };
+		B3B4C21F2847394A00F936E2 /* delete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2132847394A00F936E2 /* delete.mp3 */; };
+		B3B4C2202847394A00F936E2 /* six.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2142847394A00F936E2 /* six.mp3 */; };
+		B3B4C2212847394A00F936E2 /* number.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2152847394A00F936E2 /* number.mp3 */; };
+		B3B4C2222847394A00F936E2 /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2162847394A00F936E2 /* 2.mp3 */; };
+		B3B4C2232847394A00F936E2 /* fo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2172847394A00F936E2 /* fo.mp3 */; };
+		B3B4C2242847394A00F936E2 /* one.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2182847394A00F936E2 /* one.mp3 */; };
+		B3B4C2252847394A00F936E2 /* latter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2192847394A00F936E2 /* latter.mp3 */; };
+		B3B4C2262847396500F936E2 /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2162847394A00F936E2 /* 2.mp3 */; };
+		B3B4C2272847396A00F936E2 /* a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C20F2847394A00F936E2 /* a.mp3 */; };
+		B3B4C2282847396E00F936E2 /* delete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2132847394A00F936E2 /* delete.mp3 */; };
+		B3B4C2292847397200F936E2 /* five.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2112847394A00F936E2 /* five.mp3 */; };
+		B3B4C22A2847399200F936E2 /* fo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2172847394A00F936E2 /* fo.mp3 */; };
+		B3B4C22B2847399600F936E2 /* latter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2192847394A00F936E2 /* latter.mp3 */; };
+		B3B4C22C2847399A00F936E2 /* number.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2152847394A00F936E2 /* number.mp3 */; };
+		B3B4C22D2847399D00F936E2 /* one.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2182847394A00F936E2 /* one.mp3 */; };
+		B3B4C22E284739A000F936E2 /* six.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2142847394A00F936E2 /* six.mp3 */; };
+		B3B4C22F284739A500F936E2 /* space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2122847394A00F936E2 /* space.mp3 */; };
+		B3B4C230284739A800F936E2 /* tree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C20E2847394A00F936E2 /* tree.mp3 */; };
+		B3B4C231284739AC00F936E2 /* upper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2102847394A00F936E2 /* upper.mp3 */; };
+		CBD8B68ADA9C8A98308ACF6D /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40AED04281E1FD3AAC2142A1 /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FA9CFBD928201C210071FD14 /* PBXContainerItemProxy */ = {
+		B3B4C202284727A400F936E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FA9CFBD328201C210071FD14;
-			remoteInfo = BrailKeyboard;
+			remoteGlobalIDString = B3B4C1FC284727A400F936E2;
+			remoteInfo = BrailKeyBoard;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -66,13 +64,13 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA9CFBDC28201C210071FD14 /* Embed App Extensions */ = {
+		B3B4C205284727A400F936E2 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				FA9CFBDB28201C210071FD14 /* BrailKeyboard.appex in Embed App Extensions */,
+				B3B4C204284727A400F936E2 /* BrailKeyBoard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,37 +78,39 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0EC3865FCDB3CB91C9ED3A42 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		40AED04281E1FD3AAC2142A1 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
+		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
-		7AFFD8ED1D35381100E5BB4D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7AFFD8EE1D35381100E5BB4D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7B2B575BF50CA8C50C28BC06 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		97C146F21CF9000F007C117D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		97C146FB1CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA9CFBD428201C210071FD14 /* BrailKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BrailKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA9CFBD828201C210071FD14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA9CFBE128201C8A0071FD14 /* Cases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cases.swift; sourceTree = "<group>"; };
-		FA9CFBE528201CF70071FD14 /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KeyboardView.xib; path = ../../../../Desktop/KeyBooo/BrailKeyboard/KeyboardView.xib; sourceTree = "<group>"; };
-		FA9CFBE728201D170071FD14 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardViewController.swift; path = ../../../../Desktop/KeyBooo/BrailKeyboard/KeyboardViewController.swift; sourceTree = "<group>"; };
-		FA9CFBEF28201DD10071FD14 /* number.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = number.mp3; sourceTree = "<group>"; };
-		FA9CFBF028201DD10071FD14 /* space.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = space.mp3; sourceTree = "<group>"; };
-		FA9CFBF128201DD10071FD14 /* five.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = five.mp3; sourceTree = "<group>"; };
-		FA9CFBF228201DD10071FD14 /* latter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = latter.mp3; sourceTree = "<group>"; };
-		FA9CFBF328201DD10071FD14 /* a.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = a.mp3; sourceTree = "<group>"; };
-		FA9CFBF428201DD10071FD14 /* fo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fo.mp3; sourceTree = "<group>"; };
-		FA9CFBF528201DD10071FD14 /* delete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = delete.mp3; sourceTree = "<group>"; };
-		FA9CFBF628201DD10071FD14 /* six.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = six.mp3; sourceTree = "<group>"; };
-		FA9CFBF728201DD10071FD14 /* tree.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tree.mp3; sourceTree = "<group>"; };
-		FA9CFBF828201DD10071FD14 /* upper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = upper.mp3; sourceTree = "<group>"; };
-		FA9CFBF928201DD20071FD14 /* one.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = one.mp3; sourceTree = "<group>"; };
-		FA9CFBFA28201DD20071FD14 /* 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2.mp3; sourceTree = "<group>"; };
+		B3B4C1FD284727A400F936E2 /* BrailKeyBoard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BrailKeyBoard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3B4C1FF284727A400F936E2 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		B3B4C201284727A400F936E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3B4C20A2847294700F936E2 /* KeyBoardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyBoardView.xib; sourceTree = "<group>"; };
+		B3B4C20E2847394A00F936E2 /* tree.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tree.mp3; path = ../../../../../Desktop/tree.mp3; sourceTree = "<group>"; };
+		B3B4C20F2847394A00F936E2 /* a.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = a.mp3; path = ../../../../../Desktop/a.mp3; sourceTree = "<group>"; };
+		B3B4C2102847394A00F936E2 /* upper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = upper.mp3; path = ../../../../../Desktop/upper.mp3; sourceTree = "<group>"; };
+		B3B4C2112847394A00F936E2 /* five.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = five.mp3; path = ../../../../../Desktop/five.mp3; sourceTree = "<group>"; };
+		B3B4C2122847394A00F936E2 /* space.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = space.mp3; path = ../../../../../Desktop/space.mp3; sourceTree = "<group>"; };
+		B3B4C2132847394A00F936E2 /* delete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = delete.mp3; path = ../../../../../Desktop/delete.mp3; sourceTree = "<group>"; };
+		B3B4C2142847394A00F936E2 /* six.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = six.mp3; path = ../../../../../Desktop/six.mp3; sourceTree = "<group>"; };
+		B3B4C2152847394A00F936E2 /* number.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = number.mp3; path = ../../../../../Desktop/number.mp3; sourceTree = "<group>"; };
+		B3B4C2162847394A00F936E2 /* 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 2.mp3; path = ../../../../../Desktop/2.mp3; sourceTree = "<group>"; };
+		B3B4C2172847394A00F936E2 /* fo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fo.mp3; path = ../../../../../Desktop/fo.mp3; sourceTree = "<group>"; };
+		B3B4C2182847394A00F936E2 /* one.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = one.mp3; path = ../../../../../Desktop/one.mp3; sourceTree = "<group>"; };
+		B3B4C2192847394A00F936E2 /* latter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = latter.mp3; path = ../../../../../Desktop/latter.mp3; sourceTree = "<group>"; };
+		C95F2F1D208FC9CA200F194B /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +118,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD8B68ADA9C8A98308ACF6D /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA9CFBD128201C210071FD14 /* Frameworks */ = {
+		B3B4C1FA284727A400F936E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -131,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E038C121FE07B8E96871A0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40AED04281E1FD3AAC2142A1 /* Pods_Runner.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,8 +156,10 @@
 			children = (
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
-				FA9CFBD528201C210071FD14 /* BrailKeyboard */,
+				B3B4C1FE284727A400F936E2 /* BrailKeyBoard */,
 				97C146EF1CF9000F007C117D /* Products */,
+				D666B577F1BF74AF7A0B81D6 /* Pods */,
+				8E038C121FE07B8E96871A0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
-				FA9CFBD428201C210071FD14 /* BrailKeyboard.appex */,
+				B3B4C1FD284727A400F936E2 /* BrailKeyBoard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,56 +175,56 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
-				7AFFD8ED1D35381100E5BB4D /* AppDelegate.h */,
-				7AFFD8EE1D35381100E5BB4D /* AppDelegate.m */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
 				97C147021CF9000F007C117D /* Info.plist */,
-				97C146F11CF9000F007C117D /* Supporting Files */,
 				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
+				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
+				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
 		};
-		97C146F11CF9000F007C117D /* Supporting Files */ = {
+		B3B4C1FE284727A400F936E2 /* BrailKeyBoard */ = {
 			isa = PBXGroup;
 			children = (
-				97C146F21CF9000F007C117D /* main.m */,
+				B3B4C20D284737BF00F936E2 /* voice */,
+				B3B4C1FF284727A400F936E2 /* KeyboardViewController.swift */,
+				B3B4C20A2847294700F936E2 /* KeyBoardView.xib */,
+				B3B4C201284727A400F936E2 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = BrailKeyBoard;
 			sourceTree = "<group>";
 		};
-		FA9CFBD528201C210071FD14 /* BrailKeyboard */ = {
+		B3B4C20D284737BF00F936E2 /* voice */ = {
 			isa = PBXGroup;
 			children = (
-				FA9CFBEE28201DC30071FD14 /* Sounds */,
-				FA9CFBE728201D170071FD14 /* KeyboardViewController.swift */,
-				FA9CFBE528201CF70071FD14 /* KeyboardView.xib */,
-				FA9CFBE128201C8A0071FD14 /* Cases.swift */,
-				FA9CFBD828201C210071FD14 /* Info.plist */,
+				B3B4C2162847394A00F936E2 /* 2.mp3 */,
+				B3B4C20F2847394A00F936E2 /* a.mp3 */,
+				B3B4C2132847394A00F936E2 /* delete.mp3 */,
+				B3B4C2112847394A00F936E2 /* five.mp3 */,
+				B3B4C2172847394A00F936E2 /* fo.mp3 */,
+				B3B4C2192847394A00F936E2 /* latter.mp3 */,
+				B3B4C2152847394A00F936E2 /* number.mp3 */,
+				B3B4C2182847394A00F936E2 /* one.mp3 */,
+				B3B4C2142847394A00F936E2 /* six.mp3 */,
+				B3B4C2122847394A00F936E2 /* space.mp3 */,
+				B3B4C20E2847394A00F936E2 /* tree.mp3 */,
+				B3B4C2102847394A00F936E2 /* upper.mp3 */,
 			);
-			path = BrailKeyboard;
+			path = voice;
 			sourceTree = "<group>";
 		};
-		FA9CFBEE28201DC30071FD14 /* Sounds */ = {
+		D666B577F1BF74AF7A0B81D6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FA9CFBFA28201DD20071FD14 /* 2.mp3 */,
-				FA9CFBF328201DD10071FD14 /* a.mp3 */,
-				FA9CFBF528201DD10071FD14 /* delete.mp3 */,
-				FA9CFBF128201DD10071FD14 /* five.mp3 */,
-				FA9CFBF428201DD10071FD14 /* fo.mp3 */,
-				FA9CFBF228201DD10071FD14 /* latter.mp3 */,
-				FA9CFBEF28201DD10071FD14 /* number.mp3 */,
-				FA9CFBF928201DD20071FD14 /* one.mp3 */,
-				FA9CFBF628201DD10071FD14 /* six.mp3 */,
-				FA9CFBF028201DD10071FD14 /* space.mp3 */,
-				FA9CFBF728201DD10071FD14 /* tree.mp3 */,
-				FA9CFBF828201DD10071FD14 /* upper.mp3 */,
+				7B2B575BF50CA8C50C28BC06 /* Pods-Runner.debug.xcconfig */,
+				C95F2F1D208FC9CA200F194B /* Pods-Runner.release.xcconfig */,
+				0EC3865FCDB3CB91C9ED3A42 /* Pods-Runner.profile.xcconfig */,
 			);
-			path = Sounds;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,39 +234,42 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
+				A31B65F9CDE25F86095C42DA /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
-				FA9CFBDC28201C210071FD14 /* Embed App Extensions */,
+				DA6955B12E9B1B45C45441EC /* [CP] Embed Pods Frameworks */,
+				F12D0B4FB25CEC8B43EB6F82 /* [CP] Copy Pods Resources */,
+				B3B4C205284727A400F936E2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FA9CFBDA28201C210071FD14 /* PBXTargetDependency */,
+				B3B4C203284727A400F936E2 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FA9CFBD328201C210071FD14 /* BrailKeyboard */ = {
+		B3B4C1FC284727A400F936E2 /* BrailKeyBoard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA9CFBE028201C210071FD14 /* Build configuration list for PBXNativeTarget "BrailKeyboard" */;
+			buildConfigurationList = B3B4C209284727A400F936E2 /* Build configuration list for PBXNativeTarget "BrailKeyBoard" */;
 			buildPhases = (
-				FA9CFBD028201C210071FD14 /* Sources */,
-				FA9CFBD128201C210071FD14 /* Frameworks */,
-				FA9CFBD228201C210071FD14 /* Resources */,
+				B3B4C1F9284727A400F936E2 /* Sources */,
+				B3B4C1FA284727A400F936E2 /* Frameworks */,
+				B3B4C1FB284727A400F936E2 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = BrailKeyboard;
-			productName = BrailKeyboard;
-			productReference = FA9CFBD428201C210071FD14 /* BrailKeyboard.appex */;
+			name = BrailKeyBoard;
+			productName = BrailKeyBoard;
+			productReference = B3B4C1FD284727A400F936E2 /* BrailKeyBoard.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -264,15 +278,16 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 1100;
 					};
-					FA9CFBD328201C210071FD14 = {
-						CreatedOnToolsVersion = 13.3.1;
+					B3B4C1FC284727A400F936E2 = {
+						CreatedOnToolsVersion = 13.4;
 					};
 				};
 			};
@@ -290,7 +305,7 @@
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
-				FA9CFBD328201C210071FD14 /* BrailKeyboard */,
+				B3B4C1FC284727A400F936E2 /* BrailKeyBoard */,
 			);
 		};
 /* End PBXProject section */
@@ -300,19 +315,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA9CFC1228201E030071FD14 /* number.mp3 in Resources */,
-				FA9CFC1128201E000071FD14 /* upper.mp3 in Resources */,
-				FA9CFC1028201DFB0071FD14 /* latter.mp3 in Resources */,
-				FA9CFC0F28201DF70071FD14 /* one.mp3 in Resources */,
-				FA9CFC0E28201DF30071FD14 /* six.mp3 in Resources */,
-				FA9CFC0D28201DF00071FD14 /* tree.mp3 in Resources */,
-				FA9CFC0C28201DED0071FD14 /* space.mp3 in Resources */,
-				FA9CFC0B28201DEA0071FD14 /* five.mp3 in Resources */,
-				FA9CFC0A28201DE60071FD14 /* fo.mp3 in Resources */,
-				FA9CFC0928201DE20071FD14 /* a.mp3 in Resources */,
-				FA9CFC0828201DDD0071FD14 /* delete.mp3 in Resources */,
-				FA9CFC0728201DD80071FD14 /* 2.mp3 in Resources */,
-				FA9CFBEB28201D4E0071FD14 /* KeyboardView.xib in Resources */,
+				B3B4C231284739AC00F936E2 /* upper.mp3 in Resources */,
+				B3B4C230284739A800F936E2 /* tree.mp3 in Resources */,
+				B3B4C22F284739A500F936E2 /* space.mp3 in Resources */,
+				B3B4C22E284739A000F936E2 /* six.mp3 in Resources */,
+				B3B4C22D2847399D00F936E2 /* one.mp3 in Resources */,
+				B3B4C22C2847399A00F936E2 /* number.mp3 in Resources */,
+				B3B4C22B2847399600F936E2 /* latter.mp3 in Resources */,
+				B3B4C22A2847399200F936E2 /* fo.mp3 in Resources */,
+				B3B4C2292847397200F936E2 /* five.mp3 in Resources */,
+				B3B4C2282847396E00F936E2 /* delete.mp3 in Resources */,
+				B3B4C2272847396A00F936E2 /* a.mp3 in Resources */,
+				B3B4C2262847396500F936E2 /* 2.mp3 in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
@@ -320,23 +334,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA9CFBD228201C210071FD14 /* Resources */ = {
+		B3B4C1FB284727A400F936E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA9CFC0228201DD20071FD14 /* six.mp3 in Resources */,
-				FA9CFC0428201DD20071FD14 /* upper.mp3 in Resources */,
-				FA9CFBFF28201DD20071FD14 /* a.mp3 in Resources */,
-				FA9CFC0628201DD20071FD14 /* 2.mp3 in Resources */,
-				FA9CFC0528201DD20071FD14 /* one.mp3 in Resources */,
-				FA9CFC0028201DD20071FD14 /* fo.mp3 in Resources */,
-				FA9CFBFD28201DD20071FD14 /* five.mp3 in Resources */,
-				FA9CFC0128201DD20071FD14 /* delete.mp3 in Resources */,
-				FA9CFBFE28201DD20071FD14 /* latter.mp3 in Resources */,
-				FA9CFC0328201DD20071FD14 /* tree.mp3 in Resources */,
-				FA9CFBE628201CF70071FD14 /* KeyboardView.xib in Resources */,
-				FA9CFBFC28201DD20071FD14 /* space.mp3 in Resources */,
-				FA9CFBFB28201DD20071FD14 /* number.mp3 in Resources */,
+				B3B4C21B2847394A00F936E2 /* a.mp3 in Resources */,
+				B3B4C2202847394A00F936E2 /* six.mp3 in Resources */,
+				B3B4C2212847394A00F936E2 /* number.mp3 in Resources */,
+				B3B4C2242847394A00F936E2 /* one.mp3 in Resources */,
+				B3B4C21E2847394A00F936E2 /* space.mp3 in Resources */,
+				B3B4C21D2847394A00F936E2 /* five.mp3 in Resources */,
+				B3B4C21F2847394A00F936E2 /* delete.mp3 in Resources */,
+				B3B4C21A2847394A00F936E2 /* tree.mp3 in Resources */,
+				B3B4C2232847394A00F936E2 /* fo.mp3 in Resources */,
+				B3B4C2222847394A00F936E2 /* 2.mp3 in Resources */,
+				B3B4C20B2847294700F936E2 /* KeyBoardView.xib in Resources */,
+				B3B4C21C2847394A00F936E2 /* upper.mp3 in Resources */,
+				B3B4C2252847394A00F936E2 /* latter.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +383,63 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
+		};
+		A31B65F9CDE25F86095C42DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA6955B12E9B1B45C45441EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F12D0B4FB25CEC8B43EB6F82 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -378,28 +448,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */,
-				97C146F31CF9000F007C117D /* main.m in Sources */,
+				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA9CFBD028201C210071FD14 /* Sources */ = {
+		B3B4C1F9284727A400F936E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA9CFBE228201C8A0071FD14 /* Cases.swift in Sources */,
-				FA9CFBE828201D170071FD14 /* KeyboardViewController.swift in Sources */,
+				B3B4C200284727A400F936E2 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FA9CFBDA28201C210071FD14 /* PBXTargetDependency */ = {
+		B3B4C203284727A400F936E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FA9CFBD328201C210071FD14 /* BrailKeyboard */;
-			targetProxy = FA9CFBD928201C210071FD14 /* PBXContainerItemProxy */;
+			target = B3B4C1FC284727A400F936E2 /* BrailKeyBoard */;
+			targetProxy = B3B4C202284727A400F936E2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -427,6 +495,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -479,7 +548,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = ZHM7Q2NGYJ;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -488,6 +559,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Profile;
@@ -496,6 +569,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -525,6 +599,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -551,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -580,6 +656,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -592,6 +669,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -603,7 +682,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = ZHM7Q2NGYJ;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -612,6 +693,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -622,7 +706,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = ZHM7Q2NGYJ;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -631,11 +717,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
-		FA9CFBDD28201C210071FD14 /* Debug */ = {
+		B3B4C206284727A400F936E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -646,12 +734,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZHM7Q2NGYJ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BrailKeyboard/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = BrailKeyboard;
+				INFOPLIST_FILE = BrailKeyBoard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BrailKeyBoard;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -660,7 +749,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp.BrailKeyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp.BrailKeyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -671,7 +760,7 @@
 			};
 			name = Debug;
 		};
-		FA9CFBDE28201C210071FD14 /* Release */ = {
+		B3B4C207284727A400F936E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -682,12 +771,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZHM7Q2NGYJ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BrailKeyboard/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = BrailKeyboard;
+				INFOPLIST_FILE = BrailKeyBoard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BrailKeyBoard;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -695,18 +785,16 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp.BrailKeyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp.BrailKeyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		FA9CFBDF28201C210071FD14 /* Profile */ = {
+		B3B4C208284727A400F936E2 /* Profile */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -717,12 +805,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZHM7Q2NGYJ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BrailKeyboard/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = BrailKeyboard;
+				INFOPLIST_FILE = BrailKeyBoard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BrailKeyBoard;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -730,12 +819,10 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp.BrailKeyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.keyBoardApp.BrailKeyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -764,12 +851,12 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA9CFBE028201C210071FD14 /* Build configuration list for PBXNativeTarget "BrailKeyboard" */ = {
+		B3B4C209284727A400F936E2 /* Build configuration list for PBXNativeTarget "BrailKeyBoard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA9CFBDD28201C210071FD14 /* Debug */,
-				FA9CFBDE28201C210071FD14 /* Release */,
-				FA9CFBDF28201C210071FD14 /* Profile */,
+				B3B4C206284727A400F936E2 /* Debug */,
+				B3B4C207284727A400F936E2 /* Release */,
+				B3B4C208284727A400F936E2 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -59,7 +59,9 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
 
       await BlocProvider.of<LoadLangCubit>(context).loadedLang();
     } else {
-      GOTO.pushRpUntil(context, const HomePage());
+
+
+      GOTO.pushRpUntil(context,  HomePage());
     }
   }
 
@@ -71,14 +73,14 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
           await HiveDB.saveData("voice", "famale");
         }
 
-        GOTO.pushRpUntil(context, const HomePage());
+        GOTO.pushRpUntil(context,  HomePage());
       } else if (state.langCode == "en") {
         await HiveDB.storeLang("en", "US");
         if (!inSettings) {
           await HiveDB.saveData("voice", "famale");
         }
 
-        GOTO.pushRpUntil(context, const HomePage());
+        GOTO.pushRpUntil(context,  HomePage());
       } else if (state.langCode == "ru") {
         await HiveDB.storeLang("ru", "RU");
         if (!inSettings) {
@@ -87,7 +89,7 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
         if (inSettings) {
           GOTO.pop(context);
         } else {
-          GOTO.pushRpUntil(context, const HomePage());
+          GOTO.pushRpUntil(context,  HomePage());
         }
       }
     }

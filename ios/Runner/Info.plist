@@ -43,5 +43,17 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Recognition use and display input</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Defect speech input</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow this app to access your photos</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Share pictures</string>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
 </dict>
 </plist>

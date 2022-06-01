@@ -11,11 +11,14 @@ class ConvertionPage extends StatefulWidget {
    bool isCamera;
    ConvertionPage({Key? key, required this.isCamera}) : super(key: key);
 
+
   @override
   State<ConvertionPage> createState() => _ConvertionPageState();
 }
 
 class _ConvertionPageState extends State<ConvertionPage> {
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -26,6 +29,9 @@ class _ConvertionPageState extends State<ConvertionPage> {
       BlocProvider.of<ConvertionCubit>(context).succesLoaded(false);
     }
       }
+
+
+
 
   @override
   Widget build(BuildContext context) {

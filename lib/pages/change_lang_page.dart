@@ -22,7 +22,7 @@ class _LangChangePageState extends State<LangChangePage>
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
 
     BlocProvider.of<SpeechToTextCubit>(context).initSpeech();
 
@@ -57,7 +57,7 @@ class _LangChangePageState extends State<LangChangePage>
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
 
     BlocProvider.of<SpeechToTextCubit>(context).stopListening("stop");
 
@@ -75,6 +75,8 @@ class _LangChangePageState extends State<LangChangePage>
               color: Colors.white),
           child: BlocBuilder<MainaligmentCubit, MainAligmentState>(
             builder: (context, state) {
+
+              
               return Column(
                 mainAxisAlignment: state.columnAligment,
                 children: [

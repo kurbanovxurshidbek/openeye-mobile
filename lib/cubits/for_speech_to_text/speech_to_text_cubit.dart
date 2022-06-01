@@ -14,8 +14,8 @@ class SpeechToTextCubit extends Cubit<SpeechToTextState> {
   Timer? timer;
 
   initSpeech() async {
-    bool _speechEnabled = await state.speechToText.initialize();
-    print("Is succes" + _speechEnabled.toString());
+  bool _speechEnabled = await state.speechToText.initialize();
+  print("Is succes" + _speechEnabled.toString());
   }
 
   stopListening(String code) async {

@@ -143,7 +143,11 @@ class ConvertionCubit extends Cubit<ConvertionState> {
 
   /// #rasmli file olib beradi
   Future<String?> getImage() async {
-    final file = (await ImagePicker().pickImage(source: ImageSource.camera));
+
+    print("----");
+    final file = await ImagePicker().pickImage(source: ImageSource.gallery);
+    print("+++++");
+
     emit(ConvertionState(
       isConverting: true,
       error: false,
@@ -160,6 +164,7 @@ class ConvertionCubit extends Cubit<ConvertionState> {
   /// #rasmdagi matnlarni olib beradi
   Future<String?> getRecognisedText(File imageFile) async {
     inputImage = InputImage.fromFilePath(imageFile.path);
+    print(inputImage);
     final textDetector = GoogleMlKit.vision.textRecognizer();
     RecognizedText recognizedText = await textDetector.processImage(inputImage!);
     imgText = "";

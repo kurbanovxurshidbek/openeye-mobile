@@ -8,6 +8,7 @@ import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
 import 'package:key_board_app/views/full_grid_view.dart';
 
 class HomePage extends StatefulWidget {
+
   const HomePage({Key? key}) : super(key: key);
 
   @override
