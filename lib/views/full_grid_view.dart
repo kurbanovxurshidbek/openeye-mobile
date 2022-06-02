@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:key_board_app/constants/enums.dart';
@@ -16,8 +15,6 @@ void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) {
       break;
     case ItemOfFullGrid.TextInImageItem:
       {
-
-
         GOTO.push(
             context,
             ConvertionPage(
@@ -59,19 +56,17 @@ void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) {
 
 // going to android and ios settings
 androidOrIos() async {
-  if (Platform.isAndroid) {
-    String _counter = "";
+  String _counter = "";
 
-    final plotform = const MethodChannel("flutter.native/helper");
+  final plotform = const MethodChannel("flutter.native/helper");
 
-    String result = "";
-    try {
-      result = await plotform.invokeMethod("helloNativeCode");
-    } catch (e) {
-      print(e);
-    }
-    print(result);
-  } else if (Platform.isIOS) {}
+  String result = "";
+  try {
+    result = await plotform.invokeMethod("helloNativeCode");
+  } catch (e) {
+    print(e);
+  }
+  print(result);
 }
 
 Widget itemGrid(

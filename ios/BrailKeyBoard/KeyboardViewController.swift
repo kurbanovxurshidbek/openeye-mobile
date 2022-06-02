@@ -53,7 +53,7 @@ class KeyboardViewController: UIInputViewController {
         
       AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         
-        var label = key.titleLabel?.text as! String
+        var label = key.titleLabel?.text as! String;
         
       
         
@@ -117,7 +117,7 @@ class KeyboardViewController: UIInputViewController {
                                     
                                     
                                 case [0,0,0,0,0,0]:
-                                    setSound(url:  Bundle.main.url(forResource: "space", withExtension: "mp3")!)
+                                    setSound(url:  Bundle.main.url(forResource: "f", withExtension: "mp3")!)
                                     (textDocumentProxy as UIKeyInput).insertText(" ")
                                 case [1,2,0,0,0,0]:
                                     if cases == Cases.Latter{

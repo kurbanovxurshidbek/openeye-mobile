@@ -18,7 +18,6 @@
 		B3B4C20B2847294700F936E2 /* KeyBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C20A2847294700F936E2 /* KeyBoardView.xib */; };
 		B3B4C21A2847394A00F936E2 /* tree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C20E2847394A00F936E2 /* tree.mp3 */; };
 		B3B4C21B2847394A00F936E2 /* a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C20F2847394A00F936E2 /* a.mp3 */; };
-		B3B4C21C2847394A00F936E2 /* upper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2102847394A00F936E2 /* upper.mp3 */; };
 		B3B4C21D2847394A00F936E2 /* five.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2112847394A00F936E2 /* five.mp3 */; };
 		B3B4C21E2847394A00F936E2 /* space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2122847394A00F936E2 /* space.mp3 */; };
 		B3B4C21F2847394A00F936E2 /* delete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2132847394A00F936E2 /* delete.mp3 */; };
@@ -39,7 +38,8 @@
 		B3B4C22E284739A000F936E2 /* six.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2142847394A00F936E2 /* six.mp3 */; };
 		B3B4C22F284739A500F936E2 /* space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2122847394A00F936E2 /* space.mp3 */; };
 		B3B4C230284739A800F936E2 /* tree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C20E2847394A00F936E2 /* tree.mp3 */; };
-		B3B4C231284739AC00F936E2 /* upper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B4C2102847394A00F936E2 /* upper.mp3 */; };
+		B3B85B23284870AE000CC139 /* f.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B85B22284870AE000CC139 /* f.mp3 */; };
+		B3B85B24284870BC000CC139 /* f.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B3B85B22284870AE000CC139 /* f.mp3 */; };
 		CBD8B68ADA9C8A98308ACF6D /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40AED04281E1FD3AAC2142A1 /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,7 +100,6 @@
 		B3B4C20A2847294700F936E2 /* KeyBoardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyBoardView.xib; sourceTree = "<group>"; };
 		B3B4C20E2847394A00F936E2 /* tree.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tree.mp3; path = ../../../../../Desktop/tree.mp3; sourceTree = "<group>"; };
 		B3B4C20F2847394A00F936E2 /* a.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = a.mp3; path = ../../../../../Desktop/a.mp3; sourceTree = "<group>"; };
-		B3B4C2102847394A00F936E2 /* upper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = upper.mp3; path = ../../../../../Desktop/upper.mp3; sourceTree = "<group>"; };
 		B3B4C2112847394A00F936E2 /* five.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = five.mp3; path = ../../../../../Desktop/five.mp3; sourceTree = "<group>"; };
 		B3B4C2122847394A00F936E2 /* space.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = space.mp3; path = ../../../../../Desktop/space.mp3; sourceTree = "<group>"; };
 		B3B4C2132847394A00F936E2 /* delete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = delete.mp3; path = ../../../../../Desktop/delete.mp3; sourceTree = "<group>"; };
@@ -110,6 +109,7 @@
 		B3B4C2172847394A00F936E2 /* fo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fo.mp3; path = ../../../../../Desktop/fo.mp3; sourceTree = "<group>"; };
 		B3B4C2182847394A00F936E2 /* one.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = one.mp3; path = ../../../../../Desktop/one.mp3; sourceTree = "<group>"; };
 		B3B4C2192847394A00F936E2 /* latter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = latter.mp3; path = ../../../../../Desktop/latter.mp3; sourceTree = "<group>"; };
+		B3B85B22284870AE000CC139 /* f.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = f.mp3; path = ../../../../../Desktop/f.mp3; sourceTree = "<group>"; };
 		C95F2F1D208FC9CA200F194B /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,6 +201,7 @@
 		B3B4C20D284737BF00F936E2 /* voice */ = {
 			isa = PBXGroup;
 			children = (
+				B3B85B22284870AE000CC139 /* f.mp3 */,
 				B3B4C2162847394A00F936E2 /* 2.mp3 */,
 				B3B4C20F2847394A00F936E2 /* a.mp3 */,
 				B3B4C2132847394A00F936E2 /* delete.mp3 */,
@@ -212,7 +213,6 @@
 				B3B4C2142847394A00F936E2 /* six.mp3 */,
 				B3B4C2122847394A00F936E2 /* space.mp3 */,
 				B3B4C20E2847394A00F936E2 /* tree.mp3 */,
-				B3B4C2102847394A00F936E2 /* upper.mp3 */,
 			);
 			path = voice;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3B4C231284739AC00F936E2 /* upper.mp3 in Resources */,
+				B3B85B24284870BC000CC139 /* f.mp3 in Resources */,
 				B3B4C230284739A800F936E2 /* tree.mp3 in Resources */,
 				B3B4C22F284739A500F936E2 /* space.mp3 in Resources */,
 				B3B4C22E284739A000F936E2 /* six.mp3 in Resources */,
@@ -341,6 +341,7 @@
 				B3B4C21B2847394A00F936E2 /* a.mp3 in Resources */,
 				B3B4C2202847394A00F936E2 /* six.mp3 in Resources */,
 				B3B4C2212847394A00F936E2 /* number.mp3 in Resources */,
+				B3B85B23284870AE000CC139 /* f.mp3 in Resources */,
 				B3B4C2242847394A00F936E2 /* one.mp3 in Resources */,
 				B3B4C21E2847394A00F936E2 /* space.mp3 in Resources */,
 				B3B4C21D2847394A00F936E2 /* five.mp3 in Resources */,
@@ -349,7 +350,6 @@
 				B3B4C2232847394A00F936E2 /* fo.mp3 in Resources */,
 				B3B4C2222847394A00F936E2 /* 2.mp3 in Resources */,
 				B3B4C20B2847294700F936E2 /* KeyBoardView.xib in Resources */,
-				B3B4C21C2847394A00F936E2 /* upper.mp3 in Resources */,
 				B3B4C2252847394A00F936E2 /* latter.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
