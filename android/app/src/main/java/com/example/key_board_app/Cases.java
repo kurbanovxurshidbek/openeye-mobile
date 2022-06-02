@@ -1,7 +1,5 @@
 package com.example.key_board_app;
 
-import java.util.HashMap;
-
 public enum Cases {
     Number,Letter,Upper
 }

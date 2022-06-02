@@ -75,10 +75,10 @@ String numToText(String text) {
     String son = int.parse(text).toString();
     String son2 = text.replaceFirst(int.parse(text).toString(),"");
     if(son == "0") {
-      result = "nu'l";
+      result = "nul";
     } else {
       for(int i = 0; i < son2.length; i++) {
-        result += "nu'l ";
+        result += "nul ";
       }
       if(son.isEmpty) {
         result = result.substring(0,result.length-1);
