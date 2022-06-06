@@ -3,16 +3,15 @@
 String textEditing(String text) {
   RegExp regex = RegExp("[0-9]+");
   RegExp regex2 = RegExp("[0-9]+([ ]{0,}[-])([ ]{0,})[a-z]");
-  RegExp regex3 = RegExp("[ ]{0,}[0-9]+([.])([0-9]+)[ ]{0,}");
+  RegExp regex3 = RegExp("[0-9][ ]{0,}([.])[ ]{0,}[0-9]");
   // kasr sonlarni to'g'irlash
   while(text.contains(regex3)) {
-    text = text.replaceFirst(regex3.firstMatch(text)!.group(2)!,regex3.firstMatch(text)!.group(2)!.substring(0,regex3.firstMatch(text)!.group(2)!.lastIndexOf(RegExp("[1-9]"))+1));
-    text = text.replaceFirst(regex3.firstMatch(text)!.group(1)!," butun ");
+    text = text.replaceFirst(regex3.firstMatch(text)!.group(1)!, " nuqta ");
   }
   // butun sonlarni to'g'irlash
   while(text.contains(regex)) {
     if(text.contains(regex2)) {
-      text = text.replaceFirst(regex2.firstMatch(text)!.group(1)!,regex2.firstMatch(text)!.group(2)!.length == 0 ? " inchi " : " inchi");
+      text = text.replaceFirst(regex2.firstMatch(text)!.group(1)!, " inchi ");
     }
     text = text.replaceFirst(regex, numToText(regex.stringMatch(text)!));
   }
