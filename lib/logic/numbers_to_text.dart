@@ -13,7 +13,7 @@ String textEditing(String text) {
     if(text.contains(regex2)) {
       text = text.replaceFirst(regex2.firstMatch(text)!.group(1)!, " inchi ");
     }
-    text = text.replaceFirst(regex, numToText(regex.stringMatch(text)!));
+    text = text.replaceFirst(regex, " " + numToText(regex.stringMatch(text)!) + " ");
   }
   return text;
 }
