@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:key_board_app/logic/numbers_to_text.dart';
 import 'package:key_board_app/services/hive_service.dart';
 
 class Network {
@@ -79,7 +80,9 @@ class Network {
     print(langCode + "--------------------");
     print(voice.toString() + "+++++++++++++++++++++++");
     print(content);
-
+    if(langCode == "uz") {
+      content = textEditing(content);
+    }
     switch (langCode) {
       case "uz":
         {
