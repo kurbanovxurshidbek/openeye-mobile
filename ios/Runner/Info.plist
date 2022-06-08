@@ -25,11 +25,6 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-	<key>NSCameraUsageDescription</key>
-    <string>Can I use the camera please? Only for demo purpose of the app</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Only for demo purpose of the app</string>
-
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -40,6 +35,7 @@
     <false/>
     <key>CADisableMinimumFrameDurationOnPhone</key>
     <true/>
+
     <key>NSSpeechRecognitionUsageDescription</key>
     <string>Recognition use and display input</string>
     <key>NSMicrophoneUsageDescription</key>
