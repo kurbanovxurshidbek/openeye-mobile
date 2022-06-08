@@ -80,7 +80,7 @@ class ConvertionCubit extends Cubit<ConvertionState> {
     print(list);
 
     if (list != null) {
-      String text = await getPDFtext(list[0]);
+      String text = await getPDFtext(context,list[0]);
       String? countryCode = HiveDB.loadLangCode();
 
       if (countryCode != null && countryCode == "uz") {
@@ -101,17 +101,24 @@ class ConvertionCubit extends Cubit<ConvertionState> {
     return null;
   }
 
-  Future<String> getPDFtext(String path) async {
+  Future<String> getPDFtext(BuildContext context,String path) async {
     String text = "";
     if(path.isNotEmpty) {
       try{
          text = (await Network.MULTIPART(path))!;
+
+
+         List<String> gg= text.split(" ");
+         gg.forEach((element) {
+           print(element);
+         });
+
       } on  SocketException catch (e) {
         print("No internet.....");
       }
     }
     text = textEditing(text);
-    return text;
+      return text;
   }
 
   showD(BuildContext context, String str) {
@@ -147,7 +154,7 @@ class ConvertionCubit extends Cubit<ConvertionState> {
   Future<String?> getImage() async {
 
     print("----");
-    final file = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final file = await ImagePicker().pickImage(source: ImageSource.camera);
     print("+++++");
 
     emit(ConvertionState(
@@ -197,6 +204,8 @@ class ConvertionCubit extends Cubit<ConvertionState> {
         text = await toLatin(text);
       }
     }
+
+
     return text!;
   }
 }
