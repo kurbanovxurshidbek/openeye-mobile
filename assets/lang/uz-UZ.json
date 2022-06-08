@@ -21,7 +21,12 @@
     "about_error":"Qaytadan urinib ko`ring!",
     "go_home":"Qaytish",
     "try":"Qayta urinish",
-    "delete":"O`chirish"
+    "delete":"O`chirish",
+    "exit": "Chiqish",
+    "back": "orqaga qaytish",
+    "pause": "pauza",
+    "next": "Keyingisi",
+    "download": "yuklab olish"
 
 
 }

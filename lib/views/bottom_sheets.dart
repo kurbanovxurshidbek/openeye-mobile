@@ -106,6 +106,7 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
       useRootNavigator: false,
       context: context1,
       builder: (context1) {
+        BuildContext context;
         return Container(
           padding: const EdgeInsets.all(10),
           height: MediaQuery.of(context1).size.height * 0.4,
@@ -138,7 +139,7 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
                         style: Theme.of(context1).textTheme.bodyText1),
                   ])),
               Container(
-                height: 120,
+                height: 200,
 
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -195,7 +196,6 @@ voiceChooseSheet(BuildContext context) async {
     }
     GOTO.pop(context);
   }
-
   List<String> listVoice = ["voice_male", "voice_famale"];
 
   showModalBottomSheet(
@@ -219,7 +219,8 @@ voiceChooseSheet(BuildContext context) async {
                     blurRadius: 3.0,
                     spreadRadius: 0,
                     color: Colors.blueGrey,
-                    offset: Offset(2, -1))
+                    offset: Offset(2, -1)
+                )
               ],
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -237,7 +238,7 @@ voiceChooseSheet(BuildContext context) async {
                       style: Theme.of(context).textTheme.headline6,
                       children: [])),
               Container(
-                height: 120,
+                height: MediaQuery.of(context).size.height/4,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(2, (index) {

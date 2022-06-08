@@ -21,7 +21,12 @@
     "about_error":"Please try again!",
     "go_home":"Back to",
     "try":"Try again",
-    "delete":"Delete"
+    "delete":"Delete",
+    "exit": "exit",
+    "back":"back",
+    "pause":"pause",
+    "next": "next",
+    "download": "download"
 
     
 }

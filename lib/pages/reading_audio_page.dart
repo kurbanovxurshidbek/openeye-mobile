@@ -78,7 +78,9 @@ class _ReadingPageState extends State<ReadingPage> {
                 elevation: 0,
                 backgroundColor: Colors.white,
                 leading: IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.blueGrey),
+                  icon: Semantics(
+                      label: "exit".tr(),
+                      child: Icon(Icons.arrow_back, color: Colors.blueGrey)),
                   onPressed: () async {
                     bool isSaved =
                         await _readDate(state.listOfAudio[state.index]);
@@ -120,6 +122,7 @@ class _ReadingPageState extends State<ReadingPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
+
                           SizedBox(
                             height: 25,
                           ),
@@ -215,10 +218,13 @@ class _ReadingPageState extends State<ReadingPage> {
                                     },
                                     shape: CircleBorder(),
                                     padding: EdgeInsets.all(8),
-                                    child: Icon(
-                                      Icons.keyboard_double_arrow_left_sharp,
-                                      color: Colors.blueGrey,
-                                      size: 30,
+                                    child: Semantics(
+                                      label: "back".tr(),
+                                      child: Icon(
+                                        Icons.keyboard_double_arrow_left_sharp,
+                                        color: Colors.blueGrey,
+                                        size: 30,
+                                      ),
                                     )),
                               ),
                               Expanded(
@@ -227,15 +233,19 @@ class _ReadingPageState extends State<ReadingPage> {
                                   shape: CircleBorder(),
                                   padding: EdgeInsets.all(20),
                                   onPressed: () {
+
                                     BlocProvider.of<ReadingAudioBookCubit>(
                                             context)
                                         .stopOrPlayButton();
                                   },
-                                  child: Icon(
-                                    state.isPlaying!
-                                        ? Icons.pause
-                                        : Icons.play_arrow,
-                                    color: Colors.blueGrey,
+                                  child: Semantics(
+                                    label: "pause".tr(),
+                                    child: Icon(
+                                      state.isPlaying!
+                                          ? Icons.pause
+                                          : Icons.play_arrow,
+                                      color: Colors.blueGrey,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -249,10 +259,13 @@ class _ReadingPageState extends State<ReadingPage> {
                                   },
                                   shape: CircleBorder(),
                                   padding: EdgeInsets.all(8),
-                                  child: Icon(
-                                    Icons.keyboard_double_arrow_right,
-                                    size: 30,
-                                    color: Colors.blueGrey,
+                                  child: Semantics(
+                                    label: "next".tr(),
+                                    child: Icon(
+                                      Icons.keyboard_double_arrow_right,
+                                      size: 30,
+                                      color: Colors.blueGrey,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -278,10 +291,13 @@ class _ReadingPageState extends State<ReadingPage> {
                                   },
                                   shape: CircleBorder(),
                                   padding: EdgeInsets.all(8),
-                                  child: Icon(
-                                    Icons.download,
-                                    color: Colors.blueGrey,
-                                    size: 30,
+                                  child: Semantics(
+                                    label: "download".tr(),
+                                    child: Icon(
+                                      Icons.download,
+                                      color: Colors.blueGrey,
+                                      size: 30,
+                                    ),
                                   )),
                         ],
                       )),
