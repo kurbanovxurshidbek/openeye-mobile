@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
+import 'package:key_board_app/cubits/for_take_image/take_image_cubit.dart';
 import '../cubits/saved_book/saved_books_cubit.dart';
 import '../models/audio_model.dart';
 import '../navigators/goto.dart';
@@ -38,14 +39,13 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
             TextButton(
                 onPressed: () async {
                   List<dynamic>? listOfAudio =
-                      await HiveDB.loadCountryCode(key: "listOfAudio");
+                  await HiveDB.loadCountryCode(key: "listOfAudio");
 
                   if (listOfAudio == null) {
-
                     List<dynamic> list = [audioModel.toJson()];
                     await HiveDB.saveData("listOfAudio", list);
                   } else {
-                   print(audioModel.toJson());
+                    print(audioModel.toJson());
                     listOfAudio.add(audioModel.toJson());
                     await HiveDB.saveData("listOfAudio", listOfAudio);
                   }
@@ -99,12 +99,11 @@ errorDialog(BuildContext context, bool isPage) {
                 child: Text("go_home").tr()),
             TextButton(
                 onPressed: () {
-                  if(isPage) {
-                    GOTO.popUT(context);
-                    BlocProvider.of<ConvertionCubit>(context).succesLoaded(false);
-                  } else {
-                    GOTO.popUT(context);
-                    BlocProvider.of<ConvertionCubit>(context).succesLoaded(true);
+                  GOTO.popUT(context);
+                  if(isPage == false) {
+                    BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
+                  }else {
+                    BlocProvider.of<TakeImageCubit>(context).state.isOpen = false;
                   }
                 },
                 child: Text("try").tr()),
@@ -143,13 +142,13 @@ deleteItemDialog(BuildContext context, AudioModel audioModel) {
                   await aufioFile.delete();
 
                   List<dynamic> listMap =
-                      await HiveDB.loadCountryCode(key: "listOfAudio");
+                  await HiveDB.loadCountryCode(key: "listOfAudio");
 
                   List<AudioModel> listOfAudioModels = [];
                   List<dynamic> listOfJson = [];
 
                   listOfAudioModels = List.generate(listMap.length,
-                      (index) => AudioModel.fromJson(listMap[index]));
+                          (index) => AudioModel.fromJson(listMap[index]));
 
                   listOfAudioModels.remove(audioModel);
 

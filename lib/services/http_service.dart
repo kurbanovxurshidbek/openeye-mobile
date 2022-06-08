@@ -1,8 +1,7 @@
 import 'dart:typed_data';
 import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:key_board_app/logic/numbers_to_text.dart';
-import 'package:key_board_app/services/hive_service.dart';
+ import 'package:key_board_app/services/hive_service.dart';
 
 class Network {
   static bool isTester = true;
@@ -40,7 +39,7 @@ class Network {
   static Map<String, String> getUploadHeaders() {
     Map<String, String> headers = {
       'Content-Type':
-          'multipart/form-data; boundary=---011000010111000001101001'
+      'multipart/form-data; boundary=---011000010111000001101001'
     };
     return headers;
   }
@@ -80,16 +79,13 @@ class Network {
     print(langCode + "--------------------");
     print(voice.toString() + "+++++++++++++++++++++++");
     print(content);
-    if(langCode == "uz") {
-      content = textEditing(content);
-    }
     switch (langCode) {
       case "uz":
         {
           uint8list = await POST(getBody(
               langCode: lang_code_uz,
               speeker:
-                  (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
+              (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
               content: content));
         }
         break;
@@ -98,7 +94,7 @@ class Network {
           uint8list = await POST(getBody(
               langCode: lang_code_en,
               speeker:
-                  (voice == "famale") ? speeker_en_famale : speeker_en_male,
+              (voice == "famale") ? speeker_en_famale : speeker_en_male,
               content: content));
         }
         break;
@@ -107,7 +103,7 @@ class Network {
           uint8list = await POST(getBody(
               langCode: lang_code_ru,
               speeker:
-                  (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
+              (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
               content: content));
         }
         break;
@@ -173,8 +169,8 @@ class Network {
 
   static getBody(
       {required String langCode,
-      required String speeker,
-      required String content}) {
+        required String speeker,
+        required String content}) {
     String body =
         "<speak version='1.0' xml:lang='$langCode'><voice xml:lang='$langCode' xml:gender='Male' name='$speeker'> $content</voice></speak>";
     return body;

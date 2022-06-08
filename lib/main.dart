@@ -7,6 +7,7 @@ import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
 import 'package:key_board_app/cubits/for_read_audio_book/reading_audio_book_cubit.dart';
+import 'package:key_board_app/cubits/for_take_image/take_image_cubit.dart';
 import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
 import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dart';
 import 'package:key_board_app/cubits/saved_book/saved_books_cubit.dart';
@@ -84,6 +85,9 @@ class App extends StatelessWidget {
         })),
         BlocProvider(create: ((context) {
           return ConvertionCubit(context: context);
+        })),
+        BlocProvider(create: ((context) {
+          return TakeImageCubit();
         })),
       ],
       child: MaterialApp(

@@ -8,30 +8,25 @@ import '../cubits/convertion/convertion_state.dart';
 import '../views/dialogs.dart';
 
 class ConvertionPage extends StatefulWidget {
-   bool isCamera;
-   ConvertionPage({Key? key, required this.isCamera}) : super(key: key);
+  bool isCamera;
+  String? image;
 
+  ConvertionPage({Key? key,this.image, required this.isCamera}) : super(key: key);
 
   @override
   State<ConvertionPage> createState() => _ConvertionPageState();
 }
 
 class _ConvertionPageState extends State<ConvertionPage> {
-
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    if(widget.isCamera == true){
-      BlocProvider.of<ConvertionCubit>(context).succesLoaded(true);
-    }else{
-      BlocProvider.of<ConvertionCubit>(context).succesLoaded(false);
-    }
+      if(widget.isCamera == false && widget.image == null) {
+        BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
+      }else {
+        BlocProvider.of<ConvertionCubit>(context).succesLoadedImageText(widget.image!);
       }
-
-
-
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,34 +34,41 @@ class _ConvertionPageState extends State<ConvertionPage> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: BlocListener<ConvertionCubit, ConvertionState>(
-          listener: (context, state) {
-            if (state.error) {
-              errorDialog(context,widget.isCamera);
-            }
+                listener: (context, state) {
+                  if (state.error) {
+                    errorDialog(context, !widget.isCamera);
+                  }
 
-            if (state.audioModel != null) {
-              GOTO.pushRP(context, ReadingPage(listAudio: [state.audioModel!], startOnIndex: 0));
-            }
-          },
-          child: BlocBuilder<ConvertionCubit, ConvertionState>(
-            builder: (context, state) {
-              return Container(
-                alignment: Alignment.center,
-                child: state.isConverting
-                    ? SizedBox(
-                        width: 150,
-                        height: 150,
-                        child: Center(
-                          child: Lottie.asset('assets/lottie/convrting.json',
-                              fit: BoxFit.cover, repeat: true),
-                        ),
-                      )
-                    : const SizedBox.shrink(),
-              );
-            },
-          ),
-        ),
+                  if (state.audioModel != null) {
+                    GOTO.pushRP(
+                        context,
+                        ReadingPage(
+                            listAudio: [state.audioModel!], startOnIndex: 0));
+                  }
+                },
+                child: BlocBuilder<ConvertionCubit, ConvertionState>(
+                  builder: (context, state) {
+                    return circuleProgresIndicator(state);
+                  },
+                ),
+              )
       ),
+    );
+  }
+
+  Widget circuleProgresIndicator(ConvertionState state) {
+    return Container(
+      alignment: Alignment.center,
+      child: state.isConverting
+          ? SizedBox(
+              width: 150,
+              height: 150,
+              child: Center(
+                child: Lottie.asset('assets/lottie/convrting.json',
+                    fit: BoxFit.cover, repeat: true),
+              ),
+            )
+          : const SizedBox.shrink(),
     );
   }
 }

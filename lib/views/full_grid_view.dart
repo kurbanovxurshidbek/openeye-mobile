@@ -1,8 +1,10 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/pages/convertion_page.dart';
 import 'package:key_board_app/pages/settings_page.dart';
+import 'package:key_board_app/pages/take_image.dart';
 import '../navigators/goto.dart';
 import '../pages/list_of_saved_books.dart';
 import 'bottom_sheets.dart';
@@ -15,11 +17,7 @@ void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) {
       break;
     case ItemOfFullGrid.TextInImageItem:
       {
-        GOTO.push(
-            context,
-            ConvertionPage(
-              isCamera: true,
-            ));
+        goToImage(context);
       }
       break;
     case ItemOfFullGrid.BookRecordingItem:
@@ -52,6 +50,14 @@ void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) {
       }
       break;
   }
+}
+
+void goToImage(BuildContext context) async {
+  await availableCameras().then((value) {
+    print("Value: $value");
+    Navigator.push(context,
+        MaterialPageRoute(builder: (_) => TakeImagePage(cameras: value)));
+  });
 }
 
 // going to android and ios settings

@@ -14,6 +14,7 @@ dependencies:
 
   # image get from camera
   image_picker: ^0.8.3
+  camera: ^0.9.7+1
   # image to text
   google_ml_kit: ^0.11.0
   # pdf get from storage

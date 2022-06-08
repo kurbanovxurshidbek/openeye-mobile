@@ -24,10 +24,31 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+
+	<key>NSCameraUsageDescription</key>
+    <string>Can I use the camera please? Only for demo purpose of the app</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Only for demo purpose of the app</string>
+
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
+    <key>CADisableMinimumFrameDurationOnPhone</key>
+    <true/>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Recognition use and display input</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Defect speech input</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow this app to access your photos</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Share pictures</string>
+
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -41,18 +62,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Recognition use and display input</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Defect speech input</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-    <string>Allow this app to access your photos</string>
-    <key>NSCameraUsageDescription</key>
-    <string>Share pictures</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
 </dict>
