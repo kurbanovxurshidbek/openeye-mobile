@@ -139,7 +139,7 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
                         style: Theme.of(context1).textTheme.bodyText1),
                   ])),
               Container(
-                height: 200,
+                height:MediaQuery.of(context1).size.height/5 ,
 
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -238,7 +238,7 @@ voiceChooseSheet(BuildContext context) async {
                       style: Theme.of(context).textTheme.headline6,
                       children: [])),
               Container(
-                height: MediaQuery.of(context).size.height/4,
+                height: MediaQuery.of(context).size.height/5,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(2, (index) {
