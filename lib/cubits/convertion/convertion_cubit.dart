@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:key_board_app/cubits/convertion/convertion_state.dart';
 import 'package:key_board_app/logic/numbers_to_text.dart';
 import 'package:key_board_app/services/hive_service.dart';
@@ -21,9 +22,8 @@ class ConvertionCubit extends Cubit<ConvertionState> {
   InputImage? inputImage;
   String imgText = "";
 
-  /// #get pdf file and convert to text and goto push reading page
-  succesLoadedPdfText() async {
-    AudioModel? audioModel = await getPdfTextAndPushReadingBookPage();
+  succesLoaded(bool isCamera) async {
+    AudioModel? audioModel = await getPdfTextAndPushReadingBookPage(isCamera);
 
     if (audioModel == null) {
       emit(ConvertionState(isConverting: false, error: true));
@@ -34,14 +34,14 @@ class ConvertionCubit extends Cubit<ConvertionState> {
         isConverting: false, error: false, audioModel: audioModel));
   }
 
-  /// #text to speech
-  Future<AudioModel?> getPdfTextAndPushReadingBookPage() async {
+  //get pdf file and convert to text and goto push reading page
+  Future<AudioModel?> getPdfTextAndPushReadingBookPage(bool isCamera) async {
     Uint8List? uint8list;
 
+    if(isCamera == false) {
       List<String>? list = await getTextFromPdfAndName(context);
       if (list != null) {
         uint8list = await Network.getAudioFromApi(list[0]);
-        print("Uint8List: $uint8list");
 
         if (uint8list == null) {
           return null;
@@ -51,13 +51,29 @@ class ConvertionCubit extends Cubit<ConvertionState> {
         File file = await File('${tempDir.path}/${list[1]}.mp3').create();
         await file.writeAsBytes(uint8list);
         AudioModel audioFileModel = AudioModel(name: list[1], path: file.path);
-        print("AudioModel: $audioFileModel");
 
         return audioFileModel;
       }
+    } else {
+
+      String? text = await getImage();
+      if (text != null) {
+        uint8list = await Network.getAudioFromApi(text);
+
+        if (uint8list == null) {
+          print("Print: $uint8list");
+          return null;
+        }
+
+        final tempDir = await getTemporaryDirectory();
+        File file = await File('${tempDir.path}/${text.hashCode.toString()}.mp3').create();
+        await file.writeAsBytes(uint8list);
+        AudioModel audioImageModel = AudioModel(name: text.hashCode.toString(), path: file.path);
+        return audioImageModel;
+      }
+    }
   }
 
-  /// #chacke latin
   Future<List<String>?> getTextFromPdfAndName(BuildContext context) async {
     //Load an existing PDF document.
     List<String>? list = await readDocumentData();
@@ -85,13 +101,11 @@ class ConvertionCubit extends Cubit<ConvertionState> {
     return null;
   }
 
-  /// #get pdf from text
   Future<String> getPDFtext(String path) async {
     String text = "";
     if(path.isNotEmpty) {
       try{
-        text = (await Network.MULTIPART(path))!;
-        print("PDF Text : $text");
+         text = (await Network.MULTIPART(path))!;
       } on  SocketException catch (e) {
         print("No internet.....");
       }
@@ -113,7 +127,6 @@ class ConvertionCubit extends Cubit<ConvertionState> {
     );
   }
 
-  /// #get pdf from device file
   Future<List<String>?> readDocumentData() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     emit(ConvertionState(
@@ -130,59 +143,33 @@ class ConvertionCubit extends Cubit<ConvertionState> {
   }
 
 
+  /// #rasmli file olib beradi
+  Future<String?> getImage() async {
 
+    print("----");
+    final file = await ImagePicker().pickImage(source: ImageSource.gallery);
+    print("+++++");
 
-
-
-
-
-  /// #convert to text and goto push convert page
-  succesLoadedImageText(String images) async {
-    emit(ConvertionState(isConverting: true));
-    AudioModel? audioModel = await getTextFromImageAndSendRequesd(images);
-
-    if (audioModel == null) {
-      emit(ConvertionState(error: true, isConverting: false));
-      return;
+    emit(ConvertionState(
+      isConverting: true,
+      error: false,
+    ));
+    if (file != null) {
+      imageFile = File(file.path);
+      state.isConverting = true;
+      String? textImage = await getRecognisedText(imageFile!);
+      return textImage;
     }
-
-    print("AudioModel: $audioModel");
-    emit(ConvertionState(audioModel: audioModel,error: false,isConverting: false));
+    return null;
   }
 
-  /// #text to speech
-  Future<AudioModel?> getTextFromImageAndSendRequesd(String images) async {
-    Uint8List? uint8list;
-    String? text;
-
-    if(images != null) {
-      text = await getRecognisedText(images);
-      print("Text: $text");
-      if(text != null) {
-        uint8list = await Network.getAudioFromApi(text);
-        print("Uint8List: $uint8list");
-      }
-    }
-
-    if(uint8list == null) {
-      return null;
-    }
-
-    final tempDir = await getTemporaryDirectory();
-    File file = await File('${tempDir.path}/${text.hashCode.toString()}.mp3').create();
-    await file.writeAsBytes(uint8list);
-    AudioModel audioImageModel = AudioModel(name: text.hashCode.toString(), path: file.path);
-    return audioImageModel;
-
-  }
-
-  /// #get text from image
-  Future<String?> getRecognisedText(String imageFile) async {
-    inputImage = InputImage.fromFilePath(imageFile);
+  /// #rasmdagi matnlarni olib beradi
+  Future<String?> getRecognisedText(File imageFile) async {
+    inputImage = InputImage.fromFilePath(imageFile.path);
     print(inputImage);
     final textDetector = GoogleMlKit.vision.textRecognizer();
     RecognizedText recognizedText = await textDetector.processImage(inputImage!);
-    String imgText = "";
+    imgText = "";
 
     print(recognizedText.blocks[0].lines[0].text + "=======");
     for (TextBlock block in recognizedText.blocks) {
@@ -195,7 +182,7 @@ class ConvertionCubit extends Cubit<ConvertionState> {
     return imageText;
   }
 
-  /// #chacke latin text
+  /// #matinlarni lotin harflariga tekshiradi
   Future<String> checkLatin(String? text) async {
     String? countryCode = HiveDB.loadLangCode();
 

@@ -99,20 +99,20 @@ class _LangChangePageState extends State<LangChangePage>
                           image: AssetImage("assets/images/blind1.jpg"),fit: BoxFit.cover
                       )
                   ),
-                    height: 200,width: 200,
+                    height: 200,
+                    width: 200,
                   ):
                   state.bottomUp
                       ? Container()
                       : Container(
                           width: MediaQuery.of(context).size.width / 2,
                           height: MediaQuery.of(context).size.width / 2,
-
                         ),
                   Container(
-                      height: MediaQuery.of(context).size.width / 2,
-                      width: MediaQuery.of(context).size.width / 2,
-                      margin: const EdgeInsets.only(bottom: 40),
-                      child: state.isSpeaking
+                          height: MediaQuery.of(context).size.width / 2,
+                          width: MediaQuery.of(context).size.width / 2,
+                          margin: const EdgeInsets.only(bottom: 40),
+                          child: state.isSpeaking
                           ? Container(
                               height: MediaQuery.of(context).size.width / 2,
                               width: MediaQuery.of(context).size.width / 2,
