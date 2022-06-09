@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
+import 'package:key_board_app/cubits/convertion/convertion_state.dart';
 import 'package:key_board_app/navigators/goto.dart';
 import 'package:key_board_app/pages/reading_audio_page.dart';
+import 'package:key_board_app/views/dialogs.dart';
 import 'package:lottie/lottie.dart';
-import '../cubits/convertion/convertion_state.dart';
-import '../views/dialogs.dart';
 
 class ConvertionPage extends StatefulWidget {
   bool isCamera;

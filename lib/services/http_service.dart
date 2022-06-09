@@ -1,7 +1,10 @@
 import 'dart:typed_data';
 import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
- import 'package:key_board_app/services/hive_service.dart';
+import 'package:key_board_app/logic/check_latin.dart';
+import 'package:key_board_app/logic/kril_to_latin.dart';
+import 'package:key_board_app/logic/numbers_to_text.dart';
+import 'package:key_board_app/services/hive_service.dart';
 
 class Network {
   static bool isTester = true;
@@ -71,46 +74,126 @@ class Network {
     }
   }
 
-  static Future<Uint8List?> getAudioFromApi(String content) async {
+  static Future  <List<String>> getContent(String content)async{
+    List <String> list = content.split(" ");
+    list.retainWhere((item) => item.toString().isNotEmpty);
+    String str = "";
+    List <String> listofContent = [];
+    for (int i = 0; i < list.length; i++) {
+      str += list[i] + " ";
+      if (i % 1000 == 0 && i != 0) {
+        str = await toLatin(str);
+        listofContent.add(str);
+        return listofContent;
+      }
+    }
+    listofContent.add(str);
+    return listofContent;
+  }
+
+  static Future<Uint8List> getAudioFromApi(List listOfContent) async {
     String? langCode = HiveDB.loadLangCode()!;
     String? voice = HiveDB.loadCountryCode(key: "voice")!;
-    Uint8List? uint8list;
+    List <List<int>> uint8lists = [];
+    Uint8List? uint8List;
 
-    print(langCode + "--------------------");
-    print(voice.toString() + "+++++++++++++++++++++++");
-    print(content);
     switch (langCode) {
       case "uz":
         {
-          uint8list = await POST(getBody(
-              langCode: lang_code_uz,
-              speeker:
-              (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
-              content: content));
+          for (int i = 0; i < listOfContent.length; i++) {
+            listOfContent[i] = await checkLatin(listOfContent[i]);
+            listOfContent[i]= textEditing(listOfContent[i]);
+              print("ListOfCount: $listOfContent");
+              uint8List = (await POST(getBody(
+                  langCode: lang_code_uz,
+                  speeker:
+                  (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
+                  content: listOfContent[i])));
+
+              if(uint8List!=null){
+                uint8lists.add(uint8List.toList());
+              }
+            }
+          uint8List = Uint8List.fromList(uint8lists.expand((element) => element).toList());
+          print(uint8List);
+          return uint8List;
         }
-        break;
       case "en":
         {
-          uint8list = await POST(getBody(
-              langCode: lang_code_en,
-              speeker:
-              (voice == "famale") ? speeker_en_famale : speeker_en_male,
-              content: content));
+          for (int i = 0; i < listOfContent.length; i++) {
+            uint8List = (await POST(getBody(
+                langCode: lang_code_uz,
+                speeker:
+                (voice == "famale") ? speeker_en_famale : speeker_en_male,
+                content: listOfContent[i])));
+
+            if(uint8List!=null){
+              uint8lists.add(uint8List.toList());
+            }
+          }
+          uint8List = Uint8List.fromList(uint8lists.expand((element) => element).toList());
+          print(uint8List);
+          return uint8List;
         }
-        break;
       case "ru":
         {
-          uint8list = await POST(getBody(
-              langCode: lang_code_ru,
-              speeker:
-              (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
-              content: content));
+          for (int i = 0; i < listOfContent.length; i++) {
+            uint8List = (await POST(getBody(
+                langCode: lang_code_ru,
+                speeker:
+                (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
+                content: listOfContent[i]))) ;
+            if(uint8List!=null){
+              uint8lists.add(uint8List.toList());
+            }
+          }
+          uint8List = Uint8List.fromList(uint8lists.expand((element) => element).toList());
+          return uint8List;
         }
-        break;
     }
-
-    return uint8list;
+    return uint8List!;
   }
+
+  // static Future<Uint8List?> getAudioFromApi(String content) async {
+  //   String? langCode = HiveDB.loadLangCode()!;
+  //   String? voice = HiveDB.loadCountryCode(key: "voice")!;
+  //   Uint8List? uint8list;
+  //
+  //   print(langCode + "--------------------");
+  //   print(voice.toString() + "+++++++++++++++++++++++");
+  //   print(content);
+  //   switch (langCode) {
+  //     case "uz":
+  //       {
+  //         uint8list = await POST(getBody(
+  //             langCode: lang_code_uz,
+  //             speeker:
+  //             (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
+  //             content: content));
+  //       }
+  //       break;
+  //     case "en":
+  //       {
+  //         uint8list = await POST(getBody(
+  //             langCode: lang_code_en,
+  //             speeker:
+  //             (voice == "famale") ? speeker_en_famale : speeker_en_male,
+  //             content: content));
+  //       }
+  //       break;
+  //     case "ru":
+  //       {
+  //         uint8list = await POST(getBody(
+  //             langCode: lang_code_ru,
+  //             speeker:
+  //             (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
+  //             content: content));
+  //       }
+  //       break;
+  //   }
+  //
+  //   return uint8list;
+  // }
 
   ///for pdt to text
   static Future<String?> MULTIPART(String path) async {
@@ -139,7 +222,6 @@ class Network {
   static Future<String?> DEL(String api, Map<String, String> params) async {
     var uri = Uri.https(getServer(), api, params); // http or https
     var response = await delete(uri, headers: getHeaders());
-    print(response.body);
     if (response.statusCode == 200) return response.body;
 
     return null;

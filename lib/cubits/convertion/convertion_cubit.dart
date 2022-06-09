@@ -5,6 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:key_board_app/cubits/convertion/convertion_state.dart';
+import 'package:key_board_app/logic/numbers_to_text.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../logic/kril_to_latin.dart';
@@ -41,7 +42,8 @@ class ConvertionCubit extends Cubit<ConvertionState> {
 
     List<String>? list = await getTextFromPdfAndName(context);
     if (list != null) {
-      uint8list = await Network.getAudioFromApi(list[0]);
+      List<String> txt = await Network.getContent(list[0]);
+      uint8list = await Network.getAudioFromApi(txt);
       print("Uint8List: $uint8list");
 
       if (uint8list == null) {
@@ -97,6 +99,7 @@ class ConvertionCubit extends Cubit<ConvertionState> {
         print("No internet.....");
       }
     }
+    text = textEditing(text);
     return text;
   }
 
@@ -143,7 +146,7 @@ class ConvertionCubit extends Cubit<ConvertionState> {
       text = await getRecognisedText(images);
       print("Text: $text");
       if(text != null) {
-        uint8list = await Network.getAudioFromApi(text);
+        uint8list = await Network.getAudioFromApi([text]);
         print("Uint8List: $uint8list");
       }
     }
