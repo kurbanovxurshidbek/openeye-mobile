@@ -3,10 +3,12 @@
 String textEditing(String text) {
   RegExp regex = RegExp("[0-9]+");
   RegExp regex2 = RegExp("[0-9]+([ ]{0,}[-])([ ]{0,})[a-z]");
-  RegExp regex3 = RegExp("[0-9][ ]{0,}([.])[ ]{0,}[0-9]");
+  RegExp regex3 = RegExp("[0-9][.][0-9]");
+  String nuqta = "";
   // kasr sonlarni to'g'irlash
   while(text.contains(regex3)) {
-    text = text.replaceFirst(regex3.firstMatch(text)!.group(1)!, " nuqta ");
+    nuqta = regex3.stringMatch(text)!.replaceFirst(".", " nuqta ");
+    text = text.replaceFirst(regex3, nuqta);
   }
   // butun sonlarni to'g'irlash
   while(text.contains(regex)) {
