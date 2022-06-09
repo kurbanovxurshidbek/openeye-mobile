@@ -11,9 +11,11 @@ String textEditing(String text) {
     text = text.replaceFirst(regex3, nuqta);
   }
   // butun sonlarni to'g'irlash
+  String chiziq = "";
   while(text.contains(regex)) {
     if(text.contains(regex2)) {
-      text = text.replaceFirst(regex2.firstMatch(text)!.group(1)!, " inchi ");
+      chiziq = regex2.stringMatch(text)!.replaceFirst("-", " inchi ");
+      text = text.replaceFirst(regex2, chiziq);
     }
     text = text.replaceFirst(regex, " " + numToText(regex.stringMatch(text)!) + " ");
   }
