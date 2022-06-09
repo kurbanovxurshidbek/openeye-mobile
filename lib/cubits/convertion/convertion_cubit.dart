@@ -98,7 +98,6 @@ class ConvertionCubit extends Cubit<ConvertionState> {
         print("No internet.....");
       }
     }
-    text = textEditing(text);
     return text;
   }
 
