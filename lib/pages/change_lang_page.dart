@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
@@ -82,10 +83,13 @@ class _LangChangePageState extends State<LangChangePage>
                 children: [
                   Column(
                     children: [
-                      Image.asset(
-                        "assets/images/logo1.jpg",
-                        width: MediaQuery.of(context).size.width / 4,
-                        height: MediaQuery.of(context).size.width / 4,
+                      Semantics(
+                        label: "logo".tr(),
+                        child: Image.asset(
+                          "assets/images/logo1.jpg",
+                          width: MediaQuery.of(context).size.width / 4,
+                          height: MediaQuery.of(context).size.width / 4,
+                        ),
                       ),
                       Text(
                         "OpenEye",

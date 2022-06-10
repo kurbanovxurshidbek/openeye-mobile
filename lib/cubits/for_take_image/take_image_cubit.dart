@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:key_board_app/cubits/for_take_image/take_image_state.dart';
 import 'package:key_board_app/logic/kril_to_latin.dart';
 import 'package:key_board_app/models/audio_model.dart';
