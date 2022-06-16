@@ -27,7 +27,7 @@
     "pause":"pause",
     "next": "next",
     "download": "download",
-    "logo": "app logo"
-
-    
+    "logo": "app logo",
+    "noinet": "This function works with internet",
+    "try": "try again"
 }

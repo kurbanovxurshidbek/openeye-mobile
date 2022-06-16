@@ -209,7 +209,7 @@ class _ReadingPageState extends State<ReadingPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Expanded(
-                                child: RaisedButton(
+                                child: MaterialButton(
                                     color: Colors.white,
                                     onPressed: () {
                                       BlocProvider.of<ReadingAudioBookCubit>(
@@ -228,7 +228,7 @@ class _ReadingPageState extends State<ReadingPage> {
                                     )),
                               ),
                               Expanded(
-                                child: RaisedButton(
+                                child: MaterialButton(
                                   color: Colors.white,
                                   shape: CircleBorder(),
                                   padding: EdgeInsets.all(20),
@@ -250,7 +250,7 @@ class _ReadingPageState extends State<ReadingPage> {
                                 ),
                               ),
                               Expanded(
-                                child: RaisedButton(
+                                child: MaterialButton(
                                   color: Colors.white,
                                   onPressed: () {
                                     BlocProvider.of<ReadingAudioBookCubit>(
@@ -276,7 +276,7 @@ class _ReadingPageState extends State<ReadingPage> {
                           ),
                           widget.onListBooksPage
                               ? SizedBox.shrink()
-                              : RaisedButton(
+                              : MaterialButton(
                                   color: Colors.white,
                                   onPressed: () async {
                                     bool isSaved = await _readDate(

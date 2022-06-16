@@ -1,33 +1,46 @@
-// import 'package:camera/camera.dart';
+import 'dart:ui';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:key_board_app/constants/enums.dart';
+import 'package:key_board_app/logic/check_internet.dart';
 import 'package:key_board_app/pages/convertion_page.dart';
 import 'package:key_board_app/pages/settings_page.dart';
 import 'package:key_board_app/pages/take_image.dart';
+import 'package:key_board_app/views/dialogs.dart';
 import '../navigators/goto.dart';
 import '../pages/list_of_saved_books.dart';
 import 'bottom_sheets.dart';
-
 //home page item on tap fucntions
-void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) {
+void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) async {
+bool isConnect =await hasNetwork();
   switch (itemOfGridHome) {
     case ItemOfFullGrid.KeybordItem:
       androidOrIos();
       break;
     case ItemOfFullGrid.TextInImageItem:
-      {
+      {if(isConnect){
         goToImage(context);
+      }
+      else{
+        connectionDialog(context);
+      }
       }
       break;
     case ItemOfFullGrid.BookRecordingItem:
       {
-        GOTO.push(
-            context,
-            ConvertionPage(
-              isCamera: false,
-            ));
+       if(isConnect){
+         GOTO.push(
+             context,
+             ConvertionPage(
+               isCamera: false,
+             ));
+       }
+       else{
+         connectionDialog(context);
+       }
+       // //  return;
+
       }
       break;
     case ItemOfFullGrid.SettingItem:
@@ -76,8 +89,8 @@ androidOrIos() async {
   print(result);
 }
 
-Widget itemGrid(
-    String title, ItemOfFullGrid itemOfGridHome, BuildContext context) {
+Widget itemGrid(String title, ItemOfFullGrid itemOfGridHome,
+    BuildContext context) {
   return GestureDetector(
     onTap: () {
       itemGridOnPressed(itemOfGridHome, context);

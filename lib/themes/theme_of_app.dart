@@ -45,7 +45,7 @@ class ThemeOf {
             fontStyle: FontStyle.normal),
 
         headline6: TextStyle(
-            fontSize: 35,
+            fontSize: 30,
             fontFamily: "Serif",
             fontWeight: FontWeight.bold,
             color: Colors.blueGrey.shade600,

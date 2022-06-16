@@ -1,4 +1,6 @@
 import 'dart:io';
+// import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:connectivity_plus_platform_interface/src/enums.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +11,6 @@ import '../models/audio_model.dart';
 import '../navigators/goto.dart';
 import '../pages/home_page.dart';
 import '../services/hive_service.dart';
-
 saveAudioDialog(BuildContext context, AudioModel audioModel,
     {bool isBack = false}) async {
   showDialog(
@@ -53,7 +54,7 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
 
                   GOTO.pop(context);
                 },
-                child: const Text("save").tr()),
+                child:  Text("save",style: TextStyle(color:Colors.green.shade700,fontSize: 15)).tr()),
             TextButton(
                 onPressed: () async {
                   if (isBack) {
@@ -62,7 +63,7 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
                     GOTO.pop(context);
                   }
                 },
-                child: const Text("no").tr()),
+                child:  Text("no",style: TextStyle(color:Colors.green.shade700,fontSize: 15)).tr()),
           ],
         );
       });
@@ -96,7 +97,7 @@ errorDialog(BuildContext context, bool isPage) {
                 onPressed: () {
                   GOTO.pushRpUntil(context, HomePage());
                 },
-                child: Text("go_home").tr()),
+                child: Text("go_home",style: TextStyle(color:Colors.green.shade700,fontSize: 15)).tr()),
             TextButton(
                 onPressed: () {
                   GOTO.popUT(context);
@@ -106,10 +107,26 @@ errorDialog(BuildContext context, bool isPage) {
                     BlocProvider.of<TakeImageCubit>(context).state.isOpen = false;
                   }
                 },
-                child: Text("try").tr()),
+                child: Text("try",style: TextStyle(color:Colors.green.shade700,fontSize: 15),).tr()),
           ],
         );
       });
+}
+
+connectionDialog(BuildContext context){
+  showDialog(context: context, builder: (c){
+    return AlertDialog(
+
+      title: Center(child: Text("noinet",style: TextStyle(fontSize: 16,color: Colors.grey.shade600,fontWeight: FontWeight.w600),).tr()),
+      actions:[ TextButton(
+          onPressed: () {
+            GOTO.pop(context);
+          },
+                child: Text("try",style: TextStyle(color:Colors.green.shade700,fontSize: 17),).tr()),
+          ],
+
+    );
+  });
 }
 
 deleteItemDialog(BuildContext context, AudioModel audioModel) {
@@ -160,12 +177,12 @@ deleteItemDialog(BuildContext context, AudioModel audioModel) {
 
                   BlocProvider.of<SavedBooksCubit>(context).loadList();
                 },
-                child: const Text("delete").tr()),
+                child:  Text("delete",style: TextStyle(color:Colors.green.shade700,fontSize: 15)).tr()),
             TextButton(
                 onPressed: () {
                   GOTO.pop(context);
                 },
-                child: const Text("no").tr()),
+                child:  Text("no",style: TextStyle(color:Colors.green.shade700,fontSize: 15)).tr()),
           ],
         );
       });
