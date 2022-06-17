@@ -425,9 +425,8 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
                      setListener(MediaPlayer.create(this, R.raw.uz_lang));
                  }
                  Keyboard keyboard = new Keyboard(this, R.xml.brail);
-//                 keyboard.getKeys().get(7).label = new ButtonLabels().wordType.get(coca);
-//                 keyboard.getKeys().get(8).label = new ButtonLabels().language.get(lanType);
-                keyboardView
+                 keyboard.getKeys().get(7).label = new ButtonLabels().wordType.get(coca);
+                 keyboard.getKeys().get(8).label = new ButtonLabels().language.get(lanType);
                  keyboardView.setKeyboard(keyboard);
                  break;
 
