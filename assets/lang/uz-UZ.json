@@ -29,5 +29,7 @@
     "download": "yuklab olish",
     "logo": "ilova logotipi",
     "noinet": "Bu funksiya internet bilan ishlaydi",
-    "try": "qayta urinib ko'ring"
+    "try": "qayta urinib ko'ring",
+    "confirm": "Tasdiqlash",
+    "sure": "Siz ushbu elemntni o'chirmoqchimisiz?"
 }

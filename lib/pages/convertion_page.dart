@@ -46,9 +46,6 @@ class _ConvertionPageState extends State<ConvertionPage> {
                 listener: (context, state) {
                   if(internetsate is InternetDisconnected){
                     connectionDialog(context );
-
-// print((audioModel.toJson());
-
                   }
                   if (state.error) {
                     errorDialog(context, !widget.isCamera);
@@ -80,23 +77,9 @@ class _ConvertionPageState extends State<ConvertionPage> {
           ? SizedBox(
         width: 150,
         height: 150,
-        child: Column(
-          children: [
-            Center(
-              child: SizedBox(
-                width: 100,
-                height: 100,
-                child: CircularProgressIndicator(
-                  strokeWidth: 20,
-
-                ),
-              ),
-            ),
-            Center(
-              child: Lottie.asset('assets/lottie/convrting.json',
-                  fit: BoxFit.cover, repeat: true),
-            ),
-          ],
+        child: Center(
+          child: Lottie.asset('assets/lottie/convrting.json',
+              fit: BoxFit.cover, repeat: true),
         ),
       )
           : const SizedBox.shrink(),

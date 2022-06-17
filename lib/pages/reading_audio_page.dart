@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/for_read_audio_book/reading_audio_book_cubit.dart';
 import 'package:key_board_app/cubits/for_read_audio_book/reading_audio_book_state.dart';
 import 'package:key_board_app/models/audio_model.dart';
+import 'package:key_board_app/pages/home_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
 
 import '../navigators/goto.dart';
@@ -88,7 +89,7 @@ class _ReadingPageState extends State<ReadingPage> {
                     if (isSaved) {
                       BlocProvider.of<ReadingAudioBookCubit>(context).stop();
 
-                      GOTO.pop(context);
+                      GOTO.pushRpUntil(context,HomePage());
                       return;
                     }
 
@@ -99,7 +100,9 @@ class _ReadingPageState extends State<ReadingPage> {
 
                     return;
                   },
-                )),
+                )
+
+            ),
             body: SafeArea(
               child: state.isLoading
                   ? Center(

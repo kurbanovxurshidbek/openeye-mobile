@@ -134,8 +134,8 @@ deleteItemDialog(BuildContext context, AudioModel audioModel) {
       context: context,
       builder: (c) {
         return AlertDialog(
-          title: const Text(
-            "error",
+          title:  Text(
+            "confirm",
             style: TextStyle(
                 fontSize: 14,
                 fontFamily: "Serif",
@@ -143,8 +143,8 @@ deleteItemDialog(BuildContext context, AudioModel audioModel) {
                 color: Color.fromARGB(255, 49, 49, 49),
                 fontStyle: FontStyle.normal),
           ).tr(),
-          content: const Text(
-            "about_error",
+          content:  Text(
+            "sure",
             style: TextStyle(
                 fontSize: 14,
                 fontFamily: "Serif",

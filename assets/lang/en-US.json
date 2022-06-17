@@ -29,5 +29,7 @@
     "download": "download",
     "logo": "app logo",
     "noinet": "This function works with internet",
-    "try": "try again"
+    "try": "try again",
+    "confirm": "Confirmation",
+    "sure": "do you want delete this element?"
 }

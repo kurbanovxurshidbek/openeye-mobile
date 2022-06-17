@@ -29,11 +29,11 @@ class ConvertionCubit extends Cubit<ConvertionState> {
 
     if (audioModel == null) {
       emit(ConvertionState(isConverting: false, error: true));
-      return;
+      return ;
     }
 
     emit(ConvertionState(
-        isConverting: false, error: false, audioModel: audioModel));
+        isConverting: false, error: true, audioModel: audioModel));
   }
 
   /// #text to speech
