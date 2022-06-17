@@ -82,7 +82,6 @@ class Network {
     for (int i = 0; i < list.length; i++) {
       str += list[i] + " ";
       if (i % 1000 == 0 && i != 0) {
-        str = await toLatin(str);
         listofContent.add(str);
         return listofContent;
       }
@@ -122,7 +121,7 @@ class Network {
         {
           for (int i = 0; i < listOfContent.length; i++) {
             uint8List = (await POST(getBody(
-                langCode: lang_code_uz,
+                langCode: lang_code_en,
                 speeker:
                 (voice == "famale") ? speeker_en_famale : speeker_en_male,
                 content: listOfContent[i])));

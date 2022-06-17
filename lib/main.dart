@@ -1,8 +1,10 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:key_board_app/cubits/connection/internet_cubit.dart';
 import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
@@ -19,6 +21,7 @@ import 'themes/theme_of_app.dart';
 bool haveUser = false;
 
 void main(List<String> args) async {
+
   // flutter Binding Initialized
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -38,6 +41,7 @@ void main(List<String> args) async {
   await starterPage();
 
   runApp(
+
     // easy localization
     EasyLocalization(
         supportedLocales: const [
@@ -47,7 +51,7 @@ void main(List<String> args) async {
         ],
         path: 'assets/lang', // <-- change the path of the translation files
         fallbackLocale: const Locale('en', 'US'),
-        child: const App()),
+        child:  App(connectivity: Connectivity(),)),
   );
 }
 
@@ -59,7 +63,8 @@ Future<void> starterPage() async {
 }
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  final Connectivity connectivity;
+  const App({Key? key,required this.connectivity}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +94,9 @@ class App extends StatelessWidget {
         BlocProvider(create: ((context) {
           return TakeImageCubit();
         })),
+        BlocProvider(create: ((context){
+          return InternetCubit(connectivity: connectivity);
+        }))
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -97,6 +105,8 @@ class App extends StatelessWidget {
         locale: context.locale,
         theme: ThemeOf.ligth(),
         home: haveUser ? const HomePage() : LangChangePage(count: 1),
+
+
       ),
     );
   }

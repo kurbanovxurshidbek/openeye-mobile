@@ -27,8 +27,8 @@ String numToText(String text) {
   Map<String,Map<String,String>> mapp = {
     "0" : {
       "0":"",
-      "1":"bir",
-      "2":"ikki",
+      "1":"ikki",
+      "2":"dve",
       "3":"uch",
       "4":"turt",
       "5":"besh",

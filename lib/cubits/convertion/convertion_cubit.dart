@@ -5,7 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:key_board_app/cubits/convertion/convertion_state.dart';
-import 'package:key_board_app/logic/numbers_to_text.dart';
+import 'package:key_board_app/logic/check_latin.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../logic/kril_to_latin.dart';
@@ -99,18 +99,19 @@ class ConvertionCubit extends Cubit<ConvertionState> {
         print("No internet.....");
       }
     }
-    text = textEditing(text);
     return text;
   }
 
   /// #get pdf from device file
   Future<List<String>?> readDocumentData() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.custom,allowedExtensions: ["pdf"]);
+
+
     emit(ConvertionState(
       isConverting: true,
       error: false,
     ));
-    if (result != null) {
+    if (result != null && result.paths.toString().contains("pdf")) {
       File file = File(result.files.first.path!);
 
       return [file.path, result.files.first.name];
@@ -180,25 +181,5 @@ class ConvertionCubit extends Cubit<ConvertionState> {
     // print(state.scanningText! + "///");
     String imageText = await checkLatin(imgText);
     return imageText;
-  }
-
-  /// #chacke latin text
-  Future<String> checkLatin(String? text) async {
-    String? countryCode = HiveDB.loadLangCode();
-
-    if (text != null && countryCode != null && countryCode == "uz") {
-      if (text.contains("в") ||
-          text.contains("б") ||
-          text.contains("я") ||
-          text.contains("ю") ||
-          text.contains("ь") ||
-          text.contains("ж") ||
-          text.contains("э")) {
-        text = await toLatin(text);
-      }
-    }
-
-
-    return text!;
   }
 }

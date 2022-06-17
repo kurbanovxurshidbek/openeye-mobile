@@ -29,7 +29,7 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
     return Scaffold(
       appBar: AppBar(
 
-        title: Text("saved_books",style: TextStyle(fontSize: 25),).tr(),
+        title: Text("saved_books",style: TextStyle(fontSize: 23,),).tr(),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,

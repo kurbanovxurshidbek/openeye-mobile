@@ -27,7 +27,7 @@
     "pause": "pauza",
     "next": "Keyingisi",
     "download": "yuklab olish",
-    "logo": "ilova logotipi"
-
-
+    "logo": "ilova logotipi",
+    "noinet": "Bu funksiya internet bilan ishlaydi",
+    "try": "qayta urinib ko'ring"
 }

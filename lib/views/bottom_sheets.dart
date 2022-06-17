@@ -136,7 +136,7 @@ showBottomS(BuildContext context1, {bool inSettings = false}) {
                       children: [
                     TextSpan(
                         text: "your language".tr(),
-                        style: Theme.of(context1).textTheme.bodyText1),
+                        style: Theme.of(context1).textTheme.bodyText1,),
                   ])),
               Container(
                 height:MediaQuery.of(context1).size.height/5 ,
