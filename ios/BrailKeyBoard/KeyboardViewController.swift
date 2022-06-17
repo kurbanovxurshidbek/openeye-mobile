@@ -227,6 +227,7 @@ class KeyboardViewController: UIInputViewController {
                 "x" : "uz_x",
                 "y" : "uz_y",
                 "z" : "uz_z",
+                "ch" : "uz_ch",
                 "1" : "uz_n1",
                 "2" : "uz_n2",
                 "3" : "uz_n3",
