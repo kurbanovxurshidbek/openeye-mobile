@@ -74,80 +74,40 @@ class Network {
     }
   }
 
-  static Future  <List<String>> getContent(String content)async{
-    List <String> list = content.split(" ");
-    list.retainWhere((item) => item.toString().isNotEmpty);
-    String str = "";
-    List <String> listofContent = [];
-    for (int i = 0; i < list.length; i++) {
-      str += list[i] + " ";
-      if (i % 1000 == 0 && i != 0) {
-        listofContent.add(str);
-        return listofContent;
-      }
-    }
-    listofContent.add(str);
-    return listofContent;
-  }
 
-  static Future<Uint8List> getAudioFromApi(List listOfContent) async {
+
+  static Future<Uint8List> getAudioFromApi(String content) async {
     String? langCode = HiveDB.loadLangCode()!;
     String? voice = HiveDB.loadCountryCode(key: "voice")!;
-    List <List<int>> uint8lists = [];
     Uint8List? uint8List;
-
     switch (langCode) {
       case "uz":
         {
-          for (int i = 0; i < listOfContent.length; i++) {
-            listOfContent[i] = await checkLatin(listOfContent[i]);
-            listOfContent[i]= textEditing(listOfContent[i]);
-              print("ListOfCount: $listOfContent");
               uint8List = (await POST(getBody(
                   langCode: lang_code_uz,
                   speeker:
                   (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
-                  content: listOfContent[i])));
-
-              if(uint8List!=null){
-                uint8lists.add(uint8List.toList());
-              }
-            }
-          uint8List = Uint8List.fromList(uint8lists.expand((element) => element).toList());
-          print(uint8List);
-          return uint8List;
+                  content: content)));
         }
+        break;
       case "en":
         {
-          for (int i = 0; i < listOfContent.length; i++) {
             uint8List = (await POST(getBody(
                 langCode: lang_code_en,
                 speeker:
                 (voice == "famale") ? speeker_en_famale : speeker_en_male,
-                content: listOfContent[i])));
+                content: content)));
 
-            if(uint8List!=null){
-              uint8lists.add(uint8List.toList());
-            }
-          }
-          uint8List = Uint8List.fromList(uint8lists.expand((element) => element).toList());
-          print(uint8List);
-          return uint8List;
+       break;
         }
       case "ru":
         {
-          for (int i = 0; i < listOfContent.length; i++) {
             uint8List = (await POST(getBody(
                 langCode: lang_code_ru,
                 speeker:
                 (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
-                content: listOfContent[i]))) ;
-            if(uint8List!=null){
-              uint8lists.add(uint8List.toList());
-            }
-          }
-          uint8List = Uint8List.fromList(uint8lists.expand((element) => element).toList());
-          return uint8List;
+                content:content))) ;
+
         }
     }
     return uint8List!;
@@ -205,7 +165,7 @@ class Network {
         contentType: MediaType("Application", "pdf")));
     request.fields.addAll(
       {
-        "key": "5995c838-086d-452a-91db-7aac4b8993ab",
+        "key": "0f7bdb34-3c52-4030-a1ed-16425e628f44",
       },
     );
     StreamedResponse response = await request.send();

@@ -13,14 +13,14 @@ import '../navigators/goto.dart';
 import '../views/dialogs.dart';
 
 class ReadingPage extends StatefulWidget {
-  List<AudioModel> listAudio;
-  int startOnIndex;
+  List<AudioModel>? listAudio;
+  int? startOnIndex;
   bool onListBooksPage;
 
   ReadingPage(
       {Key? key,
-      required this.listAudio,
-      required this.startOnIndex,
+       this.listAudio,
+       this.startOnIndex,
       this.onListBooksPage = false})
       : super(key: key);
 
@@ -35,10 +35,15 @@ class _ReadingPageState extends State<ReadingPage> {
     super.initState();
     //load sound from assets
     print("asdfasdfasdfasdffffffff");
-
-    BlocProvider.of<ReadingAudioBookCubit>(context)
-        .loadAudioFiles(widget.startOnIndex, widget.listAudio);
+    BlocProvider.of<ReadingAudioBookCubit>(context).readDocumentDataAndListeningOnStream();
   }
+
+
+
+
+
+
+
 
   Future<bool> _readDate(AudioModel audioModel) async {
     List<dynamic>? listMap = await HiveDB.loadCountryCode(key: "listOfAudio");
@@ -53,6 +58,13 @@ class _ReadingPageState extends State<ReadingPage> {
 
     return listOfAudioModels.contains(audioModel);
   }
+
+
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +86,18 @@ class _ReadingPageState extends State<ReadingPage> {
 
             return false;
           }),
-          child: Scaffold(
+          child:
+         state.isConverting?
+             Center(
+               child: Container(),
+             ):
+             state.isLoading?
+                 Center(child: Text("asdf"),
+                 )
+                 :
+
+
+          Scaffold(
             appBar: AppBar(
                 elevation: 0,
                 backgroundColor: Colors.white,
@@ -104,7 +127,9 @@ class _ReadingPageState extends State<ReadingPage> {
 
             ),
             body: SafeArea(
-              child: state.isLoading
+              child:
+              state.isConverting?Center(child: Container(),) :
+              state.isLoading
                   ? Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -310,4 +335,7 @@ class _ReadingPageState extends State<ReadingPage> {
       },
     );
   }
+
+
+
 }

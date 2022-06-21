@@ -11,10 +11,14 @@ class ReadingAudioBookState {
   bool? isPlaying;
   AudioPlayer? audioPlayer;
   int index;
+  bool isConverting;
+  bool error;
 
   ReadingAudioBookState(
       {required this.isLoading,
       required this.index,
+        required this.isConverting,
+        required this.error,
       required this.currentPosition,
       required this.duration,
       required this.audioPlayer,

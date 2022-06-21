@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/logic/check_internet.dart';
 import 'package:key_board_app/pages/convertion_page.dart';
+import 'package:key_board_app/pages/reading_audio_page.dart';
 import 'package:key_board_app/pages/settings_page.dart';
 import 'package:key_board_app/pages/take_image.dart';
 import 'package:key_board_app/views/dialogs.dart';
@@ -32,8 +33,7 @@ bool isConnect =await hasNetwork();
        if(isConnect){
          GOTO.push(
              context,
-             ConvertionPage(
-               isCamera: false,
+             ReadingPage(
              ));
        }
        else{

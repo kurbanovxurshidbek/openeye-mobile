@@ -102,7 +102,7 @@ errorDialog(BuildContext context, bool isPage) {
                 onPressed: () {
                   GOTO.popUT(context);
                   if(isPage == false) {
-                    BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
+                    // BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
                   }else {
                     BlocProvider.of<TakeImageCubit>(context).state.isOpen = false;
                   }

@@ -26,10 +26,10 @@ class _ConvertionPageState extends State<ConvertionPage> {
   void initState() {
     super.initState();
     if (widget.isCamera == false && widget.image == null) {
-      BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
+      // BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
     } else {
-      BlocProvider.of<ConvertionCubit>(context).succesLoadedImageText(
-          widget.image!);
+      // BlocProvider.of<ConvertionCubit>(context).succesLoadedImageText(
+      //     widget.image!);
     }
   }
 

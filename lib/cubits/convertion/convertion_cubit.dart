@@ -23,47 +23,46 @@ class ConvertionCubit extends Cubit<ConvertionState> {
   InputImage? inputImage;
   String imgText = "";
 
-  /// #get pdf file and convert to text and goto push reading page
-  succesLoadedPdfText() async {
-    AudioModel? audioModel = await getPdfTextAndPushReadingBookPage();
-
-    if (audioModel == null) {
-      emit(ConvertionState(isConverting: false, error: true));
-      return ;
-    }
-
-    emit(ConvertionState(
-        isConverting: false, error: true, audioModel: audioModel));
-  }
+  // /// #get pdf file and convert to text and goto push reading page
+  // succesLoadedPdfText() async {
+  //   AudioModel? audioModel = await getPdfTextAndPushReadingBookPage();
+  //
+  //   if (audioModel == null) {
+  //     emit(ConvertionState(isConverting: false, error: true));
+  //     return ;
+  //   }
+  //
+  //   emit(ConvertionState(
+  //       isConverting: false, error: true, audioModel: audioModel));
+  // }
 
   /// #text to speech
-  Future<AudioModel?> getPdfTextAndPushReadingBookPage() async {
-    Uint8List? uint8list;
-
-    List<String>? list = await getTextFromPdfAndName(context);
-    if (list != null) {
-      List<String> txt = await Network.getContent(list[0]);
-      uint8list = await Network.getAudioFromApi(txt);
-      print("Uint8List: $uint8list");
-
-      if (uint8list == null) {
-        return null;
-      }
-
-      final tempDir = await getTemporaryDirectory();
-      File file = await File('${tempDir.path}/${list[1]}.mp3').create();
-      await file.writeAsBytes(uint8list);
-      AudioModel audioFileModel = AudioModel(name: list[1], path: file.path);
-      print("AudioModel: $audioFileModel");
-
-      return audioFileModel;
-    }
-  }
+  // Future<AudioModel?> getPdfTextAndPushReadingBookPage(List<String> _list) async {
+  //   Uint8List? uint8list;
+  //
+  //   List<String>? list = await getTextFromPdfAndName(_list);
+  //   if (list != null) {
+  //     List<String> txt = await Network.getContent(list[0]);
+  //     uint8list = await Network.getAudioFromApi(txt);
+  //     print("Uint8List: $uint8list");
+  //
+  //     if (uint8list == null) {
+  //       return null;
+  //     }
+  //
+  //     final tempDir = await getTemporaryDirectory();
+  //     File file = await File('${tempDir.path}/${list[1]}.mp3').create();
+  //     await file.writeAsBytes(uint8list);
+  //     AudioModel audioFileModel = AudioModel(name: list[1], path: file.path);
+  //     print("AudioModel: $audioFileModel");
+  //
+  //     return audioFileModel;
+  //   }
+  // }
 
   /// #chacke latin
-  Future<List<String>?> getTextFromPdfAndName(BuildContext context) async {
+  Future<List<String>?> getTextFromPdfAndName(List<String> list) async {
     //Load an existing PDF document.
-    List<String>? list = await readDocumentData();
     print(list);
 
     if (list != null) {
@@ -125,44 +124,44 @@ class ConvertionCubit extends Cubit<ConvertionState> {
 
 
   /// #convert to text and goto push convert page
-  succesLoadedImageText(String images) async {
-    emit(ConvertionState(isConverting: true));
-    AudioModel? audioModel = await getTextFromImageAndSendRequesd(images);
+  // succesLoadedImageText(String images) async {
+  //   emit(ConvertionState(isConverting: true));
+  //   AudioModel? audioModel = await getTextFromImageAndSendRequesd(images);
+  //
+  //   if (audioModel == null) {
+  //     emit(ConvertionState(error: true, isConverting: false));
+  //     return;
+  //   }
+  //
+  //   print("AudioModel: $audioModel");
+  //   emit(ConvertionState(audioModel: audioModel,error: false,isConverting: false));
+  // }
 
-    if (audioModel == null) {
-      emit(ConvertionState(error: true, isConverting: false));
-      return;
-    }
-
-    print("AudioModel: $audioModel");
-    emit(ConvertionState(audioModel: audioModel,error: false,isConverting: false));
-  }
-
-  /// #text to speech
-  Future<AudioModel?> getTextFromImageAndSendRequesd(String images) async {
-    Uint8List? uint8list;
-    String? text;
-
-    if(images != null) {
-      text = await getRecognisedText(images);
-      print("Text: $text");
-      if(text != null) {
-        uint8list = await Network.getAudioFromApi([text]);
-        print("Uint8List: $uint8list");
-      }
-    }
-
-    if(uint8list == null) {
-      return null;
-    }
-
-    final tempDir = await getTemporaryDirectory();
-    File file = await File('${tempDir.path}/${text.hashCode.toString()}.mp3').create();
-    await file.writeAsBytes(uint8list);
-    AudioModel audioImageModel = AudioModel(name: text.hashCode.toString(), path: file.path);
-    return audioImageModel;
-
-  }
+  // /// #text to speech
+  // Future<AudioModel?> getTextFromImageAndSendRequesd(String images) async {
+  //   Uint8List? uint8list;
+  //   String? text;
+  //
+  //   if(images != null) {
+  //     text = await getRecognisedText(images);
+  //     print("Text: $text");
+  //     if(text != null) {
+  //       uint8list = await Network.getAudioFromApi([text]);
+  //       print("Uint8List: $uint8list");
+  //     }
+  //   }
+  //
+  //   if(uint8list == null) {
+  //     return null;
+  //   }
+  //
+  //   final tempDir = await getTemporaryDirectory();
+  //   File file = await File('${tempDir.path}/${text.hashCode.toString()}.mp3').create();
+  //   await file.writeAsBytes(uint8list);
+  //   AudioModel audioImageModel = AudioModel(name: text.hashCode.toString(), path: file.path);
+  //   return audioImageModel;
+  //
+  // }
 
   /// #get text from image
   Future<String?> getRecognisedText(String imageFile) async {
