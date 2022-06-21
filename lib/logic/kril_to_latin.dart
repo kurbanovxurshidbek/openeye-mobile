@@ -101,20 +101,23 @@ var alphaRus = [
 ];
 
 // ignore: non_constant_identifier_names
-String LatinTranslated = ""; //lotin ga o'girilgan xabar
-
+ //lotin ga o'girilgan xabar
+String LatinTranslated = "";
 toLatin(String CyrillicMessage) async {
+
   String letterE2 = CyrillicMessage.split(" ").map(Eliser2).join(' ');
   CyrillicMessage = letterE2;
 
-  await decrypt(CyrillicMessage);
+  await decrypt(CyrillicMessage,);
   /*natijani return qiladi */
+  String neww = LatinTranslated;
+  LatinTranslated = "";
 
-  return LatinTranslated;
+  return neww;
 }
 
 /*lotinga o'girish algoritmi :*/
-decrypt(String string) {
+decrypt(String string,) {
   for (var i = 0; i < string.length; i++) {
     for (var j = 0; j < alphaRus.length; j++) {
       /* lotinchaga o'tkazadi*/

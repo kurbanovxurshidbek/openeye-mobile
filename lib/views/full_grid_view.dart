@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +11,9 @@ import 'package:key_board_app/views/dialogs.dart';
 import '../navigators/goto.dart';
 import '../pages/list_of_saved_books.dart';
 import 'bottom_sheets.dart';
-//home page item on tap fucntions
+
+
+//home page item on tap functions
 void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) async {
 bool isConnect =await hasNetwork();
   switch (itemOfGridHome) {
@@ -69,8 +70,7 @@ bool isConnect =await hasNetwork();
 void goToImage(BuildContext context) async {
   await availableCameras().then((value) {
     print("Value: $value");
-    Navigator.push(context,
-        MaterialPageRoute(builder: (_) => TakeImagePage(cameras: value)));
+    GOTO.push(context,TakeImagePage(cameras: value));
   });
 }
 

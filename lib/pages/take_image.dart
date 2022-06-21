@@ -1,6 +1,5 @@
 import 'dart:io';
 
-// import 'package:camera/camera.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,11 +25,11 @@ class _TakeImagePageState extends State<TakeImagePage>
     BlocProvider.of<TakeImageCubit>(context).initCamera(widget.cameras![0]);
   }
 
-  // @override
-  // void dispose() {
-  //   BlocProvider.of<TakeImageCubit>(context).state.cameraController!.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    BlocProvider.of<TakeImageCubit>(context).state.cameraController!.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +52,12 @@ class _TakeImagePageState extends State<TakeImagePage>
     return Stack(
       children: [
         state.cameraController!.value.isInitialized
-            ? Container(
+            ? SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 child: CameraPreview(state.cameraController!),
               )
-            : Center(
+            : const Center(
                 child: CircularProgressIndicator(
                   color: Colors.white,
                 ),

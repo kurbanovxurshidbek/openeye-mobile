@@ -22,22 +22,22 @@ bool haveUser = false;
 
 void main(List<String> args) async {
 
-  // flutter Binding Initialized
+  /// flutter Binding Initialized
   WidgetsFlutterBinding.ensureInitialized();
 
-  // fixed portrait mode
+  /// fixed portrait mode
   await SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp],
   );
 
-  // easy localization Initialized
+  /// easy localization Initialized
   await EasyLocalization.ensureInitialized();
 
   ///hive service
   await Hive.initFlutter();
   await Hive.openBox(HiveDB.DB_NAME);
 
-  //have user
+  ///have user
   await starterPage();
 
   runApp(

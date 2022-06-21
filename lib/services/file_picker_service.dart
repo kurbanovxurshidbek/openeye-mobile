@@ -28,9 +28,11 @@ class FileServises {
     List<String>? list = await getTextFromPdfAndName(_list);
     if (list != null) {
       List<String> partList = await getContent(list[0]);
+      String? countryCode = HiveDB.loadLangCode();
+
+
       for (int i = 0; i < partList.length; i++) {
-        print(partList[i]);
-        String? countryCode = HiveDB.loadLangCode();
+                print("----------------------"+partList[i]);
 
         if (countryCode != null && countryCode == "uz") {
           if (partList[i].contains("В") ||
@@ -40,10 +42,17 @@ class FileServises {
               partList[i].contains("ь") ||
               partList[i].contains("ж") ||
               partList[i].contains("э")) {
-            partList[i] = await toLatin(partList[i]);
+            String str= await toLatin(partList[i]);
+
+            partList[i] = str;
           }
         }
+                print("+++++++++++++++++++++="+partList[i]);
+
+
+
         uint8list = await Network.getAudioFromApi(partList[i]);
+
         if (uint8list == null) {
           yield null;
           continue;
@@ -53,7 +62,6 @@ class FileServises {
         await File('${tempDir.path}/${list[1]}-${i + 1}.mp3').create();
         await file.writeAsBytes(uint8list);
         AudioModel audioFileModel = AudioModel(name: list[1], path: file.path, index: i);
-        print(audioFileModel);
         yield audioFileModel;
       }
     }
@@ -158,12 +166,14 @@ class FileServises {
     List<String> listofContent = [];
     for (int i = 0; i < list.length; i++) {
       str += list[i] + " ";
-      if (i % 1000 == 0 && i != 0) {
+      if (i %  700 == 0 && i != 0) {
         listofContent.add(str);
-        return listofContent;
+         str = "";
       }
     }
     listofContent.add(str);
+
+
     return listofContent;
   }
 }

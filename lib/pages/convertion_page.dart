@@ -1,10 +1,8 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/connection/internet_cubit.dart';
 import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
 import 'package:key_board_app/cubits/convertion/convertion_state.dart';
-import 'package:key_board_app/models/audio_model.dart';
 import 'package:key_board_app/navigators/goto.dart';
 import 'package:key_board_app/pages/reading_audio_page.dart';
 import 'package:key_board_app/views/dialogs.dart';
@@ -25,6 +23,7 @@ class _ConvertionPageState extends State<ConvertionPage> {
   @override
   void initState() {
     super.initState();
+    print("Exxxxxxxxxxxxxxxxx: ${widget.isCamera}");
     if (widget.isCamera == false && widget.image == null) {
       // BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
     } else {
@@ -45,10 +44,10 @@ class _ConvertionPageState extends State<ConvertionPage> {
 
                 listener: (context, state) {
                   if(internetsate is InternetDisconnected){
-                    connectionDialog(context );
+                    connectionDialog(context);
                   }
                   if (state.error) {
-                    errorDialog(context, !widget.isCamera);
+                    errorDialog(context, widget.isCamera);
                   }
 
                   if (state.audioModel != null) {

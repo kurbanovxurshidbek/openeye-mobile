@@ -74,31 +74,52 @@ class Network {
     }
   }
 
-
+  static Future  <List<String>> getContent(String content)async{
+    List <String> list = content.split(" ");
+    list.retainWhere((item) => item.toString().isNotEmpty);
+    String str = "";
+    List <String> listofContent = [];
+    for (int i = 0; i < list.length; i++) {
+      str += list[i] + " ";
+      if (i % 1000 == 0 && i != 0) {
+        listofContent.add(str);
+        return listofContent;
+      }
+    }
+    listofContent.add(str);
+    return listofContent;
+  }
 
   static Future<Uint8List> getAudioFromApi(String content) async {
     String? langCode = HiveDB.loadLangCode()!;
     String? voice = HiveDB.loadCountryCode(key: "voice")!;
     Uint8List? uint8List;
+
+
     switch (langCode) {
       case "uz":
         {
+
               uint8List = (await POST(getBody(
                   langCode: lang_code_uz,
                   speeker:
                   (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
                   content: content)));
+              break;
+
+
         }
-        break;
       case "en":
         {
+
             uint8List = (await POST(getBody(
                 langCode: lang_code_en,
                 speeker:
                 (voice == "famale") ? speeker_en_famale : speeker_en_male,
                 content: content)));
 
-       break;
+            break;
+
         }
       case "ru":
         {
@@ -106,10 +127,12 @@ class Network {
                 langCode: lang_code_ru,
                 speeker:
                 (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
-                content:content))) ;
+                content: content))) ;              break;
+
 
         }
     }
+    print(uint8List);
     return uint8List!;
   }
 

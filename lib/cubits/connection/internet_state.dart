@@ -3,7 +3,6 @@ part of 'internet_cubit.dart';
 enum ConnectionType {
   wifi,
   mobile,
-
 }
 
 @immutable

@@ -20,6 +20,11 @@ class AudioModel {
     path = map["path"]!;
     isSaved = map["isSaved"];
   }
+  @override
+  String toString() {
+    // TODO: implement toString
+    return path.toString();
+  }
 
   bool operator ==(Object object) {
     return (object is AudioModel) && (object.name == name);

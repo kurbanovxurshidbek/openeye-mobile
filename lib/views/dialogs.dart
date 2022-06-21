@@ -11,7 +11,7 @@ import '../models/audio_model.dart';
 import '../navigators/goto.dart';
 import '../pages/home_page.dart';
 import '../services/hive_service.dart';
-saveAudioDialog(BuildContext context, AudioModel audioModel,
+saveAudioDialog(BuildContext context, List<AudioModel> audioModel,
     {bool isBack = false}) async {
   showDialog(
       context: context,
@@ -41,15 +41,18 @@ saveAudioDialog(BuildContext context, AudioModel audioModel,
                 onPressed: () async {
                   List<dynamic>? listOfAudio =
                   await HiveDB.loadCountryCode(key: "listOfAudio");
-
-                  if (listOfAudio == null) {
-                    List<dynamic> list = [audioModel.toJson()];
-                    await HiveDB.saveData("listOfAudio", list);
-                  } else {
-                    print(audioModel.toJson());
-                    listOfAudio.add(audioModel.toJson());
-                    await HiveDB.saveData("listOfAudio", listOfAudio);
+                  for(int i=0; i<audioModel.length; i++){
+                    if (listOfAudio == null) {
+                      List<dynamic> list = [audioModel[i].toJson()];
+                      await HiveDB.saveData("listOfAudio", list);
+                    } else {
+                      print(audioModel[i].toJson());
+                      listOfAudio.add(audioModel[i].toJson());
+                      await HiveDB.saveData("listOfAudio", listOfAudio);
+                    }
                   }
+
+
 
 
                   GOTO.pop(context);
@@ -102,7 +105,7 @@ errorDialog(BuildContext context, bool isPage) {
                 onPressed: () {
                   GOTO.popUT(context);
                   if(isPage == false) {
-                    // BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
+                    BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
                   }else {
                     BlocProvider.of<TakeImageCubit>(context).state.isOpen = false;
                   }

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:file_picker/file_picker.dart';
@@ -19,6 +20,9 @@ class ReadingAudioBookCubit extends Cubit<ReadingAudioBookState> {
             isPlaying: false,
             listOfAudio: []));
 
+ late StreamSubscription litening;
+
+
   /// #get pdf from device file
   Future<void> readDocumentDataAndListeningOnStream() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.custom,allowedExtensions: ["pdf"]);
@@ -35,11 +39,11 @@ class ReadingAudioBookCubit extends Cubit<ReadingAudioBookState> {
     if (result != null && result.paths.toString().contains("pdf")) {
       File file = File(result.files.first.path!);
 
-      Stream<AudioModel?> stream=   FileServises.getPdfTextAndPushReadingBookPage(false, [file.path, result.files.first.name]);
+      Stream<AudioModel?> stream =  FileServises.getPdfTextAndPushReadingBookPage(false, [file.path, result.files.first.name]);
 
 
 
-      stream.listen((audioModel){
+      litening =  stream.listen((audioModel){
         _listeningAudioModel(audioModel);
       });
 
@@ -51,9 +55,19 @@ class ReadingAudioBookCubit extends Cubit<ReadingAudioBookState> {
   }
 
 
+
+
+
+  removeLitening(){
+    litening.cancel();
+  }
+
+
   _listeningAudioModel(AudioModel? audioModel){
+
     if(audioModel!=null){
       state.listOfAudio.add(audioModel);
+      print(state.listOfAudio);
       if(audioModel.index!=null&&audioModel.index==0){
         startAndLoadAudioFiles(0,state.listOfAudio);
       }
@@ -76,6 +90,7 @@ class ReadingAudioBookCubit extends Cubit<ReadingAudioBookState> {
   startAndLoadAudioFiles(int curentIndex, List<AudioModel> listOfAudio) {
     state.audioPlayer!.onPlayerCompletion.listen((event) {
       curentIndex++;
+
       if (curentIndex > state.listOfAudio.length - 1) {
         curentIndex = 0;
       }
@@ -186,6 +201,8 @@ class ReadingAudioBookCubit extends Cubit<ReadingAudioBookState> {
     if (state.index > state.listOfAudio.length - 1) {
       state.index = 0;
     }
+
+    print(state.listOfAudio.toString()+"0000000000000000000000000000");
 
     play(state.listOfAudio[state.index]);
     emit(ReadingAudioBookState(
