@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:key_board_app/cubits/connection/internet_cubit.dart';
-import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
 import 'package:key_board_app/cubits/for_lang_page/mainaligment_cubit.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
 import 'package:key_board_app/cubits/for_read_audio_book/reading_audio_book_cubit.dart';
@@ -15,6 +13,7 @@ import 'package:key_board_app/cubits/for_speech_to_text/speech_to_text_cubit.dar
 import 'package:key_board_app/cubits/saved_book/saved_books_cubit.dart';
 import 'package:key_board_app/pages/home_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
+import 'cubits/convert_and_reading/convert_and_reading_cubit.dart';
 import 'pages/change_lang_page.dart';
 import 'themes/theme_of_app.dart';
 
@@ -89,14 +88,12 @@ class App extends StatelessWidget {
           return SavedBooksCubit();
         })),
         BlocProvider(create: ((context) {
-          return ConvertionCubit(context: context);
+          return ConvertAndReadingCubit();
         })),
         BlocProvider(create: ((context) {
           return TakeImageCubit();
         })),
-        BlocProvider(create: ((context){
-          return InternetCubit(connectivity: connectivity);
-        }))
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

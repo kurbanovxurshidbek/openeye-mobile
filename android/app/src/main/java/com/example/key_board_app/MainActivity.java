@@ -27,7 +27,7 @@ public class MainActivity extends FlutterActivity {
         new MethodChannel(getFlutterEngine().getDartExecutor().getBinaryMessenger(),CHANNEL_NAME).setMethodCallHandler((call, result)->{
             if(call.method.equals("helloNativeCode")){
                 helloNativeCode();
-                result.success("Hello");
+                result.success("success");
             }
         });
     }

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:key_board_app/navigators/goto.dart';
-import 'package:key_board_app/pages/reading_audio_page.dart';
+import 'package:key_board_app/pages/convert_reading_audio_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'package:key_board_app/services/http_service.dart';
 import 'package:path_provider/path_provider.dart';
@@ -21,7 +21,11 @@ class FileServises {
   InputImage? inputImage;
   String imgText = "";
   //get pdf file and convert to text and goto push reading page
-  static Stream<AudioModel?> getPdfTextAndPushReadingBookPage(
+   bool cancel = false;
+   int total = 0;
+
+
+   Stream<AudioModel?> getPdfTextAndPushReadingBookPage(
        bool isCamera, List<String> _list) async* {
        Uint8List? uint8list;
 
@@ -33,6 +37,10 @@ class FileServises {
 
       for (int i = 0; i < partList.length; i++) {
                 print("----------------------"+partList[i]);
+
+                if(cancel){
+                   break;
+                }
 
         if (countryCode != null && countryCode == "uz") {
           if (partList[i].contains("В") ||
@@ -78,6 +86,8 @@ class FileServises {
       }
 
 
+
+
       return [text, list[1]];
     }
 
@@ -95,54 +105,9 @@ class FileServises {
     return text;
   }
 
-  // static Future<List<String>?> readDocumentData() async {
-  //   FilePickerResult? result = await FilePicker.platform.pickFiles();
-  //   if (result != null) {
-  //     File file = File(result.files.first.path!);
-  //
-  //     return [file.path, result.files.first.name];
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
-  // /// #rasmli file olib beradi
-  // Future<String?> getImage() async {
-  //   final file = (await ImagePicker().pickImage(source: ImageSource.camera));
-  //   // emit(ConvertionState(
-  //   //   isConverting: true,
-  //   //   error: false,
-  //   // ));
-  //   if (file != null) {
-  //     imageFile = File(file.path);
-  //     // state.isConverting = true;
-  //     String? textImage = await getRecognisedText(imageFile!);
-  //     return textImage;
-  //   }
-  //   return null;
-  // }
-
-  /// #rasmdagi matnlarni olib beradi
-  // Future<String?> getRecognisedText(File imageFile) async {
-  //   inputImage = InputImage.fromFilePath(imageFile.path);
-  //   final textDetector = GoogleMlKit.vision.textRecognizer();
-  //   RecognizedText recognizedText =
-  //       await textDetector.processImage(inputImage!);
-  //   imgText = "";
-
-  //   print(recognizedText.blocks[0].lines[0].text + "=======");
-  //   for (TextBlock block in recognizedText.blocks) {
-  //     for (TextLine line in block.lines) {
-  //       imgText = imgText + line.text + "\n";
-  //     }
-  //   }
-  //   // print(state.scanningText! + "///");
-  //   String imageText = await checkLatin(imgText);
-  //   return imageText;
-  // }
 
   /// #matinlarni lotin harflariga tekshiradi
-  static Future<String> checkLatin(String? text) async {
+   Future<String> checkLatin(String? text) async {
     String? countryCode = HiveDB.loadLangCode();
 
     if (text != null && countryCode != null && countryCode == "uz") {
@@ -159,7 +124,7 @@ class FileServises {
     return text!;
   }
 
-  static Future<List<String>> getContent(String content) async {
+   Future<List<String>> getContent(String content) async {
     List<String> list = content.split(" ");
     list.retainWhere((item) => item.toString().isNotEmpty);
     String str = "";
@@ -167,7 +132,9 @@ class FileServises {
     for (int i = 0; i < list.length; i++) {
       str += list[i] + " ";
       if (i %  700 == 0 && i != 0) {
+        total++;
         listofContent.add(str);
+
          str = "";
       }
     }
@@ -176,4 +143,6 @@ class FileServises {
 
     return listofContent;
   }
+
+
 }

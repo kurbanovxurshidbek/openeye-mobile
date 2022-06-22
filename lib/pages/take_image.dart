@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/for_take_image/take_image_cubit.dart';
 import 'package:key_board_app/cubits/for_take_image/take_image_state.dart';
 import 'package:key_board_app/navigators/goto.dart';
-import 'package:key_board_app/pages/convertion_page.dart';
 
 class TakeImagePage extends StatefulWidget {
   final List<CameraDescription>? cameras;
@@ -169,11 +168,11 @@ class _TakeImagePageState extends State<TakeImagePage>
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       onPressed: () {
-                        GOTO.push(
-                            context,
-                            ConvertionPage(
-                              image: state.image,isCamera: true,
-                            ));
+                        // GOTO.push(
+                        //     context,
+                            // ConvertionPage(
+                            //   image: state.image,isCamera: true,
+                            // ));
                       },
                     ),
                   ),

@@ -1,11 +1,10 @@
 import 'dart:io';
-// import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:connectivity_plus_platform_interface/src/enums.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:key_board_app/cubits/convertion/convertion_cubit.dart';
+import 'package:key_board_app/cubits/convert_and_reading/convert_and_reading_cubit.dart';
 import 'package:key_board_app/cubits/for_take_image/take_image_cubit.dart';
+import '../cubits/for_read_audio_book/reading_audio_book_cubit.dart';
 import '../cubits/saved_book/saved_books_cubit.dart';
 import '../models/audio_model.dart';
 import '../navigators/goto.dart';
@@ -41,16 +40,22 @@ saveAudioDialog(BuildContext context, List<AudioModel> audioModel,
                 onPressed: () async {
                   List<dynamic>? listOfAudio =
                   await HiveDB.loadCountryCode(key: "listOfAudio");
+
                   for(int i=0; i<audioModel.length; i++){
+                    print(audioModel[i]);
                     if (listOfAudio == null) {
                       List<dynamic> list = [audioModel[i].toJson()];
                       await HiveDB.saveData("listOfAudio", list);
+                      listOfAudio  = await HiveDB.loadCountryCode(key: "listOfAudio");
                     } else {
                       print(audioModel[i].toJson());
                       listOfAudio.add(audioModel[i].toJson());
-                      await HiveDB.saveData("listOfAudio", listOfAudio);
                     }
                   }
+                   print(listOfAudio);
+
+                  await HiveDB.saveData("listOfAudio", listOfAudio);
+
 
 
 
@@ -104,11 +109,10 @@ errorDialog(BuildContext context, bool isPage) {
             TextButton(
                 onPressed: () {
                   GOTO.popUT(context);
-                  if(isPage == false) {
-                    BlocProvider.of<ConvertionCubit>(context).succesLoadedPdfText();
-                  }else {
-                    BlocProvider.of<TakeImageCubit>(context).state.isOpen = false;
-                  }
+
+                    BlocProvider.of<ConvertAndReadingCubit>(context)
+                        .readDocumentDataAndListeningOnStream();
+
                 },
                 child: Text("try",style: TextStyle(color:Colors.green.shade700,fontSize: 15),).tr()),
           ],

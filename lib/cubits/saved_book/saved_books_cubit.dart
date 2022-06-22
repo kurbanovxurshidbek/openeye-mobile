@@ -9,7 +9,7 @@ class SavedBooksCubit extends Cubit<SavedBooksState> {
 
   loadList() async {
     emit(SavedBooksState(listOfAudioModels: [], loadList: true));
-    List<dynamic> listMap = await HiveDB.loadCountryCode(key: "listOfAudio");
+    List<dynamic>? listMap = await HiveDB.loadCountryCode(key: "listOfAudio");
 
     print(listMap);
     // ignore: prefer_conditional_assignment, unnecessary_null_comparison
@@ -20,7 +20,7 @@ class SavedBooksCubit extends Cubit<SavedBooksState> {
     List<AudioModel> listOfAudioModels = [];
 
     listOfAudioModels = List.generate(
-        listMap.length, (index) => AudioModel.fromJson(listMap[index]));
+        listMap.length, (index) => AudioModel.fromJson(listMap![index]));
 
     emit(
         SavedBooksState(listOfAudioModels: listOfAudioModels, loadList: false));

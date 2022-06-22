@@ -3,44 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/logic/check_internet.dart';
-import 'package:key_board_app/pages/convertion_page.dart';
-import 'package:key_board_app/pages/reading_audio_page.dart';
+import 'package:key_board_app/pages/convert_reading_audio_page.dart';
 import 'package:key_board_app/pages/settings_page.dart';
 import 'package:key_board_app/pages/take_image.dart';
 import 'package:key_board_app/views/dialogs.dart';
 import '../navigators/goto.dart';
 import '../pages/list_of_saved_books.dart';
 import 'bottom_sheets.dart';
-
-
-//home page item on tap functions
+//home page item on tap fucntions
 void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) async {
 bool isConnect =await hasNetwork();
   switch (itemOfGridHome) {
     case ItemOfFullGrid.KeybordItem:
-      androidOrIos();
+      _goingToAndroidAndIosSetting();
       break;
     case ItemOfFullGrid.TextInImageItem:
-      {if(isConnect){
-        goToImage(context);
-      }
-      else{
-        connectionDialog(context);
-      }
+      {
+        if (isConnect) {
+          goToImage(context);
+        } else {
+          connectionDialog(context);
+        }
       }
       break;
     case ItemOfFullGrid.BookRecordingItem:
       {
-       if(isConnect){
-         GOTO.push(
-             context,
-             ReadingPage(
-             ));
-       }
-       else{
-         connectionDialog(context);
-       }
-       // //  return;
+        if (isConnect) {
+          GOTO.push(context, ConvertAndReadingPage());
+        } else {
+          connectionDialog(context);
+        }
+        // //  return;
 
       }
       break;
@@ -67,18 +60,9 @@ bool isConnect =await hasNetwork();
   }
 }
 
-void goToImage(BuildContext context) async {
-  await availableCameras().then((value) {
-    print("Value: $value");
-    GOTO.push(context,TakeImagePage(cameras: value));
-  });
-}
-
-// going to android and ios settings
-androidOrIos() async {
-  String _counter = "";
-
-  final plotform = const MethodChannel("flutter.native/helper");
+//! going to android and ios settings
+void _goingToAndroidAndIosSetting() async {
+  const plotform = MethodChannel("flutter.native/helper");
 
   String result = "";
   try {
@@ -89,8 +73,16 @@ androidOrIos() async {
   print(result);
 }
 
-Widget itemGrid(String title, ItemOfFullGrid itemOfGridHome,
-    BuildContext context) {
+void goToImage(BuildContext context) async {
+  await availableCameras().then((value) {
+    print("Value: $value");
+    Navigator.push(context,
+        MaterialPageRoute(builder: (_) => TakeImagePage(cameras: value)));
+  });
+}
+
+Widget itemGrid(
+    String title, ItemOfFullGrid itemOfGridHome, BuildContext context) {
   return GestureDetector(
     onTap: () {
       itemGridOnPressed(itemOfGridHome, context);
