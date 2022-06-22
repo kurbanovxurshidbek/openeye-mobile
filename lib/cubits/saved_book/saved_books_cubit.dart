@@ -1,14 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:key_board_app/cubits/saved_book/saved_books_state.dart';
-import 'package:key_board_app/models/audio_model.dart';
 import 'package:key_board_app/services/hive_service.dart';
 
 class SavedBooksCubit extends Cubit<SavedBooksState> {
   SavedBooksCubit()
-      : super(SavedBooksState(listOfAudioModels: [], loadList: false));
+      : super(SavedBooksState(listOAudioBook: [], loadList: false));
 
   loadList() async {
-    emit(SavedBooksState(listOfAudioModels: [], loadList: true));
+    emit(SavedBooksState(listOAudioBook: [], loadList: true));
     List<dynamic>? listMap = await HiveDB.loadCountryCode(key: "listOfAudio");
 
     print(listMap);
@@ -17,12 +16,11 @@ class SavedBooksCubit extends Cubit<SavedBooksState> {
       listMap = [];
     }
 
-    List<AudioModel> listOfAudioModels = [];
+    List<String> listOfAudioModels = [];
 
-    listOfAudioModels = List.generate(
-        listMap.length, (index) => AudioModel.fromJson(listMap![index]));
+    listOfAudioModels =
+        List.generate(listMap.length, (index) => listMap![index]["name"]);
 
-    emit(
-        SavedBooksState(listOfAudioModels: listOfAudioModels, loadList: false));
+    emit(SavedBooksState(listOAudioBook: listOfAudioModels, loadList: false));
   }
 }

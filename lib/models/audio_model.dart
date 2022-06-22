@@ -27,6 +27,8 @@ class AudioModel {
   }
 
   bool operator ==(Object object) {
-    return (object is AudioModel) && (object.name == name);
+    return (object is AudioModel) &&
+        (object.name == name) &&
+        (object.path == path);
   }
 }

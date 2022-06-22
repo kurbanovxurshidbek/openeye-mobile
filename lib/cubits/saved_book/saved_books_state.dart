@@ -1,7 +1,7 @@
-import 'package:key_board_app/models/audio_model.dart';
+import 'package:key_board_app/models/book_on_audio.dart';
 
 class SavedBooksState {
   bool loadList;
-  List<AudioModel> listOfAudioModels;
-  SavedBooksState({required this.listOfAudioModels, required this.loadList});
+  List<String> listOAudioBook;
+  SavedBooksState({required this.listOAudioBook, required this.loadList});
 }

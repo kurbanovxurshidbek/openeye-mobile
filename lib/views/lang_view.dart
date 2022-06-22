@@ -22,7 +22,6 @@ class LangUI extends StatelessWidget {
       fontStyle: FontStyle.normal);
 
   LangUI(
-
       {Key? key,
       required this.hello,
       required this.lang,
@@ -60,9 +59,7 @@ class LangUI extends StatelessWidget {
             ),
       decoration: BoxDecoration(boxShadow: [
         const BoxShadow(
-            blurRadius: 2,
-            color: Colors.blueGrey,
-            offset: Offset(2, 0))
+            blurRadius: 2, color: Colors.blueGrey, offset: Offset(2, 0))
       ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
     );
   }

@@ -14,13 +14,13 @@ import 'package:key_board_app/cubits/saved_book/saved_books_cubit.dart';
 import 'package:key_board_app/pages/home_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'cubits/convert_and_reading/convert_and_reading_cubit.dart';
+import 'cubits/part_saved_books/part_audio_books_dart_cubit.dart';
 import 'pages/change_lang_page.dart';
 import 'themes/theme_of_app.dart';
 
 bool haveUser = false;
 
 void main(List<String> args) async {
-
   /// flutter Binding Initialized
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -40,7 +40,6 @@ void main(List<String> args) async {
   await starterPage();
 
   runApp(
-
     // easy localization
     EasyLocalization(
         supportedLocales: const [
@@ -50,7 +49,9 @@ void main(List<String> args) async {
         ],
         path: 'assets/lang', // <-- change the path of the translation files
         fallbackLocale: const Locale('en', 'US'),
-        child:  App(connectivity: Connectivity(),)),
+        child: App(
+          connectivity: Connectivity(),
+        )),
   );
 }
 
@@ -63,7 +64,7 @@ Future<void> starterPage() async {
 
 class App extends StatelessWidget {
   final Connectivity connectivity;
-  const App({Key? key,required this.connectivity}) : super(key: key);
+  const App({Key? key, required this.connectivity}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +94,9 @@ class App extends StatelessWidget {
         BlocProvider(create: ((context) {
           return TakeImageCubit();
         })),
-
+        BlocProvider(create: ((context) {
+          return PartAudioBooksDartCubit();
+        })),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -102,8 +105,6 @@ class App extends StatelessWidget {
         locale: context.locale,
         theme: ThemeOf.ligth(),
         home: haveUser ? const HomePage() : LangChangePage(count: 1),
-
-
       ),
     );
   }

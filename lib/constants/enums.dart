@@ -7,7 +7,8 @@ enum ItemOfFullGrid {
   Voice,
   Lang,
   ListOfSavedAudioBooks
-
 }
 
 enum Voice { MALE, FAMALE }
+
+enum Errors { file, network, none }

@@ -1,25 +1,29 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:key_board_app/cubits/saved_book/saved_books_cubit.dart';
-import '../cubits/saved_book/saved_books_state.dart';
+import 'package:key_board_app/cubits/part_saved_books/part_audio_books_dart_state.dart';
+import 'package:key_board_app/pages/saved_audio_reading_page.dart';
+import '../cubits/part_saved_books/part_audio_books_dart_cubit.dart';
 import '../navigators/goto.dart';
-import 'list_of_part_books.dart';
+import '../views/dialogs.dart';
 
-class SavedBooksPage extends StatefulWidget {
-  const SavedBooksPage({Key? key}) : super(key: key);
+class PartBooksPage extends StatefulWidget {
+  int index;
+  String name;
+  PartBooksPage({Key? key, required this.index, required this.name})
+      : super(key: key);
 
   @override
-  State<SavedBooksPage> createState() => _SavedBooksPageState();
+  State<PartBooksPage> createState() => _PartBooksPageState();
 }
 
-class _SavedBooksPageState extends State<SavedBooksPage> {
+class _PartBooksPageState extends State<PartBooksPage> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    BlocProvider.of<SavedBooksCubit>(context).loadList();
+    BlocProvider.of<PartAudioBooksDartCubit>(context).loadList(widget.index);
   }
 
   @override
@@ -27,17 +31,17 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "saved_books",
+          widget.name,
           style: TextStyle(
             fontSize: 16,
           ),
-        ).tr(),
+        ),
         elevation: 0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.blueGrey,
         // shadowColor: Colors.blueGrey ,
       ),
-      body: BlocBuilder<SavedBooksCubit, SavedBooksState>(
+      body: BlocBuilder<PartAudioBooksDartCubit, PartAudioBooksDartState>(
         builder: (context, state) {
           return Container(
             width: MediaQuery.of(context).size.width,
@@ -45,7 +49,7 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
             decoration: const BoxDecoration(color: Colors.white),
             child: ListView(
                 children: List.generate(
-                    state.listOAudioBook.length,
+                    state.listOfAudioModels.length,
                     (index) => Column(
                           children: [
                             Container(
@@ -58,10 +62,9 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                                   onTap: () {
                                     GOTO.push(
                                         context,
-                                        PartBooksPage(
-                                          index: index,
-                                          name: state.listOAudioBook[index],
-                                        ));
+                                        ReadingPage(
+                                            listAudio: state.listOfAudioModels,
+                                            startOnIndex: index));
                                   },
                                   leading: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
@@ -73,7 +76,7 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                                     ),
                                   ),
                                   title: Text(
-                                    state.listOAudioBook[index],
+                                    state.listOfAudioModels[index].name,
                                     style: TextStyle(
                                         fontSize: 17,
                                         fontFamily: "Serif",
@@ -81,6 +84,17 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                                         color: Colors.blueGrey.shade600,
                                         fontStyle: FontStyle.normal),
                                   ),
+                                  trailing: IconButton(
+                                      onPressed: () {
+                                        deleteItemDialog(
+                                            context,
+                                            state.listOfAudioModels[index],
+                                            widget.index);
+                                      },
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      )),
                                 ),
                               ),
                             ),

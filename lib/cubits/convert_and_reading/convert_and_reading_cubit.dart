@@ -1,39 +1,33 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:bloc/bloc.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/convert_and_reading/convert_and_reading_state.dart';
 import 'package:path_provider/path_provider.dart';
-
 import '../../logic/kril_to_latin.dart';
 import '../../models/audio_model.dart';
 import '../../services/hive_service.dart';
 import '../../services/http_service.dart';
 
-
 class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
-  ConvertAndReadingCubit() : super(ConvertAndReadingState(
-      isLoading: true,
-      cancel: false,
-      isConverting: true,
-      error: false,
-      audioPlayer: AudioPlayer(),
-      currentPosition: Duration.zero,
-      duration: Duration.zero,
-      index: 0,
-      isPlaying: false,
-      total: 0,
-      listOfAudio: []));
-
-
-
-
-
+  ConvertAndReadingCubit()
+      : super(ConvertAndReadingState(
+            isLoading: true,
+            cancel: false,
+            isConverting: true,
+            error: Errors.none,
+            audioPlayer: AudioPlayer(),
+            currentPosition: Duration.zero,
+            duration: Duration.zero,
+            index: 0,
+            isPlaying: false,
+            total: 1,
+            listOfAudio: []));
 
   File? imageFile;
   String? path;
@@ -41,20 +35,14 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
   String imgText = "";
   //get pdf file and convert to text and goto push reading page
 
-
   late StreamSubscription litening;
-
-
-
-
 
   /// #get pdf from device file
   Future<void> readDocumentDataAndListeningOnStream() async {
     makeDeffould();
 
-    FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.custom,allowedExtensions: ["pdf"]);
-
-
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(type: FileType.custom, allowedExtensions: ["pdf"]);
 
     emit(ConvertAndReadingState(
         error: state.error,
@@ -62,7 +50,6 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
         total: state.total,
         isLoading: state.isLoading,
         cancel: false,
-
         audioPlayer: state.audioPlayer,
         currentPosition: state.currentPosition,
         duration: state.duration,
@@ -72,21 +59,19 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     if (result != null && result.paths.toString().contains("pdf")) {
       File file = File(result.files.first.path!);
 
-      Stream<AudioModel?> stream = getPdfTextAndPushReadingBookPage(false, [file.path, result.files.first.name]);
+      Stream<AudioModel?> stream = getPdfTextAndPushReadingBookPage(
+          false, [file.path, result.files.first.name]);
 
-
-      litening =  stream.listen((audioModel){
+      litening = stream.listen((audioModel) {
         _listeningAudioModel(audioModel);
       });
     } else {
       print("a-----------------");
-      hasError();
+      hasError(Errors.file);
     }
   }
 
-
-
-  removeLitening(){
+  removeLitening() {
     litening.cancel();
     print("=+++++++++++++++++++++++++++++++++++++");
     emit(ConvertAndReadingState(
@@ -103,17 +88,14 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
         listOfAudio: state.listOfAudio));
   }
 
-
   // error bo`lganda
-  hasError(){
-
+  hasError(Errors error) {
     emit(ConvertAndReadingState(
-        error: true,
+        error: error,
         isConverting: state.isConverting,
         isLoading: state.isLoading,
         total: state.total,
         cancel: false,
-
         audioPlayer: state.audioPlayer,
         currentPosition: state.currentPosition,
         duration: state.duration,
@@ -123,13 +105,13 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
   }
 
   // pagedan chiqib ketishda defould qiymatlarga qaytaradi
-  makeDeffould(){
+  makeDeffould() {
     emit(ConvertAndReadingState(
         isLoading: true,
         isConverting: true,
         total: state.total,
         cancel: false,
-        error: false,
+        error: Errors.none,
         audioPlayer: AudioPlayer(),
         currentPosition: Duration.zero,
         duration: Duration.zero,
@@ -138,22 +120,17 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
         listOfAudio: []));
   }
 
-
-  _listeningAudioModel(AudioModel? audioModel){
-
-    if(audioModel!=null){
+  _listeningAudioModel(AudioModel? audioModel) {
+    if (audioModel != null) {
       state.listOfAudio.add(audioModel);
-      print(state.listOfAudio);
-      if(audioModel.index!=null&&audioModel.index==0){
-        startAndLoadAudioFiles(0,state.listOfAudio);
+      if (audioModel.index != null && audioModel.index == 0) {
+        startAndLoadAudioFiles(0, state.listOfAudio);
       }
     }
-
 
     emit(ConvertAndReadingState(
         error: state.error,
         total: state.total,
-
         isConverting: state.isConverting,
         isLoading: state.isLoading,
         audioPlayer: state.audioPlayer,
@@ -161,13 +138,9 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
         duration: state.duration,
         index: state.index,
         cancel: false,
-
         isPlaying: state.isPlaying,
         listOfAudio: state.listOfAudio));
-
-
   }
-
 
   startAndLoadAudioFiles(int curentIndex, List<AudioModel> listOfAudio) {
     state.audioPlayer!.onPlayerCompletion.listen((event) {
@@ -181,7 +154,6 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
           isLoading: state.isLoading,
           total: state.total,
           cancel: false,
-
           audioPlayer: state.audioPlayer,
           error: state.error,
           isConverting: state.isConverting,
@@ -207,7 +179,6 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
           index: state.index,
           total: state.total,
           cancel: false,
-
           isPlaying: event == PlayerState.PLAYING,
           listOfAudio: listOfAudio));
     });
@@ -223,7 +194,6 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
           index: state.index,
           total: state.total,
           cancel: false,
-
           isPlaying: state.isPlaying,
           listOfAudio: listOfAudio));
     });
@@ -240,16 +210,12 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
           index: state.index,
           total: state.total,
           cancel: false,
-
           isPlaying: state.isPlaying,
           listOfAudio: listOfAudio));
     });
 
     play(listOfAudio[curentIndex]);
   }
-
-
-
 
   play(AudioModel audioModel) async {
     File audioFile = File(audioModel.path);
@@ -259,7 +225,6 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
       emit(ConvertAndReadingState(
           isLoading: false,
           cancel: false,
-
           audioPlayer: state.audioPlayer,
           currentPosition: state.currentPosition,
           duration: state.duration,
@@ -272,13 +237,7 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     } else {
       print("Error while playing sound.");
     }
-
-
-
-
-
   }
-
 
   backAudioButton() {
     state.audioPlayer!.stop();
@@ -299,7 +258,6 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
         index: state.index,
         total: state.total,
         cancel: false,
-
         isPlaying: state.isPlaying,
         listOfAudio: state.listOfAudio));
   }
@@ -311,13 +269,10 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
       state.index = 0;
     }
 
-    print(state.listOfAudio.toString()+"0000000000000000000000000000");
-
     play(state.listOfAudio[state.index]);
     emit(ConvertAndReadingState(
         isLoading: state.isLoading,
         cancel: false,
-
         error: state.error,
         isConverting: state.isConverting,
         audioPlayer: state.audioPlayer,
@@ -325,7 +280,6 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
         duration: state.duration,
         index: state.index,
         total: state.total,
-
         isPlaying: state.isPlaying,
         listOfAudio: state.listOfAudio));
   }
@@ -347,10 +301,6 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     state.audioPlayer!.resume();
   }
 
-
-
-
-
   Stream<AudioModel?> getPdfTextAndPushReadingBookPage(
       bool isCamera, List<String> _list) async* {
     Uint8List? uint8list;
@@ -360,11 +310,10 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
       List<String> partList = await getContent(list[0]);
       String? countryCode = HiveDB.loadLangCode();
 
-
       for (int i = 0; i < partList.length; i++) {
-
-        if(state.cancel){
-          print("-----------------------------------------------------------------");
+        if (state.cancel) {
+          print(
+              "-----------------------------------------------------------------");
           break;
         }
 
@@ -376,13 +325,11 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
               partList[i].contains("ь") ||
               partList[i].contains("ж") ||
               partList[i].contains("э")) {
-            String str= await toLatin(partList[i]);
+            String str = await toLatin(partList[i]);
 
             partList[i] = str;
           }
         }
-
-
 
         uint8list = await Network.getAudioFromApi(partList[i]);
 
@@ -392,16 +339,16 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
         }
         final tempDir = await getTemporaryDirectory();
         File file =
-        await File('${tempDir.path}/${list[1]}-${i + 1}.mp3').create();
+            await File('${tempDir.path}/${list[1]}-${i + 1}.mp3').create();
         await file.writeAsBytes(uint8list);
-        AudioModel audioFileModel = AudioModel(name: list[1], path: file.path, index: i);
+        AudioModel audioFileModel =
+            AudioModel(name: list[1], path: file.path, index: i);
         yield audioFileModel;
       }
     }
   }
 
-  static Future<List<String>?> getTextFromPdfAndName(
-      List<String> list) async {
+  static Future<List<String>?> getTextFromPdfAndName(List<String> list) async {
     //Load an existing PDF document.
     print(list);
     if (list != null) {
@@ -414,6 +361,7 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     }
     return null;
   }
+
   static Future<String?> getPDFtext(String path) async {
     String? text;
     try {
@@ -425,11 +373,9 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     return text;
   }
 
-
   /// #matinlarni lotin harflariga tekshiradi
   Future<String> checkLatin(String? text) async {
     String? countryCode = HiveDB.loadLangCode();
-
 
     if (text != null && countryCode != null && countryCode == "uz") {
       if (text.contains("в") ||
@@ -446,23 +392,19 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
   }
 
   Future<List<String>> getContent(String content) async {
-    int _total = 0;
-
     List<String> list = content.split(" ");
     list.retainWhere((item) => item.toString().isNotEmpty);
     String str = "";
     List<String> listofContent = [];
     for (int i = 0; i < list.length; i++) {
       str += list[i] + " ";
-      if (i %  700 == 0 && i != 0) {
-        _total++;
+      if (i % 700 == 0 && i != 0) {
         listofContent.add(str);
 
         str = "";
       }
     }
     listofContent.add(str);
-    print("66666666666666666666666666666666666666666666"+listofContent.length.toString());
 
     emit(ConvertAndReadingState(
         isLoading: state.isLoading,
@@ -473,7 +415,7 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
         currentPosition: state.currentPosition,
         duration: state.duration,
         index: state.index,
-        total: _total,
+        total: listofContent.length,
         isPlaying: state.isPlaying,
         listOfAudio: state.listOfAudio));
 

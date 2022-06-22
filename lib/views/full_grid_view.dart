@@ -8,11 +8,14 @@ import 'package:key_board_app/pages/settings_page.dart';
 import 'package:key_board_app/pages/take_image.dart';
 import 'package:key_board_app/views/dialogs.dart';
 import '../navigators/goto.dart';
+import '../pages/list_of_part_books.dart';
 import '../pages/list_of_saved_books.dart';
 import 'bottom_sheets.dart';
+
 //home page item on tap fucntions
-void itemGridOnPressed(ItemOfFullGrid itemOfGridHome, BuildContext context) async {
-bool isConnect =await hasNetwork();
+void itemGridOnPressed(
+    ItemOfFullGrid itemOfGridHome, BuildContext context) async {
+  bool isConnect = await hasNetwork();
   switch (itemOfGridHome) {
     case ItemOfFullGrid.KeybordItem:
       _goingToAndroidAndIosSetting();

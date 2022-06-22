@@ -9,7 +9,6 @@ import 'package:key_board_app/services/hive_service.dart';
 class Network {
   static bool isTester = true;
 
-
   static String getServer() {
     if (isTester) return SERVER_DEVELOPMENT;
     return SERVER_PRODUCTION;
@@ -19,10 +18,8 @@ class Network {
       "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1";
   static String SERVER_PRODUCTION = "eastus.tts.speech.microsoft.com";
 
-
   ///for pdf to text
-  static String SERVER_PDF_TO_TEXT =
-      "selectpdf.com";
+  static String SERVER_PDF_TO_TEXT = "selectpdf.com";
 
   ///for pdf to text
   static Map<String, String> pdfHeaders() {
@@ -42,12 +39,10 @@ class Network {
   static Map<String, String> getUploadHeaders() {
     Map<String, String> headers = {
       'Content-Type':
-      'multipart/form-data; boundary=---011000010111000001101001'
+          'multipart/form-data; boundary=---011000010111000001101001'
     };
     return headers;
   }
-
-
 
   /* Http Requests */
 
@@ -74,11 +69,11 @@ class Network {
     }
   }
 
-  static Future  <List<String>> getContent(String content)async{
-    List <String> list = content.split(" ");
+  static Future<List<String>> getContent(String content) async {
+    List<String> list = content.split(" ");
     list.retainWhere((item) => item.toString().isNotEmpty);
     String str = "";
-    List <String> listofContent = [];
+    List<String> listofContent = [];
     for (int i = 0; i < list.length; i++) {
       str += list[i] + " ";
       if (i % 1000 == 0 && i != 0) {
@@ -90,50 +85,42 @@ class Network {
     return listofContent;
   }
 
-  static Future<Uint8List> getAudioFromApi(String content) async {
+  static Future<Uint8List?> getAudioFromApi(String content) async {
     String? langCode = HiveDB.loadLangCode()!;
     String? voice = HiveDB.loadCountryCode(key: "voice")!;
     Uint8List? uint8List;
 
-
     switch (langCode) {
       case "uz":
         {
-
-              uint8List = (await POST(getBody(
-                  langCode: lang_code_uz,
-                  speeker:
+          uint8List = (await POST(getBody(
+              langCode: lang_code_uz,
+              speeker:
                   (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
-                  content: content)));
-              break;
-
-
+              content: content)));
+          break;
         }
       case "en":
         {
+          uint8List = (await POST(getBody(
+              langCode: lang_code_en,
+              speeker:
+                  (voice == "famale") ? speeker_en_famale : speeker_en_male,
+              content: content)));
 
-            uint8List = (await POST(getBody(
-                langCode: lang_code_en,
-                speeker:
-                (voice == "famale") ? speeker_en_famale : speeker_en_male,
-                content: content)));
-
-            break;
-
+          break;
         }
       case "ru":
         {
-            uint8List = (await POST(getBody(
-                langCode: lang_code_ru,
-                speeker:
-                (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
-                content: content))) ;              break;
-
-
+          uint8List = (await POST(getBody(
+              langCode: lang_code_ru,
+              speeker:
+                  (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
+              content: content)));
+          break;
         }
     }
-    print(uint8List);
-    return uint8List!;
+    return uint8List;
   }
 
   // static Future<Uint8List?> getAudioFromApi(String content) async {
@@ -233,8 +220,8 @@ class Network {
 
   static getBody(
       {required String langCode,
-        required String speeker,
-        required String content}) {
+      required String speeker,
+      required String content}) {
     String body =
         "<speak version='1.0' xml:lang='$langCode'><voice xml:lang='$langCode' xml:gender='Male' name='$speeker'> $content</voice></speak>";
     return body;
