@@ -20,6 +20,7 @@ class AudioModel {
     path = map["path"]!;
     isSaved = map["isSaved"];
   }
+
   @override
   String toString() {
     // TODO: implement toString

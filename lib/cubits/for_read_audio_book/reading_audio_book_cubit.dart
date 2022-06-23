@@ -16,6 +16,8 @@ class ReadingAudioBookCubit extends Cubit<ReadingAudioBookState> {
             listOfAudio: []));
 
   startAndLoadAudioFiles(int curentIndex, List<AudioModel> listOfAudio) {
+    state.index = curentIndex;
+
     state.audioPlayer!.onPlayerCompletion.listen((event) {
       curentIndex++;
 
@@ -74,6 +76,7 @@ class ReadingAudioBookCubit extends Cubit<ReadingAudioBookState> {
   }
 
   play(AudioModel audioModel) async {
+    print(audioModel);
     File audioFile = File(audioModel.path);
     int result = await state.audioPlayer!.play(audioFile.path, isLocal: true);
     if (result == 1) {
