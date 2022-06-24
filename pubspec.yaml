@@ -67,10 +67,8 @@ flutter:
 
 
  # custom text fonds
-#  fonts:
-#    - family: Serif
-#      fonts:
-#        - asset: assets/fonts/AveriaSerifLibre-Regular.ttf
-#        - asset: assets/fonts/AveriaSerifLibre-Bold.ttf
-#        - asset: assets/fonts/AveriaSerifLibre-Italic.ttf
-#        - asset: assets/fonts/AveriaSerifLibre-Light.ttf
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Bold.ttf
+

@@ -57,8 +57,7 @@ class _ConvertAndReadingPageState extends State<ConvertAndReadingPage> {
     return BlocListener<ConvertAndReadingCubit, ConvertAndReadingState>(
       listener: (context, listening) {
         if (listening.error == Errors.file) {
-          print("===============");
-          errorDialog(context, true);
+          print("===============");GOTO.pushRpUntil(context, HomePage());
         }
       },
       child: BlocBuilder<ConvertAndReadingCubit, ConvertAndReadingState>(
