@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:http/http.dart';
@@ -21,7 +20,7 @@ class Network {
   static String SERVER_PDF_TO_TEXT = "selectpdf.com";
 
   ///for pdf to text
-  static String SERVER_IMAGE_TO_TEXT = "62.109.0.156:8085";
+  static String SERVER_IMAGE_TO_TEXT = "10.10.6.66:8023";
 
   ///for pdf to text
   static Map<String, String> pdfHeaders() {
@@ -150,45 +149,41 @@ class Network {
     }
   }
 
-  // ///for pdf to text
-  // static String SERVER_IMAGE_TO_TEXT = "62.109.0.156:8085";
-  // static String API_IMAGE_STRING = "/convert/image";
-  // static Future<String?> postImage(File filePath,String lang) async {
-  //   var uri = Uri.http(SERVER_IMAGE_TO_TEXT, API_IMAGE_STRING);
-  //   print("URI: $uri");
-  //   var request = MultipartRequest('POST', uri);
-  //
-  //   print("URI: $request");
-  //   request.files.add(await MultipartFile.fromPath('Image', filePath.path,
-  //       contentType: MediaType("image", "jpg")));
-  //   request.fields.addAll({"DestinationLanguage" : lang, "Image" : filePath.path});
-  //   StreamedResponse response = await request.send();
-  //
-  //   print("StatusCode1: ${response.statusCode}");
-  //   if (response.statusCode == 200 || response.statusCode == 201) {
-  //     return await response.stream.bytesToString();
-  //   } else {
-  //     return response.reasonPhrase;
-  //   }
-  // }
 
-  static Future<String?> postImage(File file, String language) async {
-    var url = Uri.https("api.ocr.space", "/parse/image");
-    var request = MultipartRequest('POST', url);
-    request.headers.addAll({"apikey" : "helloworld"});
-    request.files.add(await MultipartFile.fromPath('file', file.path));
-    request.fields.addAll({
-      "language" : language,
-    },);
+  static Future<String?> postImage(File filePath,String lang) async {
+    var uri = Uri.http(SERVER_IMAGE_TO_TEXT, API_IMAGE_STRING);
+    var request = MultipartRequest('POST', uri);
+
+    request.files.add(await MultipartFile.fromPath('Image', filePath.path,
+        contentType: MediaType("image", "jpg")));
+    request.fields.addAll({"DestinationLanguage" : lang, "Image" : filePath.path});
     StreamedResponse response = await request.send();
+
+    print("StatusCode1: ${response.statusCode}");
     if (response.statusCode == 200 || response.statusCode == 201) {
-      String res = jsonDecode(await response.stream.bytesToString())["ParsedResults"][0]["ParsedText"].toString();
-      print("+++ : ${res}");
-      return res;
+      return await response.stream.bytesToString();
     } else {
       return response.reasonPhrase;
     }
   }
+
+  // static Future<String?> postImage(File file, String language) async {
+  //   var url = Uri.https("api.ocr.space", "/parse/image");
+  //   var request = MultipartRequest('POST', url);
+  //   request.headers.addAll({"apikey" : "helloworld"});
+  //   request.files.add(await MultipartFile.fromPath('file', file.path));
+  //   request.fields.addAll({
+  //     "language" : language,
+  //   },);
+  //   StreamedResponse response = await request.send();
+  //   if (response.statusCode == 200 || response.statusCode == 201) {
+  //     String res = jsonDecode(await response.stream.bytesToString())["ParsedResults"][0]["ParsedText"].toString();
+  //     print("+++ : ${res}");
+  //     return res;
+  //   } else {
+  //     return response.reasonPhrase;
+  //   }
+  // }
 
 
   static Future<String?> DEL(String api, Map<String, String> params) async {

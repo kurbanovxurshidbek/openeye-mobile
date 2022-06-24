@@ -74,7 +74,7 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
   Future<void> readImageDataAndListeningOnStream() async {
     makeDeffould();
 
-    XFile? result = await ImagePicker.platform.getImage(source: ImageSource.gallery);
+    XFile? result = await ImagePicker.platform.getImage(source: ImageSource.camera);
 
     emit(ConvertAndReadingState(
         error: state.error,
@@ -441,13 +441,13 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     String? text;
     String lang = "";
 
-    if(countryCode == "uz" || countryCode == "en") {
+    if(countryCode == "uz") {
+      lang = "uzb";
+    }else if(countryCode == "en"){
       lang = "eng";
     }else {
       lang = "rus";
     }
-    print("///////////////////////////// $lang");
-    print("///////////////////////////// $path}");
 
     try {
       // api bilan qilinsin
