@@ -102,6 +102,7 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     }
   }
 
+
   removeLitening() {
     litening.cancel();
     print("=+++++++++++++++++++++++++++++++++++++");
@@ -354,19 +355,32 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
       List<String> partList = await getContent(list[0]);
 
       for (int i = 0; i < partList.length; i++) {
-        if (state.cancel) {
-          print("-----------------------------------------------------------------");
-          break;
-        }
+
 
         partList[i] = await checkLatin(partList[i]);
 
         uint8list = await Network.getAudioFromApi(partList[i]);
+        if(state.isConverting&&state.total==1&&uint8list==null){
+          emit(ConvertAndReadingState(
+              isLoading: state.isLoading,
+              cancel: state.cancel,
+              error: Errors.network,
+              isConverting: state.isConverting,
+              audioPlayer: state.audioPlayer,
+              currentPosition: state.currentPosition,
+              duration: state.duration,
+              index: state.index,
+              total: state.total,
+              isPlaying: state.isPlaying,
+              listOfAudio: state.listOfAudio));
+        }
+
 
         if (uint8list == null) {
           yield null;
           continue;
         }
+
         final tempDir = await getTemporaryDirectory();
         File file =
             await File('${tempDir.path}/${list[1]}-${i + 1}.mp3').create();

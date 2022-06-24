@@ -13,7 +13,7 @@ class SavedBooksPage extends StatefulWidget {
   State<SavedBooksPage> createState() => _SavedBooksPageState();
 }
 
-class _SavedBooksPageState extends State<SavedBooksPage> {
+class _SavedBooksPageState extends State<SavedBooksPage>  {
   @override
   void initState() {
     // TODO: implement initState
@@ -21,6 +21,8 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
 
     BlocProvider.of<SavedBooksCubit>(context).loadList();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,7 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                               child: Center(
                                 child: ListTile(
                                   onTap: () {
-                                    GOTO.push(
+                                    GOTO.pushRP(
                                         context,
                                         PartBooksPage(
                                           index: index,

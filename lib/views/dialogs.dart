@@ -211,9 +211,16 @@ deleteItemDialog(BuildContext context, AudioModel audioModel, int index) {
                   book.partOfBook!.remove(audioModel);
 
                   listMap.removeAt(index);
-                  listMap.insert(index, book.toJson());
+
+
+                  if(book.partOfBook!.isNotEmpty){
+                    listMap.insert(index, book.toJson());
+                  }
+
+
 
                   await HiveDB.saveData("listOfAudio", listMap);
+
                   GOTO.pop(context);
 
                   BlocProvider.of<PartAudioBooksDartCubit>(context)
