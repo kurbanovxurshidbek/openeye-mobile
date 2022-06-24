@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/convert_and_reading/convert_and_reading_state.dart';
-<<<<<<< HEAD
-=======
+
 import 'package:key_board_app/main.dart';
 import 'package:key_board_app/models/audio_model.dart';
->>>>>>> 71ab564a6aeab843000e1cb95a434815c50886ea
+
 import 'package:key_board_app/pages/home_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'package:lottie/lottie.dart';
@@ -64,14 +63,14 @@ class _ConvertAndReadingPageState extends State<ConvertAndReadingPage> {
     return BlocListener<ConvertAndReadingCubit, ConvertAndReadingState>(
       listener: (context, listening) {
         if (listening.error == Errors.file) {
-<<<<<<< HEAD
+
           print("===============");
           errorDialog(context, widget.isCamera);
-=======
+
           GOTO.pushRpUntil(context, HomePage());
         } else if (listening.error == Errors.network) {
           errorDialog(context, true);
->>>>>>> 71ab564a6aeab843000e1cb95a434815c50886ea
+
         }
       },
       child: BlocBuilder<ConvertAndReadingCubit, ConvertAndReadingState>(
