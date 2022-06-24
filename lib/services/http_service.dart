@@ -1,9 +1,8 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:key_board_app/logic/check_latin.dart';
-import 'package:key_board_app/logic/kril_to_latin.dart';
-import 'package:key_board_app/logic/numbers_to_text.dart';
 import 'package:key_board_app/services/hive_service.dart';
 
 class Network {
@@ -20,6 +19,9 @@ class Network {
 
   ///for pdf to text
   static String SERVER_PDF_TO_TEXT = "selectpdf.com";
+
+  ///for pdf to text
+  static String SERVER_IMAGE_TO_TEXT = "62.109.0.156:8085";
 
   ///for pdf to text
   static Map<String, String> pdfHeaders() {
@@ -123,50 +125,10 @@ class Network {
     return uint8List;
   }
 
-  // static Future<Uint8List?> getAudioFromApi(String content) async {
-  //   String? langCode = HiveDB.loadLangCode()!;
-  //   String? voice = HiveDB.loadCountryCode(key: "voice")!;
-  //   Uint8List? uint8list;
-  //
-  //   print(langCode + "--------------------");
-  //   print(voice.toString() + "+++++++++++++++++++++++");
-  //   print(content);
-  //   switch (langCode) {
-  //     case "uz":
-  //       {
-  //         uint8list = await POST(getBody(
-  //             langCode: lang_code_uz,
-  //             speeker:
-  //             (voice == "famale") ? speeker_uz_famale : speeker_uz_male,
-  //             content: content));
-  //       }
-  //       break;
-  //     case "en":
-  //       {
-  //         uint8list = await POST(getBody(
-  //             langCode: lang_code_en,
-  //             speeker:
-  //             (voice == "famale") ? speeker_en_famale : speeker_en_male,
-  //             content: content));
-  //       }
-  //       break;
-  //     case "ru":
-  //       {
-  //         uint8list = await POST(getBody(
-  //             langCode: lang_code_ru,
-  //             speeker:
-  //             (voice == "famale") ? speeker_ru_famale : speeker_ru_male,
-  //             content: content));
-  //       }
-  //       break;
-  //   }
-  //
-  //   return uint8list;
-  // }
 
   ///for pdt to text
   static Future<String?> MULTIPART(String path) async {
-    var uri = Uri.https(SERVER_PDF_TO_TEXT, API_STRING);
+    var uri = Uri.https(SERVER_PDF_TO_TEXT, API_PDF_STRING);
     var request = MultipartRequest("POST", uri);
 
     request.headers.addAll(getHeaders());
@@ -188,6 +150,47 @@ class Network {
     }
   }
 
+  // ///for pdf to text
+  // static String SERVER_IMAGE_TO_TEXT = "62.109.0.156:8085";
+  // static String API_IMAGE_STRING = "/convert/image";
+  // static Future<String?> postImage(File filePath,String lang) async {
+  //   var uri = Uri.http(SERVER_IMAGE_TO_TEXT, API_IMAGE_STRING);
+  //   print("URI: $uri");
+  //   var request = MultipartRequest('POST', uri);
+  //
+  //   print("URI: $request");
+  //   request.files.add(await MultipartFile.fromPath('Image', filePath.path,
+  //       contentType: MediaType("image", "jpg")));
+  //   request.fields.addAll({"DestinationLanguage" : lang, "Image" : filePath.path});
+  //   StreamedResponse response = await request.send();
+  //
+  //   print("StatusCode1: ${response.statusCode}");
+  //   if (response.statusCode == 200 || response.statusCode == 201) {
+  //     return await response.stream.bytesToString();
+  //   } else {
+  //     return response.reasonPhrase;
+  //   }
+  // }
+
+  static Future<String?> postImage(File file, String language) async {
+    var url = Uri.https("api.ocr.space", "/parse/image");
+    var request = MultipartRequest('POST', url);
+    request.headers.addAll({"apikey" : "helloworld"});
+    request.files.add(await MultipartFile.fromPath('file', file.path));
+    request.fields.addAll({
+      "language" : language,
+    },);
+    StreamedResponse response = await request.send();
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      String res = jsonDecode(await response.stream.bytesToString())["ParsedResults"][0]["ParsedText"].toString();
+      print("+++ : ${res}");
+      return res;
+    } else {
+      return response.reasonPhrase;
+    }
+  }
+
+
   static Future<String?> DEL(String api, Map<String, String> params) async {
     var uri = Uri.https(getServer(), api, params); // http or https
     var response = await delete(uri, headers: getHeaders());
@@ -198,7 +201,9 @@ class Network {
 
   /* Http Apis */
 
-  static String API_STRING = "/api2/pdftotext/";
+  static String API_PDF_STRING = "/api2/pdftotext/";
+
+  static String API_IMAGE_STRING = "/convert/image";
 
   static String API_POST = "/cognitiveservices/v1";
 

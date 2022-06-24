@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/convert_and_reading/convert_and_reading_state.dart';
-import 'package:key_board_app/models/audio_model.dart';
 import 'package:key_board_app/pages/home_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'package:lottie/lottie.dart';
@@ -12,9 +11,10 @@ import '../navigators/goto.dart';
 import '../views/dialogs.dart';
 
 class ConvertAndReadingPage extends StatefulWidget {
-  ConvertAndReadingPage({
-    Key? key,
-  }) : super(key: key);
+  bool isCamera;
+
+  ConvertAndReadingPage({Key? key,required this.isCamera}) : super(key: key);
+
   @override
   State<ConvertAndReadingPage> createState() => _ConvertAndReadingPageState();
 }
@@ -22,13 +22,15 @@ class ConvertAndReadingPage extends StatefulWidget {
 class _ConvertAndReadingPageState extends State<ConvertAndReadingPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    //load sound from assets
-    print("asdfasdfasdfasdffffffff");
 
-    BlocProvider.of<ConvertAndReadingCubit>(context)
-        .readDocumentDataAndListeningOnStream();
+    if(widget.isCamera) {
+      BlocProvider.of<ConvertAndReadingCubit>(context)
+          .readImageDataAndListeningOnStream();
+    }else {
+      BlocProvider.of<ConvertAndReadingCubit>(context)
+          .readDocumentDataAndListeningOnStream();
+    }
   }
 
   Future<bool> _readDate(String name) async {
@@ -58,7 +60,7 @@ class _ConvertAndReadingPageState extends State<ConvertAndReadingPage> {
       listener: (context, listening) {
         if (listening.error == Errors.file) {
           print("===============");
-          errorDialog(context, true);
+          errorDialog(context, widget.isCamera);
         }
       },
       child: BlocBuilder<ConvertAndReadingCubit, ConvertAndReadingState>(
