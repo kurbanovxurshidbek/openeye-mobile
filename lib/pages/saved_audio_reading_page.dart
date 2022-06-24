@@ -138,12 +138,12 @@ class _ReadingPageState extends State<ReadingPage> {
                                             .toDouble()
                                             .toString() +
                                         "0")
-                                    .substring(0, 4)),
+                                    .substring(0, 4),style: TextStyle(color: Colors.blueGrey),),
                                 Text(((state.duration!.inSeconds / 60)
                                             .toDouble()
                                             .toString() +
                                         "0")
-                                    .substring(0, 4)),
+                                    .substring(0, 4),style: TextStyle(color: Colors.blueGrey),),
                               ],
                             ),
                           ),

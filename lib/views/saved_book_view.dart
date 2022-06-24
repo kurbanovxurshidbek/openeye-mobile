@@ -36,7 +36,7 @@ class SavedBookView extends StatelessWidget {
           audioModel.name,
           style: TextStyle(
               fontSize: 14,
-              fontFamily: "Serif",
+              fontFamily: "Roboto",
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 49, 49, 49),
               fontStyle: FontStyle.normal),

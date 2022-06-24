@@ -29,7 +29,7 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
         title: Text(
           "saved_books",
           style: TextStyle(
-            fontSize: 20,fontFamily:"Roboto-Bold"
+            fontSize: 20,fontFamily:"Roboto"
           ),
         ).tr(),
         elevation: 0,
@@ -76,9 +76,9 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                                     state.listOAudioBook[index],
                                     style: TextStyle(
                                         fontSize: 17,
-                                        fontFamily: "Roboto",
+                                        fontFamily: "Roboto-Medium",
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.blueGrey.shade600,
+                                        color: Colors.blueGrey.shade500,
                                         fontStyle: FontStyle.normal),
                                   ),
                                 ),
