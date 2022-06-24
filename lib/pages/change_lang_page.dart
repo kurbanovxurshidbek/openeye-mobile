@@ -17,7 +17,6 @@ class LangChangePage extends StatefulWidget {
 
 class _LangChangePageState extends State<LangChangePage>
     with WidgetsBindingObserver {
-  AppLifecycleState? _notification;
 
   @override
   void initState() {

@@ -19,7 +19,9 @@ class SavedBooksCubit extends Cubit<SavedBooksState> {
     List<String> listOfAudioModels = [];
 
     listOfAudioModels =
-        List.generate(listMap.length, (index) => listMap![index]["name"]);
+        List.generate(listMap.length, (index) {
+           return listMap![index]["name"];
+        });
 
     emit(SavedBooksState(listOAudioBook: listOfAudioModels, loadList: false));
   }
