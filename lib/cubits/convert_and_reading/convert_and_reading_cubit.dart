@@ -157,6 +157,19 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
       if (audioModel.index != null && audioModel.index == 0) {
         startAndLoadAudioFiles(0, state.listOfAudio);
       }
+    } else if (state.isConverting && state.listOfAudio.length == state.total) {
+      emit(ConvertAndReadingState(
+          error: Errors.network,
+          total: state.total,
+          isConverting: state.isConverting,
+          isLoading: state.isLoading,
+          audioPlayer: state.audioPlayer,
+          currentPosition: state.currentPosition,
+          duration: state.duration,
+          index: state.index,
+          cancel: state.cancel,
+          isPlaying: state.isPlaying,
+          listOfAudio: state.listOfAudio));
     }
 
     emit(ConvertAndReadingState(
@@ -362,6 +375,19 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
             AudioModel(name: list[1], path: file.path, index: i);
         yield audioFileModel;
       }
+    } else {
+      emit(ConvertAndReadingState(
+          isLoading: state.isLoading,
+          cancel: state.cancel,
+          error: Errors.network,
+          isConverting: state.isConverting,
+          audioPlayer: state.audioPlayer,
+          currentPosition: state.currentPosition,
+          duration: state.duration,
+          index: state.index,
+          total: state.total,
+          isPlaying: state.isPlaying,
+          listOfAudio: state.listOfAudio));
     }
   }
 
