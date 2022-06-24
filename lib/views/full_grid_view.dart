@@ -1,18 +1,15 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/logic/check_internet.dart';
 import 'package:key_board_app/pages/convert_reading_audio_page.dart';
 import 'package:key_board_app/pages/settings_page.dart';
-import 'package:key_board_app/pages/take_image.dart';
 import 'package:key_board_app/views/dialogs.dart';
 import '../navigators/goto.dart';
-import '../pages/list_of_part_books.dart';
 import '../pages/list_of_saved_books.dart';
 import 'bottom_sheets.dart';
 
-//home page item on tap fucntions
+//home page item on tap functions
 void itemGridOnPressed(
     ItemOfFullGrid itemOfGridHome, BuildContext context) async {
   bool isConnect = await hasNetwork();
@@ -23,7 +20,7 @@ void itemGridOnPressed(
     case ItemOfFullGrid.TextInImageItem:
       {
         if (isConnect) {
-          goToImage(context);
+          GOTO.push(context, ConvertAndReadingPage(isCamera: true,));
         } else {
           connectionDialog(context);
         }
@@ -32,7 +29,7 @@ void itemGridOnPressed(
     case ItemOfFullGrid.BookRecordingItem:
       {
         if (isConnect) {
-          GOTO.push(context, ConvertAndReadingPage());
+          GOTO.push(context, ConvertAndReadingPage(isCamera: false,));
         } else {
           connectionDialog(context);
         }
@@ -76,13 +73,6 @@ void _goingToAndroidAndIosSetting() async {
   print(result);
 }
 
-void goToImage(BuildContext context) async {
-  await availableCameras().then((value) {
-    print("Value: $value");
-    Navigator.push(context,
-        MaterialPageRoute(builder: (_) => TakeImagePage(cameras: value)));
-  });
-}
 
 Widget itemGrid(
     String title, ItemOfFullGrid itemOfGridHome, BuildContext context) {

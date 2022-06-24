@@ -363,13 +363,13 @@ class KeyboardViewController: UIInputViewController {
       AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
 
         var label = key.titleLabel?.text as! String;
-
-
+      
 
 
         switch label {
         case "‹":
-            setSound(url:  Bundle.main.url(forResource: "delete", withExtension: "mp3")!)
+            
+            setSound(url:  Bundle.main.url(forResource: settings[Set.Delete]![lanType], withExtension: "mp3")!)
             (textDocumentProxy as UIKeyInput).deleteBackward()
             makeZero()
         case "1":

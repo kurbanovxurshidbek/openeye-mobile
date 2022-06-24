@@ -5,11 +5,11 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:bloc/bloc.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
-import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/convert_and_reading/convert_and_reading_state.dart';
+import 'package:key_board_app/logic/check_latin.dart';
 import 'package:path_provider/path_provider.dart';
-import '../../logic/kril_to_latin.dart';
 import '../../models/audio_model.dart';
 import '../../services/hive_service.dart';
 import '../../services/http_service.dart';
@@ -31,7 +31,6 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
 
   File? imageFile;
   String? path;
-  InputImage? inputImage;
   String imgText = "";
   //get pdf file and convert to text and goto push reading page
 
@@ -61,6 +60,38 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
 
       Stream<AudioModel?> stream = getPdfTextAndPushReadingBookPage(
           false, [file.path, result.files.first.name]);
+
+      litening = stream.listen((audioModel) {
+        _listeningAudioModel(audioModel);
+      });
+    } else {
+      print("a-----------------");
+      hasError(Errors.file);
+    }
+  }
+
+  /// #get pdf from device file
+  Future<void> readImageDataAndListeningOnStream() async {
+    makeDeffould();
+
+    XFile? result = await ImagePicker.platform.getImage(source: ImageSource.gallery);
+
+    emit(ConvertAndReadingState(
+        error: state.error,
+        isConverting: false,
+        total: state.total,
+        isLoading: state.isLoading,
+        cancel: false,
+        audioPlayer: state.audioPlayer,
+        currentPosition: state.currentPosition,
+        duration: state.duration,
+        index: state.index,
+        isPlaying: state.isPlaying,
+        listOfAudio: state.listOfAudio));
+    if (result != null) {
+
+      Stream<AudioModel?> stream = getPdfTextAndPushReadingBookPage(
+          true, [result.path, result.path.hashCode.toString()]);
 
       litening = stream.listen((audioModel) {
         _listeningAudioModel(audioModel);
@@ -126,6 +157,19 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
       if (audioModel.index != null && audioModel.index == 0) {
         startAndLoadAudioFiles(0, state.listOfAudio);
       }
+    } else if (state.isConverting && state.listOfAudio.length == state.total) {
+      emit(ConvertAndReadingState(
+          error: Errors.network,
+          total: state.total,
+          isConverting: state.isConverting,
+          isLoading: state.isLoading,
+          audioPlayer: state.audioPlayer,
+          currentPosition: state.currentPosition,
+          duration: state.duration,
+          index: state.index,
+          cancel: state.cancel,
+          isPlaying: state.isPlaying,
+          listOfAudio: state.listOfAudio));
     }
 
     emit(ConvertAndReadingState(
@@ -305,31 +349,17 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
       bool isCamera, List<String> _list) async* {
     Uint8List? uint8list;
 
-    List<String>? list = await getTextFromPdfAndName(_list);
+    List<String>? list = await getTextFromPdfAndName(isCamera,_list);
     if (list != null) {
       List<String> partList = await getContent(list[0]);
-      String? countryCode = HiveDB.loadLangCode();
 
       for (int i = 0; i < partList.length; i++) {
         if (state.cancel) {
-          print(
-              "-----------------------------------------------------------------");
+          print("-----------------------------------------------------------------");
           break;
         }
 
-        if (countryCode != null && countryCode == "uz") {
-          if (partList[i].contains("В") ||
-              partList[i].contains("б") ||
-              partList[i].contains("я") ||
-              partList[i].contains("ю") ||
-              partList[i].contains("ь") ||
-              partList[i].contains("ж") ||
-              partList[i].contains("э")) {
-            String str = await toLatin(partList[i]);
-
-            partList[i] = str;
-          }
-        }
+        partList[i] = await checkLatin(partList[i]);
 
         uint8list = await Network.getAudioFromApi(partList[i]);
 
@@ -345,24 +375,41 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
             AudioModel(name: list[1], path: file.path, index: i);
         yield audioFileModel;
       }
+    } else {
+      emit(ConvertAndReadingState(
+          isLoading: state.isLoading,
+          cancel: state.cancel,
+          error: Errors.network,
+          isConverting: state.isConverting,
+          audioPlayer: state.audioPlayer,
+          currentPosition: state.currentPosition,
+          duration: state.duration,
+          index: state.index,
+          total: state.total,
+          isPlaying: state.isPlaying,
+          listOfAudio: state.listOfAudio));
     }
   }
 
-  static Future<List<String>?> getTextFromPdfAndName(List<String> list) async {
-    //Load an existing PDF document.
-    print(list);
-    if (list != null) {
-      String? text = await getPDFtext(list[0]);
-      if (text == null) {
-        return null;
+  static Future<List<String>?> getTextFromPdfAndName(bool isCamera,List<String> list) async {
+    if (list.isNotEmpty) {
+      if(isCamera == true) {
+        String? text = await getImageText(list[0]);
+        if(text !=null){
+          return [text, list[1]];
+        }
+      }else {
+        String? text = await getPDFText(list[0]);
+        if(text !=null){
+          return [text, list[1]];
+        }
       }
-
-      return [text, list[1]];
     }
     return null;
   }
 
-  static Future<String?> getPDFtext(String path) async {
+  ///pdf to text api
+  static Future<String?> getPDFText(String path) async {
     String? text;
     try {
       // api bilan qilinsin
@@ -373,23 +420,30 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     return text;
   }
 
-  /// #matinlarni lotin harflariga tekshiradi
-  Future<String> checkLatin(String? text) async {
+  ///image to text api
+  static Future<String?> getImageText(String path) async {
     String? countryCode = HiveDB.loadLangCode();
+    File file = File(path);
+    String? text;
+    String lang = "";
 
-    if (text != null && countryCode != null && countryCode == "uz") {
-      if (text.contains("в") ||
-          text.contains("б") ||
-          text.contains("я") ||
-          text.contains("ю") ||
-          text.contains("ь") ||
-          text.contains("ж") ||
-          text.contains("э")) {
-        text = await toLatin(text);
-      }
+    if(countryCode == "uz" || countryCode == "en") {
+      lang = "eng";
+    }else {
+      lang = "rus";
     }
-    return text!;
+    print("///////////////////////////// $lang");
+    print("///////////////////////////// $path}");
+
+    try {
+      // api bilan qilinsin
+      text = await Network.postImage(file,lang);
+    } on PlatformException {
+      print('Failed to get PDF text.');
+    }
+    return text;
   }
+
 
   Future<List<String>> getContent(String content) async {
     List<String> list = content.split(" ");

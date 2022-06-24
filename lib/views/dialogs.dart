@@ -3,11 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/cubits/convert_and_reading/convert_and_reading_cubit.dart';
-import 'package:key_board_app/cubits/for_take_image/take_image_cubit.dart';
 import 'package:key_board_app/cubits/part_saved_books/part_audio_books_dart_cubit.dart';
 import 'package:key_board_app/models/book_on_audio.dart';
-import '../cubits/for_read_audio_book/reading_audio_book_cubit.dart';
-import '../cubits/saved_book/saved_books_cubit.dart';
 import '../models/audio_model.dart';
 import '../navigators/goto.dart';
 import '../pages/home_page.dart';
@@ -91,7 +88,7 @@ saveAudioDialog(BuildContext context, List<AudioModel> audioBook,
       });
 }
 
-errorDialog(BuildContext context, bool isPage) {
+errorDialog(BuildContext context, bool isCamera) {
   showDialog(
       context: context,
       builder: (c) {
@@ -127,8 +124,13 @@ errorDialog(BuildContext context, bool isPage) {
                 onPressed: () {
                   GOTO.popUT(context);
 
-                  BlocProvider.of<ConvertAndReadingCubit>(context)
-                      .readDocumentDataAndListeningOnStream();
+                  if(isCamera) {
+                    BlocProvider.of<ConvertAndReadingCubit>(context)
+                        .readImageDataAndListeningOnStream();
+                  }else {
+                    BlocProvider.of<ConvertAndReadingCubit>(context)
+                        .readDocumentDataAndListeningOnStream();
+                  }
                 },
                 child: Text(
                   "try",
