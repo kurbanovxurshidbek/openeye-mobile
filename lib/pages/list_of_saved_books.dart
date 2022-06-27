@@ -13,7 +13,7 @@ class SavedBooksPage extends StatefulWidget {
   State<SavedBooksPage> createState() => _SavedBooksPageState();
 }
 
-class _SavedBooksPageState extends State<SavedBooksPage> {
+class _SavedBooksPageState extends State<SavedBooksPage>  {
   @override
   void initState() {
     // TODO: implement initState
@@ -22,6 +22,8 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
     BlocProvider.of<SavedBooksCubit>(context).loadList();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +31,7 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
         title: Text(
           "saved_books",
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 20,fontFamily:"Roboto"
           ),
         ).tr(),
         elevation: 0,
@@ -56,7 +58,7 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                               child: Center(
                                 child: ListTile(
                                   onTap: () {
-                                    GOTO.push(
+                                    GOTO.pushRP(
                                         context,
                                         PartBooksPage(
                                           index: index,
@@ -76,9 +78,9 @@ class _SavedBooksPageState extends State<SavedBooksPage> {
                                     state.listOAudioBook[index],
                                     style: TextStyle(
                                         fontSize: 17,
-                                        fontFamily: "Serif",
+                                        fontFamily: "Roboto-Medium",
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.blueGrey.shade600,
+                                        color: Colors.blueGrey.shade500,
                                         fontStyle: FontStyle.normal),
                                   ),
                                 ),

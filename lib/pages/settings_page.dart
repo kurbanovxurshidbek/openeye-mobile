@@ -26,7 +26,7 @@ class _SettingsPageState extends State<SettingsPage> {
               shadowColor: Colors.blueGrey,
               backgroundColor: Colors.white,
               foregroundColor: Colors.blueGrey,
-              title: Text("settings",style: TextStyle(fontSize: 25),).tr(),
+              title: Text("settings",style: TextStyle(fontSize: 20,fontFamily: "Roboto"),).tr(),
               centerTitle: true,
             ),
             body: state.isLoading

@@ -9,14 +9,14 @@ class LangUI extends StatelessWidget {
   Image? icon;
   final textStyle1 = const TextStyle(
       fontSize: 20,
-      fontFamily: "Serif",
+      fontFamily: "Roboto",
       fontWeight: FontWeight.bold,
       color: Colors.blueGrey,
       fontStyle: FontStyle.normal);
 
   final textStyle2 = const TextStyle(
       fontSize: 14,
-      fontFamily: "Serif",
+      fontFamily: "Roboto",
       fontWeight: FontWeight.bold,
       color: Colors.blueGrey,
       fontStyle: FontStyle.normal);

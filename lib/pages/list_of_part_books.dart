@@ -33,7 +33,8 @@ class _PartBooksPageState extends State<PartBooksPage> {
         title: Text(
           widget.name,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 20,
+            fontFamily: "Roboto-Medium"
           ),
         ),
         elevation: 0,
@@ -79,9 +80,9 @@ class _PartBooksPageState extends State<PartBooksPage> {
                                     state.listOfAudioModels[index].name,
                                     style: TextStyle(
                                         fontSize: 17,
-                                        fontFamily: "Serif",
+                                        fontFamily: "Roboto-Medium",
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.blueGrey.shade600,
+                                        color: Colors.blueGrey.shade500,
                                         fontStyle: FontStyle.normal),
                                   ),
                                   trailing: IconButton(

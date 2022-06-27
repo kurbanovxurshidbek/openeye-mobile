@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/convert_and_reading/convert_and_reading_state.dart';
+
 import 'package:key_board_app/main.dart';
 import 'package:key_board_app/models/audio_model.dart';
+
 import 'package:key_board_app/pages/home_page.dart';
 import 'package:key_board_app/services/hive_service.dart';
 import 'package:lottie/lottie.dart';
@@ -13,9 +15,10 @@ import '../navigators/goto.dart';
 import '../views/dialogs.dart';
 
 class ConvertAndReadingPage extends StatefulWidget {
-  ConvertAndReadingPage({
-    Key? key,
-  }) : super(key: key);
+  bool isCamera;
+
+  ConvertAndReadingPage({Key? key,required this.isCamera}) : super(key: key);
+
   @override
   State<ConvertAndReadingPage> createState() => _ConvertAndReadingPageState();
 }
@@ -23,13 +26,15 @@ class ConvertAndReadingPage extends StatefulWidget {
 class _ConvertAndReadingPageState extends State<ConvertAndReadingPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    //load sound from assets
-    print("asdfasdfasdfasdffffffff");
 
-    BlocProvider.of<ConvertAndReadingCubit>(context)
-        .readDocumentDataAndListeningOnStream();
+    if(widget.isCamera) {
+      BlocProvider.of<ConvertAndReadingCubit>(context)
+          .readImageDataAndListeningOnStream();
+    }else {
+      BlocProvider.of<ConvertAndReadingCubit>(context)
+          .readDocumentDataAndListeningOnStream();
+    }
   }
 
   Future<bool> _readDate(String name) async {
@@ -58,9 +63,14 @@ class _ConvertAndReadingPageState extends State<ConvertAndReadingPage> {
     return BlocListener<ConvertAndReadingCubit, ConvertAndReadingState>(
       listener: (context, listening) {
         if (listening.error == Errors.file) {
+
+          print("===============");
+          errorDialog(context, widget.isCamera);
+
           GOTO.pushRpUntil(context, HomePage());
         } else if (listening.error == Errors.network) {
           errorDialog(context, true);
+
         }
       },
       child: BlocBuilder<ConvertAndReadingCubit, ConvertAndReadingState>(
@@ -249,12 +259,12 @@ class _ConvertAndReadingPageState extends State<ConvertAndReadingPage> {
                                                         .toDouble()
                                                         .toString() +
                                                     "0")
-                                                .substring(0, 4)),
+                                                .substring(0, 4),style: TextStyle(color: Colors.blueGrey),),
                                         Text(((state.duration!.inSeconds / 60)
                                                     .toDouble()
                                                     .toString() +
                                                 "0")
-                                            .substring(0, 4)),
+                                            .substring(0, 4),style: TextStyle(color: Colors.blueGrey),),
                                       ],
                                     ),
                                   ),
