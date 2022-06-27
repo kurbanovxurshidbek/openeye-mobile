@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:http/http.dart';
@@ -17,7 +18,8 @@ class Network {
   static String SERVER_PRODUCTION = "eastus.tts.speech.microsoft.com";
 
   ///for pdf to text
-  static String SERVER_PDF_TO_TEXT = "selectpdf.com";
+  // static String SERVER_PDF_TO_TEXT = "selectpdf.com";
+  static String SERVER_PDF_TO_TEXT = "10.10.6.66:8023";
 
   ///for pdf to text
   static String SERVER_IMAGE_TO_TEXT = "10.10.6.66:8023";
@@ -125,21 +127,44 @@ class Network {
   }
 
 
-  ///for pdt to text
-  static Future<String?> MULTIPART(String path) async {
-    var uri = Uri.https(SERVER_PDF_TO_TEXT, API_PDF_STRING);
-    var request = MultipartRequest("POST", uri);
+  // ///for pdt to text
+  // static Future<String?> MULTIPART(String path) async {
+  //   var uri = Uri.https(SERVER_PDF_TO_TEXT, API_PDF_STRING);
+  //   var request = MultipartRequest("POST", uri);
+  //
+  //   request.headers.addAll(getHeaders());
+  //   request.fields.addAll(getUploadHeaders());
+  //   request.files.add(await MultipartFile.fromPath('url', path,
+  //       contentType: MediaType("Application", "pdf")));
+  //   request.fields.addAll(
+  //     {
+  //       "key": "0f7bdb34-3c52-4030-a1ed-16425e628f44",
+  //     },
+  //   );
+  //   StreamedResponse response = await request.send();
+  //   if (response.statusCode == 200 || response.statusCode == 201) {
+  //     print("+++++++++++++++++++");
+  //     return await response.stream.bytesToString();
+  //   } else {
+  //     print("-------------------: ${response.statusCode}");
+  //     return response.reasonPhrase;
+  //   }
+  // }
 
-    request.headers.addAll(getHeaders());
-    request.fields.addAll(getUploadHeaders());
-    request.files.add(await MultipartFile.fromPath('url', path,
+  static Future<String?> MULTIPART(String path) async {
+    var uri = Uri.http(SERVER_PDF_TO_TEXT, API_PDF_STRING);
+    var request = MultipartRequest("POST", uri);
+    print("ssssssssssssssssssssssssssssss $request");
+
+    // request.headers.addAll(getHeaders());
+    // request.fields.addAll(getUploadHeaders());
+    request.files.add(await MultipartFile.fromPath('file', path,
         contentType: MediaType("Application", "pdf")));
-    request.fields.addAll(
-      {
-        "key": "0f7bdb34-3c52-4030-a1ed-16425e628f44",
-      },
-    );
+    print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv $request");
     StreamedResponse response = await request.send();
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $response");
+
+    print("StatusCode1: ${response.statusCode}");
     if (response.statusCode == 200 || response.statusCode == 201) {
       print("+++++++++++++++++++");
       return await response.stream.bytesToString();
@@ -153,11 +178,13 @@ class Network {
   static Future<String?> postImage(File filePath,String lang) async {
     var uri = Uri.http(SERVER_IMAGE_TO_TEXT, API_IMAGE_STRING);
     var request = MultipartRequest('POST', uri);
+    print("ddddddddddddddddddddd $request");
 
     request.files.add(await MultipartFile.fromPath('Image', filePath.path,
         contentType: MediaType("image", "jpg")));
     request.fields.addAll({"DestinationLanguage" : lang, "Image" : filePath.path});
     StreamedResponse response = await request.send();
+    print("aaaaaaaaaaaaaaaaaaaaa $response");
 
     print("StatusCode1: ${response.statusCode}");
     if (response.statusCode == 200 || response.statusCode == 201) {
@@ -196,7 +223,8 @@ class Network {
 
   /* Http Apis */
 
-  static String API_PDF_STRING = "/api2/pdftotext/";
+  // static String API_PDF_STRING = "/api2/pdftotext/";
+  static String API_PDF_STRING = "/convert/pdf";
 
   static String API_IMAGE_STRING = "/convert/image";
 

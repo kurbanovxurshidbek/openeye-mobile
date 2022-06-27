@@ -428,6 +428,7 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     try {
       // api bilan qilinsin
       text = await Network.MULTIPART(path);
+      print("tttttttttttttttttttt: $text");
     } on PlatformException {
       print('Failed to get PDF text.');
     }
@@ -452,6 +453,7 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
     try {
       // api bilan qilinsin
       text = await Network.postImage(file,lang);
+      print("tttttttttttttttttttt: $text");
     } on PlatformException {
       print('Failed to get PDF text.');
     }
