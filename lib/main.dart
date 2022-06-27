@@ -56,7 +56,7 @@ void main(List<String> args) async {
 }
 
 Future<void> starterPage() async {
-  var result = await HiveDB.loadLangCode();
+  var result = HiveDB.loadLangCode();
   if (result != null) {
     haveUser = true;
   }

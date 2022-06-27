@@ -420,7 +420,7 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
                  } else if(lanType == Lan.Ru){
                      lanType = Lan.En;
                      setListener(MediaPlayer.create(this, R.raw.en_lang));
-                 } else   if(lanType == Lan.En){
+                 } else if(lanType == Lan.En){
                      lanType = Lan.Uz;
                      setListener(MediaPlayer.create(this, R.raw.uz_lang));
                  }
