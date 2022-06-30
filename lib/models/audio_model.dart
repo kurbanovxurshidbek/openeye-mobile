@@ -2,11 +2,11 @@ class AudioModel {
   late String name;
   late String path;
   late bool isSaved;
-  int? index;
+  String? succes;
 
   AudioModel({
     required this.name,
-    this.index,
+    this.succes,
     required this.path,
     this.isSaved = false,
   });
