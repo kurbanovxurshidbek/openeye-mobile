@@ -9,13 +9,14 @@ import 'package:speech_to_text/speech_to_text.dart';
 
 class SpeechToTextCubit extends Cubit<SpeechToTextState> {
   BuildContext context;
+
   SpeechToTextCubit({required this.context})
       : super(SpeechToTextState(speechToText: SpeechToText()));
   Timer? timer;
 
   initSpeech() async {
-  bool _speechEnabled = await state.speechToText.initialize();
-  print("Is succes" + _speechEnabled.toString());
+    bool _speechEnabled = await state.speechToText.initialize();
+    print("Is succes" + _speechEnabled.toString());
   }
 
   stopListening(String code) async {

@@ -1,15 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'dart:async';
-import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:key_board_app/constants/enums.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_cubit.dart';
 import 'package:key_board_app/cubits/for_language/load_lang_state.dart';
 import 'package:key_board_app/cubits/for_text_to_speech/mediaplayer_cubit.dart';
-import 'package:key_board_app/logic/check_internet.dart';
-import 'package:key_board_app/views/dialogs.dart';
 import 'package:key_board_app/views/full_grid_view.dart';
 
 class HomePage extends StatefulWidget {

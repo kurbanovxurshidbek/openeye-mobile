@@ -155,7 +155,7 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
   _listeningAudioModel(AudioModel? audioModel) {
     if (audioModel != null) {
       state.listOfAudio.add(audioModel);
-      if (audioModel.index != null && audioModel.index == 0) {
+      if (audioModel.succes != null && audioModel.succes == "succes") {
         startAndLoadAudioFiles(0, state.listOfAudio);
       }
     } else if (state.isConverting && state.listOfAudio.length == state.total) {
@@ -386,7 +386,7 @@ class ConvertAndReadingCubit extends Cubit<ConvertAndReadingState> {
             await File('${tempDir.path}/${list[1]}-${i + 1}.mp3').create();
         await file.writeAsBytes(uint8list);
         AudioModel audioFileModel =
-            AudioModel(name: list[1], path: file.path, index: i);
+            AudioModel(name: list[1], path: file.path, succes: state.isLoading?"succes":"" );
         yield audioFileModel;
       }
     } else {
