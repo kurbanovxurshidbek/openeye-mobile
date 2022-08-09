@@ -1,3 +1,4 @@
+
 package com.example.key_board_app;
 
 
@@ -37,13 +38,13 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
         put("000101", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, ""); }});
         put("000110", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, ""); }});
         put("000111", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, ""); }});
-        put("001000", new HashMap<Lan, String>(){{ put(Lan.En, "'"); put(Lan.Uz, "'"); put(Lan.Ru, ""); }});
+        put("001000", new HashMap<Lan, String>(){{ put(Lan.En, "'"); put(Lan.Uz, "'"); put(Lan.Ru, "'"); }});
         put("001001", new HashMap<Lan, String>(){{ put(Lan.En, "-"); put(Lan.Uz, "-"); put(Lan.Ru, "-"); }});
         put("001010", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, ""); }});
         put("001011", new HashMap<Lan, String>(){{ put(Lan.En, "”"); put(Lan.Uz, "”"); put(Lan.Ru, "”"); }});
-        put("001100", new HashMap<Lan, String>(){{ put(Lan.En, "/"); put(Lan.Uz, ""); put(Lan.Ru, ""); }});
+        put("001100", new HashMap<Lan, String>(){{ put(Lan.En, "/"); put(Lan.Uz, "/"); put(Lan.Ru, "/"); }});
         put("001101", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, ""); }});
-        put("001110", new HashMap<Lan, String>(){{ put(Lan.En, ")"); put(Lan.Uz, ")"); put(Lan.Ru, ""); }});
+        put("001110", new HashMap<Lan, String>(){{ put(Lan.En, ")"); put(Lan.Uz, ")"); put(Lan.Ru, ")"); }});
         put("001111", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, ""); }});
         put("010000", new HashMap<Lan, String>(){{ put(Lan.En, ","); put(Lan.Uz, ","); put(Lan.Ru, ","); }});
         put("010001", new HashMap<Lan, String>(){{ put(Lan.En, "?"); put(Lan.Uz, "?"); put(Lan.Ru, "?"); }});
@@ -56,7 +57,7 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
         put("011000", new HashMap<Lan, String>(){{ put(Lan.En, ";"); put(Lan.Uz, ";"); put(Lan.Ru, ";"); }});
         put("011001", new HashMap<Lan, String>(){{ put(Lan.En, "“"); put(Lan.Uz, "“"); put(Lan.Ru, "“"); }});
         put("011010", new HashMap<Lan, String>(){{ put(Lan.En, "!"); put(Lan.Uz, "!"); put(Lan.Ru, "!"); }});
-        put("011011", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, "("); }});
+        put("011011", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, ""); }});
         put("011100", new HashMap<Lan, String>(){{ put(Lan.En, "s"); put(Lan.Uz, "s"); put(Lan.Ru, "с"); }});
         put("011101", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, "ы"); }});
         put("011110", new HashMap<Lan, String>(){{ put(Lan.En, "t"); put(Lan.Uz, "t"); put(Lan.Ru, "т"); }});
@@ -78,7 +79,7 @@ public class KeyBoard extends InputMethodService implements KeyboardView.OnKeybo
         put("101110", new HashMap<Lan, String>(){{ put(Lan.En, "n"); put(Lan.Uz, "n"); put(Lan.Ru, "н"); }});
         put("101111", new HashMap<Lan, String>(){{ put(Lan.En, "y"); put(Lan.Uz, "q"); put(Lan.Ru, ""); }});
         put("110000", new HashMap<Lan, String>(){{ put(Lan.En, "b"); put(Lan.Uz, "b"); put(Lan.Ru, "б"); }});
-        put("110001", new HashMap<Lan, String>(){{ put(Lan.En, "("); put(Lan.Uz, "("); put(Lan.Ru, ""); }});
+        put("110001", new HashMap<Lan, String>(){{ put(Lan.En, "("); put(Lan.Uz, "("); put(Lan.Ru, "("); }});
         put("110010", new HashMap<Lan, String>(){{ put(Lan.En, "h"); put(Lan.Uz, "h"); put(Lan.Ru, "х"); }});
         put("110011", new HashMap<Lan, String>(){{ put(Lan.En, ""); put(Lan.Uz, ""); put(Lan.Ru, "ю"); }});
         put("110100", new HashMap<Lan, String>(){{ put(Lan.En, "f"); put(Lan.Uz, "f"); put(Lan.Ru, "ф"); }});
