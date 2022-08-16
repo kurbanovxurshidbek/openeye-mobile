@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:http/http.dart';
@@ -12,13 +13,13 @@ class Network {
     return SERVER_PRODUCTION;
   }
 
-  static String SERVER_DEVELOPMENT =
-      "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1";
+  static String SERVER_DEVELOPMENT = "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1";
   static String SERVER_PRODUCTION = "eastus.tts.speech.microsoft.com";
 
   ///for pdf to text
   // static String SERVER_PDF_TO_TEXT = "selectpdf.com";
-  static String SERVER_PDF_TO_TEXT = "10.10.6.66:8023";
+  // static String SERVER_PDF_TO_TEXT = "10.10.6.66:8023";
+  static String SERVER_PDF_TO_TEXT = "textfromfile.herokuapp.com";
 
   ///for pdf to text
   static String SERVER_IMAGE_TO_TEXT = "10.10.6.66:8023";
@@ -151,7 +152,8 @@ class Network {
   // }
 
   static Future<String?> MULTIPART(String path) async {
-    var uri = Uri.http(SERVER_PDF_TO_TEXT, API_PDF_STRING);
+    var uri = Uri.https(SERVER_PDF_TO_TEXT, API_PDF_STRING);
+    log("${uri.host}", name: "-- uri --");
     var request = MultipartRequest("POST", uri);
     print("ssssssssssssssssssssssssssssss $request");
 
