@@ -34,7 +34,7 @@ class Network {
     Map<String, String> headers = {
       "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3",
       "Content-Type": "application/ssml+xml",
-      "Ocp-Apim-Subscription-Key": "d2e4d2c1b35c420cb966994b329e55a6",
+      "Ocp-Apim-Subscription-Key": "218d7fc6ff1c4033bdcb9408279b85a3",
     };
     return headers;
   }
@@ -62,8 +62,8 @@ class Network {
   static Future<Uint8List?> POST(String body) async {
     var uri = Uri.parse(SERVER_DEVELOPMENT); // http or https
     var response = await post(uri, headers: getHeaders(), body: body);
-    print("Statuscode: ${response.statusCode}");
-    print(response.body);
+    log("Statuscode: ${response.statusCode}");
+    log(response.body);
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       return response.bodyBytes;
@@ -143,10 +143,10 @@ class Network {
   //   );
   //   StreamedResponse response = await request.send();
   //   if (response.statusCode == 200 || response.statusCode == 201) {
-  //     print("+++++++++++++++++++");
+  //     log("+++++++++++++++++++");
   //     return await response.stream.bytesToString();
   //   } else {
-  //     print("-------------------: ${response.statusCode}");
+  //     log("-------------------: ${response.statusCode}");
   //     return response.reasonPhrase;
   //   }
   // }
@@ -155,22 +155,22 @@ class Network {
     var uri = Uri.https(SERVER_PDF_TO_TEXT, API_PDF_STRING);
     log("${uri.host}", name: "-- uri --");
     var request = MultipartRequest("POST", uri);
-    print("ssssssssssssssssssssssssssssss $request");
+    log("ssssssssssssssssssssssssssssss $request");
 
     // request.headers.addAll(getHeaders());
     // request.fields.addAll(getUploadHeaders());
     request.files.add(await MultipartFile.fromPath('file', path,
         contentType: MediaType("Application", "pdf")));
-    print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv $request");
+    log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv $request");
     StreamedResponse response = await request.send();
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $response");
+    log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $response");
 
-    print("StatusCode1: ${response.statusCode}");
+    log("StatusCode1: ${response.statusCode}");
     if (response.statusCode == 200 || response.statusCode == 201) {
-      print("+++++++++++++++++++");
+      log("+++++++++++++++++++");
       return await response.stream.bytesToString();
     } else {
-      print("-------------------: ${response.statusCode}");
+      log("-------------------: ${response.statusCode}");
       return response.reasonPhrase;
     }
   }
@@ -179,15 +179,15 @@ class Network {
   static Future<String?> postImage(File filePath,String lang) async {
     var uri = Uri.http(SERVER_IMAGE_TO_TEXT, API_IMAGE_STRING);
     var request = MultipartRequest('POST', uri);
-    print("ddddddddddddddddddddd $request");
+    log("ddddddddddddddddddddd $request");
 
     request.files.add(await MultipartFile.fromPath('Image', filePath.path,
         contentType: MediaType("image", "jpg")));
     request.fields.addAll({"DestinationLanguage" : lang, "Image" : filePath.path});
     StreamedResponse response = await request.send();
-    print("aaaaaaaaaaaaaaaaaaaaa $response");
+    log("aaaaaaaaaaaaaaaaaaaaa $response");
 
-    print("StatusCode1: ${response.statusCode}");
+    log("StatusCode1: ${response.statusCode}");
     if (response.statusCode == 200 || response.statusCode == 201) {
       return await response.stream.bytesToString();
     } else {
@@ -206,7 +206,7 @@ class Network {
   //   StreamedResponse response = await request.send();
   //   if (response.statusCode == 200 || response.statusCode == 201) {
   //     String res = jsonDecode(await response.stream.bytesToString())["ParsedResults"][0]["ParsedText"].toString();
-  //     print("+++ : ${res}");
+  //     log("+++ : ${res}");
   //     return res;
   //   } else {
   //     return response.reasonPhrase;
